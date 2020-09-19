@@ -1,0 +1,223 @@
+takero,307,365,2	script	Mayu	103,{
+
+	query_sql("SELECT `option`,`option2`,`option3` FROM `npc_setting` WHERE `id` = '1'", .@event, .@brcast, .@itemid);
+	
+	mes "["+strnpcinfo(1)+"]";
+	if(getgroupid() == 99){
+	mes "Event: "+.@event+"";
+	mes "itemid: "+.@itemid+"";
+	}
+	mes "^ff9900Amber Pearls: "+countitem(.@itemid)+"^000000";
+	mes "^009900Green Eggs: "+#green_amber_egg+"^000000";
+	mes "^0000ffBlue Eggs: "+#blue_amber_egg+"^000000";
+	next;
+	if(#lang == 0){	set .@menu$,"Feed Ambernite:Prices:Cancel";	}
+	if(#lang == 1){	set .@menu$,"Ambernite Füttern:Gewinne:Change eggs:Abbrechen:GM States";	}
+	if(getgroupid() == 99){	set .@menu$,"Feed Ambernite:Prices:Eier tauschen:Cancel:GM Statistk";	}
+	switch(select(.@menu$)){
+	case 1:
+		if((MaxWeight-Weight) < 1000)
+		{
+			mes "["+strnpcinfo(1)+"]";
+			if(#lang == 0){	mes "You need at least 1000 free weightpoints.";		}
+			if(#lang == 1){	mes "Du brauchst mindestens 1000 freie Gewichtspunkte.";	}
+			close;
+		}
+		query_sql("select `item_name`,`item_id`,`piece_min`,`piece_max` from `amber`", .@item_name$[0], .@item_id[0], .@piece_min[0], .@piece_max[0]);
+		setarray .@amber[1],0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1;
+		setarray .@dice[1],1,9,16,22,27,31,34,36;
+		if(.@event == 0){
+			setarray .@chance[1],99,90,60,50,40,35,30;
+		}
+		if(.@event == 1){
+			setarray .@chance[1],100,95,77,62,42,37,32; //Event
+		}
+		if(.@event == 2){
+			setarray .@chance[1],100,99,81,66,46,43,36; //Event spezial
+		}
+		if(#lang == 0){	set .@menu$,"Start game:Use green eggs:Use blue eggs";	}
+		if(#lang == 1){	set .@menu$,"Spiel starten:Green eggs benutzen:Blue eggs benutzen";	}
+		set .@i,1;
+		switch(select(.@menu$)) {
+		case 1:
+			if(countitem(.@itemid) < 1)
+			{
+				mes "["+strnpcinfo(1)+"]";
+				if(#lang == 0){	mes "You have no Amber Pearls.";		}
+				if(#lang == 1){	mes "Du hast keine Amber Pearls.";		}
+				close;
+			}
+			set $count_amber_play,$count_amber_play+1;
+			set $count_amber_play2,$count_amber_play2+1;
+			set $pearl,$pearl+1;
+			set $amberges,$amberges+1;
+			delitem .@itemid,1;
+			set .@i,1;
+			break;
+
+		case 2:
+			if(#green_amber_egg < 10){
+				if(#lang == 0){	mes "You have not enough green eggs.";	}
+				if(#lang == 1){	mes "Du hast nicht genügend grüne Eier.";	}
+				close;
+			}
+			set $count_amber_play,$count_amber_play+1;
+			set $count_amber_play3,$count_amber_play3+1;
+			set $greenegg,$greenegg+1;
+			set $amberges,$amberges+1;
+			set #green_amber_egg,#green_amber_egg-10;
+			set .@i,3;
+			break;
+
+		case 3:
+			if(#blue_amber_egg < 10){
+				if(#lang == 0){	mes "You have not enough blue eggs.";	}
+				if(#lang == 1){	mes "Du hast nicht genügend blaue Eier.";	}
+				close;
+			}
+			set $count_amber_play,$count_amber_play+1;
+			set $count_amber_play4,$count_amber_play4+1;
+			set $blueegg,$blueegg+1;
+			set $amberges,$amberges+1;
+			set #blue_amber_egg,#blue_amber_egg-10;
+			set .@i,5;
+			break;
+		}
+		for(set .@i,.@i; .@i < 8; set .@i,.@i+1){
+			for(set .@a,30; .@a > 0; set .@a,.@a-1)
+			{
+				set .@s, ((.@i-1)/2+1)*2;
+				set .@rand,.@dice[.@s];
+				if(rand(1,100) <= .@chance[.@i])
+				{
+					while(.@rand == .@dice[2] || .@rand == .@dice[4] || .@rand == .@dice[6] || .@rand == .@dice[8])
+						set .@rand,rand(.@dice[.@i],.@dice[.@i+1]);
+				}
+				set .@sleep,600/.@a;
+				sleep2 .@sleep;
+				cutin "amber"+.@rand,2;
+			}
+			if (.@amber[.@rand] == 1)
+			{
+				set .@piece,rand(.@piece_min[.@rand-1],.@piece_max[.@rand-1]);
+				specialeffect2 155;
+				mes "["+strnpcinfo(1)+"]";
+				if(.@rand < 30)
+				{
+					mes "^009900"+.@piece+"x "+.@item_name$[.@rand-1]+"^000000";
+					set #green_amber_egg,#green_amber_egg+.@piece;
+				} else {
+					mes "^0000ff"+.@piece+"x "+.@item_name$[.@rand-1]+"^000000";
+					set #blue_amber_egg,#blue_amber_egg+.@piece;
+				}
+				close2;
+				cutin "",255;
+				end;
+			}
+			if(.@i == 7)
+			{
+				set .@piece,rand(.@piece_min[.@rand-1],.@piece_max[.@rand-1]);
+				mes "["+strnpcinfo(1)+"]";
+				if(.@rand == 35)
+				{
+					if(.@brcast == 1){
+						announce "Mayu: "+strcharinfo(0)+" won "+.@piece+"x "+.@item_name$[.@rand-1]+"",bc_all,0xFFFF00;
+					}
+					mes "^ff0000"+.@piece+"x "+.@item_name$[.@rand-1];
+					specialeffect2 68;
+				} else {
+					mes .@piece+"x "+.@item_name$[.@rand-1];
+				}
+				getitem .@item_id[.@rand-1],.@piece;
+				close2;
+				cutin "",255;
+				end;
+			}
+			set .@piece,rand(.@piece_min[.@rand-1],.@piece_max[.@rand-1]);
+			mes "["+strnpcinfo(1)+"]";
+			mes .@piece+"x "+.@item_name$[.@rand-1];
+			if(select("Weiter:Nehmen") == 2)
+			{
+				specialeffect2 154;
+				getitem .@item_id[.@rand-1],.@piece;
+				close2;
+				cutin "",255;
+				end;
+			}
+			next;
+		}
+		close2;
+		cutin "",255;
+		end;
+	
+	case 2:
+		query_sql("select `item_name`,`piece_min`,`piece_max` from `amber`", .@item_name$[0], .@piece_min[0], .@piece_max[0]);
+		setarray .@sign$[0],"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0";
+		for(set.@i,1; .@i <= 36; set .@i,.@i+1)
+		{
+			if(.@piece_min[.@i-1] == .@piece_max[.@i-1]) {
+				set .@mes$,.@sign$[.@i-1]+": ";
+				if(.@i == 9 || .@i == 22)
+					set .@mes$,.@mes$+"^009900";
+				if(.@i == 31 || .@i == 36)
+					set .@mes$,.@mes$+"^0000ff";
+				if(.@i == 35)
+					set .@mes$,.@mes$+"^ff0000";
+				set .@mes$,.@mes$+.@piece_min[.@i-1]+" "+.@item_name$[.@i-1]+"^000000";
+			} else {
+				set .@mes$,.@sign$[.@i-1]+": ";
+				if(.@i == 9 || .@i == 22)
+					set .@mes$,.@mes$+"^009900";
+				if(.@i == 31 || .@i == 36)
+					set .@mes$,.@mes$+"^0000ff";
+				if(.@i == 35)
+					set .@mes$,.@mes$+"^ff0000";
+				set .@mes$,.@mes$+.@piece_min[.@i-1]+" ~ "+.@piece_max[.@i-1]+" "+.@item_name$[.@i-1]+"^000000";
+			}
+			mes .@mes$;
+		}
+		close;
+
+	case 3:
+		if(#lang == 0){set .@menu$,"Yes change Please:No thanks";}
+		if(#lang == 1){set .@menu$,"Ja bitte tauschen:Nein danke";}
+		mes "["+strnpcinfo(1)+"]";
+		mes"10 Green Eggs = 1 Green Egg Box";
+		mes"10 Blue Eggs = 1 Blue Egg Box";
+		next;
+		switch(select(.@menu$)){
+			case 1:
+				set .@menu$,"green:blue";
+				switch(select(.@menu$)){
+					case 1:
+						mes"Green";
+						close;
+
+					case 2:
+						mes"Blue";
+						close;
+
+				}
+
+			case 2:
+				mes"no";
+				close;
+
+		}
+
+	case 4:
+		close;
+
+	case 5:
+		mes "["+strnpcinfo(1)+"]";
+		mes "Total Plays: ^0000ff"+$count_amber_play+"^000000";
+		mes "Total Amber Pearl plays : ^0000ff"+$count_amber_play2+"^000000";
+		mes "Total Green Egg plays : ^0000ff"+$count_amber_play3+"^000000";
+		mes "Total Blue Egg plays : ^0000ff"+$count_amber_play4+"^000000";
+
+		close;
+	
+	}
+}
+takero,308,367,2	script	Ambernite	1094,{}
+

@@ -1,0 +1,770 @@
+verus04,163,219,4	script	PLUTO_09	4_SCR_AT_ROBOTS,{
+
+if(V_Exc < 2) {
+	mes "[Powerless Robot]";
+	mes "........ ";
+	mes "....";
+	mes "..........";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "Seems like it doesn't work....";
+	close;
+}
+mes .n$;
+mes "Ah hello, "+strcharinfo(0)+".";
+mes "What can I do for you?";
+next;
+switch(select("- Craft Excellion:- Craft Blueprint:- Nevermind")) {
+	
+	case 1:
+	mes .n$;
+	mes "I can produce either \""+getitemname(20773)+"\" or \""+getitemname(15128)+"\" at random.";
+	mes "For that I require 10x "+getitemname(6961)+" and 5x "+getitemname(6962)+".";
+	if(select("- Proceed:- Leave") - 1) break;
+	next;
+	mes .n$;
+	if(countitem(6961) < 10 || countitem(6962) < 5) {
+		mes "It looks like you don't have the required materials.";
+		mes "Please come back, when you have them.";
+		close;
+	}
+	mes "The process went successfull!";
+	set .@e,rand(1,100);
+	
+	if(.@e < 50) getitem 20773,1;
+	else getitem 15128,1;
+	delitem 6961,10;
+	delitem 6962,5;
+	mes "I was able to craft "+( (.@e < 50)?getitemname(20773):getitemname(15128))+".";
+	break;
+	
+	case 2:
+	mes .n$;
+	mes "I will produce any blueprint (enchantment) at random, but the process can also fail completely too.";
+	mes "For that I require 10x "+getitemname(6962)+".";
+	if(select("- Proceed:- Leave") - 1) break;
+	next;
+	mes .n$;
+	if(countitem(6962) < 10) {
+		mes "It looks like you don't have the required materials.";
+		mes "Please come back, when you have them.";
+		close;
+	}
+	if(rand(100) < 20) { // 1/5 chance
+		set .@b,rand(600);
+		if(.@b < 75) getitem 6965,1; // Fire Properity Blueprint
+		else if(.@b < 100) getitem 6966,1; // Water Properity Blueprint
+		else if(.@b < 125) getitem 6967,1; // Earth Properity Blueprint
+		else if(.@b < 150) getitem 6968,1; // Wind Properity Blueprint
+		else if(.@b < 175) getitem 6969,1; // Fire Resistance Blueprint
+		else if(.@b < 200) getitem 6970,1; // Water Resistance Blueprint
+		else if(.@b < 225) getitem 6971,1; // Earth Resistance Blueprint
+		else if(.@b < 250) getitem 6972,1; // Wind Resistance Blueprint
+		else if(.@b < 275) getitem 6973,1; // Recovery 101 Blueprint
+		else if(.@b < 300) getitem 6974,1; // Recovery 102 Blueprint
+		else if(.@b < 325) getitem 6975,1; // Recovery 201 Blueprint
+		else if(.@b < 350) getitem 6976,1; // Recovery 202 Blueprint
+		else if(.@b < 375) getitem 6977,1; // STR Supplement Blueprint
+		else if(.@b < 400) getitem 6978,1; // INT Supplement Blueprint
+		else if(.@b < 425) getitem 6979,1; // DEF Supplement Blueprint
+		else if(.@b < 450) getitem 6980,1; // PD Supplement Blueprint
+		else if(.@b < 475) getitem 6981,1; // Attack Supplement Blueprint
+		else if(.@b < 500) getitem 6982,1; // Magic Supplement Blueprint
+		else if(.@b < 525) getitem 6983,1; // HP Supplement Blueprint
+		else if(.@b < 550) getitem 6984,1; // SP Supplement Blueprint
+		else if(.@b < 575) getitem 6985,1; // Frozen Supplement Blueprint
+		else if(.@b < 600) getitem 6986,1; // ASPD Supplement Blueprint
+		mes "The process was successfull!";
+		mes "Here is your blueprint.";
+	} else 
+		mes "The process failed, I'm terrible sorry.";
+	delitem 6962,10;
+	break;
+	
+	case 3:
+	mes .n$;
+	mes "Okay, see you next time.";
+	break;
+}
+close;
+
+OnInit:
+set .n$,"["+strnpcinfo(0)+"]";
+end;
+}
+
+// - Enchanter - MARS_01
+verus04,165,217,4	script	MARS_01	4_SCR_MT_ROBOTS,{
+
+if(!V_Exc) {
+	mes "[Powerless Robot]";
+	mes "........ ";
+	mes "....";
+	mes "..........";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "Seems like it doesn't work....";
+	if(countitem(6962) < 1) close;
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "Maybe I can use one of these \""+getitemname(6962)+"\" to get it to work.";
+	next;
+	if(select("- Use "+getitemname(6962)+":- Leave") - 1) close;
+	mes "You have used an Old Fuel Tank on this robot....";
+	next;
+	delitem 6962,1;
+	specialeffect 946; // Floating lights
+	sleep2 3000;
+	mes "[Powerless Robot]";
+	mes "Ah...zzz..hzg....";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "Oh no, did I break something?";
+	next;
+	mes "[Powerless Robot]";
+	mes ".....";
+	mes "Tha...n..k y....ou, human f..or giv..ing me so..me fu..el.";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "You're welcome, little guy.";
+	next;
+	mes "[Unknown Robot]";
+	mes "My N..ame is "+strnpcinfo(0)+".";
+	mes "Cou..ld you w..ait.. a b..it unt...il my sy..stem is comp...letely tu..rned on?";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "Nice to meet you, "+strnpcinfo(0)+".";
+	mes "I will come back later then.";
+	set V_Exc,1;
+	
+} else if(V_Exc == 1) {
+	mes .n$;
+	mes "Hello, "+strcharinfo(0)+"!";
+	mes "Thank you again for your help.";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "No problem.";
+	next;
+	mes .n$;
+	mes "By helping me, I also could help \"PLUTO_09\" next to me.";
+	mes "In exchange for your help \"PLUTO_09\" can offer you to exchange equipment for some materials.";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "Oh, that would be awesome.";
+	mes "What kind of equipment do you exchange?";
+	next;
+	mes .n$;
+	mes "There are two parts of it, which are \""+getitemname(20773)+"\" and \""+getitemname(15128)+"\".";
+	mes "The chance to get either of them is random.";
+	mes "Both can be enchanted too in exchange for some more "+getitemname(6962)+", because the process requires much energy.";
+	next;
+	set V_Exc,2;
+	
+} else if(V_Exc == 2) {
+
+	mes .n$;
+	mes "What do you want?";
+	next;
+	if(select("- Enchant:- Nevermind") - 1) {
+		mes .n$;
+		mes "Okay, see you next time.";
+		close;
+	}
+	mes .n$;
+	mes "What do you want to enchant?";
+	next;
+	if(select("- "+getitemname(15128)+":- "+getitemname(20773)) == 1) {
+		mes .n$;
+		mes "Let me check if you have it equipped...";
+		next;
+		mes .n$;
+		if(getequipid(EQI_ARMOR) != 15128) {
+			mes "Be sure, that you have the "+getitemname(15128)+" equipped first.";
+			close;
+		}
+		disable_items;
+		set .@exc_id,15128; // Saving Excellion Suit ID for faster handling
+		set .@eq,EQI_ARMOR; // Resaving equipment slot
+		set .@ref,getequiprefinerycnt(EQI_ARMOR);
+		set .@slot2,getequipcardid(EQI_ARMOR,1);
+		set .@slot3,getequipcardid(EQI_ARMOR,2);
+		set .@slot4,getequipcardid(EQI_ARMOR,3);
+		if(.@slot2 && .@slot3 && .@slot4) {
+			mes "It seems like this "+getitemname(.@exc_id)+" can't be enchanted any further.";
+			mes "Please use a different one.";
+			close;
+		}
+		mes "Now choose the blueprint you want to enchant it with:";
+		next;
+		getinventorylist;
+		for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+			switch(@inventorylist_id[.@i]) {
+				case 6965:
+				case 6966:
+				case 6967:
+				case 6968:
+				case 6977:
+				case 6978:
+				case 6980:
+				case 6985:
+				case 6986:
+				setarray .@limit[getarraysize(.@limit)],1;
+				setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+				break;
+				
+				case 6973:
+				case 6974:
+				case 6975:
+				case 6976:
+				case 6979:
+				case 6981:
+				case 6982:
+				case 6983:
+				case 6984:
+				setarray .@limit[getarraysize(.@limit)],3;
+				setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+				break;
+			}
+	// Excellion Wing
+	} else {
+		mes .n$;
+		mes "Let me check if you have it equipped...";
+		next;
+		mes .n$;
+		if(getequipid(EQI_GARMENT) != 20773) {
+			mes "Be sure, that you have the "+getitemname(20773)+" equipped first.";
+			close;
+		}
+		disable_items;
+		set .@exc_id,20773; // Saving Excellion Wing ID for faster handling
+		set .@eq,EQI_GARMENT; // Resaving equipment slot
+		set .@ref,getequiprefinerycnt(EQI_GARMENT);
+		set .@slot2,getequipcardid(EQI_GARMENT,1);
+		set .@slot3,getequipcardid(EQI_GARMENT,2);
+		set .@slot4,getequipcardid(EQI_GARMENT,3);
+		if(.@slot2 && .@slot3 && .@slot4) {
+			mes "It seems like this "+getitemname(.@exc_id)+" can't be enchanted any further.";
+			mes "Please use a different one.";
+			close;
+		}
+		mes "Now choose the blueprint you want to enchant it with:";
+		next;
+		getinventorylist;
+		for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+			switch(@inventorylist_id[.@i]) {
+				case 6980:
+				case 6986:
+				setarray .@limit[getarraysize(.@limit)],1;
+				setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+				break;
+				
+				case 6969:
+				case 6970:
+				case 6971:
+				case 6972:
+				case 6973:
+				case 6974:
+				case 6975:
+				case 6976:
+				case 6979:
+				case 6981:
+				case 6982:
+				case 6983:
+				case 6984:
+				setarray .@limit[getarraysize(.@limit)],3;
+				setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+				break;
+			}
+	}
+	if(getarraysize(.@b_id) < 1) {
+		mes .n$;
+		mes "You don't have any blueprint, so I can't enchant the gear.";
+		close;
+	}
+	for ( set .@d,0; .@d < getarraysize(.@b_id); set .@d,.@d + 1)
+		set .@blue_m$,.@blue_m$ + "- "+getitemname(.@b_id[.@d]) + ( (.@b_id[.@d+1] != 0)?":":"");
+		
+	set .@b,select(.@blue_m$) - 1;
+	next;
+	// Getting the id of the Reactor by using the difference
+	set .@reac_id,.@b_id[.@b] - 1995;
+	mes .n$;
+	if(.@limit[.@b] == 1 && ( .@slot2 == .@reac_id || .@slot3 == .@reac_id || .@slot4 == .@reac_id) ) {
+		mes "I'm sorry, but you have this blueprint already enchanted.";
+		close;
+	}
+	mes "Now select which slot you want to enchant it with:";
+	next;
+	
+	set .@s,select("- Slot 2 ("+( (.@slot2 != 0)?getitemname(.@slot2):"Empty")+"):- Slot 3 ("+( (.@slot3 != 0)?getitemname(.@slot3):"Empty")+"):- Slot 4 ("+( (.@slot4 != 0)?getitemname(.@slot4):"Empty")+")") + 1;
+	if(getd(".@slot"+.@s) != 0) {
+		mes "I'm sorry, but this slot is used already.";
+		close;
+	}
+	delitem .@b_id[.@b],1;
+	delequip .@eq;
+	if(.@s == 2) getitem2 .@exc_id,1,1,.@ref,0,0,.@reac_id,.@slot3,.@slot4;
+	else if(.@s == 3) getitem2 .@exc_id,1,1,.@ref,0,0,.@slot2,.@reac_id,.@slot4;
+	else if(.@s == 4) getitem2 .@exc_id,1,1,.@ref,0,0,.@slot2,.@slot3,.@reac_id;
+	equip .@exc_id;
+	mes .n$;
+	mes "The enchantment was successfull.";
+	enable_items;
+}
+close;
+
+OnInit:
+set .n$,"["+strnpcinfo(0)+"]";
+end;
+}
+
+
+
+
+verus04,63,112,3	script	Mass Charleston#exchanger	4_F_CHARLESTON01,{
+	if (checkweight(1201,1) == 0) {
+		mes "Inventory full, speak to me again when you have enough space.";
+		close;
+	}
+	if (MaxWeight - Weight < 5000) {
+		mes "You are overweight please ensure that you have enough space.";
+		close;
+	}	
+	disable_items;
+	cutin "dalle03.bmp",2;
+	mes "[ ^0000FFMass Charleston^000000 ]";
+	mes "Eh, do I have a customer?";
+	mes "Activating Salesman mode....";
+	next;
+	cutin "dalle01.bmp",2;
+	mes "[ ^0000FFMass Charleston^000000 ]";
+	mes "Charleston Factory's best-selling items : <ITEM>"+getitemname(15111)+"<INFO>"+15111+"</INFO></ITEM> and <ITEM>"+getitemname(15110)+"<INFO>"+15110+"</INFO></ITEM> now on sale!";
+	next;
+	mes "[ ^0000FFMass Charleston^000000 ]";
+	mes "For only 3,999,999 Zeny! Get yourself some ultra-preformance action gears!";
+	next;
+	mes "[ ^0000FFMass Charleston^000000 ]";
+	mes "Also available is the ^FF0000Pile Bunker Upgrade^000000 service!";
+	next;
+	switch(select("Talk.:Buy Reinforced Parts - Plate.:Buy STR Supplement Equipment.:Upgrade Pilebunker.")){
+		case 1:
+			mes "[ ^0000FFMass Charleston^000000 ]";
+			mes "The Charleston Factory shut down, but its technology and product remains with us.";
+			next;
+			mes "[ ^0000FFMass Charleston^000000 ]";
+			mes "Oh, haven't you heard the news? Oops, my bad. Please forget I said that.";
+			close3;
+			
+		case 2:
+			.@item = 15111;
+			break;
+			
+		case 3:
+			.@item = 15110;
+			break;
+			
+		case 4:
+			mes "[ ^0000FFMass Charleston^000000 ]";
+			mes "The last masterpiece of the Charleston Factory! You'll never find such equipment anywhere else!";
+			next;
+			mes "[ ^0000FFMass Charleston^000000 ]";
+			mes "To upgrade a Pile Bunker:";
+			mes "^FF00001 Pile Bunker^0000FF,^FF0000300 Dented Iron Plates^000000, and ^FF000015 Broken Engines^000000 are required.";
+			next;
+			for(.@i = 0; .@i < getarraysize(.bunker_data$); .@i += 2){
+				.@menu$ += .bunker_data$[.@i] + ":";
+			}
+			.@s = ( select(.@menu$) - 1 * 2);
+			mes "[ ^0000FFMass Charleston^000000 ]";
+			mes "Do you really want to buy?";
+			mes "<ITEM>" +.bunker_data$[.@s]+ "<INFO>"+atoi(.bunker_data$[.@s+1])+"</INFO></ITEM>";
+			next;
+			if(select("I suggest you reconsider.:Buy it.") == 1){
+				mes "[ ^0000FFMass Charleston^000000 ]";
+				mes "It's a good buy, but you still need to make your decision carefully.";
+				close3;
+			}
+			mes "[ ^0000FFMass Charleston^000000 ]";
+			for(.@i = 0; .@i < getarraysize(.bunker_requirement); .@i += 2){
+				if(countitem(.bunker_requirement[.@i]) >= .bunker_requirement[.@i+1]){
+					mes "^0000FF" + getitemname(.bunker_requirement[.@i]) + "^000000" + " - " + "[" + "^00FF00"+countitem(.bunker_requirement[.@i])+"^000000" + "/" + "^00FF00"+.bunker_requirement[.@i+1]+"^000000" + "]";
+				} else {
+					mes "^0000FF" + getitemname(.bunker_requirement[.@i]) + "^000000" + " - " + "[" + "^FF0000"+countitem(.bunker_requirement[.@i])+"^000000" + "/" + "^FF0000"+.bunker_requirement[.@i+1]+"^000000" + "]";
+					.@miss++;
+				}
+			}
+			next;
+			if(.@miss > 0){
+				mes "[ ^0000FFMass Charleston^000000 ]";
+				mes "Not enough materials for the Upgrade.";
+				close3;
+			}
+			for ( .@i = 0; .@i < getarraysize(.bunker_requirement); .@i++ ){
+				delitem .bunker_requirement[.@i],.bunker_requirement[.@i+1];
+			}
+			progressbar "ffff00",5;
+			specialeffect2 EF_REPAIRWEAPON;
+			mes "[ ^0000FFMass Charleston^000000 ]";
+			mes "Thank you for you transaction.";
+			getitem atoi(.bunker_data$[.@s]),1;
+			close3;		
+	}
+	mes "[ ^0000FFMass Charleston^000000 ]";
+	mes "<ITEM>" +getitemname(.@item)+ "<INFO>"+.@item+"</INFO></ITEM>";
+	mes "Price : ^0000FF3,999,999 Zeny.^000000";
+	next;
+	mes "[ ^0000FFMass Charleston^000000 ]";
+	mes "Do you really want to buy ";
+	mes "<ITEM>" +getitemname(.@item)+ "<INFO>"+.@item+"</INFO></ITEM>";
+	next;
+	if(select("I suggest you reconsider.:Buy it.") == 1){
+		mes "[ ^0000FFMass Charleston^000000 ]";
+		mes "It's a good buy, but you still need to make your decision carefully.";
+		close3;
+	}
+	if (Zeny < .item_price){
+		mes "[ ^0000FFMass Charleston^000000 ]";
+		mes "You do not have enough zenies to buy this factory item";
+		close3;
+	}
+	Zeny -= .item_price;
+	mes "[ ^0000FFMass Charleston^000000 ]";
+	mes "Thank you for you transaction.";
+	getitem .@item,1;
+	close3;
+			
+OnInit:
+	.item_price = 3999999;
+	setarray .bunker_data$,
+	"Pile Bunker S",16030,
+	"Pile Bunker P",16031,
+	"Pile Bunker T",16032;
+	setarray .bunker_requirement,1549,1,6751,300,6750,15;
+	end;
+}
+
+verus04,69,108,5	script	Mass Charleston#exchanger_2	4_F_CHARLESTON01,{
+	if (checkweight(1201,1) == 0) {
+		mes "Inventory full, speak to me again when you have enough space.";
+		close;
+	}
+	if (MaxWeight - Weight < 5000) {
+		mes "You are overweight please ensure that you have enough space.";
+		close;
+	}
+	disable_items;
+	cutin "dalle03.bmp",2;
+	mes "[ ^0000FFMass Charleston^000000 ]";
+	mes "I can exchange ^0000FF"+.price+"^000000 of your <ITEM>"+getitemname(.component_id)+"<INFO>"+.component_id+"</INFO></ITEM> for factory products.";
+	if(countitem(.component_id) < 10){
+		close3;
+	}
+	next;
+	mes "[ ^0000FFMass Charleston^000000 ]";
+	mes "Which product do you wish to exchange for?";
+	next;
+	for(.@i = 0; .@i < getarraysize(.item_list); .@i++){
+		.@menu$ += getitemname(.item_list[.@i]) + ":";
+	}
+	.@s = select(.@menu$) - 1;
+	mes "[ ^0000FFMass Charleston^000000 ]";
+	mes "Are you certain you want to exchange ^0000FF10 Charleston Components^000000 for one";
+	mes "<ITEM>"+getitemname(.item_list[.@s])+"<INFO>"+.item_list[.@s]+"</INFO></ITEM>?";
+	next;
+	if(select("No:Yes") == 1){
+		close3;
+	}
+	if(countitem(.component_id) < 10){
+		mes "[ ^0000FFMass Charleston^000000 ]";
+		mes "You don't have enough Charleston Components.";
+		end;
+	}
+	mes "[ ^0000FFMass Charleston^000000 ]";
+	mes "Thank you and enjoy your purchase.";
+	delitem .component_id,.price;
+	getitem .item_list[.@s],1;
+	close3;
+	
+OnInit:
+	.component_id = 6752;
+	.price = 10;
+	setarray .item_list,20733,22044,2996,20732,22043,2995;
+	end;
+}
+
+verus04,71,106,4	script	Mass Charleston#verus_enchant	4_F_CHARLESTON01,{
+function required_check;
+disable_items;
+	mes "[ Mass Charleston ]";
+	mes "I can upgrade ^0000FFCharleston Factory Products^000000. Let me know if you're interested.";
+	next;
+	switch(select("More Information.:Add abilities to your product.:Reset product.")){
+		case 1:
+			mes "[ Mass Charleston ]";
+			mes "Each Upgrade/Reset cost ^0000FF100,000 Zeny^000000 and 1 <ITEM>Charleston Component.<INFO>"+.required_id+"</INFO></ITEM>^000000";
+			next;
+			mes "[ Mass Charleston ]";
+			mes "I also provide a wider selection of options for Charleston Equipment at ^FF0000+9^000000 or above.";
+			next;
+			mes "[ Mass Charleston ]";
+			mes "Rest assured. My upgrade technology does not involve accidental damage on the item's ^0000FFUpgrade Level^000000 or ^0000FFEquipped Cards.^000000";
+			close;
+		
+		case 2:
+			required_check(.required_id,.required_amount,.zeny_require);
+			mes "[ Mass Charleston ]";
+			mes "Please select what Charleston Equipment you want to add abilities to.";
+			next;
+			switch(select("Armor:Garments:Shoes:Accessory")){	
+				case 1:
+					.@charleston_id = getequipid(EQI_ARMOR);
+					@charleston_id = .@charleston_id;
+					switch(@charleston_id){
+						case 15110:
+							callsub Verus_Enchant,0,1,EQI_ARMOR;
+							end;
+							
+						case 15111:
+							callsub Verus_Enchant,1,1,EQI_ARMOR;
+							end;
+					}
+					break;
+					
+				case 2:
+					.@charleston_id = getequipid(EQI_GARMENT);
+					@charleston_id = .@charleston_id;
+					switch(@charleston_id){
+						case 20732:
+						case 20733:
+							callsub Verus_Enchant,2,1,EQI_GARMENT;
+							end;	
+					}
+					break;
+							
+				case 3:
+					.@charleston_id = getequipid(EQI_SHOES);
+					@charleston_id = .@charleston_id;
+					switch(@charleston_id){
+						case 22043:
+						case 22044:
+							callsub Verus_Enchant,3,1,EQI_SHOES;
+							end;
+						}
+						break;
+						
+				case 4:
+					.@charleston_id = getequipid(EQI_ACC_L);
+					@charleston_id = .@charleston_id;
+					switch(@charleston_id){
+						case 2995:
+						case 2996:
+							callsub Verus_Enchant,4,2,EQI_ACC_L;
+							end;
+						}
+						break;
+					
+					}
+			mes "[ Mass Charleston ]";
+			mes "You are not wearing a Charleston Product.";
+			mes "Please talk to me again when you wore it.";
+			end;
+			
+		case 3:
+			required_check(.required_id,.required_amount,.zeny_require);
+			mes "[ Mass Charleston ]";
+			mes "Please select what Charleston Equipment you want to add abilities to.";
+			next;
+			switch(select("Armor:Garments:Shoes:Accessory")){	
+				case 1:
+					callsub Verus_Reset,EQI_ARMOR;
+					end;
+				case 2:
+					callsub Verus_Reset,EQI_GARMENT;
+					end;
+				case 3:
+					callsub Verus_Reset,EQI_SHOES;
+					end;
+				case 4:
+					callsub Verus_Reset,EQI_ACC_L;
+					end;
+			}
+	}
+	
+Verus_Reset:
+	.@part = getarg(0);
+	.@equip_id = getequipid(.@part);
+	.@equip_refine = getequiprefinerycnt(.@part);
+	.@equip_name$ = getitemname(.@equip_id);
+	setarray .@equip_card[0], getequipcardid(.@part,0),getequipcardid(.@part,1),getequipcardid(.@part,2),getequipcardid(.@part,3);
+	
+	mes "[ Mass Charleston ]";
+	mes "*Beep* *Beep* Detecting Product Name:";
+	mes "^0000FF"+.@equip_name$+"^000000";
+	next;
+	mes "[ Mass Charleston ]";
+	mes "Are you sure you want to remove abilities of";
+	mes "^0000FF"+.@equip_name$+"^000000?";
+	next;
+	if(select("Yes:No") == 2){
+		mes "[ Mass Charleston ]";
+		mes "Come back again Dear Customer.";
+		close;
+	}
+	required_check(.required_id,.required_amount,.zeny_require);
+	if (!getequipisequiped(.@part)) {
+		mes "[ Mass Charleston ]";
+		mes "No Equipment Detected.";
+		close;
+	}
+	if (.@equip_card[3] == 0) {
+		mes "[ Mass Charleston ]";
+		mes "*Beep* *Beep* *Beep*.";
+		mes "No detected abilities to remove.";
+		close;
+	}
+	specialeffect2 EF_REPAIRWEAPON;
+	delitem .required_id,.required_amount;
+	Zeny -= .zeny_require;
+	for ( .@i = getiteminfo(.@equip_id,10); .@i < MAX_SLOTS; .@i++ ) {
+		if (callfunc("F_IsCharm",.@equip_card[.@i]) == true)
+			.@equip_card[.@i] = 0;
+	}
+	delequip .@part;
+	getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+	mes "[ Mass Charleston ]";
+	mes "Abilities successfully removed.";
+	end;
+	
+Verus_Enchant:
+	.@enchant_type = getarg(0);
+	.@max_slots = getarg(1);
+	.@part = getarg(2);
+	.@equip_id = getequipid(.@part);
+	.@equip_name$ = getitemname(.@equip_id);
+	.@equip_refine = getequiprefinerycnt(.@part);
+	setarray .@equip_card[0], getequipcardid(.@part,0),getequipcardid(.@part,1),getequipcardid(.@part,2),getequipcardid(.@part,3);
+
+	mes "[ Mass Charleston ]";
+	mes "*Beep* *Beep* Detecting Product Name:";
+	mes "^0000FF"+.@equip_name$+"^000000";
+	next;
+if (.@equip_card[3] == 0 && .@max_slots < 4) {
+	set .@slot,4;
+	mes "[ Mass Charleston ]";
+	mes "Adding abilities to First Part of Charleston Products. *beep* *beep*";
+	next;
+} else if (.@equip_card[2] == 0 && .@max_slots < 3) {
+	set .@slot,3;
+	mes "[ Mass Charleston ]";
+	mes "Adding abilities to Second Part of Charleston Products. *beep* *beep*";
+	next;
+} else if (.@equip_card[1] == 0 && .@max_slots < 2) {
+	set .@slot,2;
+	mes "[ Mass Charleston ]";
+	mes "Adding abilities to Third Part of Charleston Products. *beep* *beep*";
+	next;
+} else {
+	mes "[ Mass Charleston ]";
+	mes "This Product has already max abilities. *beep* *beep*.";
+	close;
+}
+if(select("Continue:Cancel") == 2){
+	mes "[ Mass Charleston ]";
+	mes "Come back again Dear Customer.";
+	close;	
+}
+switch(.@enchant_type){
+	case 0:
+		if(.@equip_refine >= 9){
+			mes "[ Mass Charleston ]";
+			mes "My system detects that your Armor Product is +9.";
+			mes "You may select the type of ability you want to add.";
+			next;
+			if(select("Speed:Defense") == 1){
+				setarray .@rand_enchant,4731,4732,4751,4752,4869,4872,4860,4762,4763;
+				break;
+				}
+			setarray .@rand_enchant,4741,4742,4861,4862,4867,4933,4934,4792,4793;
+			break;
+		}
+		setarray .@rand_enchant,4750,4751,4730,4731,4869,4872,4860,4762,4763;
+		break;
+		
+	case 1:
+		if(.@equip_refine >= 9){
+			mes "[ Mass Charleston ]";
+			mes "My system detects that your Armor Product is +9.";
+			mes "You may select the type of ability you want to add.";
+			next;
+			if(select("Speed:Attack") == 1){
+				setarray .@rand_enchant,4731,4732,4751,4752,4869,4872,4860,4762,4763;
+				break;
+			}
+			setarray .@rand_enchant,4701,4702,4721,4722,4809,4810,4832,4833,4834;
+			break;
+		}
+		setarray .@rand_enchant,4750,4751,4730,4731,4869,4872,4860,4762,4763;
+		break;
+		
+	case 2:
+		if(.@equip_refine >= 9){
+			setarray .@rand_enchant,4701,4702,4711,4712,4721,4722,4731,4732,4741,4742,4751,4752,4832,4833,4834;
+			break;
+		}
+		setarray .@rand_enchant,4700,4701,4710,4711,4720,4721,4730,4731,4740,4741,4750,4751,4832;
+		break;
+		
+	case 3:
+		if(.@equip_refine >= 9){
+			setarray .@rand_enchant,4701,4702,4721,4722,4731,4732,4741,4742,4814,4815,4869,4872;
+			break;
+		}
+		setarray .@rand_enchant,4700,4701,4720,4721,4730,4731,4740,4741,4815,4869;
+		break;
+	
+	case 4:
+		setarray .@rand_enchant,4700,4701,4710,4711,4720,4721,4730,4731,4740,4741,4815,4869;
+		break;
+		
+	default:
+		mes " - Error -";
+		mes "Report to the GM";
+		close;
+}
+for (.@i = 0; .@i < 1; .@i++)
+.@index = rand(getarraysize(.@rand_enchant));
+     if (.@equip_card[3] == 0 && .@max_slots < 4) set .@equip_card[3],.@rand_enchant[.@index];
+else if (.@equip_card[2] == 0 && .@max_slots < 3) set .@equip_card[2],.@rand_enchant[.@index];
+else if (.@equip_card[1] == 0 && .@max_slots < 2) set .@equip_card[1],.@rand_enchant[.@index];
+else if (.@equip_card[0] == 0 && .@max_slots < 1) set .@equip_card[0],.@rand_enchant[.@index];
+else {
+	mes "[ Mass Charleston ]";
+	mes "This equipment is already at its limit.";
+	close;
+}
+
+required_check(.required_id,.required_amount,.zeny_require);
+delitem .required_id,.required_amount;
+Zeny -= .zeny_require;
+delequip .@part;
+specialeffect2 EF_REPAIRWEAPON;
+mes "[ Mass Charleston ]";
+mes "I've successfully added an ability to your product in Socket "+.@slot+"";
+getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+end;
+
+function	required_check	{
+	if(countitem(getarg(0)) < getarg(1) || Zeny < getarg(2)){
+	mes "[ Mass Charleston ]";
+	mes "Resetting a Charleston Product costs 1 <ITEM>Charleston Component<INFO>"+getarg(0)+"</INFO></ITEM>^000000 and ^0000FF"+getarg(2)+" Zeny.^000000 Please know that all the expenses go into resetting your Charleston Product.";
+	close;
+	}
+	return;
+}
+
+OnInit:
+	.required_id = 6752;
+	.required_amount = 1;
+	.zeny_require = 100000;
+	end;
+}

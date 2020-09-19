@@ -1,0 +1,239 @@
+takero,386,247,3	script	Piercing Expert	106,{
+	 if (checkweight(1201,1) == 0) {
+mes "You are carrying too much objects put some of them in Kafra storage.";
+close;
+}
+if (MaxWeight - Weight < 10000) {
+mes "You are carrying too much weigh, come when you have reduced it.";
+close;
+}
+mes "[Piercing Expert]";
+mes "Hello adventurer. Years of development and hard work";
+mes "made possible to add slots to mid headgears"; 
+mes "Not all mid headgears can be slotted, just a few resist the spiritual auger puncture.";
+next;
+mes "By the way, the following headgears can be slotted:";
+mes "Angel Wing Ears";
+mes "Black Devil's Mask";
+mes "Black Frame Glasses";
+mes "Blush";
+mes "Dark Blinder";
+mes "Elven Ears";
+mes "Evil Wing Ears";
+mes "Glasses";
+mes "and Small Ribbons";
+next;
+mes "What you want to do?"; 
+switch(select("Slot my gear:I've changed my mind")){
+case 1:
+mes "Remember slotting a headgear is a very complicated process in which you could lose the hat and the auger";
+mes "so would you like to continue?";
+if(select("Go for it:No way")==2){close;}
+mes "Add slot to...";
+switch (select("Angel Wing Ears:Black Devil's Mask:Black Frame Glasses:Blush:Dark Blinder:Elven Ears:Evil Wing Ears:Glasses:Small Ribbons:Nothing")){
+
+case 1: //Evil Wing Ears
+mes "Are you completely sure about adding the slot?";
+
+if (select("Shut up and do it!:Not really")==2){close;}
+if (countitem(6396)>=1 && countitem(5074)>=1){
+if ((rand(1,100))>35){
+delitem 6396,1;
+delitem 5074,1;
+goto L_sorry;
+
+}
+delitem 6396,1;
+delitem 5074,1;
+set zeny,zeny-100000;
+getitem 18518,1;
+mes "Enjoy yours Angel Wing Ears [1]";
+
+close;
+
+ 
+
+}
+
+goto L_norew;
+
+break;
+case 2: //Black Devil's Mask *Add it to quest or cash shop
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it!:Not really")==2){close;}
+if (countitem(6396)>=1 && countitem(18599)>=1){
+if (rand(1,100)>35){
+delitem 6396,1;
+delitem 18599,1;
+goto L_sorry;
+
+}
+
+delitem 6396,1;
+delitem 18599,1;
+set zeny,zeny-100000;
+getitem 18603,1;
+mes "Enjoy yours Black Devil's Mask [1]";
+close;
+}
+
+ 
+
+goto L_norew;
+break;
+case 3: //Black Frame Glasses
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it!:Not really")==2){close;}
+if (countitem(6396)>=1 && countitem(5401)>=1){
+if (rand(1,100)>35){
+delitem 6396,1;
+delitem 5401,1;
+goto L_sorry;
+}
+
+delitem 6396,1;
+delitem 5401,1;
+set zeny,zeny-100000;
+getitem 18611,1;
+mes "Enjoy yours Black Frame Glasses [1]";
+close;
+}
+
+goto L_norew;
+break;
+case 4: //Blush
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it!:Not really")==2){close;}
+if (countitem(6396)>=1 && countitem(5040)>=1){
+if (rand(1,100)>35){
+delitem 6396,1;
+delitem 5040,1;
+goto L_sorry;
+}
+delitem 6396,1;
+delitem 5040,1;
+set zeny,zeny-100000;
+getitem 18607,1;
+mes "Enjoy yours Blush [1]";
+close;
+}
+
+goto L_norew;
+break;
+case 5: //Dark Blinder
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it!:Not really")==2){close;}
+if (countitem(6396)>=1 && countitem(5104)>=1){
+if (rand(1,100)>35){
+delitem 6396,1;
+delitem 5104,1;
+goto L_sorry;
+}
+delitem 6396,1;
+delitem 5104,1;
+set zeny,zeny-100000;
+getitem 18609,1;
+mes "Enjoy yours Dark Blinder [1]";
+close;
+}
+
+goto L_norew;
+break;
+case 6: //Elven Ears
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it!:Not really")==2){close;}
+if (countitem(6396)>=1 && countitem(2286)>=1){
+if (rand(1,100)>35){
+delitem 6396,1;
+delitem 2286,1;
+goto L_sorry;
+}
+delitem 6396,1;
+delitem 2286,1;
+set zeny,zeny-100000;
+getitem 18507,1;
+mes "Enjoy yours Elven Ears [1]";
+close;
+}
+
+goto L_norew;
+break;
+case 7: //Evil Wing Ears
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it:Not really")==2){goto L_exit;}
+if (countitem(6396)>=1 && countitem(5068)>=1){
+if (rand(1,100)>35){
+delitem 6396,1;
+delitem 5068,1;
+goto L_sorry;
+}
+delitem 6396,1;
+delitem 5068,1;
+set zeny,zeny-100000;
+getitem 18519,1;
+mes "Enjoy yours Evil Wing Ears [1]";
+close;
+}
+
+goto L_norew;
+break;
+case 8: //Glasses
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it:Not really")==2){goto L_exit;}
+if (countitem(6396)>=1 && countitem(2203)>=1){
+if (rand(1,100)>35){
+delitem 6396,1;
+delitem 2203,1;
+goto L_sorry;
+}
+delitem 6396,1;
+delitem 2203,1;
+set zeny,zeny-100000;
+getitem 2204,1;
+mes "Enjoy yours Glasses [1]";
+close;
+}
+
+goto L_norew;
+break;
+case 9: //Small Ribbons
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it:Not really")==2){goto L_exit;}
+if (countitem(6396)>=1 && countitem(5085)>=1){
+if (rand(1,100)>35){
+delitem 6396,1;
+delitem 5085,1;
+goto L_sorry;
+}
+delitem 6396,1;
+delitem 5085,1;
+set zeny,zeny-100000;
+getitem 18608,1;
+mes "Enjoy yours Small Ribbons [1]";
+close;
+}
+
+goto L_norew;
+break;
+case 10: goto L_exit;
+break;
+}
+break; 
+}
+L_exit:
+mes "See you then, take care";
+close;
+L_norew:
+mes "It's OK to be enthusiastic but you don't have the items and nothing can be done.";
+mes "Come back when you gather all the materials, don't forget the fee.";
+close;
+
+L_sorry:
+specialeffect EF_SUI_EXPLOSION;
+mes "Something went wrong and I...";
+mes "Well.. uhmm your...";
+mes "Im very sorry, hope see you again.";
+close;
+}
+
+

@@ -1,0 +1,56 @@
+//===== rAthena Script =======================================
+//= Blood In Skull Maker
+//===== By: ==================================================
+//= TakeRo
+//===== Current Version: =====================================
+//= v1.0
+//===== Compatible With: =====================================
+//= rAthena Project
+//============================================================
+
+takero,300,384,3	script	Blood In Skull	739,{
+mes "[Blood In Skull Maker]";
+	mes "Hello, "+strcharinfo(0)+"!";
+	mes "How may I help you?";
+	next;
+	switch (select("Blood In Skull:Nothing:")) {
+	
+	
+		case 1: 
+			mes "Okay, you'll be needing these..";
+			mes "^000088";
+			mes "1 Bloody Rune"; //Change to what you want to require.
+			mes "1 Skull^000000";
+			mes "Also, a talent fee of 1z!";
+			mes "max 100!";
+			mes "Please enter the quantity you want to brew.";   
+			next;
+			input .@quantity;
+			if(.@quantity > 100){//Maximum Quantity
+				mes "The max quantity you can do at once is 100";
+				end;
+			}
+			if(.@quantity <= 0){
+				mes "I cannot create on that value.";
+				end;
+			}
+			clear;
+			if (countitem(7563) < 1 * .@quantity  || countitem(7005) < 1 * .@quantity || Zeny < 1) {
+				mes "You're lacking of requirements.";
+				close;
+			}
+			mes "Here it is!";
+			for(.@i=0;.@i<.@quantity;.@i++){
+				if(rand(1) <= 3) {
+					.@count++;
+				}
+			}
+			delitem 7563,.@quantity;
+			delitem 7005,.@quantity;
+			getitem 11596,.@count;
+			end;
+		case 2:
+       		mes "Okay, have a nice day";
+        close;        
+	}
+}

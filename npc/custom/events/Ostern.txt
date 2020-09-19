@@ -1,0 +1,712 @@
+//mobs
+1@begi,0,0,0,0	monster	Oster Event	1097,25,0,0,0
+1@begi,0,0,0,0	monster	Oster Event	1116,7,0,0,0
+1@begi,0,0,0,0	monster	Oster Event	1721,13,0,0,0
+1@begi,0,0,0,0	monster	Oster Event	2014,7,0,0,0
+1@begi,0,0,0,0	monster	Oster Event	1879,10,0,0,0
+1@begi,0,0,0,0	monster	Oster Event	2770,10,0,0,0
+1@begi,0,0,0,0	monster	Oster Event	3496,10,0,0,0
+//___________________________________________________________
+
+//extra drop für Event
+
+-	script	MobExtraDrops	-1,{
+OnNPCKillEvent:
+	//- Antegg (1097) Item ID (33081) = Event Item  Drop rate 75  ist (0.75%) 
+	setarray .@MobID[0], 1097, 1116, 1721, 2014, 1879, 2167, 2770, 3496; // Monsters ID
+	setarray .@DropID[0], 33081, 33081, 33081, 33081, 33081, 33081, 33081, 33081; // Items ID
+	setarray .@Chance[0], 1300, 1500, 1900, 1500, 1400, 1600, 1000, 2500; // Drop Rate (100 = 1%)
+	// End of Config
+	for(set .@c,0; .@c < getarraysize(.@MobID); set .@c, .@c + 1) {
+		if (killedrid == .@MobID[.@c]){
+			set .@d, rand(0,10000);
+			if (.@d <= .@Chance[.@c]) {
+				getitem .@DropID[.@c],1;
+			}
+		}
+	}
+	end;
+}
+//______________________________________________________________________
+
+//warps
+
+prontera,195,170,5	script	Oster Event	548,{
+		atcommand "@warp 1@begi,167,141";
+}
+
+1@begi,176,141,5	script	Oster Event	548,{
+	atcommand "@warp prontera,192,169";
+}
+
+//__________________________________________________________________________
+//Trader
+
+prontera,193,172,4	script	Karl-Otto	4_f_mocboy,{
+mes "[^CD0000Karl-Otto^000000]";
+mes "Frohe Ostern.";
+mes "Hast du was gefunden?";
+next;
+menu "Oster Tickets Tauschen",LGod,"No, hab nichts",LEnde;
+
+LEnde:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Ok.";
+mes "Dann nerv doch nicht!";
+close;
+
+LItem:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Oh.";
+mes "Du hast nicht genug";
+mes "also sammel weiter!";
+close;
+
+LGod:
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Was willst du tauschen?  ";
+mes " ";
+mes "Bist du sicher oder?";
+next;
+menu "Jap",-,"Ne nein",LEnde;
+
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Ok.";
+mes "nimm was du willst!";
+next;
+menu "Event Ticket",LEventTicket,"YellowBunnyHairband",LYellowBunnyHairband,"LuckyEgg",LLuckyEgg,"Bravery Bag [1]",LAdventurersBackpack,"Bloody Branch",LBloodyBranch,"Mad Bunny [1]",LMadBunny,"Lunatic Egg",LLunaticEgg,"Grand Peco Peco Egg",LGrandPecoPecoEgg,"DeadBranch",LDeadBranch,"Costume Rainbow Eggshell[0]",LCostumeRainbowEggshell,"Abbrechen",LEnde;
+
+
+//======================================
+//============ Sachen ==================
+//======================================
+
+LEventTicket:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Mal ehrlich...";
+mes "Du willst also nur das";
+mes " ";
+mes "^5533FFEvent Ticket^000000?";
+menu "Jaaaa",-,"Oh ne O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF100 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<100) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Letzte Chance.....";
+mes "Willst du den Mist echt?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,100;
+
+//Erhalten
+getItem 7711,1;
+close;
+
+
+LYellowBunnyHairband:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Also wirklich -.-";
+mes "das willst du echt?";
+mes " ";
+mes "^5533FFYellowBunny Hairband [0]^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF50 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<50) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Noch kannst du stoppen";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,50;
+
+//Erhalten
+getItem 5783,1;
+close;
+
+
+LLuckyEgg:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Hahahaha";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFLucky Egg C10 ^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF1000 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<1000) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Also nochmal frag ich nicht";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,1000;
+
+//Erhalten
+getItem 12673,1;
+close;
+
+LAdventurersBackpack:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Ernsthaft du hast soviele Tickets?";
+mes "Das willst du echt?";
+mes " ";
+mes "^5533FFBravery Bag^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF3500 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<3500) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Willst du nicht sparen?";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,3500;
+
+//Erhalten
+getItem 2576,1;
+close;
+
+LBloodyBranch:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Also magst du MVPs?";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFBloody Branch^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF200 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<200) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "MVPs sind brutal!";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,200;
+
+//Erhalten
+getItem 12103,1;
+close;
+
+LMadBunny:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Also...";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFBloody Branch^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF2800 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<2800) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Noch kannst du es dir anders überlegen...";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,2800;
+
+//Erhalten
+getItem 28902,1;
+close;
+
+LLunaticEgg:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Also...";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFLunatic Egg^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF300 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<300) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Noch kannst du es dir anders überlegen...";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,300;
+
+//Erhalten
+getItem 9004,1;
+close;
+
+LGrandPecoPecoEgg:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Pecos sind die wahren Chocobos";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFGrand Peco Peco Egg^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF300 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<300) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Noch kannst du es dir anders überlegen...";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,300;
+
+//Erhalten
+getItem 9071,1;
+close;
+
+LDeadBranch:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Langweilig";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFDead Branch^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF40 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<40) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Noch kannst du es dir anders überlegen...";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,40;
+
+//Erhalten
+getItem 604,1;
+close;
+
+LCostumeRainbowEggshell:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Also...";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFCostume Rainbow Eggshell^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF50 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<50) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Noch kannst du es dir anders überlegen...";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,50;
+
+//Erhalten
+getItem 20182,1;
+close;
+
+}
+1@begi,0,0,0,0	monster	Oster Event	1097,25,0,0,0
+1@begi,0,0,0,0	monster	Oster Event	1116,7,0,0,0
+1@begi,0,0,0,0	monster	Oster Event	1721,13,0,0,0
+1@begi,0,0,0,0	monster	Oster Event	2014,7,0,0,0
+1@begi,0,0,0,0	monster	Oster Event	1879,10,0,0,0
+1@begi,0,0,0,0	monster	Oster Event	2770,10,0,0,0
+1@begi,0,0,0,0	monster	Oster Event	3496,10,0,0,0
+
+-	script	MobExtraDrops	-1,{
+OnNPCKillEvent:
+	//- Antegg (1097) Item ID (33081) = Event Item  Drop rate 75  ist (0.75%) 
+	setarray .@MobID[0], 1097, 1116, 1721, 2014, 2166, 2167, 2770, 3496; // Monsters ID
+	setarray .@DropID[0], 33081, 33081, 33081, 33081, 33081, 33081, 33081, 33081; // Items ID
+	setarray .@Chance[0], 3000, 1700, 1400, 1600, 1400, 1600, 1000, 1600; // Drop Rate (100 = 1%)	
+	// End of Config
+	for(set .@c,0; .@c < getarraysize(.@MobID); set .@c, .@c + 1) {
+		if (killedrid == .@MobID[.@c]){
+			set .@d, rand(0,10000);
+			if (.@d <= .@Chance[.@c]) {
+				getitem .@DropID[.@c],1;
+			}
+		}
+	}
+	end;
+}
+
+
+prontera,195,170,5	script	Oster Event	548,{
+		atcommand "@warp 1@begi,167,141";
+}
+
+1@begi,176,141,5	script	Oster Event	548,{
+	atcommand "@warp prontera,192,169";
+}
+
+prontera,193,172,4	script	Karl-Otto	4_f_mocboy,{
+mes "[^CD0000Karl-Otto^000000]";
+mes "Frohe Ostern.";
+mes "Hast du was gefunden?";
+next;
+menu "Oster Tickets Tauschen",LGod,"No, hab nichts",LEnde;
+
+LEnde:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Ok.";
+mes "Dann nerv doch nicht!";
+close;
+
+LItem:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Oh.";
+mes "Du hast nicht genug";
+mes "also sammel weiter!";
+close;
+
+LGod:
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Was willst du tauschen?  ";
+mes " ";
+mes "Bist du sicher oder?";
+next;
+menu "Jap",-,"Ne nein",LEnde;
+
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Ok.";
+mes "nimm was du willst!";
+next;
+menu "Event Ticket",LEventTicket,"YellowBunnyHairband",LYellowBunnyHairband,"LuckyEgg",LLuckyEgg,"Bravery Bag [1]",LAdventurersBackpack,"Bloody Branch",LBloodyBranch,"Mad Bunny [1]",LMadBunny,"Lunatic Egg",LLunaticEgg,"Grand Peco Peco Egg",LGrandPecoPecoEgg,"DeadBranch",LDeadBranch,"Costume Rainbow Eggshell[0]",LCostumeRainbowEggshell,"Abbrechen",LEnde;
+
+
+//======================================
+//============ Sachen ==================
+//======================================
+
+LEventTicket:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Mal ehrlich...";
+mes "Du willst also nur das";
+mes " ";
+mes "^5533FFEvent Ticket^000000?";
+menu "Jaaaa",-,"Oh ne O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF100 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<100) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Letzte Chance.....";
+mes "Willst du den Mist echt?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,100;
+
+//Erhalten
+getItem 7711,1;
+close;
+
+
+LYellowBunnyHairband:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Also wirklich -.-";
+mes "das willst du echt?";
+mes " ";
+mes "^5533FFYellowBunny Hairband [0]^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF50 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<50) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Noch kannst du stoppen";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,50;
+
+//Erhalten
+getItem 5783,1;
+close;
+
+
+LLuckyEgg:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Hahahaha";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFLucky Egg C10 ^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF1000 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<1000) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Also nochmal frag ich nicht";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,1000;
+
+//Erhalten
+getItem 12673,1;
+close;
+
+LAdventurersBackpack:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Ernsthaft du hast soviele Tickets?";
+mes "Das willst du echt?";
+mes " ";
+mes "^5533FFBravery Bag^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF3500 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<3500) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Willst du nicht sparen?";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,3500;
+
+//Erhalten
+getItem 2576,1;
+close;
+
+LBloodyBranch:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Also magst du MVPs?";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFBloody Branch^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF200 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<200) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "MVPs sind brutal!";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,200;
+
+//Erhalten
+getItem 12103,1;
+close;
+
+LMadBunny:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Also...";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFBloody Branch^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF2800 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<2800) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Noch kannst du es dir anders überlegen...";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,2800;
+
+//Erhalten
+getItem 28902,1;
+close;
+
+LLunaticEgg:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Also...";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFLunatic Egg^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF300 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<300) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Noch kannst du es dir anders überlegen...";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,300;
+
+//Erhalten
+getItem 9004,1;
+close;
+
+LGrandPecoPecoEgg:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Pecos sind die wahren Chocobos";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFGrand Peco Peco Egg^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF300 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<300) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Noch kannst du es dir anders überlegen...";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,300;
+
+//Erhalten
+getItem 9071,1;
+close;
+
+LDeadBranch:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Langweilig";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFDead Branch^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF40 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<40) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Noch kannst du es dir anders überlegen...";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,40;
+
+//Erhalten
+getItem 604,1;
+close;
+
+LCostumeRainbowEggshell:
+mes "[^CD0000Karl-Otto^000000]";
+mes "Also...";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFCostume Rainbow Eggshell^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Karl-Otto^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF50 Oster Tickets^000000 / "+countitem(33081)+" ea";
+
+next;
+if(countitem(33081)<50) goto LItem;
+
+mes "[^CD0000Karl-Otto^000000]";
+mes "Noch kannst du es dir anders überlegen...";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 33081,50;
+
+//Erhalten
+getItem 20182,1;
+close;
+
+}
+
+
+
+
+

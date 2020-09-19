@@ -1,0 +1,91 @@
+//===== By: ==================================================
+//= EL Dragon
+//===== Current Version: =====================================
+//= 1.00
+//===== Compatible With: =====================================
+//= rAthena SVN
+//============================================================
+takero,307,358,5	script	Slot Machine	790,{ 
+//--------------------- Config ----------------------------------//
+        set .SlotMachineBet, 671;               //BET ITEM
+        set .SlotMachineWin, 7711;               //WIN ITEM
+        set .SlotMachineChange, 1;            //Chance to win is (1 = 0,1%)
+//----------------------------------------------------------------//
+ 
+        mes "[^FF7700Slot Machine^000000]";
+        mes "Hello my fellow friend.";
+        mes "Wanna play a little game?";
+        next;
+       
+        switch(select("Yes:Tell me more:No")) {
+       
+case 1:
+        mes "[^FF7700Slot Machine^000000]";
+        mes "First I need ^FF00001^000000 " + getitemname(.SlotMachineBet) + ".";
+        next;
+       
+        switch(select("Give 1 " + getitemname(.SlotMachineBet) + ":I changed my mind")) {
+               
+case 1:
+        if (countitem(.SlotMachineBet) < 1) {
+        mes "[^FF7700Slot Machine^000000]";
+        mes "Sorry, but you don't have any " + getitemname(.SlotMachineBet) + "!";
+        close;
+        }
+       
+        delitem(.SlotMachineBet, 1);
+        set $delcoins, $delcoins+1;
+        set $SlotMachinejackpot, $SlotMachinejackpot+1;
+        mes "[^FF7700Slot Machine^000000]";
+        mes "Let's see if you won";
+        mes "Good Luck!";
+        next;
+       
+        set .@slot_ran,rand(1,1000);
+        if (.@slot_ran <= .SlotMachineChange) {
+        mes "[^FF7700Slot Machine^000000]";
+        mes "^00FF00You win!^000000";
+        mes "Congratulations!";
+        specialeffect 10;
+        specialeffect 8;
+        getitem(.SlotMachineWin, $SlotMachinejackpot/2);
+    announce strcharinfo(0) + " has won " + $SlotMachinejackpot/2 + " " + getitemname(.SlotMachineWin) + "'s !",0;
+       
+       
+        set $SlotMachinejackpot, 2;
+        close;
+        } else {
+        mes "[^FF7700Slot Machine^000000]";
+        mes "^FF0000You lose.^000000";
+        mes "I'm sorry, maybe next time!";
+        specialeffect 21;
+        close;
+        }
+       
+               
+case 2:
+        goto L_exit;
+        }
+ 
+case 2:
+        mes "[^FF7700Slot Machine^000000]";
+        mes "First you have to pay me ^FF00001^000000 " + getitemname(.SlotMachineBet) + ". If you win you get the jackpot. That's everything.";
+        close;
+               
+case 3:
+        goto L_exit;
+        }
+       
+L_exit:
+        mes "[^FF7700Slot Machine^000000]";
+        mes "Maybe next time.";
+        mes "See you later!";
+        close;
+ 
+OnInit:
+        while(1) {
+        delwaitingroom;
+        WaitingRoom "Jackpot: " + $SlotMachinejackpot/2,0;
+        sleep 1000;
+        }
+}

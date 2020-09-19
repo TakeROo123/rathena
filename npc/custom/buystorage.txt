@@ -1,0 +1,431 @@
+prontera,140,182,0	script	Storage Extender	10209 ,{
+query_sql("SELECT `option` FROM `npc_setting` WHERE `id` = '5'", .@coast);
+
+if(#lang == 0){
+set .@mes1$,"Extendet";
+}
+if(#lang == 1){
+set .@mes1$,"Erweiterter";
+}
+
+if(#st1 == 0){
+set #mst1$,"^FF0000 Offline ^000000";
+}else{
+set #mst1$,"^40FF00 Online ^000000";
+}
+if(#st2 == 0){
+set #mst2$,"^FF0000 Offline ^000000";
+}else{
+set #mst2$,"^40FF00 Online ^000000";
+}
+if(#st3 == 0){
+set #mst3$,"^FF0000 Offline ^000000";
+}else{
+set #mst3$,"^40FF00 Online ^000000";
+}
+if(#st4 == 0){
+set #mst4$,"^FF0000 Offline ^000000";
+}else{
+set #mst4$,"^40FF00 Online ^000000";
+}
+if(#st5 == 0){
+set #mst5$,"^FF0000 Offline ^000000";
+}else{
+set #mst5$,"^40FF00 Online ^000000";
+}
+if(#st6 == 0){
+set #mst6$,"^FF0000 Offline ^000000";
+}else{
+set #mst6$,"^40FF00 Online ^000000";
+}
+if(#st7 == 0){
+set #mst7$,"^FF0000 Offline ^000000";
+}else{
+set #mst7$,"^40FF00 Online ^000000";
+}
+if(#st8 == 0){
+set #mst8$,"^FF0000 Offline ^000000";
+}else{
+set #mst8$,"^40FF00 Online ^000000";
+}
+if(#st9 == 0){
+set #mst9$,"^FF0000 Offline ^000000";
+}else{
+set #mst9$,"^40FF00 Online ^000000";
+}
+if(#st10 == 0){
+set #mst10$,"^FF0000 Offline ^000000";
+}else{
+set #mst10$,"^40FF00 Online ^000000";
+}
+if(#lang == 0){set .@wort$,"Storage";}
+if(#lang == 1){set .@wort$,"Lager";}
+mes"Storage: ^40FF00 Online ^000000";
+mes""+.@mes1$+" "+.@wort$+"1: "+#mst1$+"";
+mes""+.@mes1$+" "+.@wort$+"2: "+#mst2$+"";
+mes""+.@mes1$+" "+.@wort$+"3: "+#mst3$+"";
+mes""+.@mes1$+" "+.@wort$+"4: "+#mst4$+"";
+mes""+.@mes1$+" "+.@wort$+"5: "+#mst5$+"";
+mes""+.@mes1$+" "+.@wort$+"6: "+#mst6$+"";
+mes""+.@mes1$+" "+.@wort$+"7: "+#mst7$+"";
+mes""+.@mes1$+" "+.@wort$+"8: "+#mst8$+"";
+mes""+.@mes1$+" "+.@wort$+"9: "+#mst9$+"";
+mes""+.@mes1$+" "+.@wort$+"10: "+#mst10$+"";
+if(#lang == 0){set .@menu$,"Store 1:Store 2:Storage 3:Storage 4:Storage 5:Storage 6:Storage 7:Storage 8:Storage 9:Storage 10:Exit";}
+if(#lang == 1){set .@menu$,"Kafra Lager:Lager 1:Lager 2:Lager 3:Lager 4:Lager 5:Lager 6:Lager 7:Lager 8:Lager 9:Lager 10:Abbrechen";}
+next;
+switch(select(.@menu$)) {
+case 1:
+	openstorage;
+	end;
+
+case 2:
+	if(#st1 == 0){			
+		if(#lang == 0){
+			mes"You want buy the Storage for "+.@coast+"cash points";
+			set .@menu$,"Yes:No";
+		}
+		if(#lang == 1){
+			mes"Willst du das lager für "+.@coast+"cash points kaufen";
+			set .@menu$,"Yes:No";
+		}
+		next;
+		switch(select(.@menu$)) {
+			case 1:
+				if(#cashpoints >= .@coast){
+					set #cashpoints,#cashpoints-.@coast;
+					set #st1,1;
+					close2;
+					openstorage2 1,STOR_MODE_GET|STOR_MODE_PUT;
+					end;
+				}else{
+				goto nocash;
+				close;
+				}
+
+			case 2:
+				close;
+		}
+
+	}
+	close2;
+	openstorage2 1,STOR_MODE_GET|STOR_MODE_PUT;
+	end;
+
+
+
+case 3:
+	if(#st2 == 0){			
+		if(#lang == 0){
+			mes"You want buy the Storage for "+.@coast+"cash points";
+			set .@menu$,"Yes:No";
+		}
+		if(#lang == 1){
+			mes"Willst du das lager für "+.@coast+"cash points kaufen";
+			set .@menu$,"Yes:No";
+		}
+		next;
+		switch(select(.@menu$)) {
+			case 1:
+				if(#cashpoints >= .@coast){
+					set #cashpoints,#cashpoints-.@coast;
+					set #st2,1;
+					close2;
+					openstorage2 2,STOR_MODE_GET|STOR_MODE_PUT;
+					end;
+				}else{
+				goto nocash;
+				close;
+				}
+
+			case 2:
+				close;
+		}
+
+	}
+	close2;
+	openstorage2 2,STOR_MODE_GET|STOR_MODE_PUT;
+	end;
+
+case 4:
+	if(#st3 == 0){			
+		if(#lang == 0){
+			mes"You want buy the Storage for "+.@coast+"cash points";
+			set .@menu$,"Yes:No";
+		}
+		if(#lang == 1){
+			mes"Willst du das lager für "+.@coast+"cash points kaufen";
+			set .@menu$,"Yes:No";
+		}
+		next;
+		switch(select(.@menu$)) {
+			case 1:
+				if(#cashpoints >= .@coast){
+					set #cashpoints,#cashpoints-.@coast;
+					set #st3,1;
+					close2;
+					openstorage2 3,STOR_MODE_GET|STOR_MODE_PUT;
+					end;
+				}else{
+				goto nocash;
+				close;
+				};
+
+			case 2:
+				close;
+		}
+
+	}
+	close2;
+	openstorage2 3,STOR_MODE_GET|STOR_MODE_PUT;
+	end;
+
+
+case 5:
+	if(#st4 == 0){			
+		if(#lang == 0){
+			mes"You want buy the Storage for "+.@coast+"cash points";
+			set .@menu$,"Yes:No";
+		}
+		if(#lang == 1){
+			mes"Willst du das lager für "+.@coast+"cash points kaufen";
+			set .@menu$,"Yes:No";
+		}
+		next;
+		switch(select(.@menu$)) {
+			case 1:
+				if(#cashpoints >= .@coast){
+					set #cashpoints,#cashpoints-.@coast;
+					set #st4,1;
+					close2;
+					openstorage2 4,STOR_MODE_GET|STOR_MODE_PUT;
+					end;
+				}else{
+				goto nocash;
+				close;
+				}
+
+			case 2:
+				close;
+		}
+
+	}
+	close2;
+	openstorage2 4,STOR_MODE_GET|STOR_MODE_PUT;
+	end;
+
+case 6:
+	if(#st5 == 0){			
+		if(#lang == 0){
+			mes"You want buy the Storage for "+.@coast+"cash points";
+			set .@menu$,"Yes:No";
+		}
+		if(#lang == 1){
+			mes"Willst du das lager für "+.@coast+"cash points kaufen";
+			set .@menu$,"Yes:No";
+		}
+		next;
+		switch(select(.@menu$)) {
+			case 1:
+				if(#cashpoints >= .@coast){
+					set #cashpoints,#cashpoints-.@coast;
+					set #st5,1;
+					close2;
+					openstorage2 5,STOR_MODE_GET|STOR_MODE_PUT;
+					end;
+				}else{
+				goto nocash;
+				close;
+				}
+
+			case 2:
+				close;
+		}
+
+	}
+	close2;
+	openstorage2 5,STOR_MODE_GET|STOR_MODE_PUT;
+	end;
+
+
+case 7:
+	if(#st6 == 0){			
+		if(#lang == 0){
+			mes"You want buy the Storage for "+.@coast+"cash points";
+			set .@menu$,"Yes:No";
+		}
+		if(#lang == 1){
+			mes"Willst du das lager für "+.@coast+"cash points kaufen";
+			set .@menu$,"Yes:No";
+		}
+		next;
+		switch(select(.@menu$)) {
+			case 1:
+				if(#cashpoints >= .@coast){
+					set #cashpoints,#cashpoints-.@coast;
+					set #st6,1;
+					close2;
+					openstorage2 6,STOR_MODE_GET|STOR_MODE_PUT;
+					end;
+				}else{
+				goto nocash;
+				close;
+				}
+
+			case 2:
+				close;
+		}
+
+	}
+	close2;
+	openstorage2 6,STOR_MODE_GET|STOR_MODE_PUT;
+	end;
+
+case 8:
+	if(#st7 == 0){			
+		if(#lang == 0){
+			mes"You want buy the Storage for "+.@coast+"cash points";
+			set .@menu$,"Yes:No";
+		}
+		if(#lang == 1){
+			mes"Willst du das lager für "+.@coast+"cash points kaufen";
+			set .@menu$,"Yes:No";
+		}
+		next;
+		switch(select(.@menu$)) {
+			case 1:
+				if(#cashpoints >= .@coast){
+					set #cashpoints,#cashpoints-.@coast;
+					set #st7,1;
+					close2;
+					openstorage2 7,STOR_MODE_GET|STOR_MODE_PUT;
+					end;
+				}else{
+				goto nocash;
+				close;
+				}
+
+			case 2:
+				close;
+		}
+
+	}
+	close2;
+	openstorage2 7,STOR_MODE_GET|STOR_MODE_PUT;
+	end;
+
+case 9:
+	if(#st8 == 0){			
+		if(#lang == 0){
+			mes"You want buy the Storage for "+.@coast+"cash points";
+			set .@menu$,"Yes:No";
+		}
+		if(#lang == 1){
+			mes"Willst du das lager für "+.@coast+"cash points kaufen";
+			set .@menu$,"Yes:No";
+		}
+		next;
+		switch(select(.@menu$)) {
+			case 1:
+				if(#cashpoints >= .@coast){
+					set #cashpoints,#cashpoints-.@coast;
+					set #st8,1;
+					close2;
+					openstorage2 8,STOR_MODE_GET|STOR_MODE_PUT;
+					end;
+				}else{
+				goto nocash;
+				close;
+				}
+
+			case 2:
+				close;
+		}
+
+	}
+	close2;
+	openstorage2 8,STOR_MODE_GET|STOR_MODE_PUT;
+	end;
+
+case 10:
+	if(#st9 == 0){			
+		if(#lang == 0){
+			mes"You want buy the Storage for "+.@coast+"cash points";
+			set .@menu$,"Yes:No";
+		}
+		if(#lang == 1){
+			mes"Willst du das lager für "+.@coast+"cash points kaufen";
+			set .@menu$,"Yes:No";
+		}
+		next;
+		switch(select(.@menu$)) {
+			case 1:
+				if(#cashpoints >= .@coast){
+					set #cashpoints,#cashpoints-.@coast;
+					set #st9,1;
+					close2;
+					openstorage2 9,STOR_MODE_GET|STOR_MODE_PUT;
+					end;
+				}else{
+				goto nocash;
+				close;
+				}
+
+			case 2:
+				close;
+		}
+
+	}
+	close2;
+	openstorage2 9,STOR_MODE_GET|STOR_MODE_PUT;
+	end;
+
+case 11:
+	if(#st10 == 0){			
+		if(#lang == 0){
+			mes"You want buy the Storage for "+.@coast+"cash points";
+			set .@menu$,"Yes:No";
+		}
+		if(#lang == 1){
+			mes"Willst du das lager für "+.@coast+"cash points kaufen";
+			set .@menu$,"Yes:No";
+		}
+		next;
+		switch(select(.@menu$)) {
+			case 1:
+				if(#cashpoints >= .@coast){
+					set #cashpoints,#cashpoints-.@coast;
+					set #st10,1;
+					close2;
+					openstorage2 10,STOR_MODE_GET|STOR_MODE_PUT;
+					end;
+				}else{
+				goto nocash;
+				close;
+				}
+
+			case 2:
+				close;
+		}
+
+	}
+	close2;
+	openstorage2 10,STOR_MODE_GET|STOR_MODE_PUT;
+	end;
+
+
+case 12:
+	close;
+
+}
+
+nocash:
+	if(#lang == 0){
+		mes "You haven't enough Cash Points";
+	}
+	if(#lang == 1){
+		mes "Du hast nicht genügend Cash Points.";
+	}
+	close;
+
+}

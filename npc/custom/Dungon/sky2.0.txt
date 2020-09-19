@@ -1,0 +1,40 @@
+-	script	baum	-1,{
+	OnInit:
+		monster "slabw01",0,0,"Immortal Cursed Zombie",3480,60,strnpcinfo(0)+"::OnNormalMobKilled";
+		$spawn_mvp = 0;
+		end;
+
+		
+	OnNormalMobKilled:
+		monster "slabw01",0,0,"Immortal Cursed Zombie",3480,1,strnpcinfo(0)+"::OnNormalMobKilled";
+		$spawn_mvp += 1;
+		if($spawn_mvp == 300){ // nach X kills kommt 1. MVP
+			mapannounce "slabw01","Immortal Cursed Knight : Was? Wer wagt es uns herauszufordern? Erst musst du an mir vorbei!",bc_map;
+			monster "slabw01",15,87,"Immortal Cursed Knight",3474,1,strnpcinfo(0)+"::OnSummonMVP1Killed";
+		}
+		end;
+		
+	OnSummonMVP1Killed: // 1. MVP tot -> 2. Phase
+		mapannounce "slabw01","Immortal Wind Ghost : Dieser nutzlose Bastard! Wer Wind säht wird Sturm ernten! Macht euch gefasst!",bc_map;
+		monster "slabw01",176,87,"Immortal Wind Ghost",3475,1,strnpcinfo(0)+"::OnSummonMVP2Killed";
+		end;
+		
+	OnSummonMVP2Killed: // 2. MVP tot -> 3. Phase
+		mapannounce "slabw01","Stefan.J.E.Wolf : Wer wagt es wieder, uns zu schikanieren? Du hast nun ein großes Problem.",bc_map;
+		monster "slabw01",236,88,"Stefan.J.E.Wolf",3484,1,strnpcinfo(0)+"::OnSummonFinalMVPKilled";
+		end;
+
+	OnSummonFinalMVPKilled: // Alle MVP tot -> reset
+		mapannounce "slabw01","Sterbender Stefan.J.E.Wolf : Wir haben uns nicht das letzte mal gesehen!",bc_map;
+		$spawn_mvp = 0;
+		end;
+}
+//mobs
+slabw01,0,0,0,0	monster	Immortal Zombie Soldier	3476,15,5,0,0
+slabw01,0,0,0,0	monster	Sky Fortress Key Keeper 3478,7,5,0,0
+slabw01,0,0,0,0	monster	Immortal Zombie Assault	3479,6,5,0,0
+slabw01,0,0,0,0	monster	Immortal Nightmare Shad 3481,10,5,0,0
+slabw01,0,0,0,0	monster	Immortal Angry Shadow	3482,8,5,0,0
+slabw01,0,0,0,0	monster	Immortal Fortress Legio	3477,10,5,0,0
+
+//Entchant

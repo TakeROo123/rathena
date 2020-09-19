@@ -1,0 +1,144 @@
+	-	script	Event_LMS	-1,{
+OnInit:
+	// item reward
+	setarray .item,
+		7711, 2,
+		502, 5;
+
+	// @lmsstart - gm manual start
+	bindatcmd "lmsstart", strnpcinfo(0)+"::OnStart",60,60;
+	
+	// @lms - player join event
+	bindatcmd "lms", strnpcinfo(0)+"::OnJoinEvent";
+	
+	// Event cooldown
+	.event_cd = 60 * 60 * 4; // 4hr
+	
+	// Mapflags
+	setarray .@mapflag,
+		mf_nowarp,
+		mf_nowarpto,
+		mf_noteleport,
+		mf_nomemo,
+		mf_nosave,
+		mf_noicewall,
+		mf_nobranch,
+		mf_noreturn;
+		
+	for ( .@i = 0; .@i < getarraysize(.@mapflag); .@i++)
+		setmapflag "guild_vs1", .@mapflag[.@i];
+		
+	.@min = gettime(DT_MINUTE)*60;
+	.@sec = gettime(DT_SECOND);
+	.event_time = (gettimetick(2) - ( .@min + .@sec )) + .event_cd - 5;
+	end;
+	
+OnJoinEvent:
+	mes " [ Event Status ] ";
+	if ( !.start ) mes "Next schedule starts in ^FF0000"+ Time2Str(.event_time) +"^000000.";
+	if ( .start == 1 ) mes "Event is currently active.";
+	if ( .start == 2 ) mes "Event is currently on-going.";
+	next;
+	switch(select(
+		"Last Man Standing Event - "+ ((.start == 1) ? "^00ff00Join Event":((.start == 2) ? "^00ff00Event On-Going":"^ff0000Not Available"))+"^000000" )) {
+	case 1:
+		if ( !.start ) {
+			mes "Event is not available.";
+			close;
+		} else if ( .start == 2 ) {
+			mes "Event is on-going";
+			close;
+		}
+		else
+			warp "guild_vs1",0,0;
+	}
+	end;
+
+OnStart: .@force = true;
+OnMinute00: // runs hourly
+	.@time = gettimetick(2);
+	.@min = gettime(DT_MINUTE)*60;
+	.@sec = gettime(DT_SECOND);
+	if ( .event_time > .@time && !.@force || .start && !.@force ) end; // doesnt start if cd isn't done.
+	.event_time = (.@time - ( .@min + .@sec )) + .event_cd - 5;  
+	.start = 1;
+	pvpoff "guild_vs1";
+	announce "LMS: Wir werden ein Last Man Standing Event veranstalten.",0;
+	sleep 10000;
+	announce "LMS: Für diejenigen, die beitreten möchten @lms",0;
+	sleep 10000;
+	announce "LMS: Nach 1 Minute wird das Event geschlossen.",0;
+	sleep 10000;
+	announce "LMS: Also bitte, wenn Sie mitmachen möchten. use @lms",0;
+	sleep 60000;
+	announce "LMS: Der Eintritt zum Event ist jetzt geschlossen.",bc_all,0x0ceedb;
+	if ( getmapusers("guild_vs1") < 2 ) {
+		announce "LMS: Not enough participants.",bc_all,0x0ceedb;
+		.start = false;
+		end;
+	}
+	.start = 2;
+	sleep 3500;
+	mapannounce "guild_vs1","We're about to begin the event.",bc_map,0x0ceedb;
+	sleep 2500;
+	mapannounce "guild_vs1","The rules are simple.",bc_map,0x0ceedb;
+	sleep 2500;
+	mapannounce "guild_vs1","Kill everyone in the map.",bc_map,0x0ceedb;
+	sleep 2500;
+	mapannounce "guild_vs1","Last Man Standing wins!",bc_map,0x0ceedb;
+	sleep 2000;
+	mapannounce "guild_vs1","That's all. Let's begin.",bc_map,0x0ceedb;
+	sleep 3000;
+	for (.@i = 10; .@i > 0; .@i--) {
+		mapannounce "guild_vs1", "LMS: -- "+.@i+" --",bc_map,0x0ceedb;
+		sleep 1000;
+	}
+	mapannounce "guild_vs1", "LMS: Fight! ",bc_map,0x0ceedb;
+	pvpon "guild_vs1";
+	.timer = 0;
+	initnpctimer;
+	end;
+	
+OnTimer5000: // check every 5 secs..
+	.timer++;
+	.@size = getmapusers("guild_vs1");
+	if ( .@size > 1 && .timer == 6 ) {
+		.timer = 0;
+		mapannounce "guild_vs1", "LMS: "+ .@size +" players left..", bc_blue;
+	} 
+	else if ( .@size <= 1 )
+		donpcevent strnpcinfo(3)+"::OnEndEvent";
+	setnpctimer 0;
+	end;
+	
+OnEndEvent:
+	stopnpctimer;
+	.start = false;
+	pvpoff "guild_vs1";
+	mapannounce "guild_vs1", "LMS: Event ended!",bc_map,0x0ceedb;
+	sleep 5000;
+	.@size = getmapunits(BL_PC,"guild_vs1",.@aid);
+	if ( .@size == 0 ) {
+		announce "LMS: No winners.",0;
+		end;
+	}
+	.@amt = getarraysize(.item);
+	attachrid .@aid;
+	announce strcharinfo(0)+" has won the Last Man Standing Event.",bc_all,0x0ceedb;
+	for ( .@j = 0; .@j < .@amt; .@j += 2 )
+		getitem .item[.@j], .item[.@j+1];				
+	warp "prontera",rand(148,163),rand(167,186);
+	end;
+	
+OnPCDieEvent:
+	if ( .start && strcharinfo(3) == "guild_vs1" ) {
+		warp "prontera",rand(148,163),rand(167,186);
+		.@size = getmapusers("guild_vs1");
+		if ( .@size > 1 )
+			mapannounce "guild_vs1", "LMS: "+ .@size +" players left..", bc_blue;
+		else if ( .@size <= 1 )
+			donpcevent strnpcinfo(3)+"::OnEndEvent";
+	}
+	end;
+	
+}

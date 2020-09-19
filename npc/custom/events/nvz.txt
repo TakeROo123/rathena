@@ -1,0 +1,142 @@
+// Original script by Unknown
+// Edit by Mabuhay
+
+-	script	Event_NvZ	-1,{
+OnInit:
+	// item reward
+	setarray .item,
+		7711, 1,
+		33060, 5;
+
+	// @nvzstart - gm manual start
+	bindatcmd "nvzstart", strnpcinfo(0)+"::OnStart",60,60;
+	
+	// @nvz - player join event
+	bindatcmd "nvz", strnpcinfo(0)+"::OnJoinEvent";
+	
+	// Event cooldown
+	.event_cd = 60 * 60 * 1; // 1hr
+	
+	// Mapflags
+	setarray .@mapflag,
+		mf_nowarp,
+		mf_nowarpto,
+		mf_noskill,
+		mf_noteleport,
+		mf_nomemo,
+		mf_nosave,
+		mf_noicewall,
+		mf_nobranch,
+		mf_noreturn,
+		mf_nocommand;
+		
+	for ( .@i = 0; .@i < getarraysize(.@mapflag); .@i++)
+		setmapflag "quiz_01", .@mapflag[.@i];
+		
+	.@min = gettime(DT_MINUTE)*60;
+	.@sec = gettime(DT_SECOND);
+	.event_time = (gettimetick(2) - ( .@min + .@sec )) + .event_cd - 5;
+	end;
+	
+OnJoinEvent:
+	mes " [ Event Status ] ";
+	if ( !.start ) mes "Next schedule starts in ^FF0000"+ Time2Str(.event_time) +"^000000.";
+	if ( .start == 1 ) mes "Event is currently active.";
+	if ( .start == 2 ) mes "Event is currently on-going.";
+	next;
+	switch(select(
+		"Novice v Zombie Event - "+ ((.start == 1) ? "^00ff00Join Event":((.start == 2) ? "^00ff00Event On-Going":"^ff0000Not Available"))+"^000000" )) {
+	case 1:
+		if ( !.start ) {
+			mes "Event is not available.";
+			close;
+		} else if ( .start == 2 ) {
+			mes "Event is on-going";
+			close;
+		}
+		if ( BaseLevel > 1 || Class != 0 ) {
+			mes "Only Lv 1 Novice can enter.";
+			close;
+		}
+		else {
+			getinventorylist;
+			if ( @inventorylist_amount ) {
+				mes "You store all your items first.";
+				close2;
+				@inventorylist_amount = false;
+				end;
+			}
+			sc_end SC_ALL;
+			sc_start SC_DECREASEAGI,600000,10;
+			percentheal 100,100;
+			warp "quiz_01",42,369;
+		}
+	}
+	end;
+
+OnStart: .@force = true;
+OnMinute00: // runs hourly
+	.@time = gettimetick(2);
+	.@min = gettime(DT_MINUTE)*60;
+	.@sec = gettime(DT_SECOND);
+	if ( .event_time > .@time && !.@force || .start && !.@force ) end; // doesnt start if cd isn't done.
+	.event_time = (.@time - ( .@min + .@sec )) + .event_cd - 5;  
+	.start = 1;
+	killmonsterall "quiz_01";
+	announce "NvZ: We are going to have a Novice Vs. Zombie event.",0;
+	sleep 10000;
+	announce "NvZ: For those who wants to join, use @nvz",0;
+	sleep 10000;
+	announce "NvZ: After 1 Minute Event will close.",0;
+	sleep 10000;
+	announce "NvZ: So please if you want to join. use @nvz",0;
+	sleep 60000;
+	announce "NvZ: The entry to the event is now closed.",bc_all,0x0ceedb;
+	if ( getmapusers("quiz_01") <= 1 ) {
+		announce "NvZ: Not enough participants.",bc_all,0x0ceedb;
+		.start = false;
+		mapwarp "quiz_01", "prontera", 150, 180; // warp out.
+		end;
+	}
+	.start = 2;
+	sleep 3500;
+	mapannounce "quiz_01","We're about to begin the event.",bc_map,0x0ceedb;
+	sleep 2500;
+	mapannounce "quiz_01","The rules are simple.",bc_map,0x0ceedb;
+	sleep 2500;
+	mapannounce "quiz_01","Zombies will be spawned in the map.",bc_map,0x0ceedb;
+	sleep 2500;
+	mapannounce "quiz_01","and will apear every 20 seconds.",bc_map,0x0ceedb;
+	sleep 2000;
+	mapannounce "quiz_01","Last man surviving wins.",bc_map,0x0ceedb;
+	sleep 2000;
+	mapannounce "quiz_01","That's all. Let's begin.",bc_map,0x0ceedb;
+	sleep 3000;
+	monster "quiz_01",42,369,"Zombie",1036,4;
+	initnpctimer;
+	end;
+	
+OnTimer20000: // 20 seconds timer and also player check on how many left in map
+	monster "quiz_01",42,369,"Zombie",1036,10;
+	setnpctimer 0;
+	end;
+	
+OnPCDieEvent:
+	if ( .start && strcharinfo(3) == "quiz_01" ) {
+		warp "prontera",rand(148,163),rand(167,186);
+		if ( getmapusers("quiz_01") == 1 ) {
+			stopnpctimer;
+			killmonsterall "quiz_01";
+			.@size = getmapunits(BL_PC,"quiz_01",.@aid);
+			.@amt = getarraysize(.item);
+			.start = false;
+			attachrid .@aid;
+			announce strcharinfo(0)+" has won the Novice v Zombie Event.",bc_all,0x0ceedb;
+			for ( .@j = 0; .@j < .@amt; .@j += 2 )
+				getitem .item[.@j], .item[.@j+1];				
+			warp "prontera",rand(148,163),rand(167,186);
+			end;
+		}
+	}
+	end;
+}

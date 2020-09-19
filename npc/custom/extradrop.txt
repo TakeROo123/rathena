@@ -1,0 +1,66 @@
+//rand( 100 ) <= 3 , die 3 gilt als 3% eines der item in .@item_id = F_Rand zu erhalten.
+-	script	Drop_extra	-1,{
+
+OnNPCKillEvent:
+setarray .Map$[0],"prt_cax"; // Maps bei denen nix erhalten wird.
+.@concat$ = implode( .Map$, "|" );
+if( compare( .@concat$, strcharinfo(3) ) == 1 ){
+end;
+} 
+ 
+ 
+if( rand( 100 ) <= 2 && (Class == Job_Lord_Knight || Class == Job_Rune_Knight_T)) { // Alle Runen
+{ .@item_id = F_Rand( 12731,12728,12732,12733,12729,12730,12726,12725,12727,22540 );
+ 
+getitem .@item_id,1;  }
+end;
+}
+ 
+if( rand( 100 ) <= 2 && (Class == Job_Sage || Class == Job_Professor || Class == Job_Sorcerer_T)) { // Gemeston's fur einige Skills
+{ .@item_id = F_Rand( 716,715,994,995,996,997,1025 );
+ 
+getitem .@item_id,1;  }
+end;
+ 
+}
+
+ 
+if( rand( 100 ) <= 2 && (Class == Job_Alchemist || Class == Job_Creator)) { //alles was man braucht für Acid bomb's
+{ .@item_id = F_Rand( 970,1059,929,713,17068 );
+ 
+getitem .@item_id,1;  }
+end;
+ 
+}
+if( rand( 100 ) <= 2 && (Class == Job_Genetic_T)) { // 17068 ist Acidbomb Box 50, alles dahinter  sind die items für die Genetic Skills. habe die Fertigen Items verwendet dar Genetic ja noch Stat Buffs usw. Herstellen kann dort muss dan alles erfarmt werden.
+{ .@item_id = F_Rand(  17068,970,6217,7137,6212,6211,6210     );
+ 
+getitem .@item_id,1;  }
+end;
+ 
+}
+ 
+if ( rand( 100 ) <= 2  && (Class == Job_Assassin || Class == Job_Assassin_Cross)) { // Sorgt dafür das Assa/Cross alle mixxing items bekommt bis auf Bersek Potion dar dieses gekauft werden kann.
+{ .@item_id = F_Rand( 939,952,972,7033,713 );
+ 
+getitem .@item_id,1;  }
+end;
+ 
+}
+if ( rand( 100 ) <= 2  && (Class == Job_Guillotine_Cross_T)) { // 13973 ist Poison Bottle Box x30,und alle items für die skills
+{ .@item_id = F_Rand( 13973,12717,12722,12720,12718,6128,12724,12723,12721,12719 );
+ 
+getitem .@item_id,1;  }
+end;
+ 
+}
+
+if( rand( 1000 ) <= 3  && (Class == Job_Summoner)) { // Doram eq
+{ .@item_id = F_Rand(  28380,28381,28382,28422,28423,28424,28413,25142,28416,28419,28414,28417,28420,28415,2841,28421,15150,15151,15126,15129,15156,20788,20789,20790,22076,22077,2208,22084,22085,1683,1684,1685,1686,1690,1694,1691,1695,1692,1696,1693,1697 );
+ 
+getitem .@item_id,1;  }
+end;
+ 
+}
+
+}

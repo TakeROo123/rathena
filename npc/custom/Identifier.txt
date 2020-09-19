@@ -1,0 +1,3 @@
+prontera,170,180,2	script	Item Identifier	407,{
+atcommand "@identifyall";
+}

@@ -1,0 +1,137 @@
+prt_in,128,42,0	warp	ptoout	2,2,prontera,145,151
+prontera,140,151,0	warp	ptoin	2,2,prt_in,128,34
+
+
+
+takero,282,367,2	script	RFYL Event	491,{
+	if ( getgmlevel() < 99 ) end;
+	donpcevent "runordie::Onmanually";
+	end;
+}
+
+takero,293,367,3	script	Run Or Die	491,{
+	set .@size, getarraysize( getvariableofnpc( .aid, "runordie" ) );
+	if ( .@size >= 100 ) {
+		mes "Es tut mir leid, der Raum ist voll";
+		close;
+	}
+	percentheal 100, 100;
+	warp "guild_vs5", 0, 0;
+	set getvariableofnpc( .aid[ .@size ], "runordie" ), getcharid(3);
+	end;
+}
+-	script	runordie	-1,{
+OnInit:
+	disablenpc "Run Or Die";
+	end;
+
+OnWhisperGlobal:
+	if ( getgmlevel() < 99 ) end;
+	else if ( compare( @whispervar0$ , "debug" ) ) {
+		dispbottom "Player left: "+ getarraysize(.aid);
+		end;
+	}
+	else if ( compare( @whispervar0$, "on" ) == 0 ) end;
+Onmanually:
+	enablenpc "Run Or Die";
+	deletearray .aid;
+	mapwarp "guild_vs5", "prontera", 142,170;
+	killmonsterall "guild_vs5";
+	set .stop, 1;
+	disablenpc "RFYL Event";
+	announce "Run Or Die!!!: Bist du bereit, am Run Or Die Event teilzunehmen?", 0;
+	sleep 4000;
+	announce "Run Or Die: komm schnell ins Event Haus, um mitzumachen", 0;
+	sleep 6000;
+	announce "Run Or Die: Der Registrierungs-NPC verschwindet nach 1 Minute", 0;
+	sleep 20000;
+	announce "Run Or Die: Die letzten 30 Sekunden", 0;
+	sleep 10000;
+	announce "Run Or Die: komm schnell ins Event Haus, um mitzumachen ", 0;
+	sleep 10000;
+	announce "Run Or Die: Letzte 10 Sekunden bis zur Registrierung", 0;
+	sleep 5000;
+	announce "Run Or Die: 5", 0;
+	sleep 1000;
+	announce "Run Or Die: 4", 0;
+	sleep 1000;
+	announce "Run Or Die: 3", 0;
+	sleep 1000;
+	announce "Run Or Die: 2", 0;
+	sleep 1000;
+	announce "Run Or Die: 1", 0;
+	sleep 1000;
+	announce "Run Or Die: Die Zeit ist abgelaufen ... ", 0;
+	disablenpc "Run Or Die";
+	mapannounce "guild_vs5", "Willkommen bei Run Or Die event", 0;
+	sleep 3000;
+	mapannounce "guild_vs5", "Dies ist nur eine einfache", 0;
+	sleep 3000;
+	mapannounce "guild_vs5", "Bleib einfach fern von den PORING BOMBS!!", 0;
+	sleep 3000;
+	mapannounce "guild_vs5", "Bleib am Leben, solange du kannst !!!!", 0;
+	sleep 3000;
+	mapannounce "guild_vs5", "Der letzte Überlebende wird der Gewinner sein", 0;
+	sleep 3000;
+	mapannounce "guild_vs5", "event beginnt in 3", 0;
+	sleep 1000;
+	mapannounce "guild_vs5", "2...", 0;
+	sleep 1000;
+	mapannounce "guild_vs5", "1...", 0;
+	sleep 1000;
+	mapannounce "guild_vs5", "Es ist Zeit zu rennen !!", 0;
+	donpcevent "runordie::Onstart";
+	set .stop, 0;
+	while ( .stop == 0 ) {
+		set .@extra, .@extra + rand(1,2);
+		set .@round, .@round +1;
+		monster "guild_vs5", 0,0, "Come On Baby!!!", 1904, 2 + .@extra, 0;
+		monster "guild_vs5", 0,0, "Come On Baby!!!", 1904, 2 + .@extra, 2;
+		monster "guild_vs5", 0,0, "Come On Baby!!!", 1904, 2 + .@extra, 4;
+		sleep 5000;
+	}
+	end;
+Onstart:
+	while ( getarraysize(.aid) > 1 ) {
+		sleep 500;
+		for ( set .@i, 0; .@i < getarraysize(.aid); set .@i, .@i +1 ) {
+			if ( isloggedin(.aid[.@i]) == 0 ) {
+				deletearray .aid[.@i], 1;
+				set .@i, .@i -1;
+			}
+			else {
+				attachrid .aid[.@i];
+				if ( strcharinfo(3) != "guild_vs5" || hp == 0 ) {
+					deletearray .aid[.@i], 1;
+					set .@i, .@i -1;
+				}
+			}
+		}
+	}
+	detachrid;
+	set .stop, 1;
+	killmonsterall "guild_vs5";
+	if ( getarraysize(.aid) == 1 ) {
+		announce "Herzliche Glückwünsche!!! Der Gewinner ist "+ rid2name(.aid), 0;
+		sleep 5000;
+		announce rid2name(.aid) +"3 Event Tickets", 0;
+		attachrid .aid;
+		getitem 7711, 3; // winner prize
+		warp "prontera", 156,180;
+		deletearray .aid;
+	}
+	else {
+		announce "Nobody WINS, too bad", 0;
+	}
+	enablenpc "RFYL Event";
+	end;
+}
+guild_vs5	mapflag	nowarp
+guild_vs5	mapflag	nowarpto
+guild_vs5	mapflag	noteleport
+guild_vs5	mapflag	nosave	SavePoint
+guild_vs5	mapflag	noskill
+guild_vs5	mapflag	nomemo
+guild_vs5	mapflag	nopenalty
+guild_vs5	mapflag	pvp
+

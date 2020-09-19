@@ -1,0 +1,138 @@
+malangdo,225,266,3	script	Rüdiger	495,{
+	set .@NPCName$,"[^FF0000Nyoshua^000000]";
+	set .@PCName$,"[^0000FF"+strcharinfo(0)+"^000000]";
+			
+	if (Cat_baret_quest == 3)
+	{
+		mes .@NPCName$;
+		mes "Deine Kopfbedeckung ist einfach nur perfekt.";
+		set Cat_baret_quest,0;
+		close;
+	}
+			
+	if (Cat_baret_quest == 2)
+	{
+		if (countitem(952) >= 50 && countitem(7038) >= 50)
+		{
+			
+			mes .@NPCName$;
+			mes "Super, nun kann ich es zusammen nÃ¤hen. Einen Moment.";
+			next;
+			
+			mes .@NPCName$;
+			mes "Sooo. hier hast du deine Silvervine Box.";
+			if (countitem(952) >= 50 && countitem(7038) >= 50)
+			{
+				delitem 952,50;
+				delitem 7038,50;
+				getitem 16770,1;
+				set Cat_baret_quest,0;
+			}
+			else
+				close;
+			next;
+			
+			mes .@NPCName$;
+			mes "Viel SpaÃŸ damit.";
+			close;
+		}
+		else
+		{
+			mes .@NPCName$;
+			mes "Bring mir bitte noch ^FF000050 Cactus Needle^000000 und ^FF000050 Yarn^000000";
+			close;
+		}
+	}	
+			
+	if (Cat_baret_quest == 1)
+	{
+		if (countitem(975) >= 1 && countitem(979) >= 1 && countitem(966) >= 10 && countitem(965) >= 10) 
+		{
+			
+			delitem 975,1;
+			delitem 979,1;
+			delitem 966,10;
+			delitem 965,10;
+			
+			set Cat_baret_quest,2;
+			
+			mes .@NPCName$;
+			mes "Miau...Miau";
+			next;
+			
+			mes .@NPCName$;
+			mes "Ã„hm... ich meine Super gemacht. Nur wir haben nun ein Problem.";
+			next;
+			
+			mes .@NPCName$;
+			mes "Ich habe vor 5 Minuten bemerkt, dass mir die lust vergangen ist.";
+			mes "Normalerweise verliere ich die lust nicht dabei... aber was sols.";
+			next;
+			
+			mes .@NPCName$;
+			mes "Bring mir bitte noch ^FF000050 Cactus Needle^000000 und ^FF000050 Yarn^000000";
+			close;
+		}
+		else
+		{
+			mes .@NPCName$;
+			mes "Bring mir bitte ein ^FF000010 Clam Flesh ^000000, ein ^FF000010 Clam Shell^000000, sowie auch ^FF0000Darkgreen Dyestuffs^000000 und ^FF0000Scarlet Dyestuffs^000000.";
+			close;
+		}
+		
+	}
+			
+	
+	mes .@NPCName$;
+	mes "Miaaaaaaaauu";
+	next;
+	
+	mes .@NPCName$;
+	mes "Miau...Miau?";
+	next;
+	
+	mes .@PCName$;
+	mes "Ich verstehe dich leider nicht...";
+	next;
+	
+	mes .@NPCName$;
+	mes "Mii.au.. O..h.. tut mir leid.";
+	next;
+	
+	mes .@NPCName$;
+	mes "Ich wusste nicht, dass du meine Sprache nicht kannst.";
+	next;
+	
+	mes .@NPCName$;
+	mes "Was willst du mir sagen?";
+	next;
+	
+	mes .@NPCName$;
+	mes "WARTE!!!! Ich weiß es.. Du findest besondere Items super. Nicht wahr?";
+
+	if ( select("Du kannst Hellsehen","Nee, eigentlich nicht") == 2 )
+	{
+		next;
+		mes .@NPCName$;
+		mes "Dann kann ich es mir leider nicht erklären, was du von mir willst.";
+		close;
+	}
+		
+	next;
+	mes .@NPCName$;
+	mes "Nicht wirklich; das sieht jeder auf anhieb.";
+	next;
+	
+	mes .@NPCName$;
+	mes "Ich kann dir eine schöne Silvervine Box geben .";
+	next;
+	
+	mes .@NPCName$;
+	mes "Nur du musst mir vorher die Materialien dafür bringen.";
+	next;
+	
+	mes .@NPCName$;
+	mes "Bring mir bitte ein ^FF000010 Clam Flesh ^000000, ein ^FF000010 Clam Shell^000000, sowie auch ^FF0000Darkgreen Dyestuffs^000000 und ^FF0000Scarlet Dyestuffs^000000.";
+	set Cat_baret_quest,1;
+	close;
+}

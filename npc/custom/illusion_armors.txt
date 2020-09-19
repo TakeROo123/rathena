@@ -1,0 +1,1147 @@
+//===== rAthena Script =======================================
+//= Unofficial Illusion Gear
+//===== By ===================================================
+//= DatPanda
+//===== Version ==============================================
+//= 1.0 - Initial Version
+//===== Tested With ==========================================
+//= rAthena 06/15/2020 Revision
+//= GIT Hash: 60d03a1978c2c2d8ebf5810582bfab69cb3392df
+//===== Description ==========================================
+//= Based on the information online like LimitRo and NovaRo
+//  But mostly based on the info of Limit Ro
+//= The text is done by myself.
+//===== Comments =============================================
+// bla
+//===== Credits ==============================================
+//= Nova Ro for their Wiki Page:
+//  https://www.novaragnarok.com/wiki/Illusion_Equipments_and_Enchants_(17.1)#Illusion_Armors
+//============================================================
+// - Craft Armor, Wing, Leg or Booster - Illusion Gear Dealer
+takero,168,382,5	script	Illusion Gear Dealer	4_M_NOFEARGUY,{
+	if(terra_gloria_main <= 24){
+		mes .n$;
+		mes "Who are you again? Do I need to know you?";
+		mes "You are an adventurer? Who says that? You're looking like a little brat!";
+		mes "Come back when you grew older or gained more experience!";
+		close;
+	}
+
+	if(checkquest(30001) == -1){
+		mes .n$;
+		mes "Hey "+strcharinfo(0)+".";
+		mes "I'm new in this beautiful town!";
+		mes "";
+		mes "I want to open a new business in here - are you willing to help me?";
+		if(select("- Yeah of course!:- Why should I?") == 2){
+			next;
+			mes .n$;
+			mes "I will remember this!";
+			mes "";
+			mes "Hush hush!";
+			mes "";
+			mes "Now leave so I can at least set up my stuff!";
+			close;
+		} else {
+			next;
+			mes .n$;
+			mes "Thank you so much!";
+			mes "To set up my workbench - can you please bring me:";
+			mes "";
+			mes "1x "+getitemname(615);
+			mes "1x "+getitemname(988);
+			setquest 30001;
+			close;
+		}
+	}
+
+	if(checkquest(30001) == 1) {
+		mes .n$;
+		mes "Welcome back "+strcharinfo(0)+".";
+		if(countitem(615) < 1 || countitem(988) < 1) {
+				mes "Please remember - for setting up my workshop I need the following things:";
+				mes "";
+				mes "1x "+getitemname(615);
+				mes "1x "+getitemname(988);
+				mes "";
+				mes "Please come back after you obtained them!";
+		} else {
+			mes "Wow this was fast - now I can set up my workshop!";
+			delitem 615,1;
+			delitem 988,1;
+			completequest 30001;
+		}
+		close;
+	}
+
+	if(checkquest(30001) == 2 && checkquest(30002) != 2) {
+		mes .n$;
+		mes "Hey welcome back buddy!";
+		set .@questState,checkquest(30002);
+		if(.@questState == -1){
+			mes "I may be rude - but can you please help me again?";
+			if(select("- Of course buddy!:- Sorry not time") == 2){
+				next;
+				mes .n$;
+				mes "Okay...";
+				mes "";
+				mes "Can you maybe come back if you have some time?";
+				close;
+			} else {
+				next;
+				mes .n$;
+				mes "Again: Thank you so much!";
+				mes "I forgot to tell you: I need some more stuff:";
+				mes "";
+				mes "100x "+getitemname(7098);
+				mes "50x "+getitemname(7066);
+				setquest 30002;
+				close;
+			}
+		} else if(.@questState == 1){
+			if(countitem(7098) < 100 || countitem(7066) < 50) {
+				mes "Please remember to bring me the stuff I need:";
+				mes "";
+				mes "100x "+getitemname(7098);
+				mes "50x "+getitemname(7066);
+			} else {
+				mes "Finally - now I can resume to set everything up!";
+				delitem 7098,100;
+				delitem 7066,50;
+				completequest 30002;
+			}
+		}
+		close;
+	}
+
+	if(checkquest(30002) == 2 && checkquest(30003) != 2) {
+		mes .n$;
+		mes "Hey!";
+		mes "Whats up?!";
+		set .@questState,checkquest(30003);
+		if(.@questState == -1){
+			mes "Almost ready!";
+			mes "Can you help me for the last time?";
+			if(select("- ... Okay:- Wow - chill!") == 2){
+				next;
+				mes .n$;
+				mes "Okay...";
+				mes "See you later buddy!";
+				close;
+			} else {
+				next;
+				mes .n$;
+				mes "I need some standard stuff - this should be easy for you!";
+				mes "";
+				mes "50x "+getitemname(984);
+				mes "50x "+getitemname(985);
+				mes "25x "+getitemname(6224);
+				mes "25x "+getitemname(6223);
+				setquest 30003;
+				close;
+			}
+		} else if(.@questState == 1){
+			if(countitem(984) < 50 || countitem(985) < 50 || countitem(6224) < 25 || countitem(6223) < 25) {
+				mes "I'm still missing the following stuff:";
+				mes "";
+				mes "50x "+getitemname(984);
+				mes "50x "+getitemname(985);
+				mes "25x "+getitemname(6224);
+				mes "25x "+getitemname(6223);
+			} else {
+				mes "Thank you! Please comeback later - then I can help you to create amazing stuff!";
+				delitem 984,50;
+				delitem 985,50;
+				delitem 6224,25;
+				delitem 6223,25;
+				completequest 30003;
+			}
+		}
+		close;
+	}
+
+	if(checkquest(30003) == 2 && checkquest(30004) != 2) {
+		mes .n$;
+		mes "Hey buddy!";
+		mes "";
+		set .@questState,checkquest(30004);
+		if(.@questState == -1){
+			mes "Oh I'm so sorry!";
+			mes "I forgot that I need some illusion stuff before I can start!";
+			if(select("- Well...:- Not now") == 2){
+				next;
+				mes .n$;
+				mes "No problem...come back when you're ready!";
+				close;
+			} else {
+				next;
+				mes .n$;
+				mes "To create illusion stuff I need of course some important base materials!";
+				mes "";
+				mes "50x "+getitemname(710);
+				mes "50x "+getitemname(25272);
+				setquest 30004;
+				close;
+			}
+		} else if(.@questState == 1){
+			if(countitem(710) < 50 || countitem(25272) < 50) {
+				mes "Please... I really need them:";
+				mes "";
+				mes "50x "+getitemname(710);
+				mes "50x "+getitemname(25272);
+			} else {
+				mes "Thank you so much for your help!";
+				mes "But now for real: I'm finally set up!";
+				mes "Please come back soon!";
+				delitem 710,50;
+				delitem 25272,50;
+				completequest 30004;
+			}
+		}
+		close;
+	}
+	
+	if(checkquest(30004) == 2){
+		mes .n$;
+		mes "Welcome back my friend, "+strcharinfo(0)+".";
+		mes "Finally I can provide you with my powerful equipment!";
+		mes "";
+		mes "So what do you want?";
+		next;
+		switch(select("- Craft Illusion Armor :- Craft Illusion Engine Wing :- Craft Illusion Leg :- Craft Illusion Booster :- Craft Illusion Battle Chips :- Craft Enchant-Modules :- Stop")) {
+			case 1:
+			mes .n$;
+			mes "I can craft you either \""+getitemname(15376)+"\" or \""+getitemname(15377)+"\".";
+			mes "The exact outcome is random.";
+			mes "";
+			mes "I need 25x "+getitemname(25728)+" and 15x "+getitemname(25729)+".";
+			if(select("- Continue:- Cancel") - 1) break;
+			next;
+			mes .n$;
+			if(countitem(25728) < 25 || countitem(25729) < 15) {
+				mes "Not enough minerals eeeh materials!";
+				mes "Please buddy...I need these - otherwise I cannot help you!";
+				close;
+			}
+			mes "Deal! One moment please!";
+			mes "Clonk, Clonk, Clonk";
+			mes "Clonk, ...";
+			mes "...";
+			set .@e,rand(1,100);
+			
+			if(.@e < 50) getitem 15376,1;
+			else getitem 15377,1;
+			delitem 25728,25;
+			delitem 25729,15;
+			mes "I finally crafted your "+( (.@e < 50)?getitemname(15376):getitemname(15377))+"!";
+			break;
+
+			case 2:
+			mes .n$;
+			mes "I can craft you either \""+getitemname(20933)+"\" or \""+getitemname(20934)+"\".";
+			mes "I need 20x "+getitemname(25728)+" and 10x "+getitemname(25729)+".";
+			if(select("- Continue:- Cancel") - 1) break;
+			next;
+			mes .n$;
+			if(countitem(25728) < 20 || countitem(25729) < 10) {
+				mes "Not enough minerals eeeh materials!";
+				mes "Please buddy...I need these - otherwise I cannot help you!";
+				close;
+			}
+			mes "Deal! One moment please!";
+			mes "Clonk, Clonk, Clonk";
+			mes "Clonk, ...";
+			mes "...";
+			set .@e,rand(1,100);
+			
+			if(.@e < 50) getitem 20933,1;
+			else getitem 20934,1;
+			delitem 25728,20;
+			delitem 25729,10;
+			mes "I finally crafted your "+( (.@e < 50)?getitemname(20933):getitemname(20934))+".";
+			break;
+
+			case 3:
+			mes .n$;
+			mes "I can craft you either \""+getitemname(22196)+"\" or \""+getitemname(22197)+"\".";
+			mes "I need 20x "+getitemname(25728)+" and 5x "+getitemname(25729)+".";
+			if(select("- Continue:- Cancel") - 1) break;
+			next;
+			mes .n$;
+			if(countitem(25728) < 20 || countitem(25729) < 5) {
+				mes "Not enough minerals eeeh materials!";
+				mes "Please buddy...I need these - otherwise I cannot help you!";
+				close;
+			}
+			mes "Deal! One moment please!";
+			mes "Clonk, Clonk, Clonk";
+			mes "Clonk, ...";
+			mes "...";
+			set .@e,rand(1,100);
+			
+			if(.@e < 50) getitem 22196,1;
+			else getitem 22197,1;
+			delitem 25728,20;
+			delitem 25729,5;
+			mes "I finally crafted your "+( (.@e < 50)?getitemname(22196):getitemname(22197))+".";
+			break;
+
+			case 4:
+			mes .n$;
+			mes "I can craft you either \""+getitemname(32207)+"\" or \""+getitemname(32208)+"\".";
+			mes "I need 40x "+getitemname(25728)+".";
+			if(select("- Continue:- Cancel") - 1) break;
+			next;
+			mes .n$;
+			if(countitem(25728) < 40) {
+				mes "Not enough minerals eeeh materials!";
+				mes "Please buddy...I need these - otherwise I cannot help you!";
+				close;
+			}
+			mes "Deal! One moment please!";
+			mes "Clonk, Clonk, Clonk";
+			mes "Clonk, ...";
+			mes "...";
+			set .@e,rand(1,100);
+			
+			if(.@e < 50) getitem 32207,1;
+			else getitem 32208,1;
+			delitem 25728,40;
+			mes "I finally crafted your "+( (.@e < 50)?getitemname(32207):getitemname(32208))+".";
+			break;
+
+			case 5:
+			mes .n$;
+			mes "I can craft you either \""+getitemname(32209)+"\" or \""+getitemname(32210)+"\".";
+			mes "I need 40x "+getitemname(25728)+".";
+			if(select("- Continue:- Cancel") - 1) break;
+			next;
+			mes .n$;
+			if(countitem(25728) < 40) {
+				mes "Not enough minerals eeeh materials!";
+				mes "Please buddy...I need these - otherwise I cannot help you!";
+				close;
+			}
+			mes "Deal! One moment please!";
+			mes "Clonk, Clonk, Clonk";
+			mes "Clonk, ...";
+			mes "...";
+			set .@e,rand(1,100);
+			
+			if(.@e < 50) getitem 32209,1;
+			else getitem 32210,1;
+			delitem 25728,40;
+			mes "I finally crafted your "+( (.@e < 50)?getitemname(32209):getitemname(32210))+".";
+			break;
+			
+			case 6:
+			mes .n$;
+			mes "I'm going to create an random enchanting module.";
+			mes "Please be aware that it can fail!";
+			mes "All I need is 15x "+getitemname(25728)+".";
+			if(select("- Continue:- Cancel") - 1) break;
+			next;
+			mes .n$;
+			if(countitem(25728) < 15) {
+				mes "Not enough minerals eeeh materials!";
+				mes "Please buddy...I need these - otherwise I cannot help you!";
+				close;
+			}
+			set .@baseRnd,rand(100);
+			if(.@baseRnd < 5){ // 5%
+				mes "I'm truly sorry!";
+			} else if(.@baseRnd < 55){ // 50% -> Common
+				set .@b,rand(800);
+				if(.@b < 100) getitem 25670,1;
+				else if(.@b < 200) getitem 25671,1;
+				else if(.@b < 300) getitem 25672,1;
+				else if(.@b < 400) getitem 25673,1;
+				else if(.@b < 500) getitem 25674,1;
+				else if(.@b < 600) getitem 25675,1;
+				else if(.@b < 700) getitem 25676,1;
+				else if(.@b < 800) getitem 25677,1;
+				mes "I heard you ordered one common module?";
+			} else if(.@baseRnd < 80){ // 25% -> Rare
+				set .@b,rand(1500);
+				if(.@b < 100) getitem 25678,1;
+				else if(.@b < 200) getitem 25679,1;
+				else if(.@b < 300) getitem 25680,1;
+				else if(.@b < 400) getitem 25681,1;
+				else if(.@b < 500) getitem 25682,1;
+				else if(.@b < 600) getitem 25683,1;
+				else if(.@b < 700) getitem 25684,1;
+				else if(.@b < 800) getitem 25685,1;
+				else if(.@b < 900) getitem 25686,1;
+				else if(.@b < 1000) getitem 25687,1;
+				else if(.@b < 1100) getitem 25688,1;
+				else if(.@b < 1200) getitem 25689,1;
+				else if(.@b < 1300) getitem 25690,1;
+				else if(.@b < 1400) getitem 25691,1;
+				else if(.@b < 1500) getitem 25692,1;
+				mes "Not bad! Not bad!";
+				mes "";
+				mes "You received a rare module.";
+			} else if(.@baseRnd < 95){ // 15% -> Unique
+				set .@b,rand(700);
+				if(.@b < 100) getitem 25693,1;
+				else if(.@b < 200) getitem 25694,1;
+				else if(.@b < 300) getitem 25695,1;
+				else if(.@b < 400) getitem 25696,1;
+				else if(.@b < 500) getitem 25697,1;
+				else if(.@b < 600) getitem 25698,1;
+				else if(.@b < 700) getitem 25699,1;
+				mes "This is a rare sight!";
+				mes "";
+				mes "You received an unique module!";
+			} else if(.@baseRnd <= 100){ // rest => 5% => Legendary
+				set .@b,rand(600);
+				if(.@b < 100) getitem 25700,1;
+				else if(.@b < 200) getitem 25701,1;
+				else if(.@b < 300) getitem 25702,1;
+				else if(.@b < 400) getitem 25703,1;
+				else if(.@b < 500) getitem 25704,1;
+				else if(.@b < 600) getitem 25705,1;
+				mes "Once in a lifetime!";
+				mes "";
+				mes "You received a legendary module!";
+			}
+
+			delitem 25728,15;
+			break;
+			
+			case 7:
+			mes .n$;
+			mes "All right - see you soon!";
+			break;
+		}
+	}
+close;
+
+OnInit:
+set .n$,"["+strnpcinfo(0)+"]";
+end;
+}
+
+
+
+// - Enchanter - Illusion Gear Enchanter
+takero,167,361,4	script	Illusion Gear Enchanter	4_EP17_ELYUMINA,{
+	mes .n$;
+	mes "Oh can I help you?";
+	next;
+	if(select("- Please enchant my stuff :- Nah!") - 1) {
+		mes .n$;
+		mes "Don't waste my time!";
+		close;
+	}
+	mes .n$;
+	mes "What do you want to enchant?";
+	next;
+
+	switch(select("- "+getitemname(15376)+":- "+getitemname(15377)+":- "+getitemname(20933)+":- "+getitemname(20934)+":- "+getitemname(22196)+":- "+getitemname(22197)+":- "+getitemname(32207)+":- "+getitemname(32208)+":- "+getitemname(32209)+":- "+getitemname(32210))) {
+		case 1:
+		mes .n$;
+		mes "Let me see whether you have it equipped...";
+		next;
+		mes .n$;
+		if(getequipid(EQI_ARMOR) != 15376) {
+			mes "Please ensure you have your "+getitemname(15376)+" equipped.";
+			close;
+		}
+		disable_items;
+		set .@exc_id,15376; // Saving ID for faster handling
+		set .@eq,EQI_ARMOR; // Resaving equipment slot
+		set .@ref,getequiprefinerycnt(EQI_ARMOR);
+		set .@slot1,getequipcardid(EQI_ARMOR,0);
+		set .@slot2,getequipcardid(EQI_ARMOR,1);
+		set .@slot3,getequipcardid(EQI_ARMOR,2);
+		set .@slot4,getequipcardid(EQI_ARMOR,3);
+		if(.@slot2 && .@slot3 && .@slot4) {
+			mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+			mes "Please choose another equip-part.";
+			close;
+		}
+		mes "Please choose your module:";
+		next;
+		getinventorylist;
+		for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+			switch(@inventorylist_id[.@i]) {
+				case 25670:
+					setarray .@limit$[getarraysize(.@limit$)],"3:25670";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 25671:
+					setarray .@limit$[getarraysize(.@limit$)],"3:25671";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 25687:
+					setarray .@limit$[getarraysize(.@limit$)],"2:25687";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 25688:
+					setarray .@limit$[getarraysize(.@limit$)],"2:25688";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 25689:
+					setarray .@limit$[getarraysize(.@limit$)],"2:25689";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 25693:
+					setarray .@limit$[getarraysize(.@limit$)],"1:25693";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+			}
+		break;
+
+		case 2:
+		mes .n$;
+		mes "Let me see whether you have it equipped...";
+		next;
+		mes .n$;
+		if(getequipid(EQI_ARMOR) != 15377) {
+			mes "Please ensure you have your "+getitemname(15377)+" equipped.";
+			close;
+		}
+		disable_items;
+		set .@exc_id,15377; // Saving ID for faster handling
+		set .@eq,EQI_ARMOR; // Resaving equipment slot
+		set .@ref,getequiprefinerycnt(EQI_ARMOR);
+		set .@slot1,getequipcardid(EQI_ARMOR,0);
+		set .@slot2,getequipcardid(EQI_ARMOR,1);
+		set .@slot3,getequipcardid(EQI_ARMOR,2);
+		set .@slot4,getequipcardid(EQI_ARMOR,3);
+		if(.@slot2 && .@slot3 && .@slot4) {
+			mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+			mes "Please choose another equip-part.";
+			close;
+		}
+		mes "Please choose your module:";
+		next;
+		getinventorylist;
+		for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+			switch(@inventorylist_id[.@i]) {
+				case 25670:
+					setarray .@limit$[getarraysize(.@limit$)],"3:25670";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+				case 25671:
+					setarray .@limit$[getarraysize(.@limit$)],"3:25671";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 25687:
+					setarray .@limit$[getarraysize(.@limit$)],"2:25687";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 25688:
+					setarray .@limit$[getarraysize(.@limit$)],"2:25688";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 25689:
+					setarray .@limit$[getarraysize(.@limit$)],"2:25689";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 25693:
+					setarray .@limit$[getarraysize(.@limit$)],"1:25693";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+			}
+		break;
+
+		case 3:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_GARMENT) != 20933) {
+				mes "Please ensure you have your "+getitemname(20933)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,20933; // Saving ID for faster handling
+			set .@eq,EQI_GARMENT; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_GARMENT);
+			set .@slot1,getequipcardid(EQI_GARMENT,0);
+			set .@slot2,getequipcardid(EQI_GARMENT,1);
+			set .@slot3,getequipcardid(EQI_GARMENT,2);
+			set .@slot4,getequipcardid(EQI_GARMENT,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 25670:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25670";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25671:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25671";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25690:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25690";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25691:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25691";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25692:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25692";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25695:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25695";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+				}
+			break;
+
+		case 4:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_GARMENT) != 20934) {
+				mes "Please ensure you have your "+getitemname(20934)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,20934; // Saving ID for faster handling
+			set .@eq,EQI_GARMENT; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_GARMENT);
+			set .@slot1,getequipcardid(EQI_GARMENT,0);
+			set .@slot2,getequipcardid(EQI_GARMENT,1);
+			set .@slot3,getequipcardid(EQI_GARMENT,2);
+			set .@slot4,getequipcardid(EQI_GARMENT,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 25670:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25670";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25671:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25671";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25690:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25690";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25691:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25691";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25692:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25692";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25695:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25695";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+				}
+			break;
+
+		case 5:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_SHOES) != 22196) {
+				mes "Please ensure you have your "+getitemname(22196)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,22196; // Saving ID for faster handling
+			set .@eq,EQI_SHOES; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_SHOES);
+			set .@slot1,getequipcardid(EQI_SHOES,0);
+			set .@slot2,getequipcardid(EQI_SHOES,1);
+			set .@slot3,getequipcardid(EQI_SHOES,2);
+			set .@slot4,getequipcardid(EQI_SHOES,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 25670:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25670";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25671:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25671";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25684:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25684";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25685:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25685";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25686:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25686";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25694:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25694";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25700:
+					case 25701:
+					case 25702:
+					case 25703:
+					case 25704:
+					case 25705:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25700:25701:25702:25703:25704:25705";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+				}
+			break;
+
+		case 6:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_SHOES) != 22197) {
+				mes "Please ensure you have your "+getitemname(22197)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,22197; // Saving ID for faster handling
+			set .@eq,EQI_SHOES; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_SHOES);
+			set .@slot1,getequipcardid(EQI_SHOES,0);
+			set .@slot2,getequipcardid(EQI_SHOES,1);
+			set .@slot3,getequipcardid(EQI_SHOES,2);
+			set .@slot4,getequipcardid(EQI_SHOES,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 25670:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25670";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25671:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25671";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25684:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25684";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25685:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25685";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25686:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25686";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25694:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25694";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25700:
+					case 25701:
+					case 25702:
+					case 25703:
+					case 25704:
+					case 25705:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25700:25701:25702:25703:25704:25705";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+				}
+			break;
+
+		case 7:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_ACC_R ) != 32207) {
+				mes "Please ensure you have your "+getitemname(32207)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,32207; // Saving ID for faster handling
+			set .@eq,EQI_ACC_R ; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_ACC_R );
+			set .@slot1,getequipcardid(EQI_ACC_R ,0);
+			set .@slot2,getequipcardid(EQI_ACC_R ,1);
+			set .@slot3,getequipcardid(EQI_ACC_R ,2);
+			set .@slot4,getequipcardid(EQI_ACC_R ,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 25672:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25672";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25673:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25673";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25674:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25674";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25675:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25675";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25678:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25678";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25680:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25680";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25681:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25681";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25682:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25682";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25683:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25683";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25696:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25696";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25698:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25698";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+				}
+			break;
+
+		case 8:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_ACC_L) != 32208) {
+				mes "Please ensure you have your "+getitemname(32208)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,32208; // Saving ID for faster handling
+			set .@eq,EQI_ACC_L; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_ACC_L);
+			set .@slot1,getequipcardid(EQI_ACC_L,0);
+			set .@slot2,getequipcardid(EQI_ACC_L,1);
+			set .@slot3,getequipcardid(EQI_ACC_L,2);
+			set .@slot4,getequipcardid(EQI_ACC_L,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 25672:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25672";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25673:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25673";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25676:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25676";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25677:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25677";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25679:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25679";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25680:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25680";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25681:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25681";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25682:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25682";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25683:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25683";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25697:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25697";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25699:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25699";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					}
+			break;
+
+		case 9:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_ACC_R) != 32209) {
+				mes "Please ensure you have your "+getitemname(32209)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,32209; // Saving ID for faster handling
+			set .@eq,EQI_ACC_R ; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_ACC_R);
+			set .@slot1,getequipcardid(EQI_ACC_R,0);
+			set .@slot2,getequipcardid(EQI_ACC_R,1);
+			set .@slot3,getequipcardid(EQI_ACC_R,2);
+			set .@slot4,getequipcardid(EQI_ACC_R,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 25672:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25672";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25673:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25673";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25674:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25674";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25675:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25675";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25678:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25678";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25680:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25680";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25681:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25681";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25682:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25682";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25683:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25683";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25696:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25696";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25698:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25698";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+				}
+			break;
+
+		case 10:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_ACC_L) != 32210) {
+				mes "Please ensure you have your "+getitemname(32210)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,32210; // Saving ID for faster handling
+			set .@eq,EQI_ACC_L; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_ACC_L);
+			set .@slot1,getequipcardid(EQI_ACC_L,0);
+			set .@slot2,getequipcardid(EQI_ACC_L,1);
+			set .@slot3,getequipcardid(EQI_ACC_L,2);
+			set .@slot4,getequipcardid(EQI_ACC_L,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 25672:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25672";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25673:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25673";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25676:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25676";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25677:
+						setarray .@limit$[getarraysize(.@limit$)],"3:25677";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25679:
+						setarray .@limit$[getarraysize(.@limit$)],"2:25679";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25680:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25680";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25681:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25681";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25682:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25682";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25683:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25683";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25697:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25697";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 25699:
+						setarray .@limit$[getarraysize(.@limit$)],"1:25699";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+				}
+		break;
+
+		default:
+			close;
+			break;
+	}
+
+	if(getarraysize(.@b_id) < 1) {
+		mes .n$;
+		mes "You don't have any modules! Please come back later!";
+		close;
+	}
+	for ( set .@d,0; .@d < getarraysize(.@b_id); set .@d,.@d + 1)
+		set .@blue_m$,.@blue_m$ + "- "+getitemname(.@b_id[.@d]) + ( (.@b_id[.@d+1] != 0)?":":"");
+		
+	set .@b,select(.@blue_m$) - 1;
+	next;
+	// Getting the id of the module
+	set .@reac_id,.@b_id[.@b];
+
+	// limit the amount of objects
+	explode(.@tmpLimitedItems$, .@limit$[.@b], ":");
+	.@tmpSize = getarraysize( .@tmpLimitedItems$ );
+	for ( .@i = 0; .@i < .@tmpSize; .@i++ ){
+		.@limitedItems[.@i] = atoi( .@tmpLimitedItems$[.@i] );
+	}
+	set .@moduleCategoryLimit,.@limitedItems[0];
+	if(.@moduleCategoryLimit > 0) { // there is an limit to the options
+		set .@count,0;
+		for ( set .@index,1; .@index < getarraysize(.@limitedItems); set .@index,.@index + 1){
+			set .@module_id,.@limitedItems[.@index];			
+			if( .@slot2 == .@module_id)
+				set .@count,.@count+1;
+			if( .@slot3 == .@module_id)
+				set .@count,.@count+1;
+			if( .@slot4 == .@module_id)
+				set .@count,.@count+1;
+		}
+
+		if(.@count >= .@moduleCategoryLimit) {
+			mes .n$;
+			mes "For this category of modules you already reached the maximum!";
+			close;
+		}
+	}
+
+	mes .n$;
+	mes "Please choose the slot you want to enchant:";
+	next;
+	
+	set .@s,select("- Slot 2 ("+( (.@slot2 != 0)?getitemname(.@slot2):"Empty")+"):- Slot 3 ("+( (.@slot3 != 0)?getitemname(.@slot3):"Empty")+"):- Slot 4 ("+( (.@slot4 != 0)?getitemname(.@slot4):"Empty")+")") + 1;
+	if(getd(".@slot"+.@s) != 0) {
+		mes "Sorry - this slot is already used!";
+		close;
+	}
+	delitem .@b_id[.@b],1;
+	delequip .@eq;
+	if(.@s == 2) getitem2 .@exc_id,1,1,.@ref,0,.@slot1,.@reac_id,.@slot3,.@slot4;
+	else if(.@s == 3) getitem2 .@exc_id,1,1,.@ref,0,.@slot1,.@slot2,.@reac_id,.@slot4;
+	else if(.@s == 4) getitem2 .@exc_id,1,1,.@ref,0,.@slot1,.@slot2,.@slot3,.@reac_id;
+	equip .@exc_id;
+	mes .n$;
+	mes "The enchant process was successful!";
+	enable_items;
+
+close;
+
+OnInit:
+set .n$,"["+strnpcinfo(0)+"]";
+end;
+}

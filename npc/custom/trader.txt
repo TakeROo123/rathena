@@ -1,0 +1,215 @@
+takero,295,389,4	script	Harald	4_f_estloveloy,{
+mes "[^CD0000Harald^000000]";
+mes "Hallo.";
+mes "Harald ist für dich da!";
+next;
+menu "Cooles EQ tauschen",LGod,"Ach nichts..",LEnde;
+
+LEnde:
+mes "[^CD0000Harald^000000]";
+mes "Ok.";
+mes "Komm mal wieder!";
+close;
+
+LItem:
+mes "[^CD0000Harald^000000]";
+mes "Oh.";
+mes "Sammel mehr, kann ja nicht";
+mes "das du Harald störst";
+close;
+
+LGod:
+next;
+mes "[^CD0000Harald^000000]";
+mes "Harald erlaubt dir";
+mes "heute etwas zu tauschen! ";
+mes " ";
+mes "Möchtest du jetzt tauschen?";
+next;
+menu "Ja klar",-,"Nein Danke",LEnde;
+
+next;
+mes "[^CD0000Harald^000000]";
+mes "Ok.";
+mes "WAT willst de denn?";
+next;
+menu "SmallPoringBand",LSmallPoringBand,"LeafCatHat",LLeafCatHat,"IcePike[1]",Licepike,"King Tiger Doll Hat [1]",LKingTigerDollHat,"Abbrechen",LEnde;
+
+
+//======================================
+//========== Godlikes ==================
+//======================================
+
+LSmallPoringBand:
+mes "[^CD0000Harald^000000]";
+mes "Also...";
+mes "sicher das du das willst?";
+mes " ";
+mes "^5533FFSmall Poring Band [1]^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Harald^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF3 Poring Doll^000000 / "+countitem(741)+" ea";
+mes "^5533FF3 Mixture^000000 / "+countitem(974)+" ea";
+mes "^5533FF100 Jellopy^000000 / "+countitem(909)+" ea";
+mes "^5533FF1 Darkgreen Dyestuff^000000 / "+countitem(979)+" ea";
+mes "^5533FF1 Cobaltblue Dyestuffs^000000 / "+countitem(978)+" ea";
+
+
+next;
+if(countitem(741)<3) goto LItem;
+if(countitem(974)<3) goto LItem;
+if(countitem(909)<100) goto LItem;
+if(countitem(979)<1) goto LItem;
+if(countitem(978)<1) goto LItem;
+
+
+mes "[^CD0000Harald^000000]";
+mes "Sicher? Also wirklich sicher?";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 741,3;
+delitem 974,3;
+delitem 909,100;
+delitem 979,1;
+delitem 978,1;
+
+
+
+//Erhalten
+getItem 18841,1;
+atcommand "@kamib "+strcharinfo(0)+" hat gerade sein Small Poring Band [1] empfangen!";mes "[^CD0000Valkyria^000000]";
+mes "^5533FFViel Spaß mit deinem Small Poring Band [1]^000000";
+close;
+
+
+LLeafCatHat:
+mes "[^CD0000Harald^000000]";
+mes "Harlad fragt nur einmal";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFLeaf Cat Hat^000000?";
+menu "Jawohl Herr Harald",-,"Hau ab O.o",LGod;
+next;
+mes "[^CD0000Valkyria^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF400 Black Cat Doll^000000 / "+countitem(7206)+" ea";
+mes "^5533FF1 Black Cat Ears^000000 / "+countitem(5057)+" ea";
+mes "^5533FF1 Freezing Snow Powder^000000 / "+countitem(7574)+" ea";
+mes "^5533FF100 Blue Gemstone^000000 / "+countitem(717)+" ea";
+
+next;
+if(countitem(7206)<400) goto LItem;
+if(countitem(5057)<1) goto LItem;
+if(countitem(7574)<1) goto LItem;
+if(countitem(717)<100) goto LItem;
+
+mes "[^CD0000Harald^000000]";
+mes "1 2 oder 3 letzte Chance";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 7206,400;
+delitem 5057,1;
+delitem 7574,1;
+delitem 717,100;
+
+//Erhalten
+getItem 5555,1;
+atcommand "@kamib "+strcharinfo(0)+" hat gerade sein Leaf Cat Hat empfangen!";mes "[^CD0000Valkyria^000000]";
+mes "^5533FFViel Spaß mit deinem Leaf Cat Hat^000000";
+close;
+
+
+Licepike:
+mes "[^CD0000Harald^000000]";
+mes "Was willst du denn";
+mes "damit?";
+mes " ";
+mes "^5533FFIce Pike [1]^000000?";
+menu "Ja",-,"Nein O.o",LGod;
+next;
+mes "[^CD0000Harald^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF20 Fang of Hatii^000000 / "+countitem(7036)+" ea";
+mes "^5533FF100 Rusty Kitchen Knife ^000000 / "+countitem(7208)+" ea";
+mes "^5533FF5 Pike [4] ^000000 / "+countitem(1408)+" ea";
+mes "^5533FF50 Elunium^000000 / "+countitem(985)+" ea";
+mes "^5533FF50 Fragment of Rossata Stone^000000 / "+countitem(7211)+" ea";
+
+next;
+if(countitem(7036)<20) goto LItem;
+if(countitem(7208)<100) goto LItem;
+if(countitem(1408)<5) goto LItem;
+if(countitem(985)<50) goto LItem;
+if(countitem(7211)<50) goto LItem;
+
+
+mes "[^CD0000Harald^000000]";
+mes "Eigentlich will ich es dir nicht geben";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 7036,20;
+delitem 7208,100;
+delitem 1408,5;
+delitem 985,50;
+delitem 7211,50;
+
+//Erhalten
+getItem 13017,1;
+atcommand "@kamib "+strcharinfo(0)+" hat gerade sein  Ice Pick [1] empfangen!";mes "[^CD0000Valkyria^000000]";
+mes "^5533FFViel Spaß mit deinem Ice Pick [1]^000000";
+close;
+
+
+LKingTigerDollHat:
+mes "[^CD0000Harald^000000]";
+mes "Der sieht doch doof aus.";
+mes "Du möchtest also das";
+mes " ";
+mes "^5533FFKing Tiger Doll Hat[1]^000000?";
+menu "Trotzdem",-,"Ja sieht doof aus",LGod;
+next;
+mes "[^CD0000Harald^000000]";
+mes "Du benötigst / du besitzt:";
+mes "^5533FF2 Pipe^000000 / "+countitem(2268)+" ea";
+mes "^5533FF50 Leopard Skin^000000 / "+countitem(7171)+" ea";
+mes "^5533FF15 Tiger's Footskin^000000 / "+countitem(1030)+" ea";
+mes "^5533FF50 Elunium^000000 / "+countitem(985)+" ea";
+mes "^5533FF1 Krierg [3]^000000 / "+countitem(13046)+" ea";
+
+next;
+if(countitem(2268)<2) goto LItem;
+if(countitem(7171)<50) goto LItem;
+if(countitem(1030)<15) goto LItem;
+if(countitem(985)<50) goto LItem;
+if(countitem(13046)<1) goto LItem;
+
+
+mes "[^CD0000Harald^000000]";
+mes "Der steht dir echt nicht";
+mes "Das ausgewählte Item jetzt erhalten?";
+menu "JA!!!",-,"Ne, doch nicht",LGod;
+next;
+//Abgeben
+delitem 2268,2;
+delitem 7171,50;
+delitem 1030,15;
+delitem 985,50;
+delitem 13046,1;
+
+//Erhalten
+getItem 5497,1;
+atcommand "@kamib "+strcharinfo(0)+" hat gerade sein  King Tiger Doll Hat [1]  empfangen!";mes "[^CD0000Valkyria^000000]";
+mes "^5533FFViel Spaß mit deinem King Tiger Doll Hat [1] ^000000";
+close;
+
+}
+
+

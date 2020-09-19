@@ -1,0 +1,60 @@
+takero,302,381,3	script	Cash Trader	4_ep17_nihil_k,{
+.@name$ ="[^FF0000Trader^000000]";
+
+   mes .@name$;
+   mes "Hallo, 10 Cashpoints sind gleich 1 Event Ticket.";
+   mes "Was würdest du gern tun?";
+   next;
+
+   switch( select("Cash zu Event Ticket","Event Ticket zu Cash") ) {
+       case 1:
+           mes .@name$;
+           mes "Wie viel Event Ticket(s) willst du?";
+           input .@num;
+           next;
+
+           if( .@num <= 0 || #CASHPOINTS < .@num * 10 ) {
+               mes .@name$;
+               mes "Entschuldigung, Sie haben nicht genug cashpoints!";
+               close;
+           }
+           mes .@name$;
+           mes "Dies wird kosten ^FF0000" +(.@num * 10)+ " cashpoints^000000.";
+           next;
+
+           if( select("akzeptieren:lieber nicht") -1 ) {
+               mes .@name$;
+               mes "Auf Wiedersehen!";
+               close;
+           }
+           set #CASHPOINTS, #CASHPOINTS - .@num * 10;
+           dispbottom "Lost: " +(.@num * 10)+ " cashpoints. Total: " +#CASHPOINTS+" cashpoints.";
+           getitem 7711, .@num;
+           break;
+
+       case 2:
+           mes .@name$;
+           mes "Wie viele Event Ticket(s) willst du tauschen?";
+           input .@num;
+           next;
+
+           if( .@num <= 0 || countitem(7711) < .@num ) {
+               mes .@name$;
+               mes "Entschuldigung, du hast nicht genug Event Tickets!";
+               close;
+           }
+           mes .@name$;
+           mes "ich kann dir ^FF0000" +(.@num * 10)+ " cashpoints^000000 dafür geben.";
+           next;
+
+           if( select("akzeptieren:lieber nicht") -1 ) {
+               mes .@name$;
+               mes "Auf Wiedersehen!";
+               close;
+           }
+           set #CASHPOINTS, #CASHPOINTS + .@num * 10;
+           dispbottom "Gained: " +(.@num * 10)+ " cashpoints. Total: " +#CASHPOINTS+" cashpoints.";
+           delitem 7711,.@num;
+   }
+   close;
+}

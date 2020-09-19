@@ -1,0 +1,235 @@
+prt_mz03_i,64,69,4	script	Labyrinth	4_TOWER_17,{
+	.@upgradeLvl = 9;
+	mes "[ Gemcutter ]";
+	mes "Do you have business with me?";
+	next;
+	switch(select("What are you doing here?:Upgrade Weapon.:Upgrade Armor.:Upgrade Accesoire.")){
+		case 1:
+			mes "[ Gemcutter ]";
+			mes "I came to the ruined village,","looking for some materials. Touched some strange light, and now I'm here.";
+			next;
+			mes "[ Gemcutter ]";
+			mes "I've decided to stick around for a little while. Figured I'd be safe so long as I stay close to this soldier.","I have a proposition for you. I want some materials that can only be found in this place.";
+			next;
+			mes "[ Gemcutter ]";
+			mes "Get them for me, and I'll improve your equipment in exchange. Just so you know, I can only improve certain types.";
+			next;
+			mes "[ Gemcutter ]";
+			mes "If you're interested, we can discuss the details of our bargain.";
+			close;
+			
+		case 2:
+			mes "[ Gemcutter ]";
+			mes "The following is the list of equipment I can handle.";
+			for(.@i = 0; .@i < getarraysize(.weapon_upgrade$); .@i += 3){
+				mes "<ITEM>"+getitemname(atoi(.weapon_upgrade$[.@i]))+"<INFO>"+atoi(.weapon_upgrade$[.@i])+"</INFO></ITEM>";
+			}
+			next;
+			mes "[ Gemcutter ]";
+			mes "Make sure ^0000FFyour equipment is refined to at least +"+.@upgradeLvl+"^000000 before bringing it to me.","That's the minimum requirement for my upgrade service to have any visible effects on your equipment.";
+			next;
+			mes "[ Gemcutter ]";
+			mes "Make sure you're ^0000FFequipped with the item that you want to improve.^000000","Otherwise, I can't evaluate its condition.";
+			next;
+			mes "[ Gemcutter ]";
+			mes "As you may have guessed, your equipment will transform into something new after this.","In other words, ^0000FFIt'll lose its current refining levels, cards and enchantments.^000000";
+			next;
+			mes "[ Gemcutter ]";
+			mes "And I need ^0000FFIllusion Stones and some other materials^000000 to upgrade your equipment.","Pick an item you want and I'll tell you what I need.";
+			next;
+			for(.@i = 0; .@i < getarraysize(.weapon_upgrade$); .@i += 3){
+				.@menu$ += getitemname(atoi(.weapon_upgrade$[.@i])) + ":";
+			}
+			.@s = (select(.@menu$) - 1) * 3;
+			mes "[ Gemcutter ]";
+			mes "For that equipment, I need the following materials.";
+			.@itemId=atoi(.weapon_upgrade$[.@s+1]);
+			mes "^0000FF+"+.@upgradeLvl+" " + getitemname(.@itemId) + " [" + getitemslots(.@itemId) + "]" + "^000000";
+			getinventorylist(getcharid(0));
+			for(.@i = 0; .@i < @inventorylist_count; .@i++){
+				if(@inventorylist_id[.@i] !=  atoi(.weapon_upgrade$[.@s+1])){ 
+					continue;
+				}
+				if(@inventorylist_refine[.@i] >= .@upgradeLvl){
+					.@index = .@i;
+					.@weapon_check = 1;
+					break;
+				} else {
+					continue;
+				}	
+			}
+			explode(.@data$,.weapon_upgrade$[.@s+2],",");
+			for(.@i = 0; .@i < getarraysize(.@data$); .@i += 2){
+				if(countitem(atoi(.@data$[.@i])) < atoi(.@data$[.@i+1])) .@missing += 1;
+				mes "^0000FF"+.@data$[.@i+1]+ " " +getitemname(atoi(.@data$[.@i]))+"^000000";
+			}
+			mes "Do you want to continue?";
+			next;
+			if(select("Continue.:I'll bring those materials") == 2){
+				mes "[ Gemcutter ]";
+				mes "Comeback when you're ready.";
+				close;
+			}
+			if(.@weapon_check < 1 || .@missing > 0){
+				mes "[ Gemcutter ]";
+				mes "You don't have all the materials";
+				end;
+			}
+			delitem2 @inventorylist_id[.@index],1,@inventorylist_identify[.@index],@inventorylist_refine[.@index],@inventorylist_attribute[.@index],@inventorylist_card1[.@index],@inventorylist_card2[.@index],@inventorylist_card3[.@index],@inventorylist_card4[.@index]; 
+			for(.@i = 0; .@i < getarraysize(.@data$); .@i += 2){
+				delitem atoi(.@data$[.@i]),atoi(.@data$[.@i+1]);
+			}
+			mes "[ Gemcutter ]";
+			mes "Here is your upgraded equipment.";
+			getitem atoi(.weapon_upgrade$[.@s]),1;
+			end;
+			
+		case 3:
+			mes "[ Gemcutter ]";
+			mes "The following is the list of equipment I can handle.";
+			for(.@i = 0; .@i < getarraysize(.armor_upgrade$); .@i += 3){
+				mes "<ITEM>"+getitemname(atoi(.armor_upgrade$[.@i]))+"<INFO>"+atoi(.armor_upgrade$[.@i])+"</INFO></ITEM>";
+			}
+			next;
+			mes "[ Gemcutter ]";
+			mes "Make sure ^0000FFyour equipment is refined to at least +"+.@upgradeLvl+"^000000 before bringing it to me.","That's the minimum requirement for my upgrade service to have any visible effects on your equipment.";
+			next;
+			mes "[ Gemcutter ]";
+			mes "Make sure you're ^0000FFequipped with the item that you want to improve.^000000","Otherwise, I can't evaluate its condition.";
+			next;
+			mes "[ Gemcutter ]";
+			mes "As you may have guessed, your equipment will transform into something new after this.","In other words, ^0000FFIt'll lose its current refining levels, cards and enchantments.^000000";
+			next;
+			mes "[ Gemcutter ]";
+			mes "And I need ^0000FFIllusion Stones and some other materials^000000 to upgrade your equipment.","Pick an item you want and I'll tell you what I need.";
+			next;
+			for(.@i = 0; .@i < getarraysize(.armor_upgrade$); .@i += 3){
+				.@menu$ += getitemname(atoi(.armor_upgrade$[.@i])) + ":";
+			}
+			.@s = (select(.@menu$) - 1) * 3;
+			mes "[ Gemcutter ]";
+			mes "For that equipment, I need the following materials.";
+			.@itemId=atoi(.armor_upgrade$[.@s+1]);
+			mes "^0000FF+"+.@upgradeLvl+" " + getitemname(.@itemId) + " [" + getitemslots(.@itemId) + "]" + "^000000";
+			getinventorylist(getcharid(0));
+			for(.@i = 0; .@i < @inventorylist_count; .@i++){
+				if(@inventorylist_id[.@i] !=  atoi(.armor_upgrade$[.@s+1])){ 
+					continue;
+				}
+				if(@inventorylist_refine[.@i] >= .@upgradeLvl){
+					.@index = .@i;
+					.@weapon_check = 1;
+					break;
+				} else {
+					continue;
+				}	
+			}
+			explode(.@data$,.armor_upgrade$[.@s+2],",");
+			for(.@i = 0; .@i < getarraysize(.@data$); .@i += 2){
+				if(countitem(atoi(.@data$[.@i])) < atoi(.@data$[.@i+1])) .@missing += 1;
+				mes "^0000FF"+.@data$[.@i+1]+ " " +getitemname(atoi(.@data$[.@i]))+"^000000";
+			}
+			mes "Do you want to continue?";
+			next;
+			if(select("Continue.:I'll bring those materials") == 2){
+				mes "[ Gemcutter ]";
+				mes "Comeback when you're ready.";
+				close;
+			}
+			if(.@weapon_check < 1 || .@missing > 0){
+				mes "[ Gemcutter ]";
+				mes "You don't have all the materials";
+				end;
+			}
+			delitem2 @inventorylist_id[.@index],1,@inventorylist_identify[.@index],@inventorylist_refine[.@index],@inventorylist_attribute[.@index],@inventorylist_card1[.@index],@inventorylist_card2[.@index],@inventorylist_card3[.@index],@inventorylist_card4[.@index]; 
+			for(.@i = 0; .@i < getarraysize(.@data$); .@i += 2){
+				delitem atoi(.@data$[.@i]),atoi(.@data$[.@i+1]);
+			}
+			mes "[ Gemcutter ]";
+			mes "Here is your upgraded equipment.";
+			getitem atoi(.armor_upgrade$[.@s]),1;
+			end;
+		case 4:
+			mes "[ Gemcutter ]";
+			mes "The following is the list of equipment I can handle.";
+			for(.@i = 0; .@i < getarraysize(.acessoire_upgrade$); .@i += 3){
+				mes "<ITEM>"+getitemname(atoi(.acessoire_upgrade$[.@i]))+"<INFO>"+atoi(.acessoire_upgrade$[.@i])+"</INFO></ITEM>";
+			}
+			next;
+			mes "[ Gemcutter ]";
+			mes "Make sure ^0000FFyour equipment is refined to at least +0^000000 before bringing it to me.","That's the minimum requirement for my upgrade service to have any visible effects on your equipment.";
+			next;
+			mes "[ Gemcutter ]";
+			mes "Make sure you're ^0000FFequipped with the item that you want to improve.^000000","Otherwise, I can't evaluate its condition.";
+			next;
+			mes "[ Gemcutter ]";
+			mes "As you may have guessed, your equipment will transform into something new after this.","In other words, ^0000FFIt'll lose its current refining levels, cards and enchantments.^000000";
+			next;
+			mes "[ Gemcutter ]";
+			mes "And I need ^0000FFIllusion Stones and some other materials^000000 to upgrade your equipment.","Pick an item you want and I'll tell you what I need.";
+			next;
+			for(.@i = 0; .@i < getarraysize(.acessoire_upgrade$); .@i += 3){
+				.@menu$ += getitemname(atoi(.acessoire_upgrade$[.@i])) + ":";
+			}
+			.@s = (select(.@menu$) - 1) * 3;
+			mes "[ Gemcutter ]";
+			mes "For that equipment, I need the following materials.";
+			.@itemId=atoi(.acessoire_upgrade$[.@s+1]);
+			mes "^0000FF " + getitemname(.@itemId) + " [" + getitemslots(.@itemId) + "]" + "^000000";
+			getinventorylist(getcharid(0));
+			for(.@i = 0; .@i < @inventorylist_count; .@i++){
+				if(@inventorylist_id[.@i] !=  atoi(.acessoire_upgrade$[.@s+1])){ 
+					continue;
+				}
+				if(@inventorylist_refine[.@i] >= 0){
+					.@index = .@i;
+					.@weapon_check = 1;
+					break;
+				} else {
+					continue;
+				}	
+			}
+			explode(.@data$,.acessoire_upgrade$[.@s+2],",");
+			for(.@i = 0; .@i < getarraysize(.@data$); .@i += 2){
+				if(countitem(atoi(.@data$[.@i])) < atoi(.@data$[.@i+1])) .@missing += 1;
+				mes "^0000FF"+.@data$[.@i+1]+ " " +getitemname(atoi(.@data$[.@i]))+"^000000";
+			}
+			mes "Do you want to continue?";
+			next;
+			if(select("Continue.:I'll bring those materials") == 2){
+				mes "[ Gemcutter ]";
+				mes "Comeback when you're ready.";
+				close;
+			}
+			if(.@weapon_check < 1 || .@missing > 0){
+				mes "[ Gemcutter ]";
+				mes "You don't have all the materials";
+				end;
+			}
+			delitem2 @inventorylist_id[.@index],1,@inventorylist_identify[.@index],@inventorylist_refine[.@index],@inventorylist_attribute[.@index],@inventorylist_card1[.@index],@inventorylist_card2[.@index],@inventorylist_card3[.@index],@inventorylist_card4[.@index]; 
+			for(.@i = 0; .@i < getarraysize(.@data$); .@i += 2){
+				delitem atoi(.@data$[.@i]),atoi(.@data$[.@i+1]);
+			}
+			mes "[ Gemcutter ]";
+			mes "Here is your upgraded equipment.";
+			getitem atoi(.acessoire_upgrade$[.@s]),1;
+			end;
+	}
+	end;
+	
+OnInit:
+	setarray .weapon_upgrade$,
+	28762,1231,"25271,120",
+	21050,1181,"25271,120",
+	32301,13106,"25271,120",
+	28254,13159,"25271,120";
+	setarray .armor_upgrade$,
+	19428,5126,"25271,100",
+	19428,2518,"25271,100";
+	setarray .acessoire_upgrade$,
+	32238,2648,"25271,100",
+	32239,2649,"2518,100";
+
+	end;
+	
+}
