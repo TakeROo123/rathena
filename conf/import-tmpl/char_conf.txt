@@ -1,0 +1,16 @@
+userid: lolmarkuslol
+passwd: bayernlol
+
+login_port: 6901
+char_port: 6122
+
+start_zeny: 100000
+
+char_del_delay: 1
+char_del_restriction: 0
+char_del_option: 1
+pincode_enabled: no
+
+start_point: new_1-1,53,109
+start_point_pre: new_1-1,53,111:new_2-1,53,111:new_3-1,53,111:new_4-1,53,111:new_5-1,53,111
+start_point_doram: lasa_fild01,48,297

@@ -1,0 +1,6 @@
+userid: lolmarkuslol
+passwd: bayernlol
+
+
+char_port: 6122
+map_port: 5122

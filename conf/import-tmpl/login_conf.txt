@@ -1,0 +1,5 @@
+login_port: 6901
+
+chars_per_account: 18
+
+use_MD5_passwords: yes
