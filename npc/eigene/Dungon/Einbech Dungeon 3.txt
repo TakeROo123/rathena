@@ -1,0 +1,63 @@
+ein_dun03,0,0	monster	Jeweliant	20598,25,5000
+ein_dun03,0,0	monster	Poisonous	20592,25,5000
+ein_dun03,0,0	monster	Toxious	20593,15,5000
+ein_dun03,0,0	monster	Green Mineral	20594,10,5000
+ein_dun03,0,0	monster	Red Mineral	20595,10,5000
+ein_dun03,0,0	monster	White Mineral	20596,10,5000
+ein_dun03,0,0	monster	Purple Mineral	20597,10,5000
+ein_dun03,0,0	monster	Jewel	20600,20,5000
+ein_dun03,0,0	monster	White Porcellio	20602,30,5000
+ein_dun03,0,0	monster	Abyssman	20603,15,5000
+ein_dun03,0,0,0,0	boss_monster	Jungoliant	20601,1,7500000,600000,0
+
+//--------------Warp NPC---------------------
+
+//IN
+ein_dun02,292,286,4	script	Mystik	456,{
+if(BaseLevel < 175) {
+	mes "What are you doing here?";
+	mes "I'm looking for a strong adventurer to fill my curiosity!";
+	next;
+	mes .n$;
+	mes "Come back when you're at least 175.";
+	close;
+}
+
+
+mes "[Mystik]";
+mes "Haha! Everytime I come here, it's a new adventurer!";
+mes "I like it!";
+next;
+if(select("Let's go!:I'll keep looking.") == 2) {
+	mes "[Dragon Hero]";
+	mes "Sure!";
+	close;
+}
+mes "[Mystik]";
+mes "Alright!";
+mes "Let's skip this and go";
+close2;
+warp "ein_dun03",271,279;
+end;
+}
+
+//OUT
+ein_dun03,268,283,4	script	Mystik	456,{
+
+mes "[Mystik]";
+mes "Haha! Everytime I come here, it's a new adventurer!";
+mes "I like it!";
+next;
+if(select("Let's get out of here!:I'll keep looking.") == 2) {
+	mes "[Dragon Hero]";
+	mes "Sure!";
+	close;
+}
+mes "[Mystik";
+mes "Alright!";
+mes "Let's skip this and go back outside";
+mes "~ <3";
+close2;
+warp "ein_dun02",291,290;
+end;
+}

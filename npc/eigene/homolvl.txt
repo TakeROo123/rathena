@@ -1,0 +1,69 @@
+prt_in,129,111,20,20	monster	Poring	1002,99,5,0,0
+prt_church,171,171,20,20	monster	Marin	1242,30,5,0,0
+
+prt_cas,104,62,50,50	monster	HomoLvL	1152,10,5,0,0
+prt_cas,104,62,50,50	monster	HomoLvL	1177,60,5,0,0
+
+prt_castle,63,108,20,20	monster	Plant	1781,4,5,0,0
+prt_castle,63,108,20,20	monster	Plant	1118,10,5,0,0
+prt_castle,63,108,20,20	monster	Plant	1368,5,5,0,0
+
+    -	script	lvlhomo_1	-1,{
+       
+       
+OnInit:
+bindatcmd("lvlhomu", strnpcinfo(3) +"::Onlvlhomo");
+end;
+ 
+Onlvlhomo:
+if( gethominfo(0) ) goto N_homun;
+dispbottom "sie haben keinen Homunculus...";
+end;
+
+N_homun:
+warp "prt_cas",104,62;
+close;
+}
+
+
+    -	script	gm	-1,{
+       
+       
+OnInit:
+bindatcmd("gm", strnpcinfo(3) +"::Ongm");
+end;
+
+Ongm:
+if(getgroupid() == 99) goto N_homun;
+dispbottom "Du bist kein GM...";
+end;
+
+N_homun:
+warp "takero",367,191;
+close;
+}
+
+    -	script	vp1	-1,{
+       
+       
+OnInit:
+bindatcmd("vip", strnpcinfo(3) +"::Ongm");
+end;
+
+Ongm:
+	if (BaseLevel >= 40) 
+		dispbottom "You are too high for this room!";
+	else if(getgroupid() == 5) 
+		goto N_homun;
+	else
+		dispbottom "Du bist kein ViP...";
+	end;
+end;
+
+N_homun:
+warp "prt_in",129,111;
+close;
+}
+
+
+

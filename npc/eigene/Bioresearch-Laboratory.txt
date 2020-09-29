@@ -1,0 +1,66 @@
+//===== rAthena Script =======================================
+//= Bioresearch Laboratory
+//===== By: ==================================================
+//= TakeRo
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= rAthena Project
+//============================================================
+yuno,216,345,4	script	Lydia	4_F_LYDIA,{
+
+mes .n$;
+if(BaseLevel < 175) {
+	mes "What are you doing here?";
+	mes "I'm looking for a strong adventurer to fill my curiosity!";
+	next;
+	mes .n$;
+	mes "Come back when you're at least 175.";
+	close;
+	}
+mes "I think I just did the discovery of the century! Do you want to tag along?";
+mes "you only need 50 "+getitemname(22687)+".";
+next;
+switch(select("Let's go!")) {
+	
+	case 1:
+	mes .n$;
+	mes "That's the way to go!";
+	mes "I can't help, but fall in love with your enthusiasm.";
+	close2;
+	delitem 22687,50;
+	warp "1@gol1",190,328;
+	end;
+	}
+}
+
+//---------------------------------
+//Warps
+//---------------------------------
+1@gol1,141,79	warp	in1		2,2,1@gol1,142,88
+1@gol1,141,85	warp	out1	2,2,1@gol1,141,75
+
+1@gol1,163,164	warp	in2		2,2,1@gol1,163,173
+1@gol1,163,169	warp	out2	2,2,1@gol1,163,161
+
+1@gol1,146,224	warp	in3		2,2,1@gol1,146,233
+1@gol1,146,229	warp	out3	2,2,1@gol1,146,221
+
+1@gol1,140,254	warp	in4		2,2,1@gol1,132,254
+1@gol1,136,254	warp	out4	2,2,1@gol1,144,254
+
+1@gol1,81,254	warp	in5		2,2,1@gol1,72,254
+1@gol1,75,254	warp	out5	2,2,1@gol1,85,254
+//---------------------------------
+//Mobs
+//---------------------------------
+//MVP
+1@gol1,0,0,0,0	boss_monster	Nameless Swordsman	20536,1,7200000,600000,1
+//normal
+1@gol1,0,0	monster	Regenschirm Scientist	20543,50,5000
+1@gol1,0,0	monster	Rekenber Guard	20542,50,5000
+1@gol1,0,0	monster	Rekenber Senior Guard	20541,50,5000
+1@gol1,0,0	monster	Nameless Swordsman	20537,50,5000
+1@gol1,0,0	monster	Nameless Acolyte	20538,50,5000
+1@gol1,0,0	monster	Nameless Merchant	20539,50,5000
+//---------------------------------

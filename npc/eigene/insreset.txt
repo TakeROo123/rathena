@@ -1,0 +1,77 @@
+takero,286,376,3	script	Instance Reseter	833,{
+	
+	mes .name$;
+	mes "Hallo, ich kann eine Instanz zurücksetzen.";
+	mes "Welche Instanz möchten Sie zurücksetzen?";
+	next;
+	for(.@i=0;.@i<getarraysize(.instances$);.@i+=5)
+		set .@menu$,.@menu$+.instances$[.@i]+":";
+	set .@ans,select(.@menu$)-1;
+	set .@instance$,.instances$[.@ans*5];
+	set .@qid,atoi(.instances$[(.@ans*5)+1]);
+	set .@item,atoi(.instances$[(.@ans*5)+2]);
+	set .@amt,atoi(.instances$[(.@ans*5)+3]);
+	set .@zeny,atoi(.instances$[(.@ans*5)+4]);
+	next;
+	if(checkquest(.@qid,PLAYTIME)==2 || checkquest(.@qid,PLAYTIME) < 0){
+		mes .name$;
+		mes "Eh? Sie müssen diese Instanz nicht zurücksetzen. Sie dürfen es bereits eitreten.";
+		end;
+	}
+	mes .name$;
+	mes "Sie möchten sie also zurücksetzen ^FF0000"+.@instance$+"^000000?";
+	mes "Es wird dich aber was kosten. keine Angst es wird nicht deine Seele sein: ";
+	if(.@item)
+	mes ""+.@amt+"x ^0000FF"+getitemname(.@item)+"^000000";
+	if(.@zeny)
+	mes "aber ^0000FF"+.@zeny+"^000000 Zeny sollten genug sein";
+	mes "Möchten Sie jetzt zurücksetzen?";
+	next;
+	if(select("Ja, bitte zurücksetzen:Nein Entschuldigung")==2){
+		mes .name$;
+		mes "Okay, bitte komm wieder zu mir, wenn du dich entschieden hast";
+		end;
+	}
+	close2;
+	if(.@item && countitem(.@item)<.@amt)
+		goto L_NotEnough;
+	if(.@zeny && Zeny<.@zeny)
+		goto L_NotEnough;
+	if(.@item)
+		delitem .@item,.@amt;
+	Zeny-=.@zeny;
+	erasequest .@qid;
+	message strcharinfo(0),"Instanz wurde zurückgesetzt! und jetzt LAUF";
+	end;
+
+L_NotEnough:
+	mes .name$;
+	mes "Es tut uns leid! Leider must du die Instanz nicht zurücksetzen";
+end;
+
+OnInit:
+	// Instance Name, Quest ID, Item ID for Reset,Item Amount, Zeny Amount
+	set .name$,"[ Instance Reseter ]";
+	setarray .instances$[0],
+		"Endless Tower","60200","0","0","1000000",
+		"Nidhogg Nest","3135","0","","1000000",
+		"Sealed Shrine","3045","0","0","999999",
+		"Faceworm's Nest","12325","0","0","1000000",
+		"Airship Assault","15051","0","0","1000000",
+		"Bakonawa Lake","12278","0","0","1000000",
+		"Bangungot Hospital 2F","9223","0","0","1000000",
+		"Buwaya Cave","4229","0","0","1000000",
+		"Ghost Palace","1261","0","0","1000000",
+		"Central Laboratory","12347","0","0","1000000",
+		"Charleston","13185","0","0","1000000",
+		"OGH","12317","0","0","1000000",
+		"Horror Toy Factory","12331","0","0","1000000",
+		"Sara's Memory","15002","0","0","1000000";
+		
+
+
+end;
+	
+}
+
+//made by TakeRo

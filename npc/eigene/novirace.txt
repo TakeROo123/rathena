@@ -1,0 +1,50 @@
+prontera,155,171,5	script	Karl	52,{
+			cutin "eich.bmp",2;
+		if ( BaseLevel > 1 || Class != 0 ) {
+			mes "Only Lv 1 Novice can enter.";
+			close;
+		}
+		else {
+			getinventorylist;
+			if ( @inventorylist_amount ) {
+				mes "You store all your items first.";
+				close2;
+				@inventorylist_amount = false;
+				end;
+			}
+			sc_end SC_ALL;
+			sc_start SC_DECREASEAGI,600000,10;
+			percentheal 100,100;
+			warp "tak1_run",13,43;	//tak1_run,13,43
+		}
+	}
+
+tak1_run,6,38,5	script	Barricade	78,{
+
+	if(getgroupid() == 99){OnSpawn:
+	setcell "tak1_run",6,50,21,50,cell_walkable,0; //non walkable
+
+}
+}
+
+
+tak1_run,21,53,5	script	Start	503,{
+	if(getgroupid() == 99){OnSpawn:
+	setcell "tak1_run",6,50,21,50,cell_walkable,1;
+
+}
+}
+//warps
+tak1_run,331,214,0	warp	wwarp#1	1,1,tak1_run,330,228,0
+tak1_run,78,312,0	warp	wwwarp#1	1,1,prt_in,284,130,0
+
+
+
+prt_in,289,135,5	script	WIN	485,{
+	OnInit:
+	waitingroom "RPnovicenRace00",0;
+	end;
+}
+
+
+

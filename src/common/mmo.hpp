@@ -40,16 +40,16 @@
 #endif
 
 #define MAX_MAP_PER_SERVER 1500 /// Maximum amount of maps available on a server
-#define MAX_INVENTORY 200 ///Maximum items in player inventory
+#define MAX_INVENTORY 100 ///Maximum items in player inventory
 /** Max number of characters per account. Note that changing this setting alone is not enough if the client is not hexed to support more characters as well.
 * Max value tested was 265 */
 #ifndef MAX_CHARS
 	#if PACKETVER >= 20180124
-		#define MAX_CHARS 18
+		#define MAX_CHARS 15
 	#elif PACKETVER >= 20100413
 		#define MAX_CHARS 12
 	#else
-		#define MAX_CHARS 15
+		#define MAX_CHARS 9
 	#endif
 #endif
 
@@ -68,7 +68,7 @@ typedef uint32 t_itemid;
 #define MIN_WALK_SPEED 20 ///Min walk speed
 #define MAX_WALK_SPEED 1000 ///Max walk speed
 #define MAX_STORAGE 600 ///Max number of storage slots a player can have
-#define MAX_GUILD_STORAGE 800 ///Max number of storage slots a guild
+#define MAX_GUILD_STORAGE 600 ///Max number of storage slots a guild
 #define MAX_PARTY 12 ///Max party member
 #define MAX_GUILD 16+10*6	///Increased max guild members +6 per 1 extension levels [Lupus]
 #define MAX_GUILDPOSITION 20	///Increased max guild positions to accomodate for all members [Valaris] (removed) [PoW]

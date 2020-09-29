@@ -1,0 +1,136 @@
+// @reloadnpc npc/eigene/events/novipvp.txt
+/*
+-	script	Event_NvPvP	-1,{
+    OnInit:
+        .@instanceName$ = "Event Novice PVP";
+        // item rewards
+        setarray .reward,
+            7711, 25,
+            33060, 10;
+        // 
+
+        .$map = "x_prt";
+        .@teams = 2;
+
+        // @nvpvpstart - gm manual start
+        bindatcmd "nvpvpstart", strnpcinfo(0)+"::OnStart",60,60;
+        
+        // @nvpvp - player join event
+        bindatcmd "nvpvp", strnpcinfo(0)+"::OnJoinEvent";
+
+        .@instance = 0
+            
+        // Mapflags
+        setarray .@mapflag,
+            mf_nowarp,
+            mf_nowarpto,
+            mf_noteleport,
+            mf_nomemo,
+            mf_nosave,
+            mf_noicewall,
+            mf_nobranch,
+            mf_noreturn,
+            mf_nocommand;
+
+        for ( .@i = 0; .@i < getarraysize(.@mapflag); .@i++)
+            setmapflag .$map, .@mapflag[.@i];
+    end;
+}
+
+*/
+
+prt_evt_in,42,46,4	script	Team Manager Green	4_F_NOVICE,{
+    party_delmember();
+    percentheal 100,100;
+    close;
+
+    OnGo:
+        getwaitingroomusers("Team Manager Green");
+        setarray .@waitingroom_users_string$,"";
+        for (.@i = 0; .@i < .@waitingroom_usercount; .@i++) {
+            debugmes "HERE ->" + .@waitingroom_users[.@i];
+            .@waitingroom_users_string$[.@i] = .@waitingroom_users[.@i]+"";
+        }
+
+        debugmes "Player ported to PVP map -> [" + implode(.@waitingroom_users_string$, ", ") + "] -> " + .@waitingroom_usercount;
+        query_sql("SELECT char_id FROM `char` WHERE account_id IN ("+implode(.@waitingroom_users_string$, ",")+") AND online = 1;", .@waitingroom_users_chars$);
+        debugmes "Chars -> [" + implode(.@waitingroom_users_chars$, ", ") + "] -> " + .@waitingroom_usercount;
+
+        setarray .@waitingroom_users_chars_int,0;
+        for (.@i = 0; .@i < .@waitingroom_usercount; .@i++) {
+            .@waitingroom_users_chars_int[.@i] = .@waitingroom_users_chars$[.@i]+"";
+        }
+
+        party_create("Team Green", .@waitingroom_users_chars_int[0]);
+        attachrid $@party_create_id;
+        .@partyId = $@party_create_id;
+        debugmes "Trying to add other members to party: "+.@partyId+" -> expected party size: "+getarraysize(.@waitingroom_users_chars_int);
+
+        for ( .@i = 1; .@i < getarraysize(.@waitingroom_users_chars_int); .@i++) {
+            .@success = party_addmember(.@partyId, .@waitingroom_users_chars_int[.@i]);
+            debugmes "Adding " + .@waitingroom_users_chars_int[.@i] + " to party: " + .@success;
+        }
+
+
+        //warpwaitingpc "x_prt",124,14,.@waitingroom_usercount;
+    end;
+
+    OnInit:
+        delwaitingroom;
+        waitingroom "Team Green",4,"::OnGo",3,0,10,10;
+    end;
+}
+/*
+prt_evt_in,42,43,4	script	Team Manager Red	4_F_NOVICE2,{
+    percentheal 100,100;
+    close;
+
+    OnGo:
+        warpwaitingpc "x_prt",13,126,3;
+        
+        .warpedPlayer = $@warpwaitingpc;
+        for ( .@i = 0; .@i < getarraysize(.warpedPlayer); .@i++)
+            party_delmember(.warpedPlayer[.@i]);
+        
+        party_create "Team Red",.warpedPlayer[0];
+        .@partyCreated = $@party_create_id;
+        for ( .@i = 1; .@i < getarraysize(.warpedPlayer); .@i++)
+            party_addmember(.warpedPlayer[.@i], .@partyCreated);
+    end;
+
+    OnInit:
+        delwaitingroom;
+        waitingroom "Team Red",4,"::OnGo",3,0,10,10;
+    end;
+}
+*/
+prt_evt_in,32,45,4	script	Resetter	4_M_SIT_NOVICE,{
+    mes .n$;
+	mes "Do you want to prepare your char?";
+	next;
+	if(select("- Yeah! :- Nah!") - 1) {
+		mes .n$;
+		mes "Leave!";
+
+		close;
+	}
+
+    jobchange JOB_NOVICE;
+    resetstatus;
+    resetskill;
+    resetlvl 1;
+    BaseLevel = 10;
+    JobLevel = 10;
+    percentheal 100,100;
+
+    mes .n$;
+    mes "Have fun!";
+    close;
+    
+    OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+    end;
+}
+
+prt_evt_in,37,49,4	shop	Equip Seller	4_F_NOVICE,no,1243:1000,1381:1000,1545:1000,1639:1000,1742:1000,2112:1000,2393:1000,2414:1000,2510:1000,5055:1000,13415:1000,1750:1;
+prt_evt_in,35,49,4	shop	Manual Seller	4_F_NOVICE2,no,2819:1000,2820:1000,2821:1000,2822:1000,2823:1000,2824:1000;

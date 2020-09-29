@@ -172,7 +172,7 @@
 					mes "This is some high risk territory!";
 					mes "Alright, which armor would you like me to try adding a Slot?";
 					next;
-					switch(select("Gemmed Sallet:Bucket Hat:Memory Book:Tights:Legion Plate Armor:Full Plate:Thief Clothes:Greaves:Coif:Manteau:Helm:Ninja Suit:Orc Helm:Ancient Cape:Monk Hat:Golden Gear:Brooch:Munak Hat"))
+					switch(select("Gemmed Sallet:Bucket Hat:Memory Book:Tights:Legion Plate Armor:Full Plate:Thief Clothes:Greaves:Coif:Manteau:Helm:Ninja Suit:Orc Helm:Ancient Cape:Monk Hat:Golden Gear:Brooch:Munak Hat:Special Ninja Suit"))
 					{
 						case 1:  callfunc "Func_Socket",2230,2231,40,61,400,985,1;
 						case 2:  callfunc "Func_Socket",5114,5120,40,61,400,985,1;
@@ -192,6 +192,8 @@
 						case 16: callfunc "Func_Socket",2246,5159,40,61,400,985,1;
 						case 17: callfunc "Func_Socket",2605,2625,40,61,400,985,1;
 						case 18: callfunc "Func_Socket",2264,5167,40,61,300,985,1;
+						case 19: callfunc "Func_Socket",15053,15056,40,61,400,985,1;
+
 					}
 				case 4:
 					mes "[Seiyablem]";

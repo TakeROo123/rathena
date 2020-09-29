@@ -1,0 +1,6 @@
+prontera,197,54,5	script	JET	4_m_sura,{
+npctalk "JET: ACHTUNG UC ..........Ohhhhh Abgebrochen";
+end;
+
+}
+

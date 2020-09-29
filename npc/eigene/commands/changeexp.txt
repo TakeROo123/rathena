@@ -1,0 +1,13 @@
+-	script	command#changeexp	-1,{
+    OnInit:
+        bindatcmd("changeexp",strnpcinfo(0)+"::OnCommand");
+    end;
+
+    OnCommand:
+        set .@char_id, getcharid(0);
+        bonus_script_clear 9,.@char_id;
+        .@rateDecrease = 100 - select("95%:90%:85%:80%:75%:70%:65%:60%:55%:50%:45%:40%:35%:30%:25%:20%:15%:10%:5%") * 5;
+        bonus_script "{ bonus2 bExpAddClass,Class_All,-"+.@rateDecrease+"; }",600,9,1,SC_EXPBOOST,.@char_id;
+        debugmes strcharinfo(0) + "has changed its exp rate by -"+.@rateDecrease+"%!";
+    end;
+}

@@ -13,7 +13,7 @@
 //= 1.0 First version, edited. [Euphy]
 //============================================================
 
-prontera,148,174,5	script	Private MVP Room	100,{
+takero,282,370,5	script	Private MVP Room	100,{
 	mes "[Private MVP Room]";
 	mes "Please select a private MVP room.";
 	if ( getvariableofnpc( .rentcost, "MVP Summoner" ) )
@@ -226,17 +226,17 @@ OnInit:
 	// Room rental time, in minutes.
 	// When time runs out, all players inside the room will be kicked out.
 	// Do NOT set this to zero!
-	set .timeout, 60;
+	set .timeout, 120;
 
-	set .rentcost, 100000;	// Zeny cost for renting a room (0 = free)
-	set .mvpcost, 100000;	// Zeny cost to summon an MVP (0 = free)
-	set .bosscost, 50000;	// Zeny cost to summon a boss monster (0 = free)
+	set .rentcost, 10000000;	// Zeny cost for renting a room (0 = free)
+	//set .mvpcost, 100000;	// Zeny cost to summon an MVP (0 = free)
+	//set .bosscost, 50000;	// Zeny cost to summon a boss monster (0 = free)
 
 	//	Options setting inside MVP room
 	set .@menu[1], 1;	// Turn Heal option On/Off
-	set .@menu[2], 1;	// Turn MVP Summoning On/Off
-	set .@menu[3], 1;	// Turn Mini boss Summoning On/Off
-	set .@menu[4], 0;	// Sell items (branches) On/Off (see shop below, before the mapflags)
+	//set .@menu[2], 1;	// Turn MVP Summoning On/Off
+	//set .@menu[3], 1;	// Turn Mini boss Summoning On/Off
+	//set .@menu[4], 0;	// Sell items (branches) On/Off (see shop below, before the mapflags)
 
 	// Respawn point when players leave the room
 	set .respawnmap$, "prontera";
@@ -348,7 +348,7 @@ OnInit:
 	end;
 }
 
--	shop	MVP room#branch	-1,604:100000,12103:1000000
+//-	shop	MVP room#branch	-1,604:100000,12103:1000000
 
 06guild_01,49,49,4	duplicate(MVP Summoner)	MVP Summoner#1	116
 06guild_02,49,49,4	duplicate(MVP Summoner)	MVP Summoner#2	116

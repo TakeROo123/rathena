@@ -1,0 +1,8 @@
+odin_past,0,0	monster	Angelgolt	20604,20,5000
+odin_past,0,0	monster	Angelgolt	20605,16,5000
+odin_past,0,0	monster	Holy Frus	20606,16,5000
+odin_past,0,0	monster	Holy Skogul	20607,5,5000
+odin_past,0,0	monster	Arch Plasma	20608,4,5000
+odin_past,0,0	monster	Spectral Plasma	20609,4,5000
+odin_past,0,0,0,0	boss_monster	Reginleif	20610,1,10800000,600000,1
+odin_past,0,0,0,0	boss_monster	Ingrid	20611,1,10800000,600000,1

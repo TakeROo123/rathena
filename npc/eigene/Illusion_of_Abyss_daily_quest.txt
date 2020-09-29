@@ -1,0 +1,140 @@
+//===== rAthena Script =======================================
+//= Unofficial Illusion of Abyss Daily Quests
+//===== By ===================================================
+//= DatPanda
+//===== Version ==============================================
+//= 1.0 - Initial Version
+//===== Tested With ==========================================
+//= rAthena 06/15/2020 Revision
+//= GIT Hash: 60d03a1978c2c2d8ebf5810582bfab69cb3392df
+//===== Description ==========================================
+//= Based on the information online like ShiningMoonRo and NovaRo
+//  But mostly based on the info of ShiningMoonRo
+//= The text is done by myself.
+//===== Comments =============================================
+// bla
+//===== Credits ==============================================
+//= ShiningMoonRo for their Wiki Page:
+//  https://www.shining-moon.com/helheim/index.php/Illusion_of_Abyss
+//============================================================
+
+prontera,148,180,5	script	Franz	4_M_BARYO_OLD,{
+    .@rewardid = 25271;
+    .@rewardamount = 5;
+    .@rewardbaseexp = 100000;
+    .@rewardjobexp = 100000;
+
+    mes .n$;
+    mes "Greetings adventurer!";
+    mes "I used to be an adventure like you...";
+    mes "but see now I'm here - I got old... I have to feed my childs...";
+    mes "...";
+    mes "Back to business - why are you here?";
+
+    switch(select("- Illusion Hunt One :- Illusion Hunt Two :- Exit")) {
+        case 1:
+            goto questone;
+            break;
+        case 2:
+            goto questtwo;
+            break;
+        default:
+        	goto bye;
+            break;
+    }
+
+    bye:
+        next;
+        mes .n$;
+        mes "Good luck out there and stay safe!";
+        close;
+    end;
+
+//    *checkquest(<ID>{,PLAYTIME|HUNTING})
+//        If no additional argument supplied, return the state of the quest:
+//        -1 = Quest not started (not in quest log)
+//        0  = Quest has been given, but the state is "inactive"
+//        1  = Quest has been given, and the state is "active"
+//        2  = Quest completed
+//
+//    If parameter "PLAYTIME" is supplied:
+//        -1 = Quest not started (not in quest log)
+//        0  = the time limit has not yet been reached
+//        1  = the time limit has not been reached but the quest is marked as complete
+//        2  = the time limit has been reached
+//
+//    If parameter "HUNTING" is supplied:
+//        -1 = Quest not started (not in quest log)
+//        0  = you haven't killed all of the target monsters and the time limit has not been reached.
+//        1  = you haven't killed all of the target monsters but the time limit has been reached.
+//        2  = you've killed all of the target monsters
+
+    questone:
+        .@questID = 30029;
+        .@monster1ID = 3799;
+        .@monster2ID = 3800;
+        goto quest;
+    end;
+
+    questtwo:
+        .@questID = 30030;
+        .@monster1ID = 3801;
+        .@monster2ID = 3803;
+        goto quest;
+    end;
+
+
+    quest:
+        .@questStatus = checkquest(.@questID);
+        .@questStatusPlaytime = checkquest(.@questID, PLAYTIME);
+        .@questStatusHunting = checkquest(.@questID, HUNTING);
+        next;
+        if(.@questStatus == -1) {
+            mes .n$;
+            mes "Please kill 20 "+getmonsterinfo(.@monster1ID,0)+" & 20 "+getmonsterinfo(.@monster2ID,0)+" for me!";
+            setquest .@questID;
+            goto bye;
+        } else if(.@questStatusPlaytime == 2 && .@questStatusHunting == 2) {
+            mes .n$;
+            mes "Please help me again and kill 20 "+getmonsterinfo(.@monster1ID,0)+" & 20 "+getmonsterinfo(.@monster2ID,0)+" for me!";
+            erasequest .@questID;
+            setquest .@questID;
+            goto bye;
+        } else if(.@questStatusPlaytime == 2 && .@questStatusHunting == 1){
+            mes .n$;
+            mes "Please help me to kill them - remember:";
+            mes "Kill again 20 "+getmonsterinfo(.@monster1ID,0)+" & 20 "+getmonsterinfo(.@monster2ID,0)+" for me!";
+            erasequest .@questID;
+            setquest .@questID;
+            goto bye;
+        } else if(.@questStatusPlaytime == 0 && .@questStatusHunting == 0){
+            mes .n$;
+            mes "Come back to me when you finished the task!";
+            goto bye;
+        } else if(.@questStatusPlaytime == 0 && .@questStatusHunting == 2){
+            mes .n$;
+            mes "Thank you for helping me!";
+            mes "";
+            completequest .@questID;
+            goto givereward;
+        } else {
+            mes .n$;
+            mes "Please come back when you finished my task!";
+            goto bye;
+        }
+        close;
+    end;
+
+    givereward:
+        mes "Here is your reward!";
+        getitem .@rewardid,.@rewardamount;
+        getexp .@rewardbaseexp,.@rewardjobexp;
+        goto bye;
+    end;
+
+    close;
+
+    OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+    end;
+}

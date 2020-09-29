@@ -1,0 +1,628 @@
+//===== rAthena Script =======================================
+//= Unofficial Bioresearch Laboratory Enchanting
+//===== By ===================================================
+//= DatPanda
+//===== Version ==============================================
+//= 1.0 - Initial Version
+//===== Tested With ==========================================
+//= rAthena 06/15/2020 Revision
+//= GIT Hash: 60d03a1978c2c2d8ebf5810582bfab69cb3392df
+//===== Description ==========================================
+//= Based on the information online like Shining Moon Ro and NovaRo
+//  But mostly based on the info of NovaRo
+//= The text is done by myself.
+//===== Comments =============================================
+// bla
+//===== Credits ==============================================
+//= Nova Ro for their Wiki Page:
+//  https://www.novaragnarok.com/wiki/Bioresearch_Laboratory#Enchanting
+//============================================================
+// - Enchanter
+yuno,219,346,3	script	Lavian	4_M_PHILOFONTES,{
+    setarray .@weapons[0],21051,21052,1333,16092,28138,28765,28766,28044,28042,26158,2055,2056,26161,2057,16095,18185,18187,18186,16093,16094,28767,28768,18184,28633,26159,26160,1865,1866,16096,18188,26212,26213;
+    setarray .@basicenchants[0],4832,4833,4834,4808,4820,4821,4818,4817,4816,4863,4864,4865,4815,4814,4813;
+    setarray .@specialenchants[0],29594,29595,29596,29598,29599,29600,29601,29602,29603,29604,29605,29606,29607;
+    .@documentid = 25786;
+    .@fragmentid = 25787;
+    .@fragmentcount = countitem(.@fragmentid);
+    .@documentcount = countitem(.@documentid);
+
+	mes .n$;
+    mes "I can enchant your weapon from the Bioresearch Laboratory!";
+    next;
+    mes .n$;
+    disable_items;
+    .@equipedweapon = getequipid(EQI_HAND_R);
+    .@hasvalidweaponequiped = 0;
+    for ( set .@i,0; .@i < getarraysize(.@weapons); set .@i,.@i + 1) {
+        if(.@equipedweapon == .@weapons[.@i]){
+            mes "Ah found it!";
+            .@hasvalidweaponequiped++;
+        }
+    }
+
+    if(.@hasvalidweaponequiped == 0) {
+        goto noweapon;
+    }
+
+    // saving current cards refine and enchants
+    .@ref = getequiprefinerycnt(EQI_HAND_R);
+    .@slot1 = getequipcardid(EQI_HAND_R,0);
+    .@slot2 = getequipcardid(EQI_HAND_R,1);
+    .@slot3 = getequipcardid(EQI_HAND_R,2);
+    .@slot4 = getequipcardid(EQI_HAND_R,3);
+
+    // prefilling of enchant slots
+    .@newslot3 = .@slot3;
+    .@newslot4 = .@slot4;
+
+	mes "What do you want to do?";
+    switch(select("- General Enchant :- Advanced Enchant :- Determined Enchant :- Stop talking to you!")) {
+        case 1:
+            next;
+            goto general;
+            break;
+        case 2:
+            next;
+            goto advanced;
+            break;
+        case 3:
+            next;
+        	goto determined;
+            break;
+        default:
+            next;
+        	goto stoptalking;
+            break;
+    }
+
+    noweapon:
+        mes "...";
+        mes "Come back when you have an appropriate weapon!";
+        goto exit;
+    end;
+
+    stoptalking:
+        mes .n$;
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+
+    exit:
+        enable_items;
+        close;
+    end;
+    
+    notenoughmaterial:
+        mes .n$;
+        mes "Come back when you have the needed items!";
+        goto exit;
+    end;
+
+    enchantedslotneeded:
+        mes .n$;
+        mes "You have to prepare the weapon with at least the basic enchant on the 4th slot first!";
+        goto exit;
+    end;
+
+    cannotenchantslotfull:
+        mes .n$;
+        mes "This slot is already enchanted! Come back if you want another enchant!";
+        goto exit;
+    end;
+
+    giveitem:
+        delequip EQI_HAND_R;
+        getitem2 .@equipedweapon,1,1,.@ref,0,.@slot1,.@slot2,.@newslot3,.@newslot4;
+        equip .@equipedweapon;
+    end;
+
+    weapondestroy:
+        delequip EQI_HAND_R;
+        mes .n$;
+        mes "I'm sorry - your weapon could not handle the enchant and broke!";
+        goto exit;
+    end;
+
+    failed:
+        mes .n$;
+        mes "I'm sorry - the enchant failed! But at least your weapon is still intact!";
+        goto exit;
+    end;
+
+    success:
+        mes .n$;
+        mes "Hell yeah! The power level of your weapon is now OVER 9000!";
+        goto giveitem;
+    end;
+
+
+    general:
+        .@costdocument = 50;
+        .@costfragment = 50;
+        mes .n$;
+        mes "Enchanting will cost you:";
+        mes .@costdocument+"x "+getitemname(.@documentid);
+        mes .@costfragment+"x "+getitemname(.@fragmentid);
+        switch(select("- Continue :- Stop!")) {
+            case 2:
+                goto exit;
+                break;
+            default:
+                next;
+                break;
+        }
+        if(.@fragmentcount < .@costfragment || .@documentcount < .@costdocument) {
+            goto notenoughmaterial;
+        } else if(.@slot4 == 0) { // slot 4 enchant - common
+            delitem .@documentid,.@costdocument;
+            delitem .@fragmentid,.@costfragment;
+            .@success = rand(1,100);
+            if(.@success <= 35) { // 35% fail chance
+                .@break = rand(1,100);
+                if(.@break <= 5) { // 5% of fails can destroy weapon
+                    goto weapondestroy;
+                } else {
+                    goto failed;
+                }
+            } else {
+                // new enchant on slot 4!
+                .@newslot4 = .@basicenchants[rand(0,getarraysize(.@basicenchants)-1)];
+                goto success;
+            }
+        } else if(.@slot3 == 0) { // slot 3 enchant - special
+            delitem .@documentid,.@costdocument;
+            delitem .@fragmentid,.@costfragment;
+            .@success = rand(1,100);
+            if(.@success <= 70) { // 70% fail chance
+                .@break = rand(1,100);
+                if(.@break <= 20) { // 20% of fails can destroy weapon
+                    goto weapondestroy;
+                } else {
+                    goto failed;
+                }
+            } else {
+                // new enchant on slot 4!
+                .@newslot3 = .@specialenchants[rand(0,getarraysize(.@specialenchants)-1)];
+                goto success;
+            }
+        } else {
+             goto cannotenchantslotfull;
+        }
+    end;
+
+    advanced:
+        .@costdocument = 500;
+        .@costfragment = 500;
+        mes .n$;
+        mes "Enchanting will cost you:";
+        mes .@costdocument+"x "+getitemname(.@documentid);
+        mes .@costfragment+"x "+getitemname(.@fragmentid);
+        switch(select("- Continue :- Stop!")) {
+            case 2:
+                goto exit;
+                break;
+            default:
+                next;
+                break;
+        }
+        if(.@fragmentcount < .@costfragment || .@documentcount < .@costdocument) {
+            goto notenoughmaterial;
+        } else if(.@slot4 == 0) { // slot 4 enchant - common
+            delitem .@documentid,.@costdocument;
+            delitem .@fragmentid,.@costfragment;
+            .@success = rand(1,100);
+            if(.@success <= 10) { // 10% fail chance
+                goto failed;
+            } else {
+                // new enchant on slot 4!
+                .@newslot4 = .@basicenchants[rand(0,getarraysize(.@basicenchants)-1)];
+                goto success;
+            }
+        } else if(.@slot3 == 0) { // slot 3 enchant - special
+            delitem .@documentid,.@costdocument;
+            delitem .@fragmentid,.@costfragment;
+            .@success = rand(1,100);
+            if(.@success <= 30) { // 70% fail chance
+                 goto failed;
+            } else {
+                // new enchant on slot 4!
+                .@newslot3 = .@specialenchants[rand(0,getarraysize(.@specialenchants)-1)];
+                goto success;
+            }
+        } else {
+             goto cannotenchantslotfull;
+        }
+    end;
+
+    determined:
+        .@costdocument = 5000;
+        mes .n$;
+        mes "Enchanting will cost you:";
+        mes .@costdocument+"x "+getitemname(.@documentid);
+        switch(select("- Continue :- Stop!")) {
+            case 2:
+                goto exit;
+                break;
+            default:
+                next;
+                break;
+        }
+        if(.@documentcount < .@costdocument) {
+            goto notenoughmaterial;
+        } else if(.@slot4 == 0) { // slot 4 enchant - common
+            goto enchantedslotneeded;
+        } else if(.@slot3 == 0) { // slot 3 enchant - special
+            .@itemoptions$ = "";
+            for ( set .@i,0; .@i < getarraysize(.@specialenchants); set .@i,.@i + 1) {
+                 if( .@i == 0 ){
+                     .@itemoptions$ = "- " + getitemname(.@specialenchants[.@i])+" ";
+                 } else {
+                     .@itemoptions$ = .@itemoptions$ + ":- " + getitemname(.@specialenchants[.@i])+" ";
+                 }
+            }
+            .@itemoptions$ = .@itemoptions$ + ":- STOP!";
+            .@selectEnchant = select(.@itemoptions$) - 1;
+            if(.@selectEnchant >= 0 && .@selectEnchant < getarraysize(.@specialenchants)){
+                delitem .@documentid,.@costdocument;
+                .@newslot3 = .@specialenchants[.@selectEnchant];
+                goto success;
+            } else {
+                goto exit;
+            }
+        } else {
+             goto cannotenchantslotfull;
+        }
+    end;
+
+
+    OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+    end;
+}
+
+yuno,219,349,3	script	Weapon's Master	4_F_FRUIT,{
+    setarray .@weapons[0],21051,21052,1333,16092,28138,28765,28766,28044,28042,26158,2055,2056,26161,2057,16095,18185,18187,18186,16093,16094,28767,28768,18184,28633,26159,26160,1865,1866,16096,18188,26212,26213;
+    setarray .@basicenchants[0],4832,4833,4834,4808,4820,4821,4818,4817,4816,4863,4864,4865,4815,4814,4813;
+    setarray .@specialenchants[0],29594,29595,29596,29598,29599,29600,29601,29602,29603,29604,29605,29606,29607;
+    .@documentid = 25786;
+    .@fragmentid = 25787;
+    .@fragmentcount = countitem(.@fragmentid);
+    .@documentcount = countitem(.@documentid);
+
+	mes .n$;
+    mes "I can reroll your enchants on your weapon from the Bioresearch Laboratory!";
+    next;
+    mes .n$;
+    disable_items;
+    .@equipedweapon = getequipid(EQI_HAND_R);
+    .@hasvalidweaponequiped = 0;
+    for ( set .@i,0; .@i < getarraysize(.@weapons); set .@i,.@i + 1) {
+        if(.@equipedweapon == .@weapons[.@i]){
+            mes "Ah found it!";
+            .@hasvalidweaponequiped++;
+        }
+    }
+
+    if(.@hasvalidweaponequiped == 0) {
+        goto noweapon;
+    }
+
+    // saving current cards refine and enchants
+    .@ref = getequiprefinerycnt(EQI_HAND_R);
+    .@slot1 = getequipcardid(EQI_HAND_R,0);
+    .@slot2 = getequipcardid(EQI_HAND_R,1);
+    .@slot3 = getequipcardid(EQI_HAND_R,2);
+    .@slot4 = getequipcardid(EQI_HAND_R,3);
+
+    // prefilling of enchant slots
+    .@newslot3 = .@slot3;
+    .@newslot4 = .@slot4;
+
+    // prepare choice for 3rd slot enchants
+    .@itemoptions$ = "";
+    for ( set .@i,0; .@i < getarraysize(.@specialenchants); set .@i,.@i + 1) {
+            if( .@i == 0 ){
+                .@itemoptions$ = "- " + getitemname(.@specialenchants[.@i])+" ";
+            } else {
+                .@itemoptions$ = .@itemoptions$ + ":- " + getitemname(.@specialenchants[.@i])+" ";
+            }
+    }
+    .@itemoptions$ = .@itemoptions$ + ":- STOP!";
+
+	mes "What do you want to do?";
+    switch(select("- Reroll 4th slot enchant :- Reroll 3th slot enchant :- Stop talking to you!")) {
+        case 1:
+            next;
+            goto fourthslot;
+            break;
+        case 2:
+            next;
+            goto thirdslot;
+            break;
+        default:
+            next;
+        	goto stoptalking;
+            break;
+    }
+
+    noweapon:
+        mes "...";
+        mes "Come back when you have an appropriate weapon!";
+        goto exit;
+    end;
+
+    stoptalking:
+        mes .n$;
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+
+    exit:
+        enable_items;
+        close;
+    end;
+    
+    notenoughmaterial:
+        mes .n$;
+        mes "Come back when you have the needed items!";
+        goto exit;
+    end;
+
+    enchantedslotneeded:
+        mes .n$;
+        mes "You have to prepare the weapon with at least the basic enchant on the 4th slot first!";
+        goto exit;
+    end;
+
+    cannotrerollslotempty:
+        mes .n$;
+        mes "This slot is not enchanted! Please come back later when you enchanted your weapon.";
+        goto exit;
+    end;
+
+    giveitem:
+        delequip EQI_HAND_R;
+        getitem2 .@equipedweapon,1,1,.@ref,0,.@slot1,.@slot2,.@newslot3,.@newslot4;
+        equip .@equipedweapon;
+    end;
+
+    weapondestroy:
+        delequip EQI_HAND_R;
+        mes .n$;
+        mes "I'm sorry - your weapon could not handle the enchant and broke!";
+        goto exit;
+    end;
+
+    failed:
+        mes .n$;
+        mes "I'm sorry - the enchant failed! But at least your weapon is still intact!";
+        goto exit;
+    end;
+
+    success:
+        mes .n$;
+        mes "Hell yeah! The power level of your weapon is now OVER 9000!";
+        goto giveitem;
+    end;
+
+    fourthslot:
+        if(.@slot4 == 0) {
+            goto cannotrerollslotempty;
+        }
+        switch(select("- General Re-Enchant :- Advanced Re-Enchant :- Fragment Re-Enchant :- Stop talking to you!")) {
+            case 1:
+                next;
+                goto fourthgeneral;
+                break;
+            case 2:
+                next;
+                goto fourthadvanced;
+                break;
+            case 3:
+                next;
+                goto fourthfragment;
+                break;
+            default:
+                next;
+                goto stoptalking;
+                break;
+        }
+    end;
+
+    thirdslot:
+        if(.@slot3 == 0) {
+            goto cannotrerollslotempty;
+        }
+        switch(select("- Determined General Re-Enchant :- Determined Fragment Re-Enchant :- Stop talking to you!")) {
+            case 1:
+                next;
+                goto thirdgeneral;
+                break;
+            case 2:
+                next;
+                goto thirdfragment;
+                break;
+            default:
+                next;
+                goto stoptalking;
+                break;
+        }
+    end;
+
+    fourthgeneral:
+        .@costdocument = 50;
+        .@costfragment = 50;
+        mes .n$;
+        mes "Enchanting will cost you:";
+        mes .@costdocument+"x "+getitemname(.@documentid);
+        mes .@costfragment+"x "+getitemname(.@fragmentid);
+        switch(select("- Continue :- Stop!")) {
+            case 2:
+                goto exit;
+                break;
+            default:
+                next;
+                break;
+        }
+        if(.@fragmentcount < .@costfragment || .@documentcount < .@costdocument) {
+            goto notenoughmaterial;
+        } else {
+            delitem .@documentid,.@costdocument;
+            delitem .@fragmentid,.@costfragment;
+            .@success = rand(1,100);
+            if(.@success <= 35) { // 35% fail chance
+                .@break = rand(1,100);
+                if(.@break <= 5) { // 5% of fails can destroy weapon
+                    goto weapondestroy;
+                } else {
+                    goto failed;
+                }
+            } else {
+                // new enchant on slot 4!
+                .@newslot4 = .@basicenchants[rand(0,getarraysize(.@basicenchants)-1)];
+                goto success;
+            }
+        }
+    end;
+
+    fourthadvanced:
+        .@costdocument = 500;
+        .@costfragment = 500;
+        mes .n$;
+        mes "Enchanting will cost you:";
+        mes .@costdocument+"x "+getitemname(.@documentid);
+        mes .@costfragment+"x "+getitemname(.@fragmentid);
+        switch(select("- Continue :- Stop!")) {
+            case 2:
+                goto exit;
+                break;
+            default:
+                next;
+                break;
+        }
+        if(.@fragmentcount < .@costfragment || .@documentcount < .@costdocument) {
+            goto notenoughmaterial;
+        } else {
+            delitem .@documentid,.@costdocument;
+            delitem .@fragmentid,.@costfragment;
+            .@success = rand(1,100);
+            if(.@success <= 10) { // 10% fail chance
+                 goto failed;
+            } else {
+                // new enchant on slot 4!
+                .@newslot4 = .@basicenchants[rand(0,getarraysize(.@basicenchants)-1)];
+                goto success;
+            }
+        }
+    end;
+
+    fourthfragment:
+        .@costdocument = 100;
+        .@costfragment = 10000;
+        mes .n$;
+        mes "Enchanting will cost you:";
+        mes .@costdocument+"x "+getitemname(.@documentid);
+        mes .@costfragment+"x "+getitemname(.@fragmentid);
+        switch(select("- Continue :- Stop!")) {
+            case 2:
+                goto exit;
+                break;
+            default:
+                next;
+                break;
+        }
+        if(.@fragmentcount < .@costfragment || .@documentcount < .@costdocument) {
+            goto notenoughmaterial;
+        } else {
+            delitem .@documentid,.@costdocument;
+            delitem .@fragmentid,.@costfragment;
+            .@success = rand(1,100);
+            if(.@success <= 5) { // 10% fail chance
+                 goto failed;
+            } else {
+                // new enchant on slot 4!
+                .@newslot4 = .@basicenchants[rand(0,getarraysize(.@basicenchants)-1)];
+                goto success;
+            }
+        }
+    end;
+
+    thirdgeneral:
+        .@costdocument = 3000;
+        .@costfragment = 7500;
+        mes .n$;
+        mes "Enchanting will cost you:";
+        mes .@costdocument+"x "+getitemname(.@documentid);
+        mes .@costfragment+"x "+getitemname(.@fragmentid);
+        switch(select("- Continue :- Stop!")) {
+            case 2:
+                goto exit;
+                break;
+            default:
+                next;
+                break;
+        }
+        if(.@fragmentcount < .@costfragment || .@documentcount < .@costdocument) {
+            goto notenoughmaterial;
+        } else {
+            .@selectEnchant = select(.@itemoptions$) - 1;
+            if(.@selectEnchant >= 0 && .@selectEnchant < getarraysize(.@specialenchants)){
+                delitem .@documentid,.@costdocument;
+                delitem .@fragmentid,.@costfragment;
+                .@success = rand(1,100);
+                if(.@success <= 20) { // 20% fail chance
+                    .@break = rand(1,100);
+                    if(.@break <= 5) { // 5% of fails can destroy weapon
+                        goto weapondestroy;
+                    } else {
+                        goto failed;
+                    }
+                } else {
+                    // new enchant on slot 4!
+                    .@newslot3 = .@specialenchants[.@selectEnchant];
+                    goto success;
+                }
+            } else {
+                goto exit;
+            }
+        }
+    end;
+
+    thirdfragment:
+        .@costdocument = 1000;
+        .@costfragment = 25000;
+        mes .n$;
+        mes "Enchanting will cost you:";
+        mes .@costdocument+"x "+getitemname(.@documentid);
+        mes .@costfragment+"x "+getitemname(.@fragmentid);
+        switch(select("- Continue :- Stop!")) {
+            case 2:
+                goto exit;
+                break;
+            default:
+                next;
+                break;
+        }
+        if(.@fragmentcount < .@costfragment || .@documentcount < .@costdocument) {
+            goto notenoughmaterial;
+        } else {
+            .@selectEnchant = select(.@itemoptions$) - 1;
+            if(.@selectEnchant >= 0 && .@selectEnchant < getarraysize(.@specialenchants)){
+                delitem .@documentid,.@costdocument;
+                delitem .@fragmentid,.@costfragment;
+                // new enchant on slot 4!
+                .@newslot3 = .@specialenchants[.@selectEnchant];
+                goto success;
+            } else {
+                goto exit;
+            }
+        }
+    end;
+
+
+
+    OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+    end;
+}

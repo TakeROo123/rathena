@@ -1,0 +1,200 @@
+//===== rAthena Script =======================================
+//= Map of the day
+//===== By ===================================================
+//= DatPanda
+//===== Version ==============================================
+//= 1.0 - Initial Version
+//===== Tested With ==========================================
+//= rAthena 06/15/2020 Revision
+//= GIT Hash: 60d03a1978c2c2d8ebf5810582bfab69cb3392df
+//===== Description ==========================================
+//= Sets a map of the day with increased exp and/or loot
+//= The text is done by myself.
+//===== Comments =============================================
+// bla
+//===== Credits ==============================================
+//= DatPanda
+//============================================================
+prontera,178,148,1	script	Wise Cat Dragon	4_TARUTUPI,{
+    function RestoreOldMapOfTheDay;
+    function UpdateMapOfTheDay;
+    function RandomSetMapOfTheDay;
+    function GetRandomMap;
+    function AnnounceMOTD;
+
+    mes .n$;
+    mes "Hey adventurer I heard a tale that each day a different map will be blessed by gods!";
+    mes "On this map you gain more exp and get more loot!";
+
+    main:
+        if(getgmlevel()){
+            menu "GM",gm,"Player",player;
+        } else {
+            goto player;
+        }
+    end;
+
+    gm:
+        next;
+        mes .n$;
+        mes "Currently";
+        mes $@mapOfTheDay$+"";
+        mes "Bonuses:";
+        mes $@mapOfTheDayBExp + "% Base Exp";
+        mes $@mapOfTheDayJExp + "% Job Exp";
+        menu "New random map",setRandomMap,"Input new map and bonuses",inputMap,"Back",main;
+    end;
+
+    player:
+        if($@mapOfTheDay$ != ""){
+            next;
+            mes .n$;
+            mes "An old friend told me that a lot of adventures are on the way to";
+            mes $@mapOfTheDay$+"";
+            mes "Bonuses:";
+            mes $@mapOfTheDayBExp + "% Base Exp";
+            mes $@mapOfTheDayJExp + "% Job Exp";
+            mes "Do you also want to go there?";
+            menu "No - I have to prepare first!",bye,"Yeah send me please!",gotoMap;
+        }
+    end;
+
+    bye:
+     close;
+    end;
+
+    gotoMap:
+        close2;
+        warp $@mapOfTheDay$, 0, 0;
+        end;
+    end;
+
+    setRandomMap:
+        RandomSetMapOfTheDay;
+        AnnounceMOTD;
+        goto gm;
+    end;
+
+    updateRandomMap:
+        UpdateMapOfTheDay .@map$, .@bexp, .@jexp;
+        AnnounceMOTD;
+        goto gm;
+    end;
+
+    inputMap:
+        next;
+        mes .n$;
+        mes "New Map:";
+        input .@map$;
+        next;
+        mes .n$;
+        mes "Base EXP:";
+        input .@bexp;
+        next;
+        mes .n$;
+        mes "Job Exp:";
+        input .@jexp;
+        next;
+        mes .n$;
+        mes "Is this correct:";
+        mes .@map$+"";
+        mes "Bonuses:";
+        mes .@bexp + "% Base Exp";
+        mes .@jexp + "% Job Exp";
+        menu "No",main,"Yes",updateRandomMap;
+    end;
+
+
+    OnHour00:
+        RandomSetMapOfTheDay;
+        AnnounceMOTD;
+    end;
+
+    OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+        setarray .maps_1$[0], "alde_dun01", "alde_dun02", "alde_dun03", "alde_dun04", "anthell01", "anthell02", "gef_dun00", "gef_dun01", "gef_dun02", "gef_dun03", "gef_fild00", "gef_fild01", "gef_fild02", "gef_fild03", "gef_fild04", "gef_fild05", "gef_fild06", "gef_fild07", "gef_fild08", "gef_fild09", "gef_fild10", "gef_fild11", "gef_fild12", "gef_fild13", "gef_fild14", "gl_dun01", "gl_dun02", "gl_knt01", "gl_knt02", "gl_prison", "gl_prison1", "gl_sew01", "gl_sew02", "gl_sew03", "gl_sew04", "iz_dun00", "iz_dun01", "iz_dun02", "iz_dun03", "iz_dun04", "izlu2dun", "mjolnir_02", "mjolnir_03", "mjolnir_04", "mjolnir_05", "mjolnir_06", "mjolnir_07", "mjolnir_08", "mjolnir_09", "mjolnir_10", "mjolnir_11", "mjolnir_12", "moc_fild01", "moc_fild02", "moc_fild03", "moc_fild07", "moc_fild11", "moc_fild12", "moc_fild13", "moc_fild16", "moc_fild17", "moc_fild18";
+        setarray .maps_2$[0], "moc_fild19", "moc_pryd01", "moc_pryd02", "moc_pryd03", "moc_pryd04", "moc_pryd05", "moc_pryd06", "moc_prydb1", "moc_ruin", "orcsdun01", "orcsdun02", "pay_dun00", "pay_dun01", "pay_dun02", "pay_dun03", "pay_dun04", "pay_fild01", "pay_fild02", "pay_fild03", "pay_fild04", "pay_fild05", "pay_fild06", "pay_fild07", "pay_fild08", "pay_fild09", "pay_fild10", "pay_fild11", "prt_fild00", "prt_fild01", "prt_fild02", "prt_fild03", "prt_fild04", "prt_fild05", "prt_fild06", "prt_fild07", "prt_fild08", "prt_fild09", "prt_fild10", "prt_fild11";
+        setarray .maps_3$[0], "xmas_dun01", "xmas_dun02", "xmas_fild01", "beach_dun", "beach_dun2", "beach_dun3", "cmd_fild01", "cmd_fild02", "cmd_fild03", "cmd_fild04", "cmd_fild05", "cmd_fild06", "cmd_fild07", "cmd_fild08", "cmd_fild09", "tur_dun01", "tur_dun02", "tur_dun03", "tur_dun04", "tur_dun05", "tur_dun06";
+        setarray .maps_4$[0], "yuno_fild01", "yuno_fild02", "yuno_fild03", "yuno_fild04", "ama_dun01", "ama_dun02", "ama_dun03", "ama_fild01", "gon_dun01", "gon_dun02", "gon_dun03", "gon_fild01", "um_dun01", "um_dun02", "um_fild01", "um_fild02", "um_fild03", "um_fild04", "niflheim", "nif_fild01", "nif_fild02", "yggdrasil01", "lou_dun03", "lou_dun02", "lou_dun01", "lou_fild01", "gefenia01", "gefenia02", "gefenia03", "gefenia04", "ayothaya", "ayo_fild01", "ayo_fild02", "ayo_dun01", "ayo_dun02", "yuno_fild05";
+        setarray .maps_5$[0], "yuno_fild07", "yuno_fild08", "yuno_fild09", "yuno_fild11", "yuno_fild12", "einbech", "einbroch", "ein_dun01", "ein_dun02", "ein_fild06", "ein_fild07", "ein_fild08", "ein_fild09", "ein_fild10", "ein_fild03", "ein_fild04", "lhz_fild02", "lhz_fild03", "yuno_pre", "lhz_fild01", "lhz_dun01", "lhz_dun02", "lhz_dun03", "juperos_01", "juperos_02", "hu_fild07", "hu_fild05", "hu_fild04", "hu_fild01", "yuno_fild06", "abyss_01", "abyss_02", "abyss_03", "tha_t01", "tha_t02", "tha_t03", "tha_t04", "tha_t07", "tha_t05", "tha_t06", "tha_t08", "tha_t09", "tha_t10", "tha_t11", "tha_t12", "odin_tem01", "odin_tem02", "odin_tem03", "hu_fild02", "hu_fild03", "hu_fild06", "ein_fild01", "ein_fild02", "ein_fild05", "yuno_fild10";
+        setarray .maps_6$[0], "ra_fild02", "ra_fild03", "ra_fild04", "ra_fild05", "ra_fild06", "ra_fild07", "ra_fild08", "ra_fild09", "ra_fild10", "ra_fild11", "ra_fild12", "ra_fild13", "ra_san01", "ra_san02", "ra_san03", "ra_san04", "ra_san05", "ice_dun01", "ice_dun02", "ice_dun03", "ice_dun04", "ve_fild01", "ve_fild02", "ve_fild03", "ve_fild04", "ve_fild05", "ve_fild06", "ve_fild07", "abbey01", "abbey02", "abbey03", "mosk_fild01", "mosk_fild02", "mosk_dun01", "mosk_dun02", "mosk_dun03";
+        setarray .maps_7$[0], "spl_fild01", "jupe_core2", "moc_para01", "bra_dun01", "bra_dun02", "dicastes01", "dicastes02", "dic_fild01", "dic_fild02", "dic_dun01", "dic_dun02", "bif_fild01", "bif_fild02", "dew_fild01", "dew_dun01", "dew_dun02", "mal_dun01", "iz_dun05", "lhz_dun04", "ecl_fild01", "ecl_tdun01", "ecl_tdun02", "ecl_tdun03", "ecl_tdun04";
+        setarray .maps_8$[0], "lhz_dun_n", "un_bunker", "verus01", "verus02", "lasa_fild01", "lasa_fild02", "lasa_dun01", "lasa_dun02", "lasa_dun03", "lasa_dun_q", "slabw01", "harboro1", "harboro2", "rockmi1", "rockmi2", "rockrdg1", "rockrdg2", "pay_d03_i", "gef_d01_i", "ice_d03_i", "tur_d03_i", "tur_d04_i";
+        setarray .maps_9$[0], "mag_dun03",  "prt_mz03_i", "iz_d05_i", "iz_d04_i", "1@gol1";
+        // Kommen noch:
+        // "odin_past", "abyss_04", "ein_dun03"
+        
+        RandomSetMapOfTheDay;
+        AnnounceMOTD;
+    end;
+
+    
+    function	RestoreOldMapOfTheDay	{
+        removemapflag $@mapOfTheDay$,MF_BEXP;
+        removemapflag $@mapOfTheDay$,MF_JEXP;
+    }
+
+    function	UpdateMapOfTheDay	{
+        RestoreOldMapOfTheDay;
+        $@mapOfTheDay$ = getarg(0, $@mapOfTheDay$);
+        $@mapOfTheDayBExp = getarg(1, $@mapOfTheDayBExp);
+        $@mapOfTheDayJExp = getarg(2, $@mapOfTheDayJExp);
+
+        setmapflag $@mapOfTheDay$,MF_BEXP,(100+$@mapOfTheDayExp);
+        setmapflag $@mapOfTheDay$,MF_JEXP,(100+$@mapOfTheDayJExp);
+    }
+    
+    function	RandomSetMapOfTheDay	{
+        .@map$ = GetRandomMap;
+        .@bexp = rand(1,30);
+        .@jexp = rand(1,30);
+        UpdateMapOfTheDay .@map$, .@bexp, .@jexp;
+    }
+
+    function	GetRandomMap	{
+        .@mapArrayToSelect = rand(1,9);
+        switch(.@mapArrayToSelect){
+            case 1:
+                copyarray .maps$[0],.maps_1$[0],getarraysize(.maps_1$);
+                break;
+            case 2:
+                copyarray .maps$[0],.maps_2$[0],getarraysize(.maps_2$);
+                break;
+            case 3:
+                copyarray .maps$[0],.maps_3$[0],getarraysize(.maps_3$);
+                break;
+            case 4:
+                copyarray .maps$[0],.maps_4$[0],getarraysize(.maps_4$);
+                break;
+            case 5:
+                copyarray .maps$[0],.maps_5$[0],getarraysize(.maps_5$);
+                break;
+            case 6:
+                copyarray .maps$[0],.maps_6$[0],getarraysize(.maps_6$);
+                break;
+            case 7:
+                copyarray .maps$[0],.maps_7$[0],getarraysize(.maps_7$);
+                break;
+            case 8:
+                copyarray .maps$[0],.maps_8$[0],getarraysize(.maps_8$);
+                break;
+            case 9:
+               copyarray .maps$[0],.maps_9$[0],getarraysize(.maps_9$);
+                break;
+            default:
+                copyarray .maps$[0],.maps_1$[0],getarraysize(.maps_1$);
+                break;
+        }
+        .@mapToSelect = rand(0,getarraysize(.maps$));
+        .@newMap$ = .maps$[.@mapToSelect];
+        if(.@newMap$ == ""){
+            .@newMap$ = "prt_fild08";
+        }
+        
+        return .@newMap$;
+    }
+
+    function	AnnounceMOTD	{
+        announce .n$+": Good night my nightowls, the adventurers are on the way to "+$@mapOfTheDay$+"! Join them to get "+$@mapOfTheDayBExp+"% more Base-EXP and "+$@mapOfTheDayJExp+"% more Job-EXP! Good luck my fellas!",bc_all,0xccffff;
+    }
+}

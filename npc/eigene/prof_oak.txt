@@ -1,0 +1,104 @@
+//===== rAthena Script =======================================
+//= Prof Eich
+//===== By ===================================================
+//= DatPanda
+//===== Version ==============================================
+//= 1.0 - Initial Version
+//===== Tested With ==========================================
+//= rAthena 06/15/2020 Revision
+//= GIT Hash: 60d03a1978c2c2d8ebf5810582bfab69cb3392df
+//===== Description ==========================================
+//= Adds Prof. Oak (Eich)
+//= Sells Pkmn-Balls
+//===== Comments =============================================
+// bla
+//===== Credits ==============================================
+//= DatPanda
+//============================================================
+
+-	itemshop	PokeShop	444,33117,33150:1,33151:1,33152:1,33153:1;
+
+takero,371,196,5	script	PkmnVarResetter	574,{
+    mes "BLA";
+    metProfOak = 0;
+    close;
+}
+
+prontera,155,179,5	script	Prof. Oak	574,{
+    cutin "eich.bmp",2;
+
+    if(metProfOak) {
+        goto returning;
+    } else {
+        goto initial;
+    }
+
+    initial:
+        metProfOak = 1;
+        mes .n$;
+        mes "Hello there!";
+	    sleep2 500;
+        mes "Welcome to the world of Pokémon!";
+	    sleep2 500;
+        mes "My name is "+.n1$+"!";
+	    sleep2 500;
+        mes "People call me the Pokémon Prof!";
+        next;
+
+        mes .n$;
+        mes "This world is inhabited by creatures called Pokémon!";
+	    sleep2 500;
+        mes "For some people, Pokémon are pets.";
+	    sleep2 500;
+        mes "Other use them for fights.";
+        next;
+
+        mes .n$;
+        mes "Myself... I study Pokémon as a profession.";
+        sleep2 500;
+        mes "First, what is your name?";
+        sleep2 1500;
+        mes "Right!";
+        sleep2 1000;
+        mes "So your name is ^0000FF"+strcharinfo(0)+"^000000!";
+        next;
+
+        mes .n$;
+        mes "This is my granddaughter.";
+        sleep2 500;
+        mes "She's been your rival since you were a baby.";
+        sleep2 2000;
+        mes "...Erm, what is her name again? That's right! I remember now! Her name is ^FF0000Jen^000000!";
+        next;
+
+        mes .n$;
+        mes "^0000FF"+strcharinfo(0)+"^000000!";
+        sleep2 500;
+        mes "Your very own Pokémon legend is about to unfold!";
+        sleep2 500;
+        mes "A world of dreams and adventures with Pokémon awaits! Let's go!";
+        next;
+
+        goto openShop;
+    end;
+
+    returning:
+        mes .n$;
+        mes "Welcome back ^0000FF"+strcharinfo(0)+"^000000!";
+        next;
+        goto openShop;
+    end;
+
+    leave:
+        close;
+    end;
+
+    openShop:
+        callshop "PokeShop",0;
+    end;
+
+    OnInit:
+        set .n$,"^FF8000["+strnpcinfo(0)+"]^000000";
+        set .n1$,"^FF8000"+strnpcinfo(0)+"^000000";
+    end;
+}
