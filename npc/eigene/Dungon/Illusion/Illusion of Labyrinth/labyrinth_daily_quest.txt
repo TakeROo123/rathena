@@ -159,15 +159,15 @@ prt_mz03_i,61,67,5	script	Dädalos	4_M_BARYO_OLD,{
 }
 
 
-prt_mz03_i,0,0	monster	Chaotic Andrea	20521,15,500
-prt_mz03_i,0,0	monster	Chaotic Anes	20522,14,500
-prt_mz03_i,0,0	monster	Chaotic Silvano	20523,13,600
-prt_mz03_i,0,0	monster	Chaotic Cecilia	20524,12,5000
-prt_mz03_i,0,0	monster	Chaotic Baphomet Jr	20525,20,300
-prt_mz03_i,0,0	monster	Chaotic Side Winder	20526,20,300
-prt_mz03_i,0,0	monster	Chaotic Hunter Fly	20527,10,500
-prt_mz03_i,0,0	monster	Chaotic Killer Mantis	20530,10,500
-prt_mz03_i,0,0	monster	Chaotic Poporing	20531,20,192
-prt_mz03_i,0,0	monster	Chaotic Stem Worm	1090,15,192
-prt_mz03_i,0,0	monster	Chaotic Ghostring	20529,1,6800000,3400000
-prt_mz03_i,0,0,0,0	boss_monster	Chaotic Baphomet	20520,1,7200000,600000,1
+prt_mz03_i,0,0	monster	Chaotic Andrea	20521,10,500
+prt_mz03_i,0,0	monster	Chaotic Anes	20522,10,500
+prt_mz03_i,0,0	monster	Chaotic Silvano	20523,10,500
+prt_mz03_i,0,0	monster	Chaotic Cecilia	20524,10,500
+prt_mz03_i,0,0	monster	Chaotic Baphomet Jr	20525,20,500
+prt_mz03_i,0,0	monster	Chaotic Side Winder	20526,20,500
+prt_mz03_i,0,0	monster	Chaotic Hunter Fly	20527,20,500
+prt_mz03_i,0,0	monster	Chaotic Killer Mantis	20530,20,500
+prt_mz03_i,0,0	monster	Chaotic Poporing	20531,20,500
+prt_mz03_i,0,0	monster	Chaotic Stem Worm	1090,12,500
+prt_mz03_i,0,0	monster	Chaotic Ghostring	20529,7,500
+prt_mz03_i,0,0,0,0	boss_monster	Chaotic Baphomet	20520,1,10800000,600000,1

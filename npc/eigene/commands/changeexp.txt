@@ -11,3 +11,4 @@
         debugmes strcharinfo(0) + "has changed its exp rate by -"+.@rateDecrease+"%!";
     end;
 }
+

@@ -33,7 +33,7 @@
 //======================================================================
 //= DO NOT REMOVE MY CREDITS AND CLAIM MY WORK AS YOURS
 //======================================================================
-- script guessannouncer -1,{
+-	script	guessannouncer	-1,{
 OnClock0030:
 OnClock0130:
 OnClock0230:
@@ -78,7 +78,7 @@ enablenpc "guess";
 end;
 }
 // ==============================================================================
-prontera,164,164,3 script Guess the Number::guess 123,{
+prontera,164,164,3	script	Guess the Number::guess	123,{
 // =================== Setting the NPC Name and Prize and amount  =============
 set .@n$,"^FF0000[Guess the Number]^000000";
 set @prize,7711;//Change the 7227 to your reward item ID

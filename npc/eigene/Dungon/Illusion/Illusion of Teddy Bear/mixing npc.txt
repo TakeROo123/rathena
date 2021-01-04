@@ -1,4 +1,5 @@
 ein_d02_i,160,181,4	script	Teddy Bear	4_TOWER_17,{
+	.@upgradeLvl = 9;
 	mes "[ Gemcutter ]";
 	mes "Do you have business with me?";
 	next;
@@ -25,7 +26,7 @@ ein_d02_i,160,181,4	script	Teddy Bear	4_TOWER_17,{
 			}
 			next;
 			mes "[ Gemcutter ]";
-			mes "Make sure ^0000FFyour equipment is refined to at least +7^000000 before bringing it to me.","That's the minimum requirement for my upgrade service to have any visible effects on your equipment.";
+			mes "Make sure ^0000FFyour equipment is refined to at least +"+.@upgradeLvl+"^000000 before bringing it to me.","That's the minimum requirement for my upgrade service to have any visible effects on your equipment.";
 			next;
 			mes "[ Gemcutter ]";
 			mes "Make sure you're ^0000FFequipped with the item that you want to improve.^000000","Otherwise, I can't evaluate its condition.";
@@ -43,13 +44,13 @@ ein_d02_i,160,181,4	script	Teddy Bear	4_TOWER_17,{
 			mes "[ Gemcutter ]";
 			mes "For that equipment, I need the following materials.";
 			.@itemId=atoi(.weapon_upgrade$[.@s+1]);
-			mes "^0000FF+7 " + getitemname(.@itemId) + " [" + getitemslots(.@itemId) + "]" + "^000000";
+			mes "^0000FF+"+.@upgradeLvl+"7 " + getitemname(.@itemId) + " [" + getitemslots(.@itemId) + "]" + "^000000";
 			getinventorylist(getcharid(0));
 			for(.@i = 0; .@i < @inventorylist_count; .@i++){
 				if(@inventorylist_id[.@i] !=  atoi(.weapon_upgrade$[.@s+1])){ 
 					continue;
 				}
-				if(@inventorylist_refine[.@i] >= 7){
+				if(@inventorylist_refine[.@i] >= .@upgradeLvl){
 					.@index = .@i;
 					.@weapon_check = 1;
 					break;
@@ -91,7 +92,7 @@ ein_d02_i,160,181,4	script	Teddy Bear	4_TOWER_17,{
 			}
 			next;
 			mes "[ Gemcutter ]";
-			mes "Make sure ^0000FFyour equipment is refined to at least +7^000000 before bringing it to me.","That's the minimum requirement for my upgrade service to have any visible effects on your equipment.";
+			mes "Make sure ^0000FFyour equipment is refined to at least +"+.@upgradeLvl+"^000000 before bringing it to me.","That's the minimum requirement for my upgrade service to have any visible effects on your equipment.";
 			next;
 			mes "[ Gemcutter ]";
 			mes "Make sure you're ^0000FFequipped with the item that you want to improve.^000000","Otherwise, I can't evaluate its condition.";
@@ -109,13 +110,13 @@ ein_d02_i,160,181,4	script	Teddy Bear	4_TOWER_17,{
 			mes "[ Gemcutter ]";
 			mes "For that equipment, I need the following materials.";
 			.@itemId=atoi(.armor_upgrade$[.@s+1]);
-			mes "^0000FF+7 " + getitemname(.@itemId) + " [" + getitemslots(.@itemId) + "]" + "^000000";
+			mes "^0000FF+"+.@upgradeLvl+" " + getitemname(.@itemId) + " [" + getitemslots(.@itemId) + "]" + "^000000";
 			getinventorylist(getcharid(0));
 			for(.@i = 0; .@i < @inventorylist_count; .@i++){
 				if(@inventorylist_id[.@i] !=  atoi(.armor_upgrade$[.@s+1])){ 
 					continue;
 				}
-				if(@inventorylist_refine[.@i] >= 7){
+				if(@inventorylist_refine[.@i] >= .@upgradeLvl){
 					.@index = .@i;
 					.@weapon_check = 1;
 					break;
@@ -153,9 +154,9 @@ ein_d02_i,160,181,4	script	Teddy Bear	4_TOWER_17,{
 	
 OnInit:
 	setarray .weapon_upgrade$,
-	2051,1645,"25271,115",
-	28244,1726,"25271,9",
-	28745,1242,"25271,9";
+	2051,1645,"25271,125",
+	28244,1726,"25271,95",
+	28745,1242,"25271,95";
 	setarray .armor_upgrade$,
 	19344,5070,"25271,115",
 	22190,2406,"25271,85";

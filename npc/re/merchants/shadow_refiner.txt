@@ -32,7 +32,7 @@
 		mes "All types of Oridecon and Elunium can be used to refine shadow items. Each attempt will also cost 20,000 zeny.";
 		next;
 		mes "[Shadow Blacksmith]";
-		mes "HD ores can be used for gear that is at least refine level +7 and will prevent breaking as long as you stay talking to me.";
+		mes "HD ores can be used for gear that is at least refine level +4 and will prevent breaking as long as you stay talking to me.";
 		close;
 	}
 
@@ -80,9 +80,9 @@
 			.@choose = .@material[1];
 			break;
 		case 3:// HD
-			if (.@equip_refine < 7) {
+			if (.@equip_refine < 4) {
 				mes "[Shadow Blacksmith]";
-				mes "HD Ore can only used for +7 or higher refine level items.";
+				mes "HD Ore can only used for +4 or higher refine level items.";
 				close;
 			}
 			.@hoihoi = 1;

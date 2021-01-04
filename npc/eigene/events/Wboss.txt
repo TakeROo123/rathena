@@ -1,0 +1,185 @@
+prontera,164,173,4	script	Freya	123,{
+	.@kill_count = (.monster_kill_requirement - $world_boss_counter_freya);
+	mes "[ World Boss ]";
+	mes "Status :" +($world_boss_active_freya == 1?"^00FF00Active^000000":"^FF0000Inactive^000000");
+	mes "Kill Remaining - [ ^0000FF"+.@kill_count+"^000000 ]";
+	end;
+
+	OnNPCKillEvent:
+		if($world_boss_active == 1 || $world_boss_active_freya == 1) end;
+		$world_boss_counter_freya += 1;
+		if($world_boss_counter_freya == .monster_kill_requirement) { 
+			donpcevent "Freya::OnSummon";
+		}
+	end;
+
+	OnSummon:
+		announce "[World Boss Freya] A rift on time and space is about to be opened! A World Boss will appear in Payon. Prepare your Hunting Party!",BC_ALL,0xFF0000,FW_BOLD,18;
+		$world_boss_active = 1;
+		$world_boss_active_freya = 1;
+		monster "payon",155,219,"World Boss",30015,1,"Freya::OnBossKill";
+	end;
+		
+	OnBossKill:
+		announce "Freya: I come again !",BC_ALL,0xFF0000,FW_BOLD,18;
+		$world_boss_active = 0;
+		$world_boss_active_freya = 0;
+		$world_boss_counter_freya = 0;
+		getitem 7711,50;
+	end;
+			
+	OnInit:
+		.monster_kill_requirement = 1500;
+		freeloop(1);
+		while(1){
+			.@kill_counth = (.monster_kill_requirement - $world_boss_counter_freya);
+			waitingroom "Freya Kill Left : ["+.@kill_counth+"]",0;
+			sleep 1000; //= 1 Second Refresh
+			delwaitingroom;
+		}
+		freeloop(0);
+	end;
+}
+
+prontera,164,172,4	script	etNox	123,{
+	.@kill_count = (.monster_kill_requirement - $world_boss_counter_etnox);
+	mes "[ World Boss ]";
+	mes "Status :" +($world_boss_active_etnox == 1?"^00FF00Active^000000":"^FF0000Inactive^000000");
+	mes "Kill Remaining - [ ^0000FF"+.@kill_count+"^000000 ]";
+	end;
+
+	OnNPCKillEvent:
+		if($world_boss_active == 1 || $world_boss_active_etnox == 1) end;
+		$world_boss_counter_etnox += 1;
+		if($world_boss_counter_etnox == .monster_kill_requirement){ 
+			donpcevent "etNox::OnSummon";
+		}
+	end;
+
+	OnSummon:
+		announce "[World Boss etNox] A rift on time and space is about to be opened! A World Boss will appear in Payon. Prepare your Hunting Party!",BC_ALL,0xFF0000,FW_BOLD,18;
+		$world_boss_active = 1;
+		$world_boss_active_etnox = 1;
+		monster "payon",155,219,"World Boss",30006,1,"etNox::OnBossKill";
+	end;
+		
+	OnBossKill:
+		announce "etNox: I come again !",BC_ALL,0xFF0000,FW_BOLD,18;
+		$world_boss_active = 0;
+		$world_boss_counter_etnox = 0;
+		$world_boss_active_etnox = 0;
+		getitem 7711,50;
+	end;
+			
+	OnInit:
+		.monster_kill_requirement = 2000;
+		freeloop(1);
+		while(1){
+			.@kill_count2 = (.monster_kill_requirement - $world_boss_counter_etnox);
+			waitingroom "etNox Kill Left : ["+.@kill_count2+"]",0;
+			sleep 1000; //= 1 Second Refresh
+			delwaitingroom;
+		}
+		freeloop(0);
+	end;
+}
+
+prontera,164,171,4	script	Thomas Sabo	123,{
+	.@kill_count = (.monster_kill_requirement - $world_boss_counter_sabo);
+	mes "[ World Boss ]";
+	mes "Status :" +($world_boss_active_sabo == 1?"^00FF00Active^000000":"^FF0000Inactive^000000");
+	mes "Kill Remaining - [ ^0000FF"+.@kill_count+"^000000 ]";
+	end;
+
+	OnNPCKillEvent:
+		if($world_boss_active == 1 || $world_boss_active_sabo == 1) end;
+		$world_boss_counter_sabo += 1;
+		if($world_boss_counter_sabo == .monster_kill_requirement){ 
+			donpcevent "Thomas Sabo::OnSummon";
+		}
+	end;
+
+	OnSummon:
+		announce "[World Boss Thomas Sabo] A rift on time and space is about to be opened! A World Boss will appear in Payon. Prepare your Hunting Party!",BC_ALL,0xFF0000,FW_BOLD,18;
+		$world_boss_active = 1;
+		$world_boss_active_sabo = 1;
+		monster "payon",155,219,"World Boss",30008,1,"Thomas Sabo::OnBossKill";
+	end;
+		
+	OnBossKill:
+		announce "Thomas Sabo: I come again !",BC_ALL,0xFF0000,FW_BOLD,18;
+		$world_boss_active = 0;
+		$world_boss_active_sabo = 0;
+		$world_boss_counter_sabo = 0;
+		getitem 7711,50;
+	end;
+			
+	OnInit:
+		.monster_kill_requirement = 4000;
+		freeloop(1);
+		while(1){
+			.@kill_count = (.monster_kill_requirement - $world_boss_counter_sabo);
+			waitingroom "Sabo Kill Left : ["+.@kill_count+"]",0;
+			sleep 1000; //= 1 Second Refresh
+			delwaitingroom;
+		}
+		freeloop(0);
+	end;
+}
+
+prontera,164,170,4	script	Wolf King Cain	123,{
+	.@kill_count = (.monster_kill_requirement - $world_boss_counter_cain);
+	mes "[ World Boss ]";
+	mes "Status :" +($world_boss_active_cain == 1?"^00FF00Active^000000":"^FF0000Inactive^000000");
+	mes "Kill Remaining - [ ^0000FF"+.@kill_count+"^000000 ]";
+	end;
+
+	OnNPCKillEvent:
+		if($world_boss_active == 1 || $world_boss_active_cain == 1) end;
+		$world_boss_counter_cain += 1;
+		if($world_boss_counter_cain == .monster_kill_requirement){ 
+			donpcevent "Wolf King Cain::OnSummon";
+		}
+	end;
+
+	OnSummon:
+		announce "[World Boss Wolf King Cain] A rift on time and space is about to be opened! A World Boss will appear in Payon. Prepare your Hunting Party!",BC_ALL,0xFF0000,FW_BOLD,18;
+		$world_boss_active = 1;
+		$world_boss_active_cain = 1;
+		monster "payon",155,219,"World Boss",30000,1,"Wolf King Cain::OnBossKill";
+	end;
+		
+	OnBossKill:
+		announce "Wolf King Cain: I come again !",BC_ALL,0xFF0000,FW_BOLD,18;
+		$world_boss_active = 0;
+		$world_boss_active_cain = 0;
+		$world_boss_counter_cain = 0;
+		getitem 7711,50;
+	end;
+			
+	OnInit:
+		.monster_kill_requirement = 6000;
+		freeloop(1);
+		while(1){
+			.@kill_count = (.monster_kill_requirement - $world_boss_counter_cain);
+			waitingroom "Cain Kill Left : ["+.@kill_count+"]",0;
+			sleep 1000; //= 1 Second Refresh
+			delwaitingroom;
+		}
+		freeloop(0);
+	end;
+}
+
+takero,359,200,4	script	Wboss Reset	123,{
+	mes "whatever";
+	$world_boss_active = 0;
+	$world_boss_counter_freya = 0;
+	$world_boss_active_freya = 0;
+	$world_boss_counter_etnox = 0;
+	$world_boss_active_etnox = 0;
+	$world_boss_active_sabo = 0;
+	$world_boss_counter_sabo = 0;
+	$world_boss_active_cain = 0;
+	$world_boss_counter_cain = 0;
+	end;
+}

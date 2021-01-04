@@ -1,16 +1,18 @@
-odin_past,0,0	monster	Angelgolt	20604,20,5000
-odin_past,0,0	monster	Angelgolt	20605,16,5000
-odin_past,0,0	monster	Holy Frus	20606,16,5000
-odin_past,0,0	monster	Holy Skogul	20607,5,5000
-odin_past,0,0	monster	Arch Plasma	20608,4,5000
-odin_past,0,0	monster	Spectral Plasma	20609,4,5000
+odin_past,0,0	monster	Blue Plant	1079,5,5000
+odin_past,0,0	monster	Shining Plant	1083,2,5000
+odin_past,0,0	monster	Angelgolt	20604,40,5000
+odin_past,0,0	monster	Angelgolt	20605,60,5000
+odin_past,0,0	monster	Holy Frus	20606,45,5000
+odin_past,0,0	monster	Holy Skogul	20607,45,5000
+odin_past,0,0	monster	Arch Plasma	20608,5,5000
+odin_past,0,0	monster	Spectral Plasma	20609,5,5000
 odin_past,0,0,0,0	boss_monster	Reginleif	20610,1,10800000,600000,1
 odin_past,0,0,0,0	boss_monster	Ingrid	20611,1,10800000,600000,1
 
 //--------------Warp NPC---------------------
 
 //IN
-odin_tem03,279,238,4	script	old wise man	412,{
+odin_tem03,279,238,4	script	Strange old wise man	412,{
 if(BaseLevel < 175) {
 	mes "What are you doing here?";
 	mes "I'm looking for a strong adventurer to fill my curiosity!";
@@ -21,7 +23,7 @@ if(BaseLevel < 175) {
 }
 
 
-mes "[old wise man]";
+mes "[Strange old wise man]";
 mes "Haha! Everytime I come here, it's a new adventurer!";
 mes "I like it!";
 next;
@@ -30,7 +32,7 @@ if(select("Let's go!:I'll keep looking.") == 2) {
 	mes "Sure!";
 	close;
 }
-mes "[old wise man]";
+mes "[Strange old wise man]";
 mes "Alright!";
 mes "Let's skip this and go";
 close2;
@@ -39,7 +41,7 @@ end;
 }
 
 //OUT
-odin_past,286,223,4	script	old wise man	412,{
+odin_past,286,223,4	script	Old wise man	412,{
 
 mes "[old wise man]";
 mes "Haha! Everytime I come here, it's a new adventurer!";

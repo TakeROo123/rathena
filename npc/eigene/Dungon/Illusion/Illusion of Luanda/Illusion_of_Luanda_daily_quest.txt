@@ -157,11 +157,11 @@ com_d02_i,254,235,5	script	Heinz	4_M_BARYO_OLD,{
     end;
 }
 
-com_d02_i,0,0	monster	Ancient Megalith	20272,15,500
-com_d02_i,0,0	monster	Ancient Stalactic Golem	20271,17,500
-com_d02_i,0,0	monster	Ancient Stone Shooter	20274,22,600
-com_d02_i,0,0	monster	Ancient Wootan Shooter	20275,16,5000
-com_d02_i,0,0	monster	Ancient Wootan Fighter	20276,10,300
-com_d02_i,0,0	monster	Chaotic Ancient Tri Joint	20270,20,300
+com_d02_i,0,0	monster	Ancient Megalith	20272,50,500
+com_d02_i,0,0	monster	Ancient Stalactic Golem	20271,50,500
+com_d02_i,0,0	monster	Ancient Stone Shooter	20274,50,500
+com_d02_i,0,0	monster	Ancient Wootan Shooter	20275,50,500
+com_d02_i,0,0	monster	Ancient Wootan Fighter	20276,50,500
+com_d02_i,0,0	monster	Chaotic Ancient Tri Joint	20270,50,500
 com_d02_i,0,0,0,0	boss_monster	Ancient Wootan Defender	20277,1,7200000,600000,1
 com_d02_i,0,0,0,0	boss_monster	Ancient Tao Gunka	20273,1,7200000,600000,1

@@ -1369,13 +1369,8 @@ mal_in01,20,107,3	script	Lace La Zard#cos_ect	4_FROG,{
 	setarray .@data$[0],
 		6908, 4807, "ASPD+1 only",	// ASPDStone_Robe	Atk_Speed1
 		6963, 4992, "Absorption 1% of damage dealt to enemy into HP with 1% chance",	// HPdrainStone_Robe	HPdrain1
-		6964, 4993, "Absorption 1% of damage dealt to enemy into SP with 1% chance";	// SPdrainStone_Robe	SPdrain1
-		// unknown text
-		// 25067, 29056, "",	// CastingStone_Robe	FixedCasting05
-		// 25170, 29154, "",	// MinorCastingStone_Robe	FixedCasting03
-		// 25302, 29362, "",	// DoubleAttack_Stone	DoubleAttack
-		// 25303, 29361, "",	// Critical_Stone_Robe	Fatal_Robe
-		// 25306, 29358, "";	// CastStone_Robe	Casting_Robe
+		6964, 4993, "Absorption 1% of damage dealt to enemy into SP with 1% chance",	// SPdrainStone_Robe	SPdrain1
+		25717, 25717, "Guillotine Cross Stone(Garment)";	// CastingStone_Robe	FixedCasting05
 
 	.@size = getarraysize(.@data$);
 	for ( .@i = 0; .@i < .@size; .@i += 3 ) {

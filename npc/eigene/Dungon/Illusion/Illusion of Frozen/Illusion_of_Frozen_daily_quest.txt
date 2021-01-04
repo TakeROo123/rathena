@@ -150,8 +150,8 @@ ice_d03_i,145,23,5	script	Sepp	4_M_BARYO_OLD,{
     end;
 }
 
-ice_d03_i,0,0	monster	Angry Gazeti	3792,20,5000
-ice_d03_i,0,0	monster	Angry Snowier	3793,30,5000
-ice_d03_i,0,0	monster	Angry Ice Titan	3794,20,5000
-ice_d03_i,0,0	monster	Solid Icicle	3795,20,5000
+ice_d03_i,0,0	monster	Angry Gazeti	3792,30,500
+ice_d03_i,0,0	monster	Angry Snowier	3793,30,500
+ice_d03_i,0,0	monster	Angry Ice Titan	3794,20,500
+ice_d03_i,0,0	monster	Solid Icicle	3795,20,500
 ice_d03_i,0,0,0,0	boss_monster	Awaken Ktullanux	3796,1,7200000,600000,1

@@ -11,7 +11,8 @@ te_prtcas01,204,204,3	script	Blacksmith Kai#tegod01	4_M_RACHMAN2,{
 	if (checkweight(1201,1) == 0) {
 		mes "You have too many items to proceed with the quest.";
 		mes "Please lighten your load and try again.";
-		close;	}
+		close;
+	}
 
 	.@guild_id = getcastledata("te_prtcas01",1);
 	.@economy  = getcastledata("te_prtcas01",2);
@@ -50,7 +51,7 @@ te_prtcas01,204,204,3	script	Blacksmith Kai#tegod01	4_M_RACHMAN2,{
 		next;
 		switch( select( "Make Hervor.","Fuse materials.","Relax." ) ) {
 		case 1:
-			if (.@economy > 29) {
+			if (.@economy > 0) {
 				if (countitem(6595) > 1 && countitem(6596) > 0 && countitem(6594) > 3 && countitem(6597) > 2 && countitem(6602) > 0 && countitem(6605) > 0 && countitem(6604) > 0 && countitem(2115) > 0) {
 					mes "^ff0000Valkyrja's Shield is needed in the process of making Hervor.";
 					mes "You should not possess any other items except for Valkyrja's Shields in order to proceed with the quest.^ff0000";

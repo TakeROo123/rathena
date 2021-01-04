@@ -139,12 +139,18 @@ tur_d04_i,103,15,5	script	Franz	4_M_BARYO_OLD,{
     end;
 }
 
-tur_d04_i,0,0,0,0	monster	Ominous Permeter	3800,4,5,0,0
-tur_d04_i,0,0,0,0	monster	Ominous Freezer	3801,15,5,0,0
-tur_d04_i,0,0,0,0	monster	Ominous Solider	3802,10,5,0,0
-tur_d04_i,0,0,0,0	monster	Ominous Assaulter	3799,42,5,0,0
-tur_d04_i,0,0,0,0	monster	Ominous Heater	3803,20,5,0,0
-com_d02_i,0,0,0,0	boss_monster	Ominous Turtle General	3804,1,7200000,600000,1
+tur_d03_i,0,0,0,0	monster	Ominous Permeter	3800,15,500
+tur_d03_i,0,0,0,0	monster	Ominous Freezer	3801,40,500
+tur_d03_i,0,0,0,0	monster	Ominous Solider	3802,40,1
+tur_d03_i,0,0,0,0	monster	Ominous Assaulter	3799,35,500
+tur_d03_i,0,0,0,0	monster	Ominous Heater	3803,10,500
+
+tur_d04_i,0,0,0,0	monster	Ominous Permeter	3800,4,500
+tur_d04_i,0,0,0,0	monster	Ominous Freezer	3801,15,500
+tur_d04_i,0,0,0,0	monster	Ominous Solider	3802,10,1
+tur_d04_i,0,0,0,0	monster	Ominous Assaulter	3799,42,500
+tur_d04_i,0,0,0,0	monster	Ominous Heater	3803,33,500
+tur_d04_i,0,0,0,0	boss_monster	Ominous Turtle General	3804,1,7200000,600000,1
 
 
 

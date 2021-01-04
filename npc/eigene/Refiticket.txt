@@ -1,7 +1,7 @@
 prt_in,22,73,5	script	Refine Master	851,{
 
 	disable_items;
-	if (countitem(6238) >= 1 || countitem(6228) >= 1 || countitem(6229) >= 1 || countitem(6230) >= 1 || countitem(6231) >= 1 || countitem(6456) >= 1 || countitem(33071) >= 1 || countitem(33072) >= 1 || countitem(33073) >= 1 || countitem(33074) >= 1){
+	if (countitem(6238) >= 1 || countitem(6228) >= 1 || countitem(6229) >= 1 || countitem(6230) >= 1 || countitem(6231) >= 1 || countitem(6456) >= 1 || countitem(33071) >= 1 || countitem(33072) >= 1 || countitem(33073) >= 1 || countitem(33074) >= 1 || countitem(33075) >= 1 || countitem(33076) >= 1 || countitem(33077) >= 1 || countitem(33078) >= 1 || countitem(33079) >= 1 || countitem(33080) >= 1){
 		set .@bWeaponUp,1;
 	}
 	if (countitem(6239) >= 1 || countitem(6232) >= 1 || countitem(6233) >= 1 || countitem(6234) >= 1 || countitem(33061) >= 1 || countitem(6235) >= 1 || countitem(33062) >= 1 || countitem(33063) >= 1 || countitem(33064) >= 1 || countitem(33065) >= 1 || countitem(33066) >= 1 || countitem(33067) >= 1 || countitem(33068) >= 1 || countitem(33069) >= 1 || countitem(33070) >= 1 || countitem(6457) >= 1){
@@ -71,8 +71,8 @@ prt_in,22,73,5	script	Refine Master	851,{
 	case 2:
 	case 3:
 	case 4:
-		setarray .@tickets[0],6456,6231,6230,6229,6228,6238,33071,33072,33073,33074;
-		setarray .@levels[0],5,6,7,8,9,11,10,12,13,14;
+		setarray .@tickets[0],6456,6231,6230,6229,6228,6238,33071,33072,33073,33074,33075,33076,33077,33078,33079,33080;
+		setarray .@levels[0],5,6,7,8,9,11,10,12,13,14,15,16,17,18,19,20;
 		set .@type$,"Weapon";
 		set .@check,.@bWeaponUp;
 		break;

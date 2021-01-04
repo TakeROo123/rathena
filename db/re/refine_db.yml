@@ -583,32 +583,32 @@ Shadow:
       Material: 7619
   Rates:
     - Level: 5
-      NormalChance: 60
+      NormalChance: 80
       EnrichedChance: 90
-      EventNormalChance: 60
+      EventNormalChance: 80
       EventEnrichedChance: 95
     - Level: 6
-      NormalChance: 40
-      EnrichedChance: 70
-      EventNormalChance: 40
+      NormalChance: 70
+      EnrichedChance: 80
+      EventNormalChance: 80
       EventEnrichedChance: 80
     - Level: 7
-      NormalChance: 40
+      NormalChance: 60
       EnrichedChance: 70
-      EventNormalChance: 40
+      EventNormalChance: 80
       EventEnrichedChance: 80
     - Level: 8
-      NormalChance: 20
-      EnrichedChance: 40
+      NormalChance: 50
+      EnrichedChance: 80
       EventNormalChance: 20
       EventEnrichedChance: 50
     - Level: 9
-      NormalChance: 20
-      EnrichedChance: 40
+      NormalChance: 50
+      EnrichedChance: 80
       EventNormalChance: 20
       EventEnrichedChance: 50
     - Level: 10
-      NormalChance: 9
-      EnrichedChance: 20
-      EventNormalChance: 9
+      NormalChance: 50
+      EnrichedChance: 80
+      EventNormalChance: 90
       EventEnrichedChance: 35

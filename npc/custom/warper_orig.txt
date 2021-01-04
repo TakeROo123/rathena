@@ -28,7 +28,7 @@ menu	"Last Warp ^777777["+lastwarp$+"]^000000",-,
     	" ~ Towns",Towns,
     	" ~ Fields",Fields,
     	" ~ Dungeons",Dungeons,
-//    	" ~ Illusion",Illusion,
+    	" ~ Illusion",Illusion,
 //    	" ~ Guild Dungeons",Guild_Dungeons,
     	" ~ Instances",Instances,
     	" ~ Special Areas",Special;
@@ -293,10 +293,7 @@ menu	"Abyss Lakes",D1, "Amatsu Dungeon",D2, "Anthell",D3,
 		"Moscovia Dungeon",D27, "Nidhogg's Dungeon",D28, "Odin Temple",D29,
 		"Orc Dungeon",D30, "Payon Dungeon",D31, "Pyramids",D32, "Rachel Sanctuary",D33,
     	"Scaraba Hole",D34, "Sphinx",D35, "Sunken Ship",D36, "Thanatos Tower",D37,
-    	"Thor Volcano",D38, "Toy Factory",D39, "Turtle Dungeon",D40, "Umbala Dungeon",D41,
-		"Illusion of Moonlight",D43,"Illusion of Frozen",D44,"Illusion of Vampire",D45,
-		"Illusion of Abyss",D46,"Illusion of Teddy Bear",D47,"Illusion of Luanda",D48,
-		"Illusion of Under Water",D49,"Illusion of Labyrinth",D50;
+    	"Thor Volcano",D38, "Toy Factory",D39, "Turtle Dungeon",D40, "Umbala Dungeon",D41;
 
 D1: setarray @c[2],261,272,275,270,116,27;
 	Disp("Abyss Lakes",1,3); Pick("abyss_");
@@ -397,30 +394,6 @@ D41: Restrict("Pre-RE",1,2);
 D42: Restrict("RE");
 	 setarray @c[2],57,13,64,88,45,14,26,23;
 	 Disp("Bifrost Tower",1,4); Pick("ecl_tdun");
-D43: Restrict("RE");
-	 setarray @c[2],143,42;
-	 Disp("Illusion of Moonlight"); Pick("","pay_d03_i");
-D44: Restrict("RE");
-	 setarray @c[2],149,23;
-	 Disp("Illusion of Frozen"); Pick("","ice_d03_i");
-D45: Restrict("RE");
-	 setarray @c[2],114,255;
-	 Disp("Illusion of Vampire"); Pick("","gef_d01_i");
-D46: Restrict("RE");
-	 setarray @c[2],131,190,100,17;
-	 Disp("Illusion of Abyss 3:Illusion of Abyss 4"); Pick("","tur_d03_i","tur_d04_i");
-D47: Restrict("RE");
-	 setarray @c[2],163,183;
-	 Disp("Illusion of Teddy Bear"); Pick("","ein_d02_i");
-D48: Restrict("RE");
-	 setarray @c[2],251,242;
-	 Disp("Illusion of Luanda"); Pick("","com_d02_i");
-D49: Restrict("RE");
-	 setarray @c[2],129,224,95,139;
-	 Disp("Illusion of Under Water 4:Illusion of Under Water 5"); Pick("","iz_d04_i", "iz_d05_i");
-D50: Restrict("RE");
-	 setarray @c[2],63,63;
-	 Disp("Illusion of Labyrinth"); Pick("","prt_mz03_i");
 
 
 // --------------------------------------------------
@@ -546,9 +519,9 @@ I24: Restrict("RE");
 
 
 // --------------------------------------------------
-//	Illusion:
+	Illusion:
 // --------------------------------------------------
-/*menu	"of Moonlight",Z1, "of Frozen",Z2, "of Vampire",Z3,
+menu	"of Moonlight",Z1, "of Frozen",Z2, "of Vampire",Z3,
     	"of Abyss",Z4, "of Teddy Bear",Z5, "of Luanda",Z6,
     	"of Under Water ",Z7, "of Labyrinth",Z8;
 
@@ -557,7 +530,7 @@ Z1: Restrict("RE");
 Z2: Restrict("RE");
 	Go("ice_d03_i",149,23);
 Z3: Restrict("RE");
-	Go("gef_d01_i",114,255);
+	Go("gef_dun01",133,221);
 Z4: Restrict("RE");
 	Go("tur_d04_i",100,17);
 Z5: Restrict("RE");
@@ -567,7 +540,7 @@ Z6: Restrict("RE");
 Z7: Restrict("RE");
 	Go("iz_d04_i",129,224);
 Z8: Restrict("RE");
-	Go("prt_mz03_i",63,63);*/
+	Go("prt_mz03_i",63,63);
 
 	
 
