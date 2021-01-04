@@ -64,8 +64,6 @@ prontera,156,172,3	script	Bossnia Staff#1	908,{
 	mes "Good, I will send you there.";
 	mes "But after you went there, don't hold";
 
-	// If the VIP system is enabled, players pay a Reset Stone for 5 entrances (with a choice of warps).
-	// If it's disabled, players pay 1M z per entrance.
 	if (VIP_SCRIPT) {
 		mes "a grudge against me. It'll cost you 1 Reset Stone for 5 access.";
 		next;
@@ -101,34 +99,42 @@ prontera,156,172,3	script	Bossnia Staff#1	908,{
 		warp "bossnia_0"+.@i,.@x,.@y;
 		close;
 	} else {
-		mes "a grudge against me. Also it costs 1M zeny.";
+		mes "a grudge against me. It'll cost you 1 Reset Stone for 5 access.";
 		next;
-		if (Zeny > 999999) {
-			mes "[Riss]";
-			mes "Would you really like to take the challenge?";
-			mes "Ok, just choose the course.";
-			next;
-			set .@i, select("First:Second:Third:Fourth");
-			mes "[Riss]";
-			mes "Take care, boy~";
-			mes "Don't hold a grudge against me.";
-			close2;
-			set Zeny, Zeny - 1000000;
-			warp "bossnia_0"+.@i,rand(202,204),rand(202,204);
-			end;
+		mes "[Riss]";
+		if (bossnia_event > 0) {
+			set .@type,1;
+			mes "Remaining access: "+bossnia_event;
+		} else if (countitem(6320)) {
+			set .@type,2;
+			mes "Do you want to go?";
 		} else {
-			mes "[Riss]";
-			mes "You don't have enough money...";
-			mes "Come back when you have at least 1M zeny.";
+			mes "You don't have a ticket now.....";
+			mes "So come to me again with a Reset Stone later.";
 			close;
 		}
+		next;
+		if(select("Enter:Leave") == 2)
+			close;
+		set .@i, select("First:Second:Third:Fourth");
+		switch(select("Warp 1:Warp 2:Warp 3:Warp 4")) {
+			case 1: set .@x,31; set .@y,208; break;
+			case 2: set .@x,31; set .@y,31; break;
+			case 3: set .@x,208; set .@y,31; break;
+			case 4: set .@x,208; set .@y,208; break;
+		}
+		if (.@type == 1)
+			set bossnia_event, bossnia_event-1;
+		else {
+			delitem 6320,1; //Premium_Reset_Stone
+			set bossnia_event,4;
+		}
+		specialeffect2 EF_MAXPOWER;
+		warp "bossnia_0"+.@i,.@x,.@y;
+		close;
+		}
 	}
-}
-geffen,124,169,4	duplicate(Bossnia Staff#1)	Bossnia Staff#2	908
-payon,165,150,4	duplicate(Bossnia Staff#1)	Bossnia Staff#3	908
-morocc,142,100,4	duplicate(Bossnia Staff#1)	Bossnia Staff#4	908
-lighthalzen,203,140,4	duplicate(Bossnia Staff#1)	Bossnia Staff#5	908
-rachel,132,144,4	duplicate(Bossnia Staff#1)	Bossnia Staff#6	908
+
 
 
 // Warp Portals
@@ -275,7 +281,7 @@ bossnia_03,142,61,1,1	monster	Ifrit	1832,1
 //----------------------------------------------------------------------------
 // bossnia_04 - Bossnia
 //----------------------------------------------------------------------------
-bossnia_04,0,0	monster	Buwaya	2319,2
+bossnia_04,0,0	monster	Ancient Tao Gunka	20273,2
 bossnia_04,0,0	monster	Boitata	2068,2
 bossnia_04,0,0	monster	Daehyon	2253,3
 bossnia_04,0,0	monster	Gioia	2251,6
@@ -283,17 +289,17 @@ bossnia_04,0,0	monster	Kades	2255,5
 bossnia_04,0,0	monster	Nidhoggr's Shadow	2022,3
 bossnia_04,0,0	monster	Nightmare Amon Ra	2362,3
 bossnia_04,0,0	monster	Pyuriel	2249,3
-bossnia_04,0,0	monster	Corrupted Soul	2475,3
+bossnia_04,0,0	monster	Fenrir	2564,3
 bossnia_04,0,0	monster	Sniper Shecil 	1650,2
 bossnia_04,0,0	monster	Wounded Morroc 	1917,1
 bossnia_04,0,0	monster	Stefan J.E Wolf	3484,1
 bossnia_04,0,0	monster	Vesper	1685,2
 bossnia_04,0,0	monster	Eddga	1115,1
 bossnia_04,0,0	monster	Osiris	1038,4
-bossnia_04,0,0	monster	hallo	2335,4
+bossnia_04,0,0	monster	Chaos Baphomet	20520,4
 bossnia_04,0,0	monster	Orc Hero	1087,2
 bossnia_04,0,0	monster	Samurai Specter	1492,1
-bossnia_04,0,0	monster	Bakonawa	2320,1
+bossnia_04,0,0	monster	Golden Thief Bug	1086,1
 bossnia_04,0,0	monster	Lord of the Dead	1373,1
 bossnia_04,0,0	monster	Ktullanux	1779,2
 bossnia_04,0,0	monster	Kiel D-01	1734,2

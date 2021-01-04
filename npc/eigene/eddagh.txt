@@ -21,13 +21,13 @@ switch(select("Create", "Enter")) {
 }
 end;
 OnInit:
-	set .instance_name$, "edda";
+	set .instance_name$, "Fogh";
 	end;
 }
 // ===================================================
 // ============== Floor 1 ============================
 // ===================================================
-1@gl_prq,14,16,1	script	Oscar#hidden1	4_ED_OSCAR,3,3,{
+1@gl_prq,14,16,1	script	#hidden1	HIDDEN_NPC,3,3,{
 //if(!is_party_leader()) { end; }
 
 if('floor1$) { end; }
@@ -62,9 +62,9 @@ OnMyMobDead:
 	dispbottom 'mobsFloor;
 	if(--'mobsFloor <= 0) {
 		//enablenpc
-		mapannounce instance_mapname('map$),"Oscar: flor 1 fertig.",bc_map,'announceColor$;
+		mapannounce instance_mapname('map$),"Oscar: The time in the fist zone is flowing normally now let's go to the next area.",bc_map,'announceColor$;
 		sleep 5000;
-		warpparty "1@gl_prq",119,64,.@party_Id;
+		warpparty 'map$,119,64,atoi('partyId$),'map$;
 	}
 end;
 OnInstanceInit:
@@ -75,30 +75,22 @@ OnInstanceInit:
 	'bloKn$ = 20394;
 	'kingE$ = 20387;
 	'thorn$ = 1960; // for now
-
+	
 	'floor1$ = 0;
 	'floor2$ = 0;
 	'floor3$ = 0;
 	'floor4$ = 0;
 	'floor5$ = 0;
-
+	
 	'announceColor$ = "0x009933";
 	'mvpAnnounce$ = "0xee6600";
-
+	
 	'mvpAlive$ = 1;
 end;
 }
 // ===================================================
 // ============== Floor 2 ============================
 // ===================================================
-1@gl_prq,118,59,3	script	Oscar	4_ED_OSCAR,3,3,{
-	mes "[Party Warper]";
-	mes "Here you go!";
-	close2;
-	.@party_id = getcharid(1);
-	warpparty "1@gl_prq",145,113,.@party_id;
-	close;
-}
 
 1@gl_prq,127,63,3	script	Oscar#hidden2	4_ED_OSCAR,3,3,{
 //if(!is_party_leader()) { end; }
@@ -114,10 +106,12 @@ npctalk "This place was used by the knights when they were working.";
 
 // thorns
 areamonster 'map$,126,75,185,12,"cursed flame",atoi('thorn$),20;
-areamonster 'map$,126,75,185,12,"Khaltzburg knight",atoi('khaKn$),25,instance_npcname("Oscar#hidden2")+"::OnMyMobDead";
+areamonster 'map$,126,75,185,12,"Khaltzburg knight",atoi('khaKn$),23,instance_npcname("Oscar#hidden2")+"::OnMyMobDead";
 areamonster 'map$,126,75,185,12,"Khaltzburg knight",atoi('bloKn$),2,instance_npcname("Oscar#hidden2")+"::OnMyMobDead";
 // thorns
-areamonster 'map$,132,57,137,52,"White Knight",atoi('whiKn$),5,instance_npcname("Oscar#hidden2")+"::OnMyMobDead";
+
+
+//areamonster 'map$,132,57,137,52,"White Knight",atoi('whiKn$),5,instance_npcname("Oscar#hidden2")+"::OnMyMobDead";
 
 
 
@@ -131,7 +125,7 @@ npctalk "They went insane after the curse, just like the maids who were preparin
 
 sleep 2000;
 
-cloakonnpc instance_npcname("Oscar#hidden2");
+hideonnpc instance_npcname("Oscar#hidden2");
 
 
 end;
@@ -139,12 +133,9 @@ OnMyMobDead:
 	dispbottom 'mobsFloor;
 	if(--'mobsFloor <= 0) {
 		// enable portal
-		
-		cloakoffnpc instance_npcname("Oscar#hidden2");
-		mapannounce instance_mapname('map$),"Oscar: flor 2 fertig.",bc_map,'announceColor$;
+		mapannounce instance_mapname('map$),"Oscar: The time in the fist zone is flowing normally now let's go to the next area.",bc_map,'announceColor$;
 		sleep 5000;
-
-		warpparty "1@gl_prq",145,113,.@party_Id;
+		warpparty 'map$,145,113,atoi('partyId$),'map$;
 	}
 }
 
@@ -266,7 +257,7 @@ sleep 5000;
 
 while('mvpAlive$ == 1){
 	mapannounce instance_mapname('map$),"Cursed King: Strong pain makes me stronger.",bc_map,'mvpAnnounce$;
-
+	
 	sleep 10000;
 }
 
@@ -318,7 +309,7 @@ switch(select("armor","manteau", "str","agi","vit","int","dex","luk")) {
 		}
 		delitem 25739,5;
 		delitem 6607,10;
-
+	
 	} else {
 		if(countitem(25740) < 5 || countitem(6755) < 5) {
 			mes "you dont have the items buddy";
@@ -329,7 +320,7 @@ switch(select("armor","manteau", "str","agi","vit","int","dex","luk")) {
 	}
 
 	getitem .item,1;
-
+	
 end;
 }
 
@@ -385,7 +376,7 @@ case 2:
 		mes "you dont have enought mats pal";
 		end;
 	}
-
+	
 	.@item = getequipid(EQI_GARMENT);
 	.@refine = getequiprefinerycnt(EQI_GARMENT);
 	.@card0 = getequipcardid(EQI_GARMENT,0);

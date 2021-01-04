@@ -80,9 +80,9 @@
 			.@choose = .@material[1];
 			break;
 		case 3:// HD
-			if (.@equip_refine < 7) {
+			if (.@equip_refine <4 ) {
 				mes "[Shadow Blacksmith]";
-				mes "HD Ore can only used for +7 or higher refine level items.";
+				mes "HD Ore can only used for +4 or higher refine level items.";
 				close;
 			}
 			.@hoihoi = 1;
@@ -113,7 +113,7 @@
 			mes "This item cannot be refined.";
 			close;
 		}
-		if (getequippercentrefinery(.@part) < 100) {
+		if (getequippercentrefinery(.@part) < 10000) {
 			mes "[Shadow Blacksmith]";
 			mes "The safety refine level for Shadow Equipment is +4.";
 			if (!.@hoihoi)

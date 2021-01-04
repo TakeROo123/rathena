@@ -1,11 +1,8 @@
-takero,283,383,4	script	Knitting Woman#1	74,{ callfunc "cshop1"; }
-
-
-
+amatsu,246,200,4	script	Armor Marie	466,{ callfunc "cshop57"; }
 
 //============================================================
 
--	script	costume_shop1	-1,{
+-	script	costume_shop57	-1,{
 function Add; function Chk; function Slot;
 OnInit:
 	freeloop(1);
@@ -30,6 +27,7 @@ OnInit:
 
 
 //=====================================================================================
+
 	setarray .Shops$[1],
 		"Item Herstellen !!!";	// Shop Named 1
 
@@ -42,27 +40,20 @@ OnInit:
 // -----------------------------------------------------------
 
 // Shop 1
-	Add(1,33052 ,1,0,0,13412,1,7447,100,1752,100);
-	Add(1,5531 ,1,0,0,7445,200,7443,50,7447,200,7448,200);
-	Add(1,5270 ,1,0,0,521,200,706,50,520,50,6560,500);
-	Add(1,20764 ,1,0,0,7441,1000,2357,5,916,100,7115,250);
-	Add(1,5170 ,1,0,0,5172,2,7063,100,7115,100,720,10);
-	Add(1,18755 ,1,0,0,5170,2,4033,2,7318,50);
-	Add(1,18885 ,1,0,0,2221,10,2226,20,1020,500,11568,200);
-	Add(1,6241 ,1,0,0,985,30,757,20,1354,1);
-	Add(1,6240 ,1,0,0,756,30,984,20,1354,1);
-	Add(1,16394 ,1,0,0,756,270,984,180,1354,9);
-	Add(1,16396 ,1,0,0,985,270,757,180,1354,9);
-	Add(1,33117 ,1,0,0,909,10,528,10,985,5,969,1,547,5,545,5);
+	Add(1,200000008 ,1,0,0,24013,1,671,2,523,1);
+	Add(1,200000009 ,1,0,0,24013,1,671,2,523,1);
+	Add(1,200000010 ,1,0,0,24013,1,671,2,523,1);
+	Add(1,200000011 ,1,0,0,24013,1,671,2,523,1);
 
 
 
 //=====================================================================================
+
 	freeloop(0);
 	set .menu$,"";
 	for(set .@i,1; .@i<=getarraysize(.Shops$); set .@i,.@i+1) {
 		set .menu$, .menu$+.Shops$[.@i]+":";
-		npcshopdelitem "cshop1"+.@i,909;
+		npcshopdelitem "cshop57"+.@i,909;
 	}
 	end;
 
@@ -81,8 +72,8 @@ OnMenu:
 		end;
 	}
 	dispbottom "Select one item at a time.";
-	callshop "cshop1"+@shop_index,1;
-	npcshopattach "cshop1"+@shop_index;
+	callshop "cshop57"+@shop_index,1;
+	npcshopattach "cshop57"+@shop_index;
 	end;
 
 OnBuyItem:
@@ -164,7 +155,7 @@ function Add {
 			setarray .@j[.@i-2],getarg(.@i),getarg(.@i+1);
 	}
 	copyarray getd(".q_"+getarg(0)+"_"+getarg(1)+"[0]"),.@j[0],getarraysize(.@j);
-	npcshopadditem "cshop1"+getarg(0),getarg(1),((.ShowZeny)?getarg(3):0);
+	npcshopadditem "cshop57"+getarg(0),getarg(1),((.ShowZeny)?getarg(3):0);
 	return;
 }
 
@@ -186,15 +177,15 @@ function Slot {
 }
 }
 
-function	script	cshop1	{
+function	script	cshop57	{
 	deletearray @i[0],getarraysize(@i);
 	for(set .@i,0; .@i<getargcount(); set .@i,.@i+1)
 		set @i[.@i],getarg(.@i);
-	doevent "costume_shop1::OnMenu";
+	doevent "costume_shop57::OnMenu";
 	end;
 }
 
 
 // Dummy shop data -- copy as needed.
 //============================================================
--	shop	cshop11	-1,909:-1
+-	shop	cshop571	-1,909:-1

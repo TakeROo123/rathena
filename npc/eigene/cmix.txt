@@ -1,0 +1,76 @@
+prontera,151,183,4	script	Costume-Squirrel	2364,{
+
+    mes "Oh you found me, well then bring me what I need and I have something for you";
+switch(select("- make :- Nah!")) {
+    case 1:
+        next;
+        goto make;
+        break;  
+    default:
+        next;
+        goto stoptalking;
+        break;
+    }
+
+	next;
+		mes "[^CD0000Heinz^000000]";
+		mes "Heinz erlaubt dir";
+		mes "heute etwas zu tauschen! ";
+		mes " ";
+		mes "Möchtest du jetzt tauschen?";
+		next;
+		menu "Ja klar",-,"Nein Danke",stoptalking;
+		
+	stoptalking:
+		mes "[^CD0000Heinz^000000]";
+		mes "Ok.";
+		mes "Komm mal wieder!";
+	close;
+	
+	lose:
+		mes "[^CD0000Heinz^000000]";
+		mes "Oh.";
+		mes "Sammel mehr, kann ja nicht";
+		mes "das du Heinz störst";
+		close;
+
+
+
+	
+    make:            
+	    mes "[^CD0000Costume-Squirrel^000000]";
+	    mes "Du benötigst / du besitzt:";
+	    mes "^5533FF1 Nut Shell^000000 / "+countitem(5037)+" ea";
+	    mes "^5533FF50 Coconut Fruit^000000 / "+countitem(6263)+" ea";
+	    mes "^5533FF1 Poring Card^000000 / "+countitem(4001)+" ea";
+	    mes "^5533FF100 Orc Clawf^000000 / "+countitem(1043)+" ea";
+	    mes "^5533FF1 Oil Paper^000000 / "+countitem(7151)+" ea";
+	next;
+	    if(countitem(5037)<1) goto lose;
+	    if(countitem(6263)<50) goto lose;
+    	if(countitem(4001)<1) goto lose;
+	    if(countitem(1043)<100) goto lose;
+	    if(countitem(7151)<1) goto lose;
+
+    	mes "[^CD0000Costume-Squirrel^000000]";
+	    mes "Sicher? Also wirklich sicher?";
+	    mes "Das ausgewählte Item jetzt erhalten?";
+			switch(select("- Yes :- No!")) {
+    case 1:
+        next;
+        goto makenow;
+        break;  
+    default:
+        next;
+        goto stoptalking;
+        break;
+    }
+	makenow:
+        delitem 5037,1;
+	    delitem 6263,50;
+	    delitem 4001,1;
+	    delitem 1043,100;
+	    delitem 7151,1;
+        getItem 200000036,1;
+    end;      
+}

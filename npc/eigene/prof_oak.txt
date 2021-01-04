@@ -16,16 +16,15 @@
 //= DatPanda
 //============================================================
 
--	itemshop	PokeShop	444,33117,33150:1,33151:1,33152:1,33153:1;
+-	itemshop	PokeShop	444,33117,33150:1,33151:5,33152:5,33153:1,33154:1,33155:1,33156:1,33157:1,33158:1,33159:5,33160:1,33161:1,33162:1,33163:1,33164:1,33165:5,33166:5,33167:1,33168:5,33169:1,33170:1,33171:1,33172:1,33173:1,33174:1;
 
-takero,371,196,5	script	PkmnVarResetter	574,{
-    mes "BLA";
-    metProfOak = 0;
-    close;
-}
+//prontera,158,173,5	script	PkmnVarResetter	574,{
+//    mes "BLA";
+//    metProfOak = 0;
+//    close;
+//}
 
-prontera,155,179,5	script	Prof. Oak	574,{
-    cutin "eich.bmp",2;
+takero,375,247,5	script	Prof. Oak	574,{
 
     if(metProfOak) {
         goto returning;
@@ -102,3 +101,30 @@ prontera,155,179,5	script	Prof. Oak	574,{
         set .n1$,"^FF8000"+strnpcinfo(0)+"^000000";
     end;
 }
+
+
+
+iz_d05_i,0,0	monster	Lugia		30021,1,5000
+tur_dun04,0,0	monster	Blastoise	30022,3,5000
+prt_fild05,0,0	monster	Bulbasaur	30023,10,5000
+iz_dun03,0,0	monster	Suicune		30037,1,1000
+gef_dun03,0,0	monster	Typhlosion	30038,10,6000
+dic_fild01,0,0	monster	Tyranitar	30039,4,5000
+cmd_fild02,0,0	monster	Vaporeon	30040,6,5000
+orcsdun01,0,0	monster	Vulpix	30041,6,5000
+ayo_fild01,0,0	monster	Venusaur	30042,2,5000
+ice_dun03,0,0	monster	Articuno	30043,4,5000
+mag_dun01,0,0	monster	Charizard	30024,2,5000
+pay_fild02,0,0	monster	Chikorita	30025,10,5000
+mjo_dun01,0,0	monster	Cyndaquil	30026,6,5000
+abyss_01,0,0	monster	Dragonair	30027,5,5000
+odin_tem03,0,0	monster	Entei	30028,1,5000
+moc_pryd03,0,0	monster	Flareon	30029,10,5000
+mal_dun01,0,0	monster	Gyarados	30030,4,5000
+prt_fild01,0,0	monster	Ivysaur	30031,6,5000
+hu_fild02,0,0	monster	Larvitar	30032,10,5000
+dew_dun02,0,0	monster	Raikou	30034,1,5000
+tha_t10,0,0	monster	Rayquaza	30035,1,5000
+iz_dun00,0,0	monster	Squirtle	30036,4,5000
+mag_dun03,0,0	monster	Hooh	30020,1,5000
+

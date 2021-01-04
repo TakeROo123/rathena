@@ -1,0 +1,496 @@
+//===== rAthena Script =======================================
+//= Unofficial Odins Temple 4 Enchanter
+//===== By ===================================================
+//= DatPanda
+//===== Version ==============================================
+//= 1.0 - Initial Version
+//===== Tested With ==========================================
+//= rAthena 09/29/2020 Revision
+//= GIT Hash: 7021ad2c76c61799838b05caf5dce5b014fa79dd
+//===== Description ==========================================
+//= Based on the information online like Shining Moon Ro and NovaRo
+//  But mostly based on the info of NovaRo
+//= The text is done by myself.
+//===== Comments =============================================
+// bla
+//===== Credits ==============================================
+//= Nova Ro for their Wiki Page:
+//  https://www.novaragnarok.com/wiki/Odin%27s_Temple_4_/_Odin%27s_Past
+//============================================================
+
+hu_in01,97,322,3	script	Susan Grey	4_F_FRUIT,{
+    .@itemIdAngelDreams = 25767;
+    .@itemIdSilvervine = 6417;
+    .@itemIdManteau = 20947;
+    .@itemIdBoots = 22209;
+    setarray .@itemIdsSoutanes[0],15397,15398,15399,15401,15400,15402;
+    .@upgradeLevelSpecialClergy = 7;
+    .@upgradeLevelSpecialSoutane = 9;
+
+    .@itemNormalEnchantCostMat = .@itemIdAngelDreams;
+    .@itemNormalEnchantCost = 3;
+    .@itemNormalEnchantZenyCost = 500000;
+
+    .@itemSpecialEnchantCostMat = .@itemIdSilvervine;
+    .@itemSpecialEnchantCost = 1;
+    .@itemSpecialEnchantZenyCost = 500000;
+
+    .@itemFullResetCostMat = .@itemIdSilvervine;
+    .@itemFullResetCost = 1;
+    .@itemFullResetZenyCost = 500000;
+    .@itemFullResetFailChance = 30;
+
+    .@rerollFirstMat = .@itemIdAngelDreams;
+    .@rerollSecondMat = .@itemIdSilvervine;
+    .@rerollFourthSlotItemCost = 15;
+    .@rerollFourthSlotZeny = 500000;
+    .@rerollThirdSlotItemCost = 50;
+    .@rerollThirdSlotZeny = 1500000;
+    .@rerollSecondSlotItemCost = 75;
+    .@rerollSecondSlotAltItemCost = 1;
+    .@rerollSecondSlotZeny = 2000000;
+    .@rerollSecondSlotSpItemCost = 75;
+    .@rerollSecondSlotSpAltItemCost = 5;
+    .@rerollSecondSlotSpZeny = 2000000;
+
+    setarray .@normalEnchants[0],   4705,4706,4707, // Str 6-8
+                                    4735,4736,4737, // Agi 6-8
+                                    4725,4726,4727, // Dex 6-8
+                                    4745,4746,4747, // Vit 6-8
+                                    4715,4716,4717, // Int 6-8
+                                    4755,4756,4757, // Luk 6-8
+                                    4794,4902,      // Def 12/18
+                                    4786,4787,      // Mdef 2/4
+                                    4867,4900,      // Max HP 3%/5%
+                                    4801,4802,      // Max SP 100/150
+                                    4764,4765,29241,// Crit 5/7/10
+                                    4762,29238;     // Flee 6/10
+
+    setarray .@specialEnchantSoutane[0],    4706,4707,  // Str 7-8
+                                            4736,4737,  // Agi 7-8
+                                            4726,4727,  // Dex 7-8
+                                            4746,4747,  // Vit 7-8
+                                            4716,4717,  // Int 7-8
+                                            4756,4757,  // Luk 7-8
+                                            4903,       // Def 21
+                                            4790,       // Mdef 10
+                                            4900,       // Max HP 5%
+                                            4802,       // Max SP 150
+                                            29241,      // Crit 10
+                                            29238,      // Flee 10
+                                            4820,4821,  // Fighting Spirit 5/6
+                                            4812,4826,  // Spell 4/5
+                                            4835,4836,  // Expert Archer 4/5
+                                            4843,4844,  // Sharp 4/5
+                                            4873,4881,  // ASPD 3/4
+                                            310076,     // Str Blessing
+                                            310077,     // Agi Blessing
+                                            310078,     // Vit Blessing
+                                            310079,     // Dex Blessing
+                                            310080,     // Int Blessing
+                                            310081;     // Luk Blessing
+
+    setarray .@specialEnchantOthers[0],     4706,4707,  // Str 7-8
+                                            4736,4737,  // Agi 7-8
+                                            4726,4727,  // Dex 7-8
+                                            4746,4747,  // Vit 7-8
+                                            4716,4717,  // Int 7-8
+                                            4756,4757,  // Luk 7-8
+                                            4902,29026, // Def 18/20
+                                            4788,4789,  // Mdef 6/8
+                                            4867,4900,  // Max HP 3%/5%
+                                            4801,4802;  // Max SP 100/150
+
+    disable_items;
+    if(getequipid(EQI_SHOES) == .@itemIdBoots){
+        .@equipedEq[getarraysize(.@equipedEq)] = .@itemIdBoots;
+    }
+    if(getequipid(EQI_GARMENT) == .@itemIdManteau){
+        .@equipedEq[getarraysize(.@equipedEq)] = .@itemIdManteau;
+    }
+    .@equipedSoutane = getequipid(EQI_ARMOR);
+    for ( set .@i,0; .@i < getarraysize(.@itemIdsSoutanes); set .@i,.@i + 1) {
+        if(.@equipedSoutane == .@itemIdsSoutanes[.@i]){
+            .@equipedEq[getarraysize(.@equipedEq)] = .@equipedSoutane;
+        }
+    }
+
+    for ( set .@i,0; .@i < getarraysize(.@equipedEq); set .@i,.@i + 1) {
+        .@equipedEqStr$[.@i] = getitemname(.@equipedEq[.@i]);
+    }
+
+    .@equipedEqStr$[getarraysize(.@equipedEqStr$)+1] = "I'm fine...";
+
+    //  start npc
+    mes .n$;
+    mes "Welcome adventurer!";
+    mes "What can I help you with today?";
+    switch(select("- Enchanting :- Reroll Slots :- Full reset :- Nothing")) {
+        case 1:
+            next;
+            goto normal_enchant;
+            break;
+         case 2:
+            next;
+            goto reroll_enchant;
+            break;
+        case 3:
+            next;
+        	goto reset;
+            break;
+        default:
+            next;
+        	goto stoptalking;
+            break;
+    }
+    close;
+
+    reset:
+        mes .n$;
+        mes "So you want to reset your enchants?";
+        mes "This will cost you:";
+        mes .@itemFullResetCost+" x "+getitemname(.@itemFullResetCostMat);
+        mes .@itemFullResetZenyCost+" Zeny";
+        mes "";
+        mes "So do you still want to continue?";
+        switch(select("- Yes :- No")) {
+            case 1:
+                next;
+                if(countitem(.@itemFullResetCostMat) < .@itemFullResetCost || Zeny < .@itemFullResetZenyCost){
+                    goto notEnoughItems;
+                }
+                break;
+            default:
+                next;
+                goto stoptalking;
+                break;
+        }
+
+        mes .n$;
+        mes "Which equipment do you want to reset?";
+        .@selection = select(implode(.@equipedEqStr$, ":"));
+        .@selectedItem = .@equipedEq[.@selection - 1];
+        if(.@selection == getarraysize(.@equipedEqStr$)){
+            next;
+            goto stoptalking;
+        } else {
+            next;
+            Zeny -= .@itemFullResetZenyCost;
+            delitem .@itemFullResetCostMat,.@itemFullResetCost;
+            if(rand(1,100) <= .@itemFullResetFailChance) {
+                goto resetFailed;
+            } else {
+                if(.@selectedItem == .@itemIdManteau){
+                    .@slot = EQI_GARMENT;
+                } else if (.@selectedItem == .@itemIdBoots) {
+                    .@slot = EQI_SHOES;
+                } else {
+                    .@slot = EQI_ARMOR;
+                }
+                .@ref = getequiprefinerycnt(.@slot);
+                .@slot1 = getequipcardid(.@slot,0);
+                delequip .@slot;
+                getitem2 .@selectedItem,1,1,.@ref,0,.@slot1,0,0,0;
+                goto stoptalking;
+            }
+        }
+        goto exit;
+    end;
+
+    normal_enchant:
+        mes .n$;
+        mes "So you did choose to enchant your equipment!";
+        mes "Which equip do you want to enchant?";
+        .@selection = select(implode(.@equipedEqStr$, ":"));
+        next;
+        if(.@selection == getarraysize(.@equipedEqStr$)){
+            goto stoptalking;
+        }
+        .@selectedItem = .@equipedEq[.@selection - 1];
+        if(.@selectedItem == .@itemIdManteau){
+            .@slot = EQI_GARMENT;
+        } else if (.@selectedItem == .@itemIdBoots) {
+            .@slot = EQI_SHOES;
+        } else {
+            .@slot = EQI_ARMOR;
+        }
+        .@ref = getequiprefinerycnt(.@slot);
+        .@slot1 = getequipcardid(.@slot,0);
+        .@slot2 = getequipcardid(.@slot,1);
+        .@slot3 = getequipcardid(.@slot,2);
+        .@slot4 = getequipcardid(.@slot,3);
+
+        if(.@slot2 != 0 && .@slot3 != 0 && .@slot4 != 0) {
+            goto noEnchantSlotsLeft;
+        }
+
+        mes .n$;
+        if(.@slot4 == 0) {
+            mes "Enchanting your fourth slot will cost you:";
+            mes .@itemNormalEnchantCost+" x "+getitemname(.@itemNormalEnchantCostMat);
+            mes .@itemNormalEnchantZenyCost+" Zeny";
+            .@slot4 = .@normalEnchants[rand(getarraysize(.@normalEnchants))];
+            .@costItem = .@itemNormalEnchantCostMat;
+            .@costItemAmount = .@itemNormalEnchantCost;
+            .@costZeny = .@itemNormalEnchantZenyCost;
+        } else if(.@slot3 == 0) {
+            mes "Enchanting your third slot will cost you:";
+            mes .@itemNormalEnchantCost+" x "+getitemname(.@itemNormalEnchantCostMat);
+            mes .@itemNormalEnchantZenyCost+" Zeny";
+            .@slot3 = .@normalEnchants[rand(getarraysize(.@normalEnchants))];
+            .@costItem = .@itemNormalEnchantCostMat;
+            .@costItemAmount = .@itemNormalEnchantCost;
+            .@costZeny = .@itemNormalEnchantZenyCost;
+        } else if(.@slot2 == 0) {
+            mes "Oh your last slot!?";
+            mes "Do you want to do a normal or a special enchant?";
+            next;
+            mes .n$;
+            mes "The normal enchant will be:";
+            mes .@itemNormalEnchantCost+" x "+getitemname(.@itemNormalEnchantCostMat);
+            mes .@itemNormalEnchantZenyCost+" Zeny";
+            next;
+            mes .n$;
+            mes "While the special enchant will be:";
+            mes .@itemSpecialEnchantCost+" x "+getitemname(.@itemSpecialEnchantCostMat);
+            mes .@itemSpecialEnchantZenyCost+" Zeny";
+            mes "And your equipment need to be strengthened!";
+            mes "Upgrading your Boots or Manteau to +"+.@upgradeLevelSpecialClergy;
+            mes "and your Soutane to +"+.@upgradeLevelSpecialSoutane;
+            mes "should be enough.";
+            
+            switch(select("- Normal enchant :- Special enchant :- Stop it!")){
+                case 1:
+                    .@costItem = .@itemNormalEnchantCostMat;
+                    .@costItemAmount = .@itemNormalEnchantCost;
+                    .@costZeny = .@itemNormalEnchantZenyCost;
+                    .@slot2 = .@normalEnchants[rand(getarraysize(.@normalEnchants))];
+                    break;
+                case 2:
+                    .@hasRefineEnough = 0;
+                    if(.@selectedItem == .@itemIdManteau || .@selectedItem == .@itemIdBoots){
+                        if(.@ref >= .@upgradeLevelSpecialClergy){
+                            .@hasRefineEnough = 1;
+                        }
+                        .@slot2 = .@specialEnchantOthers[rand(getarraysize(.@specialEnchantOthers))];
+                    } else {
+                        if(.@ref >= .@upgradeLevelSpecialSoutane){
+                            .@hasRefineEnough = 1;
+                        }
+                        .@slot2 = .@specialEnchantSoutane[rand(getarraysize(.@specialEnchantSoutane))];
+                    }
+                    if(.@hasRefineEnough == 0){
+                        next;
+                        goto refineNotHighEnough;
+                    }
+                    .@costItem = .@itemSpecialEnchantCostMat;
+                    .@costItemAmount = .@itemSpecialEnchantCost;
+                    .@costZeny = .@itemSpecialEnchantZenyCost;
+                    break;
+                default:
+                    next;
+                    goto stoptalking;
+                    break;
+            }
+        }
+        next;
+
+        mes .n$;
+        mes "Are you sure to continue?";
+        if(select("- Absolutely :- Not really") != 1) {
+            next;
+            goto stoptalking;
+        }
+        
+        if(countitem(.@costItem) < .@costItemAmount || Zeny < .@costZeny){
+            next;
+            goto notEnoughItems;
+        }
+
+        Zeny -= .@costZeny;
+        delitem .@costItem,.@costItemAmount;
+        delequip .@slot;
+        getitem2 .@selectedItem,1,1,.@ref,0,.@slot1,.@slot2,.@slot3,.@slot4;
+        next;
+        goto enchanted;
+    end;
+
+    reroll_enchant:
+        mes .n$;
+        mes "So you did choose to reroll your enchants!";
+        mes "Which equip do you want to reroll you enchants?";
+        .@selection = select(implode(.@equipedEqStr$, ":"));
+        next;
+        if(.@selection == getarraysize(.@equipedEqStr$)){
+            goto stoptalking;
+        }
+        .@selectedItem = .@equipedEq[.@selection - 1];
+        if(.@selectedItem == .@itemIdManteau){
+            .@slot = EQI_GARMENT;
+        } else if (.@selectedItem == .@itemIdBoots) {
+            .@slot = EQI_SHOES;
+        } else {
+            .@slot = EQI_ARMOR;
+        }
+        .@ref = getequiprefinerycnt(.@slot);
+        .@slot1 = getequipcardid(.@slot,0);
+        .@slot2 = getequipcardid(.@slot,1);
+        .@slot3 = getequipcardid(.@slot,2);
+        .@slot4 = getequipcardid(.@slot,3);
+
+        if(.@slot2 == 0 && .@slot3 == 0 && .@slot4 == 0) {
+            goto noEnchantsToReroll;
+        }
+
+        mes .n$;
+        mes "Rerolling the 4th slot will cost you:";
+        mes .@rerollFourthSlotItemCost+" x "+getitemname(.@rerollFirstMat);
+        mes .@rerollFourthSlotZeny+" Zeny";
+        next;
+        mes .n$;
+        mes "Rerolling the 3rd slot will cost you:";
+        mes .@rerollThirdSlotItemCost+" x "+getitemname(.@rerollFirstMat);
+        mes .@rerollThirdSlotZeny+" Zeny";
+        next;
+        mes .n$;
+        mes "Rerolling the 2nd slot will cost you:";
+        mes .@rerollSecondSlotItemCost+" x "+getitemname(.@rerollFirstMat);
+        mes .@rerollSecondSlotAltItemCost+" x "+getitemname(.@rerollSecondMat);
+        mes .@rerollSecondSlotZeny+" Zeny";
+        next;
+        mes .n$;
+        mes "Rerolling the 2nd slot with a special enchant will cost you:";
+        mes .@rerollSecondSlotSpItemCost+" x "+getitemname(.@rerollFirstMat);
+        mes .@rerollSecondSlotSpAltItemCost+" x "+getitemname(.@rerollSecondMat);
+        mes .@rerollSecondSlotSpZeny+" Zeny";
+        next;
+        mes .n$;
+        mes "Which slot do you want to reroll?";
+        switch(select("- 4th :- 3rd :- 2nd :- 2nd Special :- Stop it!")){
+            case 1:
+                .@costFirstItemAmount = .@rerollFourthSlotItemCost;
+                .@costSecondItemAmount = 0;
+                .@costZeny = .@rerollFourthSlotZeny;
+                .@slot4 = .@normalEnchants[rand(getarraysize(.@normalEnchants))];
+                break;
+             case 2:
+                .@costFirstItemAmount = .@rerollThirdSlotItemCost;
+                .@costSecondItemAmount = 0;
+                .@costZeny = .@rerollThirdSlotZeny;
+                .@slot3 = .@normalEnchants[rand(getarraysize(.@normalEnchants))];
+                break;
+            case 3:
+                .@costFirstItemAmount = .@rerollSecondSlotItemCost;
+                .@costSecondItemAmount = .@rerollSecondSlotAltItemCost;
+                .@costZeny = .@rerollSecondSlotZeny;
+                .@slot2 = .@normalEnchants[rand(getarraysize(.@normalEnchants))];
+                break;
+            case 4:
+                .@costFirstItemAmount = .@rerollSecondSlotSpItemCost;
+                .@costSecondItemAmount = .@rerollSecondSlotSpAltItemCost;
+                .@costZeny = .@rerollSecondSlotSpZeny;
+                if(.@selectedItem == .@itemIdManteau || .@selectedItem == .@itemIdBoots){
+                    .@slot2 = .@specialEnchantOthers[rand(getarraysize(.@specialEnchantOthers))];
+                } else {
+                    .@slot2 = .@specialEnchantSoutane[rand(getarraysize(.@specialEnchantSoutane))];
+                }
+                break;
+            default:
+                next;
+                goto stoptalking;
+                break;
+        }
+        next;
+
+        mes .n$;
+        mes "Are you sure to continue?";
+        if(select("- Absolutely :- Not really") != 1) {
+            next;
+            goto stoptalking;
+        }
+        
+        if(
+            countitem(.@rerollFirstMat) < .@costFirstItemAmount || 
+            countitem(.@rerollSecondMat) < .@costSecondItemAmount || 
+            Zeny < .@costZeny
+        ){
+            next;
+            goto notEnoughItems;
+        }
+
+        Zeny -= .@costZeny;
+        delitem .@rerollFirstMat,.@costFirstItemAmount;
+        delitem .@rerollSecondMat,.@costSecondItemAmount;
+        delequip .@slot;
+        getitem2 .@selectedItem,1,1,.@ref,0,.@slot1,.@slot2,.@slot3,.@slot4;
+        next;
+        goto rerolled;
+    end;
+
+    resetFailed:
+        mes .n$;
+        mes "I'm sorry!";
+        mes "I failed this time...please try again later!";
+        goto exit;
+    end;
+
+    refineNotHighEnough:
+        mes .n$;
+        mes "Please come back if you have strengthened your equip!";
+        goto exit;
+    end;
+
+    notEnoughItems:
+        mes .n$;
+        mes "Please come back if you have enough items!";
+        goto exit;
+    end;
+
+    noEnchantsToReroll:
+        mes .n$;
+        mes "You don't have any enchants which I can reroll!";
+        mes "Do you maybe want to come back to reroll an other equipment?";
+        mes "You can also enchant your equipment if you would like to!";
+        goto exit;
+    end;
+
+    noEnchantSlotsLeft:
+        mes .n$;
+        mes "You don't have any slots left to enchant!";
+        mes "Do you maybe want to come back to reset?";
+        mes "You can also enchant another equip if you would like to!";
+        goto exit;
+    end;
+
+    enchanted:
+        mes .n$;
+        mes "Yeah I successfully enchanted your equip!";
+        mes "God luck out there while fighting these monsters!";
+        mes "May the angels bless you!";
+        goto exit;
+    end;
+
+    rerolled:
+        mes .n$;
+        mes "Yeah I successfully rerolled your enchant!";
+        mes "God luck out there while fighting these monsters!";
+        mes "May the angels bless you!";
+        goto exit;
+    end;
+    
+    stoptalking:
+        mes .n$;
+        mes "Thanks for your visit.";
+        mes "May the angels bless you!";
+        goto exit;
+    end;
+
+    exit:
+        enable_items;
+        close;
+    end;
+
+    OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+    end;
+}

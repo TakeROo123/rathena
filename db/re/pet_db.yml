@@ -2058,6 +2058,582 @@ Body:
       } else {
         bonus bMdef,4;
       }
+  - Mob: Big_Hooh
+    EggItem: Hooh_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: articuno
+    EggItem: articuno_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Venusaur
+    EggItem: Venusaur_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Vulpix
+    EggItem: Vulpix_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Vaporeon
+    EggItem: Vaporeon_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Tyranitar
+    EggItem: Tyranitar_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Raikou
+    EggItem: Raikou_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Squirtle
+    EggItem: Squirtle_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Typhlosion
+    EggItem: Typhlosion_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Flareon
+    EggItem: Flareon_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Ivysaur
+    EggItem: Ivysaur_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Larvitar
+    EggItem: Larvitar_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Bulbasaur
+    EggItem: Bulbasaur_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Charizard
+    EggItem: Charizard_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Chikorita
+    EggItem: Chikorita_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Cyndaquil
+    EggItem: Cyndaquil_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Dragonair
+    EggItem: Dragonair_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Suicune
+    EggItem: Suicune_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Arcanine
+    EggItem: Arcanine_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Blastoise
+    EggItem: Blastoise_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Entei
+    EggItem: Entei_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }	
+  - Mob: Gyarados
+    EggItem: Gyarados_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Rayquaza
+    EggItem: Rayquaza_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
+  - Mob: Big_Lugia
+    EggItem: Lugia_Egg
+    FoodItem: Pet_Food
+    Fullness: 2
+    HungryDelay: 120
+    IntimacyFed: 15
+    CaptureRate: 0
+    SpecialPerformance: false
+    AllowAutoFeed: true
+    Script: >
+      .@i = getpetinfo(PETINFO_INTIMATE);
+      
+      if (.@i >= PET_INTIMATE_LOYAL) {
+        bonus bMdef,7;
+        bonus bHealPower,6;
+      } else if (.@i >= PET_INTIMATE_CORDIAL) {
+        bonus bMdef,6;
+        bonus bHealPower,4;
+      } else if (.@i >= PET_INTIMATE_NEUTRAL) {
+        bonus bMdef,5;
+        bonus bHealPower,2;
+      } else {
+        bonus bMdef,4;
+      }
 #  - Mob: BACSOJIN2
 #    EggItem: Bacsojin2_Egg_
 #    FoodItem: Luxurious_Pet_Food

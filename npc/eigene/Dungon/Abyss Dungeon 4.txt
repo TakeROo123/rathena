@@ -1,15 +1,15 @@
-abyss_04,0,0	monster	Purple Ferus	20612,10,5000
-abyss_04,0,0	monster	Treasure Mimic	20613,10,5000
-abyss_04,0,0	monster	Black Acidus	20614,10,5000
-abyss_04,0,0	monster	Silver Acidus	20615,10,5000
-abyss_04,0,0	monster	Bone Ferus	20616,10,5000
-abyss_04,0,0	monster	Bone Acidus	20617,3,5000
+abyss_04,0,0	monster	Purple Ferus	20612,25,5000
+abyss_04,0,0	monster	Treasure Mimic	20613,15,5000
+abyss_04,0,0	monster	Black Acidus	20614,35,5000
+abyss_04,0,0	monster	Silver Acidus	20615,35,5000
+abyss_04,0,0	monster	Bone Ferus	20616,50,5000
+abyss_04,0,0	monster	Bone Acidus	20617,50,5000
 abyss_04,0,0,0,0	boss_monster	Bone Detardeurus	20618,1,10800000,600000,0
 
 //--------------Warp NPC---------------------
 
 //IN
-abyss_03,97,103,4	script	Dragon Hero	468,{
+abyss_03,97,103,4	script	Strange Dragon Hero	468,{
 if(BaseLevel < 175) {
 	mes "What are you doing here?";
 	mes "I'm looking for a strong adventurer to fill my curiosity!";
@@ -20,16 +20,16 @@ if(BaseLevel < 175) {
 }
 
 
-mes "[Dragon Hero]";
+mes "[Strange Dragon Hero]";
 mes "Haha! Everytime I come here, it's a new adventurer!";
 mes "I like it!";
 next;
 if(select("Let's go!:I'll keep looking.") == 2) {
-	mes "[Dragon Hero]";
+	mes "[Strange Dragon Hero]";
 	mes "Sure!";
 	close;
 }
-mes "[old wise man]";
+mes "[Strange Dragon Hero]";
 mes "Alright!";
 mes "Let's skip this and go";
 close2;

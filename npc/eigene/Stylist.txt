@@ -1,11 +1,8 @@
 takero,285,361,5	script	Stylist#custom_stylist	640,{
-//	@doram_hs = 6;
-//	@doram_hc = 8;
 	if( Class == 4218 ){
-		setarray .@Styles[1],
-		getbattleflag("max_cloth_color"),
-		@doram_hs,
-		@doram_hc;
+		mes "you are not a human!";
+		close;
+	end;
 	}
 	else{
 		setarray .@Styles[1],

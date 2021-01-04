@@ -120,24 +120,7 @@ te_prt_gld,107,240,0	duplicate(warp_TE_castle)	prtg-4_prtg-4#4_te	WARPNPC,1,1
 te_prt_gld,212,240,0	duplicate(warp_TE_castle)	prtg-5_prtg-5#5_te	WARPNPC,1,1
 
 
-// te_prtcas01
-te_prtcas01,103,32,0	warp	prtg-1-01_prtg-1#te	1,1,te_prt_gld,134,65
-te_prtcas01,57,19,0	warp	prtg-1-02_prtg-1-07#te	1,1,te_prtcas01,80,49
-te_prtcas01,41,34,0	warp	prtg-1-03_prtg-1-08#te	1,1,te_prtcas01,40,47
-te_prtcas01,37,54,0	warp	prtg-1-04_prtg-1-13#te	1,1,te_prtcas01,192,119
-te_prtcas01,71,54,0	warp	prtg-1-05_prtg-1-12#te	1,1,te_prtcas01,192,65
-te_prtcas01,51,70,0	warp	prtg-1-06_prtg-1-11#te	1,1,te_prtcas01,202,92
-te_prtcas01,84,49,0	warp	prtg-1-07_prtg-1-02#te	1,1,te_prtcas01,61,19
-te_prtcas01,37,47,0	warp	prtg-1-08_prtg-1-03#te	1,1,te_prtcas01,45,34
-te_prtcas01,62,34,0	warp	prtg-1-09_prtg-1-13#te	1,1,te_prtcas01,192,119
-te_prtcas01,84,19,0	warp	prtg-1-010_prtg-1-12#te	1,1,te_prtcas01,192,65
-te_prtcas01,206,92,0	warp	prtg-1-11_prtg-1-06#te	1,1,te_prtcas01,55,70
-te_prtcas01,196,65,0	warp	prtg-1-12_prtg-1-05#te	1,1,te_prtcas01,75,54
-te_prtcas01,196,119,0	warp	prtg-1-13_prtg-1-04#te	1,1,te_prtcas01,40,54
-te_prtcas01,147,120,0	warp	prtg-1-14_prtg-1-21#te	1,1,te_prtcas01,75,187
-te_prtcas01,75,183,0	warp	prtg-1-21_prtg-1-14#te	1,1,te_prtcas01,147,116
-te_prtcas01,109,163,0	warp	prtg-1-22_prtg-1-31#te	1,1,te_prtcas01,202,183
-te_prtcas01,206,183,0	warp	prtg-1-31_prtg-1-22#te	1,1,te_prtcas01,113,163
+
 
 // te_prtcas02
 te_prtcas02,43,233,0	warp	prtg-2-01_prtg-2#te	1,1,te_prt_gld,240,128

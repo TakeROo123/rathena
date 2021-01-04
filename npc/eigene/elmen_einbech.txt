@@ -1,0 +1,378 @@
+//===== rAthena Script =======================================
+//= Unofficial Einbech Mine Level 3 Seller & Enchanter
+//===== By ===================================================
+//= DatPanda
+//===== Version ==============================================
+//= 1.0 - Initial Version
+//===== Tested With ==========================================
+//= rAthena 09/29/2020 Revision
+//= GIT Hash: 7021ad2c76c61799838b05caf5dce5b014fa79dd
+//===== Description ==========================================
+//= Based on the information online like Shining Moon Ro and NovaRo
+//  But mostly based on the info of NovaRo
+//= The text is done by myself.
+//===== Comments =============================================
+// bla
+//===== Credits ==============================================
+//= Nova Ro for their Wiki Page:
+//  https://www.novaragnarok.com/wiki/Einbech_Dungeon_3
+//============================================================
+// - Enchanter, Seller, ...
+einbech,149,257,3	script	Field Manager Elmen	4_M_PHILOFONTES,{
+    /* trader */
+    .@itemidcrafted = 25814;
+    setarray .@neededOres[0],25809,25811,25810,25812,25813;
+
+    /* enchanting */
+    setarray .@weapons[0],1867,2058,13346,13346,18190,21054,26162,26215,28045,28140,28635,28771,28772,550006,32026,32110,32303,32352;
+    .@itemidphysenchant = 9514;
+    .@itemidmagicenchant = 9529;
+
+    setarray .@physFirstEnchants[0],
+                                    RDMOPT_VAR_ATTPOWER,// ATK
+                                    RDMOPT_VAR_ATKPERCENT // ATK %
+                                    ;
+    setarray .@physFirstEnchantsMin[0],5,1;
+    setarray .@physFirstEnchantsMax[0],45,10;
+    setarray .@physSecondEnchants[0],RDMOPT_VAR_HITSUCCESSVALUE, // HIT
+                                    RDMOPT_VAR_AVOIDSUCCESSVALUE, // FLEE
+                                    RDMOPT_VAR_PLUSASPD, // ASPD
+                                    RDMOPT_VAR_PLUSASPDPERCENT, // ASPD %
+                                    RDMOPT_DAMAGE_CRI_TARGET, // CRIT DMG %
+                                    RDMOPT_DAMAGE_PROPERTY_NOTHING_TARGET, // Damage to Neutral Element
+                                    RDMOPT_DAMAGE_PROPERTY_GROUND_TARGET, // Damage to Earth Element
+                                    RDMOPT_DAMAGE_PROPERTY_FIRE_TARGET,	// Damage to Fire Element
+                                    RDMOPT_DAMAGE_PROPERTY_WATER_TARGET, // Damage to Water Element
+                                    RDMOPT_DAMAGE_PROPERTY_WIND_TARGET,	// Damage to Wind Element
+                                    RDMOPT_DAMAGE_PROPERTY_POISON_TARGET, // Damage to Poison Element
+                                    RDMOPT_DAMAGE_PROPERTY_SAINT_TARGET, // Damage to Holy Element
+                                    RDMOPT_DAMAGE_PROPERTY_DARKNESS_TARGET,	// Damage to Dark Element
+                                    RDMOPT_DAMAGE_PROPERTY_TELEKINESIS_TARGET, // Damage to Ghost Element
+                                    RDMOPT_DAMAGE_PROPERTY_UNDEAD_TARGET, // Damage to Undead Element
+                                    RDMOPT_VAR_CRITICALSUCCESSVALUE // CRIT
+                                    ;
+    setarray .@physSecondEnchantsMin[0],5,7,1,5,5,3,3,3,3,3,3,3,3,3,3,2;
+    setarray .@physSecondEnchantsMax[0],35,35,2,10,20,20,20,20,20,20,20,20,20,20,20,10;
+    setarray .@physThirdEnchants[0],RDMOPT_RACE_DAMAGE_NOTHING,	// Damage to Neutral Race
+                                   RDMOPT_RACE_DAMAGE_UNDEAD,	// Damage to Undead Race
+                                   RDMOPT_RACE_DAMAGE_ANIMAL,	// Damage to Animal Race
+                                   RDMOPT_RACE_DAMAGE_PLANT,	// Damage to Plant Race
+                                   RDMOPT_RACE_DAMAGE_INSECT,	// Damage to Insect Race
+                                   RDMOPT_RACE_DAMAGE_FISHS,	// Damage to Fish Race
+                                   RDMOPT_RACE_DAMAGE_DEVIL,	// Damage to Demon Race
+                                   RDMOPT_RACE_DAMAGE_HUMAN,	// Damage to Human Race
+                                   RDMOPT_RACE_DAMAGE_ANGEL,	// Damage to Angel Race
+                                   RDMOPT_RACE_DAMAGE_DRAGON,	// Damage to Dragon Race
+                                   RDMOPT_CLASS_DAMAGE_NORMAL_TARGET,	// Damage to Normal monsters
+					               RDMOPT_CLASS_DAMAGE_BOSS_TARGET, // Damage to Boss monsters
+                                   RDMOPT_RACE_IGNORE_DEF_PERCENT_NOTHING,	// Bypass DEF of Neutral Race
+                                   RDMOPT_RACE_IGNORE_DEF_PERCENT_UNDEAD,	// Bypass DEF of Undead Race
+                                   RDMOPT_RACE_IGNORE_DEF_PERCENT_ANIMAL,	// Bypass DEF of Animal Race
+                                   RDMOPT_RACE_IGNORE_DEF_PERCENT_PLANT,	// Bypass DEF of Plant Race
+                                   RDMOPT_RACE_IGNORE_DEF_PERCENT_INSECT,	// Bypass DEF of Insect Race
+                                   RDMOPT_RACE_IGNORE_DEF_PERCENT_FISHS,	// Bypass DEF of Fish Race
+                                   RDMOPT_RACE_IGNORE_DEF_PERCENT_DEVIL,	// Bypass DEF of Demon Race
+                                   RDMOPT_RACE_IGNORE_DEF_PERCENT_HUMAN,	// Bypass DEF of Human Race
+                                   RDMOPT_RACE_IGNORE_DEF_PERCENT_ANGEL,	// Bypass DEF of Angel Race
+                                   RDMOPT_RACE_IGNORE_DEF_PERCENT_DRAGON,	// Bypass DEF of Dragon Race
+                                   RDMOPT_CLASS_IGNORE_DEF_PERCENT_NORMAL  // Bypass DEF of Normal Monster
+                                   ;
+    setarray .@physThirdEnchantsMin[0],3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3;
+    setarray .@physThirdEnchantsMax[0],20,20,20,20,20,20,20,20,20,20,20,20,25,25,25,25,25,25,25,25,25,25,18;
+
+    
+    setarray .@magicFirstEnchants[0],RDMOPT_VAR_ATTMPOWER, // MATK
+                                    RDMOPT_VAR_MAGICATKPERCENT // MATK %
+                                    ;
+    setarray .@magicFirstEnchantsMin[0],5,1;
+    setarray .@magicFirstEnchantsMax[0],45,10;
+    setarray .@magicSecondEnchants[0],RDMOPT_HEAL_MODIFY_PERCENT, // Heal Power %
+                                     RDMOPT_DEC_SPELL_CAST_TIME, // Var. cast time %
+                                     RDMOPT_VAR_AVOIDSUCCESSVALUE, // Flee
+                                     RDMOPT_MDAMAGE_PROPERTY_NOTHING_TARGET,	 	// Damage to Neutral Element
+                                     RDMOPT_MDAMAGE_PROPERTY_GROUND_TARGET,	 	// Damage to Earth Element
+                                     RDMOPT_MDAMAGE_PROPERTY_FIRE_TARGET,	 	// Damage to Fire Element
+                                     RDMOPT_MDAMAGE_PROPERTY_WATER_TARGET,	 	// Damage to Water Element
+                                     RDMOPT_MDAMAGE_PROPERTY_WIND_TARGET,	 	// Damage to Wind Element
+                                     RDMOPT_MDAMAGE_PROPERTY_POISON_TARGET,		// Damage to Poison Element
+                                     RDMOPT_MDAMAGE_PROPERTY_SAINT_TARGET,		// Damage to Holy Element
+                                     RDMOPT_MDAMAGE_PROPERTY_DARKNESS_TARGET,	// Damage to Dark Element
+                                     RDMOPT_MDAMAGE_PROPERTY_TELEKINESIS_TARGET,	// Damage to Ghost Element
+                                     RDMOPT_MDAMAGE_PROPERTY_UNDEAD_TARGET,	 	// Damage to Undead Element
+                                     RDMOPT_VAR_CRITICALSUCCESSVALUE // CRIT
+                                     ;
+    setarray .@magicSecondEnchantsMin[0],3,5,7,3,3,3,3,3,3,3,3,3,3,2;
+    setarray .@magicSecondEnchantsMax[0],25,10,35,20,20,20,20,20,20,20,20,20,20,10;
+    setarray .@magicThirdEnchants[0],RDMOPT_HEAL_MODIFY_PERCENT, // Heal Power %
+                                    RDMOPT_DEC_SPELL_CAST_TIME, // Var. cast time %
+                                    RDMOPT_RACE_MDAMAGE_NOTHING,// Damage to Neutral Race
+                                    RDMOPT_RACE_MDAMAGE_UNDEAD,	// Damage to Undead Race
+                                    RDMOPT_RACE_MDAMAGE_ANIMAL,	// Damage to Animal Race
+                                    RDMOPT_RACE_MDAMAGE_PLANT,	// Damage to Plant Race
+                                    RDMOPT_RACE_MDAMAGE_INSECT,	// Damage to Insect Race
+                                    RDMOPT_RACE_MDAMAGE_FISHS,	// Damage to Fish Race
+                                    RDMOPT_RACE_MDAMAGE_DEVIL,	// Damage to Devil Race
+                                    RDMOPT_RACE_MDAMAGE_HUMAN,	// Damage to Human Race
+                                    RDMOPT_RACE_MDAMAGE_ANGEL,	// Damage to Angel Race
+                                    RDMOPT_RACE_MDAMAGE_DRAGON,	// Damage to Dragon Race
+                                    RDMOPT_CLASS_MDAMAGE_NORMAL,	// Damage to Normal monsters
+					                RDMOPT_CLASS_MDAMAGE_BOSS, // Damage to Boss monsters
+                                    RDMOPT_RACE_IGNORE_MDEF_PERCENT_NOTHING,	// Bypass MDEF of Neutral Race
+                                    RDMOPT_RACE_IGNORE_MDEF_PERCENT_UNDEAD,	// Bypass MDEF of Undead Race
+                                    RDMOPT_RACE_IGNORE_MDEF_PERCENT_ANIMAL,	// Bypass MDEF of Animal Race
+                                    RDMOPT_RACE_IGNORE_MDEF_PERCENT_PLANT,	// Bypass MDEF of Plant Race
+                                    RDMOPT_RACE_IGNORE_MDEF_PERCENT_INSECT,	// Bypass MDEF of Insect Race
+                                    RDMOPT_RACE_IGNORE_MDEF_PERCENT_FISHS,	// Bypass MDEF of Fish Race
+                                    RDMOPT_RACE_IGNORE_MDEF_PERCENT_DEVIL,	// Bypass MDEF of Demon Race
+                                    RDMOPT_RACE_IGNORE_MDEF_PERCENT_HUMAN,	// Bypass MDEF of Human Race
+                                    RDMOPT_RACE_IGNORE_MDEF_PERCENT_ANGEL,	// Bypass MDEF of Angel Race
+                                    RDMOPT_RACE_IGNORE_MDEF_PERCENT_DRAGON,	// Bypass MDEF of Dragon Race
+                                    RDMOPT_CLASS_IGNORE_MDEF_PERCENT_NORMAL	// Bypass MDEF of Normal monster
+                                    ;
+    setarray .@magicThirdEnchantsMin[0],7,5,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3;
+    setarray .@magicThirdEnchantsMax[0],25,10,20,20,20,20,20,20,20,20,20,20,20,20,25,25,25,25,25,25,25,25,25,25,18;
+
+    //  start npc
+    mes .n$;
+    mes "Hey! Were you working in the mine?";
+    mes "Do you have some materials you maybe want trade for some services?";
+    
+    switch(select("- Trade ores :- Accessories :- Weapons :- Enchanting permits :- Enchanting :- Nah!")) {
+        case 1:
+            next;
+            goto trading;
+            break;
+        case 2:
+            goto accessories;
+            break;
+        case 3:
+        	goto weapons;
+            break;
+        case 4:
+        	goto permits;
+            break;
+        case 5:
+            next;
+        	goto enchanting;
+            break;
+        default:
+            next;
+        	goto stoptalking;
+            break;
+    }
+    close;
+
+    trading:
+        disable_items;
+        .@maxItemCount = 100;
+        .@minItemCount = .@maxItemCount;
+        for (set .@i,0; .@i < getarraysize(.@neededOres); set .@i,.@i + 1) {
+            .@itemCount = countitem(.@neededOres[.@i]);
+            if(.@itemCount < .@minItemCount) {
+                .@minItemCount = .@itemCount;
+            }
+        }
+
+        if(.@minItemCount > 0) {
+            mes .n$;
+            mes "You can craft up to "+.@minItemCount+"x "+getitemname(.@itemidcrafted);
+            mes "Remember I can just process up to "+.@maxItemCount+" ores at one time";
+            mes "How many do you want to craft?";
+            input .@oresToCraft;
+            next;
+            mes .n$;
+            if(.@oresToCraft > 0 && .@oresToCraft <= .@minItemCount){
+                mes "Soooo you want to craft "+.@oresToCraft+"x "+getitemname(.@itemidcrafted)+"?";
+                switch(select("- Yes :- No")) {
+                    case 1:
+                        next;
+                        progressbar_npc "ffff66",.@oresToCraft;
+                        for ( set .@i,0; .@i < getarraysize(.@neededOres); set .@i,.@i + 1) {
+                            delitem .@neededOres[.@i],.@oresToCraft;
+                        }
+                        getitem .@itemidcrafted,.@oresToCraft;
+                        mes "Here you go! Thanks for this trade!";
+                        mes "Now I can finally order some supplies at the smith!";
+                        mes "If you have new ores - come back! I will wait for you!";
+                        mes "Good luck out there my friend.";
+                        goto exit;
+                        break;
+                    default:
+                        next;
+                        goto stoptalking;
+                        break;
+                }
+            } else {
+                mes "Don't try to trick me! get lost kid!";
+                goto exit;
+            }
+        } else {
+            goto notenoughores;
+        }
+    end;
+
+    accessories:
+        close2; // Closes the NPC dialog without ending the script
+        callshop "EinbechDungeonAccessories",1; // Only Sell window
+        end; // We end the script just after opening the shop so no need to break
+    end;
+
+    weapons:
+        close2; // Closes the NPC dialog without ending the script
+        callshop "EinbechDungeonWeapons",1; // Only Sell window
+        end; // We end the script just after opening the shop so no need to break
+    end;
+
+    permits:
+        close2; // Closes the NPC dialog without ending the script
+        callshop "EinbechDungeonPermits",1; // Only Sell window
+        end; // We end the script just after opening the shop so no need to break
+    end;
+
+    enchanting:
+        disable_items;
+        .@part = EQI_HAND_R;
+        .@equipedweapon = getequipid(.@part);
+        .@hasvalidweaponequiped = 0;
+        for ( set .@i,0; .@i < getarraysize(.@weapons); set .@i,.@i + 1) {
+            if(.@equipedweapon == .@weapons[.@i]){
+                mes "Ah found it!";
+                .@hasvalidweaponequiped++;
+            }
+        }
+        if(.@hasvalidweaponequiped == 0) {
+            goto noweapon;
+        }
+        mes "Equipped Weapon: "+getitemname(.@equipedweapon);
+        switch(select("- Physical enchant :- Magical enchant :- STOP!!!!")) {
+            case 1:
+                next;
+                if(countitem(.@itemidphysenchant) < 1){
+                    goto notenoughmaterial;
+                } else {
+                    delitem .@itemidphysenchant,1;
+                    goto enchantphysical;
+                }
+                break;
+            case 2:
+                next;
+                if(countitem(.@itemidmagicenchant) < 1){
+                    goto notenoughmaterial;
+                } else {
+                    delitem .@itemidmagicenchant,1;
+                    goto enchantmagical;
+                }
+                break;
+            default:
+                next;
+                goto stoptalking;
+                break;
+        }
+    end;
+
+    enchantphysical:
+        set .@Opt1,rand(getarraysize(.@physFirstEnchants));
+        if(.@physFirstEnchantsMin[.@Opt1] != .@physFirstEnchantsMax[.@Opt1])
+            set .@Opt1_V,rand(.@physFirstEnchantsMin[.@Opt1],.@physFirstEnchantsMax[.@Opt1]);
+        else 
+            set .@Opt1_V,.@physFirstEnchantsMax[.@Opt1];
+
+        set .@Opt2,rand(getarraysize(.@physSecondEnchants));
+        if(.@physSecondEnchantsMin[.@Opt2] != .@physSecondEnchantsMax[.@Opt2])
+            set .@Opt2_V,rand(.@physSecondEnchantsMin[.@Opt2],.@physSecondEnchantsMax[.@Opt2]);
+        else 
+            set .@Opt2_V,.@physSecondEnchantsMax[.@Opt2];
+
+        set .@Opt3,rand(getarraysize(.@physThirdEnchants));
+        if(.@physThirdEnchantsMin[.@Opt3] != .@physThirdEnchantsMax[.@Opt3])
+            set .@Opt3_V,rand(.@physThirdEnchantsMin[.@Opt3],.@physThirdEnchantsMax[.@Opt3]);
+        else 
+            set .@Opt3_V,.@physThirdEnchantsMax[.@Opt3];
+        // Apply options to equipped weapon
+        setrandomoption(.@part,0,.@physFirstEnchants[.@Opt1],.@Opt1_V,0);
+        setrandomoption(.@part,1,.@physSecondEnchants[.@Opt2],.@Opt2_V,0);
+        setrandomoption(.@part,2,.@physThirdEnchants[.@Opt3],.@Opt3_V,0);
+        mes .n$;
+        mes "Random bonus properities have been applied on your \""+getitemname(.@equipedweapon)+"\" successfully.";
+        goto success;
+    end;
+
+    enchantmagical:
+        set .@Opt1,rand(getarraysize(.@magicFirstEnchants));
+        if(.@magicFirstEnchantsMin[.@Opt1] != .@magicFirstEnchantsMax[.@Opt1])
+            set .@Opt1_V,rand(.@magicFirstEnchantsMin[.@Opt1],.@magicFirstEnchantsMax[.@Opt1]);
+        else 
+            set .@Opt1_V,.@magicFirstEnchantsMax[.@Opt1];
+
+        set .@Opt2,rand(getarraysize(.@magicSecondEnchants));
+        if(.@magicSecondEnchantsMin[.@Opt2] != .@magicSecondEnchantsMax[.@Opt2])
+            set .@Opt2_V,rand(.@magicSecondEnchantsMin[.@Opt2],.@magicSecondEnchantsMax[.@Opt2]);
+        else 
+            set .@Opt2_V,.@magicSecondEnchantsMax[.@Opt2];
+
+        set .@Opt3,rand(getarraysize(.@magicThirdEnchants));
+        if(.@magicThirdEnchantsMin[.@Opt3] != .@magicThirdEnchantsMax[.@Opt3])
+            set .@Opt3_V,rand(.@magicThirdEnchantsMin[.@Opt3],.@magicThirdEnchantsMax[.@Opt3]);
+        else 
+            set .@Opt3_V,.@magicThirdEnchantsMax[.@Opt3];
+
+        // Apply options to equipped weapon
+        setrandomoption(.@part,0,.@magicFirstEnchants[.@Opt1],.@Opt1_V,0);
+        setrandomoption(.@part,1,.@magicSecondEnchants[.@Opt2],.@Opt2_V,0);
+        setrandomoption(.@part,2,.@magicThirdEnchants[.@Opt3],.@Opt3_V,0);
+        mes .n$;
+        mes "Random bonus properities have been applied on your \""+getitemname(.@equipedweapon)+"\" successfully.";
+        goto success;
+    end;
+
+
+    noweapon:
+        mes "...";
+        mes "Come back when you have an appropriate weapon!";
+        goto exit;
+    end;
+
+    stoptalking:
+        mes .n$;
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+
+    exit:
+        enable_items;
+        close;
+    end;
+    
+    notenoughmaterial:
+        mes .n$;
+        mes "Come back when you have the needed items!";
+        goto exit;
+    end;
+
+    notenoughores:
+        mes .n$;
+        mes "For crafting one "+getitemname(.@itemidcrafted)+ " you need:";
+        mes "";
+        for ( set .@i,0; .@i < getarraysize(.@neededOres); set .@i,.@i + 1) {
+            mes "1x "+getitemname(.@neededOres[.@i]);
+        }
+        mes "";
+        mes "Come back when you gathered them!";
+        goto exit;
+    end;
+
+    success:
+        mes .n$;
+        mes "Hell yeah! The power level of your weapon is now OVER 9000!";
+        goto exit;
+    end;
+
+    OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+    end;
+}
+
+// Please add yourself the items you want to sell, last one doesn't need a comma
+-	itemshop	EinbechDungeonAccessories	-1,25814,32248:75,32249:75,32250:75,32251:75;
+-	itemshop	EinbechDungeonWeapons	-1,25814,1867:50,2058:50,13346:50,13346:50,18190:50,21054:50,26162:50,26215:50,28045:50,28140:50,28635:50,28771:50,28772:50,32026:50,32110:50,32303:50,32352:50,550006:50;
+-	itemshop	EinbechDungeonPermits	-1,25814,9514:30,9529:30;

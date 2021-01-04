@@ -1,13 +1,13 @@
-ein_dun03,0,0	monster	Jeweliant	20598,25,5000
-ein_dun03,0,0	monster	Poisonous	20592,25,5000
-ein_dun03,0,0	monster	Toxious	20593,15,5000
-ein_dun03,0,0	monster	Green Mineral	20594,10,5000
-ein_dun03,0,0	monster	Red Mineral	20595,10,5000
-ein_dun03,0,0	monster	White Mineral	20596,10,5000
-ein_dun03,0,0	monster	Purple Mineral	20597,10,5000
-ein_dun03,0,0	monster	Jewel	20600,20,5000
-ein_dun03,0,0	monster	White Porcellio	20602,30,5000
-ein_dun03,0,0	monster	Abyssman	20603,15,5000
+ein_dun03,0,0	monster	Jeweliant	20598,20,5000
+ein_dun03,0,0	monster	Poisonous	20592,35,5000
+ein_dun03,0,0	monster	Toxious	20593,35,5000
+ein_dun03,0,0	monster	Green Mineral	20594,40,5000
+ein_dun03,0,0	monster	Red Mineral	20595,40,5000
+ein_dun03,0,0	monster	White Mineral	20596,40,5000
+ein_dun03,0,0	monster	Purple Mineral	20597,40,5000
+ein_dun03,0,0	monster	Jewel	20600,3,5000
+ein_dun03,0,0	monster	White Porcellio	20602,22,5000
+ein_dun03,0,0	monster	Abyssman	20603,20,5000
 ein_dun03,0,0,0,0	boss_monster	Jungoliant	20601,1,7500000,600000,0
 
 //--------------Warp NPC---------------------
@@ -42,7 +42,7 @@ end;
 }
 
 //OUT
-ein_dun03,268,283,4	script	Mystik	456,{
+ein_dun03,268,283,4	script	Mystik_	456,{
 
 mes "[Mystik]";
 mes "Haha! Everytime I come here, it's a new adventurer!";

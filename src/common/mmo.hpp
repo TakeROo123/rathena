@@ -40,16 +40,16 @@
 #endif
 
 #define MAX_MAP_PER_SERVER 1500 /// Maximum amount of maps available on a server
-#define MAX_INVENTORY 100 ///Maximum items in player inventory
+#define MAX_INVENTORY 150 ///Maximum items in player inventory
 /** Max number of characters per account. Note that changing this setting alone is not enough if the client is not hexed to support more characters as well.
 * Max value tested was 265 */
 #ifndef MAX_CHARS
 	#if PACKETVER >= 20180124
-		#define MAX_CHARS 15
+		#define MAX_CHARS 30
 	#elif PACKETVER >= 20100413
-		#define MAX_CHARS 12
+		#define MAX_CHARS 30
 	#else
-		#define MAX_CHARS 9
+		#define MAX_CHARS 30
 	#endif
 #endif
 

@@ -1,0 +1,683 @@
+//===== rAthena Script =======================================//
+//= Weihnachten 2020
+//===== By ===================================================//
+//= TakeRo
+//===== Version ==============================================//
+//= 1.0 - Initial Version
+//===== Tested With ==========================================//
+//= rAthena 09/29/2020 Revision
+//============================================================//
+
+
+prontera,152,166,5	script	Santa	718,{
+
+    if(metSanta) {
+        goto returning;
+    } else {
+        goto initial;
+    }
+
+    initial:
+        metSanta = 1;
+        mes .n$;
+        mes "Ho Ho HO";
+	    sleep2 500;
+        mes "Frohe Weihnachten!";
+	    sleep2 500;
+        mes "Mein Name ist "+.n1$+"!";
+        next;
+
+        mes .n$;
+        mes "Weihnachten ist die Zeit des vielen Schenkens und des aneinander Denkens!";
+	    sleep2 500;
+        mes "Zwar kein Schmuck und auch kein Nerz. ";
+	    sleep2 500;
+        mes "doch diesen Weihnachtsgruss mit Herz";
+        next;
+
+        mes .n$;
+        mes "Wenn du Artig warst bekommst du auch was tolles.";
+        sleep2 500;
+        mes "Wir das Team von TakeRo wuenschen dir und deiner Familie frohe Weihnachten";
+        sleep2 1500;
+        mes "und besinnliche Feiertage!";
+        sleep2 1000;
+        next;
+
+        goto openShop;
+    end;
+
+    returning:
+        mes .n$;
+        mes "Frohe Weihnachten ^0000FF"+strcharinfo(0)+"^000000!";
+        next;
+        goto openShop;
+    end;
+
+    leave:
+        close;
+    end;
+
+    openShop:
+        callshop "Weihnachtsshop",0;
+    end;
+
+    OnInit:
+        set .n$,"^FF8000["+strnpcinfo(0)+"]^000000";
+        set .n1$,"^FF8000"+strnpcinfo(0)+"^000000";
+    end;
+}
+
+
+-	itemshop	Weihnachtsshop	44,6682,200000029:50,200000031:50,200000008:100,200000009:100,200000010:100,200000011:100,200000012:100,200000013:100,200000014:100,200000015:100,200000016:100,200000017:100,200000018:100,200000019:100,200000020:100,200000021:100,200000022:100,200000023:100,200000024:100,200000025:100,200000026:100,200000027:100,200000029:30,14550:1,19682:10,19686:50,19697:30,19982:30,20222:25,20592:1000,19148:70,12577:100,12403:50,17433:250,17256:100,17257:100,16250:100,22886:100,12103:20,23280:1,22735:150,22527:100,17477:150,17472:100,12883:10,12016:5,14372:1,16543:50,11589:1,12812:1,20242:50,31390:10,20240:10,19474:1000,19475:1000,19476:1000,19477:1000,19478:1000,19479:1000,19480:1000,19481:1000,19482:1000,19483:1000,19484:1000,19485:1000,19486:1000,19487:1000,19488:1000,19489:1000,19490:1000,19491:1000,19492:1000,33099:70,33102:100,18777:10000,12132:3,671:10,14663:250;
+
+prontera	mapflag	snow
+
+
+
+gld_dun01_2,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gld_dun02_2,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gld_dun03_2,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gld_dun04_2,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gld2_ald,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gld2_gef,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gld2_pay,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gld2_prt,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+lhz_dun04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+iz_dun05,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mal_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+dic_dun03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+dew_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+dew_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+dew_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mal_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+iz_dun05,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+man_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+man_fild03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+spl_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+spl_fild03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+man_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+spl_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+nyd_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+bra_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+bra_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+bra_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+dic_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+dic_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+dic_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+dic_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+bif_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+bif_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+abbey01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+abbey02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+abbey03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+abyss_01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+abyss_02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+abyss_03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+alde_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+alde_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+alde_dun03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+alde_dun04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ama_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ama_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ama_dun03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ama_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+anthell01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+anthell02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ayo_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ayo_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ayo_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ayo_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+beach_dun,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+beach_dun2,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+beach_dun3,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+c_tower1,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+c_tower2,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+c_tower3,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+c_tower4,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+cmd_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+cmd_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+cmd_fild03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+cmd_fild04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+cmd_fild06,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+cmd_fild07,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+cmd_fild08,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+cmd_fild09,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ein_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ein_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ein_fild03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ein_fild04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ein_fild05,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ein_fild06,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ein_fild07,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ein_fild08,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ein_fild09,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_dun00,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_fild00,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_fild03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_fild04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_fild05,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_fild06,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_fild07,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_fild08,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_fild09,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_fild10,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_fild11,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gef_fild13,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gefenia01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gefenia02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gefenia03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gefenia04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_cas01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_cas02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_church,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_chyard,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_in01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_knt01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_knt02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_prison,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_prison1,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_sew01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_sew02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_sew03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_sew04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_step,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+glast_01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gon_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gon_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gon_dun03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gon_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+hu_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+hu_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+hu_fild04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+hu_fild05,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+hu_fild06,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ice_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ice_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ice_dun03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+in_sphinx1,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+in_sphinx2,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+in_sphinx3,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+in_sphinx4,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+in_sphinx5,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+iz_dun00,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+iz_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+iz_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+iz_dun03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+iz_dun04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+jupe_core,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+juperos_01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+juperos_02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+kh_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+kh_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+lhz_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+lhz_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+lhz_dun03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+lhz_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+lhz_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+lhz_fild03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+lou_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+lou_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+lou_dun03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+lou_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mag_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mag_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+man_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mjo_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mjo_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mjo_dun03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mjolnir_01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mjolnir_02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mjolnir_03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mjolnir_04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mjolnir_05,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mjolnir_06,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mjolnir_07,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mjolnir_08,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mjolnir_09,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mjolnir_10,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mjolnir_11,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+mjolnir_12,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild05,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild06,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild07,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild08,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild09,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild10,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild11,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild12,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild13,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild14,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild15,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild16,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild17,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_fild18,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_pryd01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_pryd02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_pryd03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_pryd04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_pryd05,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_pryd06,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+nameless_n,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+nif_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+nif_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+nyd_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+odin_tem01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+odin_tem02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+odin_tem03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+orcsdun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+orcsdun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+pay_dun00,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+pay_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+pay_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+pay_dun03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+pay_dun04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+pay_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+pay_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+pay_fild03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+pay_fild04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+pay_fild06,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+pay_fild07,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+pay_fild08,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+pay_fild09,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+pay_fild10,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild00,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild05,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild06,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild07,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild08,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild09,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild10,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild11,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_maze01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_maze02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_maze03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_sewb1,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_sewb2,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_sewb3,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ra_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ra_fild03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ra_fild04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ra_fild05,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ra_fild06,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ra_fild08,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ra_fild12,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ra_san01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ra_san02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ra_san03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ra_san04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ra_san05,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+spl_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tha_t01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tha_t02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tha_t03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tha_t04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tha_t05,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tha_t06,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tha_t07,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tha_t08,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tha_t09,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tha_t10,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tha_t11,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tha_t12,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+thor_v01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+thor_v02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+thor_v03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+treasure01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+treasure02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tur_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tur_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tur_dun03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+tur_dun04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+um_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+um_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+um_fild03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+um_fild04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ve_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ve_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ve_fild03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ve_fild04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ve_fild05,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ve_fild07,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+xmas_dun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+xmas_dun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+xmas_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+yuno_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+yuno_fild02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+yuno_fild03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+yuno_fild04,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+yuno_fild06,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+yuno_fild07,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+yuno_fild08,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+yuno_fild09,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+yuno_fild10,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+yuno_fild12,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gld_dun01_2,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gld_dun02_2,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gld_dun03_2,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gld_dun04_2,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gld2_ald,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gld2_gef,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gld2_pay,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gld2_prt,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+lhz_dun04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+iz_dun05,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mal_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+dic_dun03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+dew_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+dew_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+dew_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mal_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+iz_dun05,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+man_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+man_fild03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+spl_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+spl_fild03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+man_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+spl_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+nyd_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+bra_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+bra_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+bra_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+dic_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+dic_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+dic_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+dic_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+bif_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+bif_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+abbey01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+abbey02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+abbey03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+abyss_01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+abyss_02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+abyss_03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+alde_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+alde_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+alde_dun03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+alde_dun04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ama_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ama_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ama_dun03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ama_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+anthell01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+anthell02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ayo_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ayo_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ayo_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ayo_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+beach_dun,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+beach_dun2,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+beach_dun3,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+c_tower1,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+c_tower2,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+c_tower3,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+c_tower4,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+cmd_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+cmd_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+cmd_fild03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+cmd_fild04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+cmd_fild06,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+cmd_fild07,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+cmd_fild08,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+cmd_fild09,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ein_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ein_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ein_fild03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ein_fild04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ein_fild05,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ein_fild06,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ein_fild07,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ein_fild08,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ein_fild09,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_dun00,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_fild00,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_fild03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_fild04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_fild05,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_fild06,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_fild07,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_fild08,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_fild09,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_fild10,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_fild11,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gef_fild13,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gefenia01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gefenia02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gefenia03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gefenia04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_cas01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_cas02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_church,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_chyard,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_in01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_knt01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_knt02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_prison,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_prison1,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_sew01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_sew02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_sew03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_sew04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_step,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+glast_01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gon_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gon_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gon_dun03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gon_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+hu_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+hu_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+hu_fild04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+hu_fild05,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+hu_fild06,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ice_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ice_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ice_dun03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+in_sphinx1,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+in_sphinx2,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+in_sphinx3,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+in_sphinx4,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+in_sphinx5,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+iz_dun00,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+iz_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+iz_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+iz_dun03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+iz_dun04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+jupe_core,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+juperos_01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+juperos_02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+kh_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+kh_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+lhz_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+lhz_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+lhz_dun03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+lhz_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+lhz_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+lhz_fild03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+lou_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+lou_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+lou_dun03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+lou_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mag_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mag_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+man_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mjo_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mjo_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mjo_dun03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mjolnir_01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mjolnir_02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mjolnir_03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mjolnir_04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mjolnir_05,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mjolnir_06,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mjolnir_07,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mjolnir_08,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mjolnir_09,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mjolnir_10,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mjolnir_11,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+mjolnir_12,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild05,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild06,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild07,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild08,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild09,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild10,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild11,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild12,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild13,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild14,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild15,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild16,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild17,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_fild18,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_pryd01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_pryd02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_pryd03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_pryd04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_pryd05,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_pryd06,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+nameless_n,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+nif_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+nif_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+nyd_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+odin_tem01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+odin_tem02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+odin_tem03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+orcsdun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+orcsdun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+pay_dun00,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+pay_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+pay_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+pay_dun03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+pay_dun04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+pay_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+pay_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+pay_fild03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+pay_fild04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+pay_fild06,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+pay_fild07,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+pay_fild08,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+pay_fild09,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+pay_fild10,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild00,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild05,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild06,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild07,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild08,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild09,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild10,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild11,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_maze01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_maze02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_maze03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_sewb1,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_sewb2,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_sewb3,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ra_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ra_fild03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ra_fild04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ra_fild05,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ra_fild06,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ra_fild08,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ra_fild12,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ra_san01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ra_san02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ra_san03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ra_san04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ra_san05,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+spl_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tha_t01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tha_t02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tha_t03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tha_t04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tha_t05,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tha_t06,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tha_t07,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tha_t08,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tha_t09,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tha_t10,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tha_t11,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tha_t12,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+thor_v01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+thor_v02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+thor_v03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+treasure01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+treasure02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tur_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tur_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tur_dun03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+tur_dun04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+um_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+um_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+um_fild03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+um_fild04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ve_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ve_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ve_fild03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ve_fild04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ve_fild05,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ve_fild07,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+xmas_dun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+xmas_dun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+xmas_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+yuno_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+yuno_fild02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+yuno_fild03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+yuno_fild04,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+yuno_fild06,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+yuno_fild07,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+yuno_fild08,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+yuno_fild09,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+yuno_fild10,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+yuno_fild12,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ecl_fild01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ecl_fild01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ecl_tdun01,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ecl_tdun01,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ecl_tdun02,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ecl_tdun02,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+ecl_tdun03,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+ecl_tdun03,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_prydn1,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_prydn1,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+moc_prydn2,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+moc_prydn2,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild08a,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild08a,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild08b,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild08b,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild08c,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild08c,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+prt_fild08d,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+prt_fild08d,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_chyard_,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_chyard_,0,0	monster	Sock Stealing Raccoon	2379,5,5000
+gl_cas02_,0,0	monster	Gift Stealing Raccoon	2380,5,5000
+gl_cas02_,0,0	monster	Sock Stealing Raccoon	2379,5,5000

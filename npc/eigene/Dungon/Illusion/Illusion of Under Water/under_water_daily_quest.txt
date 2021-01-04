@@ -160,17 +160,3 @@ iz_d04_i,125,227,5	script	Horst	4_M_BARYO_OLD,{
     end;
 }
 
-iz_d04_i,0,0	monster	Deep Sea Sropho	20801,25,500
-iz_d04_i,0,0	monster	Deep Sea Merman	20805,25,500
-iz_d04_i,0,0	monster	Deep Sea Obeaune	20802,10,192
-iz_d04_i,0,0	monster	Deep Sea Marse	20804,15,192
-iz_d04_i,0,0	monster	Deep Sea Deviace	20803,15,680
-iz_d04_i,0,0,0,0	boss_monster	Deep Sea Kraken	20811,1,7200000,600000,1
-
-
-iz_d05_i,0,0	monster	Deep Sea Sedora	20806,10,500
-iz_d05_i,0,0	monster	Deep Sea Swordfish	20807,25,500
-iz_d05_i,0,0	monster	Deep Deep Sea Phen	20809,20,192
-iz_d05_i,0,0	monster	Deep Sea Strouf	20808,18,192
-iz_d05_i,0,0	monster	Deep Sea King Dramoh	20810,21,6800
-iz_d05_i,0,0,0,0	boss_monster	Deep Sea Witch	20843,1,7200000,600000,1
