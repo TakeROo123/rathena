@@ -7,9 +7,7 @@
 
 bool YamlDatabase::nodeExists( const YAML::Node& node, const std::string& name ){
 	try{
-		const YAML::Node &subNode = node[name];
-
-		if( subNode.IsDefined() && !subNode.IsNull() ){
+		if( node[name] ){
 			return true;
 		}else{
 			return false;
@@ -84,11 +82,7 @@ bool YamlDatabase::verifyCompatibility( const YAML::Node& rootNode ){
 }
 
 bool YamlDatabase::load(){
-	bool ret = this->load( this->getDefaultLocation() );
-
-	this->loadingFinished();
-
-	return ret;
+	return this->load( this->getDefaultLocation() );
 }
 
 bool YamlDatabase::reload(){
@@ -101,7 +95,6 @@ bool YamlDatabase::load(const std::string& path) {
 	YAML::Node rootNode;
 
 	try {
-		ShowStatus( "Loading '" CL_WHITE "%s" CL_RESET "'..." CL_CLL "\r", path.c_str() );
 		rootNode = YAML::LoadFile(path);
 	}
 	catch(YAML::Exception &e) {
@@ -131,6 +124,8 @@ bool YamlDatabase::load(const std::string& path) {
 	this->parse( rootNode );
 
 	this->parseImports( rootNode );
+
+	this->loadingFinished();
 
 	return true;
 }
@@ -296,9 +291,6 @@ void YamlDatabase::invalidWarning( const YAML::Node &node, const char* fmt, ... 
 
 	va_start(ap, fmt);
 
-	// Remove any remaining garbage of a previous loading line
-	ShowMessage( CL_CLL );
-	// Print the actual error
 	_vShowMessage( MSG_ERROR, fmt, ap );
 
 	va_end(ap);

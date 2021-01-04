@@ -77,7 +77,7 @@ void map_msg_reload(void);
 //First Jobs
 //Note the oddity of the novice:
 //Super Novices are considered the 2-1 version of the novice! Novices are considered a first class type, too...
-enum e_mapid : uint64{
+enum e_mapid {
 //Novice And 1-1 Jobs
 	MAPID_NOVICE = 0x0,
 	MAPID_SWORDMAN,
@@ -219,8 +219,6 @@ enum e_mapid : uint64{
 	MAPID_BABY_GENETIC,
 	MAPID_BABY_SHADOW_CHASER,
 	MAPID_BABY_SOUL_REAPER,
-// Additional constants
-	MAPID_ALL = UINT64_MAX
 };
 
 //Max size for inputs to Graffiti, Talkie Box and Vending text prompts
@@ -374,7 +372,6 @@ enum mob_ai {
 	AI_ZANZOU,
 	AI_LEGION,
 	AI_FAW,
-	AI_GUILD,
 	AI_MAX
 };
 
@@ -509,7 +506,7 @@ enum _sp {
 	SP_WEAPON_ATK_RATE, SP_WEAPON_MATK_RATE, SP_DROP_ADDRACE, SP_DROP_ADDCLASS, SP_NO_MADO_FUEL, // 2083-2087
 	SP_IGNORE_DEF_CLASS_RATE, SP_REGEN_PERCENT_HP, SP_REGEN_PERCENT_SP, SP_SKILL_DELAY, SP_NO_WALK_DELAY, //2088-2092
 	SP_LONG_SP_GAIN_VALUE, SP_LONG_HP_GAIN_VALUE, SP_SHORT_ATK_RATE, SP_MAGIC_SUBSIZE, SP_CRIT_DEF_RATE, // 2093-2097
-	SP_MAGIC_SUBDEF_ELE, SP_REDUCE_DAMAGE_RETURN // 2098-2099
+	SP_MAGIC_SUBDEF_ELE // 2098
 };
 
 enum _look {

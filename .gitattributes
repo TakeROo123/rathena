@@ -12,4 +12,3 @@ configure.in text eol=lf
 Makefile text eol=lf
 Makefile.in text eol=lf
 *.sh text eol=lf
-*.sql text eol=lf

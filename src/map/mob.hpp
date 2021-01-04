@@ -15,12 +15,6 @@
 
 struct guardian_data;
 
-//This is the distance at which @autoloot works,
-//if the item drops farther from the player than this,
-//it will not be autolooted. [Skotlex]
-//Note: The range is unlimited unless this define is set.
-//#define AUTOLOOT_DISTANCE AREA_SIZE
-
 //The number of drops all mobs have and the max drop-slot that the steal skill will attempt to steal from.
 #define MAX_MOB_DROP 10
 #define MAX_MVP_DROP 3
@@ -76,7 +70,6 @@ enum MOBID {
 	MOBID_S_HORNET			= 2158,
 	MOBID_S_GIANT_HORNET,
 	MOBID_S_LUCIOLA_VESPA,
-	MOBID_GUILD_SKILL_FLAG	= 20269,
 };
 
 ///Mob skill states.
@@ -130,12 +123,6 @@ enum e_random_monster_flags {
 	RMF_ALL				= 0xFF, ///< Apply all flags
 };
 
-enum e_mob_bosstype : uint8{
-	BOSSTYPE_NONE,
-	BOSSTYPE_MINIBOSS,
-	BOSSTYPE_MVP
-};
-
 struct mob_skill {
 	enum MobSkillState state;
 	uint16 skill_id,skill_lv;
@@ -169,9 +156,9 @@ struct s_mob_lootitem {
 /// Struct for monster's drop item
 struct s_mob_drop {
 	t_itemid nameid;
-	uint32 rate;
-	uint16 randomopt_group;
-	bool steal_protected;
+	int p;
+	uint8 randomopt_group;
+	unsigned steal_protected : 1;
 };
 
 struct mob_db {
@@ -187,8 +174,6 @@ struct mob_db {
 	unsigned int option;
 	int maxskill;
 	struct mob_skill skill[MAX_MOBSKILL];
-
-	e_mob_bosstype get_bosstype();
 };
 
 struct mob_data {
@@ -257,8 +242,6 @@ struct mob_data {
 	 * MvP Tombstone NPC ID
 	 **/
 	int tomb_nid;
-
-	e_mob_bosstype get_bosstype();
 };
 
 class MobAvailDatabase : public YamlDatabase {

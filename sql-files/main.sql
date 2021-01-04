@@ -86,7 +86,6 @@ CREATE TABLE IF NOT EXISTS `auction` (
   `option_val4` smallint(5) NOT NULL default '0',
   `option_parm4` tinyint(3) NOT NULL default '0',
   `unique_id` bigint(20) unsigned NOT NULL default '0',
-  `enchantgrade` tinyint unsigned NOT NULL default '0',
   PRIMARY KEY  (`auction_id`)
 ) ENGINE=MyISAM;
 
@@ -186,7 +185,6 @@ CREATE TABLE IF NOT EXISTS `cart_inventory` (
   `expire_time` int(11) unsigned NOT NULL default '0',
   `bound` tinyint(3) unsigned NOT NULL default '0',
   `unique_id` bigint(20) unsigned NOT NULL default '0',
-  `enchantgrade` tinyint unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `char_id` (`char_id`)
 ) ENGINE=MyISAM;
@@ -578,7 +576,6 @@ CREATE TABLE IF NOT EXISTS `guild_storage` (
   `expire_time` int(11) unsigned NOT NULL default '0',
   `bound` tinyint(3) unsigned NOT NULL default '0',
   `unique_id` bigint(20) unsigned NOT NULL default '0',
-  `enchantgrade` tinyint unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `guild_id` (`guild_id`)
 ) ENGINE=MyISAM;
@@ -620,7 +617,6 @@ CREATE TABLE IF NOT EXISTS `guild_storage_log` (
   `expire_time` int(11) unsigned NOT NULL default '0',
   `unique_id` bigint(20) unsigned NOT NULL default '0',
   `bound` tinyint(1) unsigned NOT NULL default '0',
-  `enchantgrade` tinyint unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`),
   INDEX (`guild_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1;
@@ -719,7 +715,6 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `bound` tinyint(3) unsigned NOT NULL default '0',
   `unique_id` bigint(20) unsigned NOT NULL default '0',
   `equip_switch` int(11) unsigned NOT NULL default '0',
-  `enchantgrade` tinyint unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `char_id` (`char_id`)
 ) ENGINE=MyISAM;
@@ -823,7 +818,6 @@ CREATE TABLE IF NOT EXISTS `mail_attachments` (
   `option_parm4` tinyint(3) NOT NULL default '0',
   `unique_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `bound` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `enchantgrade` tinyint unsigned NOT NULL default '0',
     PRIMARY KEY (`id`,`index`)
 ) ENGINE=MyISAM;
 
@@ -1044,7 +1038,6 @@ CREATE TABLE IF NOT EXISTS `storage` (
   `expire_time` int(11) unsigned NOT NULL default '0',
   `bound` tinyint(3) unsigned NOT NULL default '0',
   `unique_id` bigint(20) unsigned NOT NULL default '0',
-  `enchantgrade` tinyint unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `account_id` (`account_id`)
 ) ENGINE=MyISAM;
