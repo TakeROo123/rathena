@@ -1,0 +1,6402 @@
+# This file is a part of rAthena.
+#   Copyright(C) 2019 rAthena Development Team
+#   https://rathena.org - https://github.com/rathena
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+###########################################################################
+# Item Database
+###########################################################################
+#
+# Item Settings
+#
+###########################################################################
+# - Id                      Item ID.
+#   AegisName               Server name to reference the item in scripts and lookups, should use no spaces.
+#   Name                    Name in English for displaying as output.
+#   Type                    Item type. (Default: Etc)
+#   SubType                 Weapon or Ammo type. (Default: 0)
+#   Buy                     Buying price. When not specified, becomes double the sell price. (Default: 0)
+#   Sell                    Selling price. When not specified, becomes half the buy price. (Default: 0)
+#   Weight                  Item weight. Each 10 is 1 weight. (Default: 0)
+#   Attack                  Weapon's attack. (Default: 0)
+#   MagicAttack             Weapon's magic attack. (Default: 0)
+#   Defense                 Armor's defense. (Default: 0)
+#   Range                   Weapon's attack range. (Default: 0)
+#   Slots                   Available slots in item. (Default: 0)
+#   Jobs                    Jobs that can equip the item. (Map default is 'All: true')
+#   Classes                 Upper class types that can equip the item. (Map default is 'All: true')
+#   Gender                  Gender that can equip the item. (Default: Both)
+#   Locations               Equipment's placement. (Default: None)
+#   WeaponLevel             Weapon level. (Default: 0)
+#   EquipLevelMin           Minimum required level to equip. (Default: 0)
+#   EquipLevelMax           Maximum level that can equip. (Default: 0)
+#   Refineable              If the item can be refined. (Default: false)
+#   View                    View sprite of an item. (Default: 0)
+#   AliasName               Another item's AegisName that will be sent to the client instead of this item's AegisName. (Default: null)
+#   Flags:                  Item flags. (Default: null)
+#     BuyingStore           If the item is available for Buyingstores. (Default: false)
+#     DeadBranch            If the item is a Dead Branch. (Default: false)
+#     Container             If the item is part of a container. (Default: false)
+#     UniqueId              If the item is a unique stack. (Default: false)
+#     BindOnEquip           If the item is bound to the character upon equipping. (Default: false)
+#     DropAnnounce          If the item has a special announcement to self on drop. (Default: false)
+#     NoConsume             If the item is consumed on use. (Default: false)
+#     DropEffect            If the item has a special effect when on the ground. (Default: None)
+#   Delay:                  Item use delay. (Default: null)
+#     Duration              Duration of delay in seconds.
+#     Status                Status Change used to track delay. (Default: None)
+#   Stack:                  Item stack amount. (Default: null)
+#     Amount                Maximum amount that can be stacked.
+#     Inventory             If the stack is applied to player's inventory. (Default: true)
+#     Cart                  If the stack is applied to the player's cart. (Default: false)
+#     Storage               If the stack is applied to the player's storage. (Default: false)
+#     GuildStorage          If the stack is applied to the player's guild storage. (Default: false)
+#   NoUse:                  Conditions when the item is unusable. (Default: null)
+#     Override              Group level to override these conditions.
+#     Sitting               If the item can not be used while sitting. (Default: false)
+#   Trade:                  Trade restrictions. (Default: null)
+#     Override              Group level to override these conditions.
+#     NoDrop                If the item can not be dropped. (Default: false)
+#     NoTrade               If the item can not be traded. (Default: false)
+#     TradePartner          If the item can not be traded to the player's partner. (Default: false)
+#     NoSell                If the item can not be sold. (Default: false)
+#     NoCart                If the item can not be put in a cart. (Default: false)
+#     NoStorage             If the item can not be put in a storage. (Default: false)
+#     NoGuildStorage        If the item can not be put in a guild storage. (Default: false)
+#     NoMail                If the item can not be put in a mail. (Default: false)
+#     NoAuction             If the item can not be put in an auction. (Default: false)
+#   Script                  Script to execute when the item is used/equipped. (Default: null)
+#   EquipScript             Script to execute when the item is equipped. (Default: null)
+#   UnEquipScript           Script to execute when the item is unequipped or when a rental item expires. (Default: null)
+###########################################################################
+
+Header:
+  Type: ITEM_DB
+  Version: 1
+
+Body:
+  - Id: 33059
+    AegisName: Shadow_Ultimate_Wing
+    Name: Shadow_Ultimate_Wing
+    Type: Armor
+    Buy: 50000
+    Sell: 1
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1941
+    Script: |
+      bonus bAllStats,5;
+  - Id: 33004
+    AegisName: Grand_Pyro_Sword
+    Name: Grand_Pyro_Sword
+    Type: Armor
+    Buy: 50000
+    Sell: 1
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1886
+    Script: |
+      bonus bAllStats,5;
+  - Id: 33001
+    AegisName: Bloodrave_Wings
+    Name: Bloodrave_Wings
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1882
+    Script: |
+      bonus bAllStats,5;
+  - Id: 33002
+    AegisName: saosword
+    Name: saosword
+    Type: Armor
+    Buy: 10
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1883
+    Script: |
+      bonus bAllStats,5;
+  - Id: 33003
+    AegisName: fallenwings
+    Name: fallenwings
+    Type: Armor
+    Buy: 5000
+    Sell: 1
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1885
+    Script: |
+      bonus bAllStats,5;
+  - Id: 33005
+    AegisName: Red_Flaming_Fairy_Wings
+    Name: Red_Flaming_Fairy_Wings
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1887
+  - Id: 33006
+    AegisName: Baphomet_Scythe
+    Name: Baphomet_Scythe
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1888
+  - Id: 33007
+    AegisName: Furry_Gold_Coat
+    Name: Furry_Gold_Coat
+    Type: Armor
+    Slots: 1
+    Locations:
+      Head_Low: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1889
+  - Id: 33008
+    AegisName: Skeletron_Wing
+    Name: Skeletron_Wing
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1890
+  - Id: 33009
+    AegisName: Spider_Wing
+    Name: Spider_Wing
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1891
+  - Id: 33010
+    AegisName: Vampire_Wing
+    Name: Vampire_Wing
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1892
+  - Id: 33011
+    AegisName: ultimaweapon
+    Name: ultimaweapon
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1893
+  - Id: 33012
+    AegisName: Furry_Black_Coat
+    Name: Furry_Black_Coat
+    Type: Armor
+    Slots: 1
+    Locations:
+      Head_Low: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1894
+  - Id: 33013
+    AegisName: Furry_White_Coat
+    Name: Furry_White_Coat
+    Type: Armor
+    Slots: 1
+    Locations:
+      Head_Low: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1895
+  - Id: 33014
+    AegisName: Furry_Pink_Coat
+    Name: Furry_Pink_Coat
+    Type: Armor
+    Slots: 1
+    Locations:
+      Head_Low: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1896
+  - Id: 33015
+    AegisName: Furry_Green_Coat
+    Name: Furry_Green_Coat
+    Type: Armor
+    Slots: 1
+    Locations:
+      Head_Low: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1897
+  - Id: 33016
+    AegisName: Black_Flaming_Fairy_Wings
+    Name: Black_Flaming_Fairy_Wings
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1898
+  - Id: 33017
+    AegisName: Black_Lupus
+    Name: Black_Lupus
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1899
+  - Id: 33018
+    AegisName: Abelha_Sombria_Wing_Aluguel
+    Name: Abelha_Sombria_Wing_Aluguel
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1900
+  - Id: 33019
+    AegisName: Absolut_Bloody_Wing
+    Name: Absolut_Bloody_Wing
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1901
+  - Id: 33020
+    AegisName: Acquarella_Golden_Wing
+    Name: Acquarella_Golden_Wing
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1902
+  - Id: 33021
+    AegisName: Acquarella_Wing
+    Name: Acquarella_Wing
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1903
+  - Id: 33022
+    AegisName: Afroddite_Wing
+    Name: Afroddite_Wing
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1904
+  - Id: 33023
+    AegisName: Black_Aura
+    Name: Black_Aura
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1905
+  - Id: 33024
+    AegisName: Angel_Wings
+    Name: Angel_Wings
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1906
+  - Id: 33025
+    AegisName: Aqua_Butterfly_Wings
+    Name: Aqua_Butterfly_Wings
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1907
+  - Id: 33026
+    AegisName: Aqua_Wing
+    Name: Aqua_Wing
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1908
+  - Id: 33027
+    AegisName: Arara_Wing
+    Name: Arara_Wing
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1909
+  - Id: 33028
+    AegisName: Artic_Wing
+    Name: Artic_Wing
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1910
+    Script: |
+      bonus bStr,7; bonus bAgi,3; bonus bVit,1; bonus bDex,5; bonus bLuk,10;
+  - Id: 33029
+    AegisName: Basic_Guitar_01
+    Name: Basic_Guitar_01
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1911
+  - Id: 33030
+    AegisName: Basic_Guitar_02
+    Name: Basic_Guitar_02
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1912
+  - Id: 33031
+    AegisName: Basic_Guitar_03
+    Name: Basic_Guitar_03
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1913
+  - Id: 33032
+    AegisName: Basic_Guitar_04
+    Name: Basic_Guitar_04
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1914
+  - Id: 33033
+    AegisName: Basic_Guitar_05
+    Name: Basic_Guitar_05
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1915
+  - Id: 33034
+    AegisName: Basic_Guitar_06
+    Name: Basic_Guitar_06
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1916
+  - Id: 33035
+    AegisName: Basic_Guitar_07
+    Name: Basic_Guitar_07
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1917
+  - Id: 33036
+    AegisName: Basic_Guitar_08
+    Name: Basic_Guitar_08
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1918
+  - Id: 33037
+    AegisName: Basic_Guitar_09
+    Name: Basic_Guitar_09
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1919
+  - Id: 33038
+    AegisName: Basic_Guitar_10
+    Name: Basic_Guitar_10
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1920
+  - Id: 33039
+    AegisName: Basic_Guitar_11
+    Name: Basic_Guitar_11
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1921
+  - Id: 33040
+    AegisName: Basic_Guitar_12
+    Name: Basic_Guitar_12
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1922
+  - Id: 33041
+    AegisName: Basic_Guitar_13
+    Name: Basic_Guitar_13
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1923
+  - Id: 33042
+    AegisName: Basic_Guitar_14
+    Name: Basic_Guitar_14
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1924
+  - Id: 33043
+    AegisName: Basic_Guitar_15
+    Name: Basic_Guitar_15
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1925
+  - Id: 33044
+    AegisName: Basic_Guitar_16
+    Name: Basic_Guitar_16
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1926
+  - Id: 33045
+    AegisName: Bbutterfly_Wing
+    Name: Bbutterfly_Wing
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1927
+  - Id: 33046
+    AegisName: Besouro_Wing
+    Name: Besouro_Wing
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1928
+  - Id: 33047
+    AegisName: BlackWhite_Wing
+    Name: BlackWhite_Wing
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1929
+  - Id: 33048
+    AegisName: Bio_Aura_Cyan
+    Name: Bio_Aura_Cyan
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1930
+  - Id: 33049
+    AegisName: Bio_Aura_Pink
+    Name: Bio_Aura_Pink
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1931
+  - Id: 33050
+    AegisName: Black_Crow_Wing
+    Name: Black_Crow_Wing
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1932
+  - Id: 33051
+    AegisName: Black_Enchanted_Magical_Hat
+    Name: Black_Enchanted_Magical_Hat
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1933
+    Script: |
+      bonus bAllStats,5;
+  - Id: 33052
+    AegisName: Blade_of_Dragon
+    Name: Blade_of_Dragon
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1934
+  - Id: 33053
+    AegisName: Blue_White_Valk
+    Name: Blue_White_Valk
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Top: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1935
+  - Id: 33054
+    AegisName: Death_God_Guardian
+    Name: Death_God_Guardian
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1936
+  - Id: 33055
+    AegisName: Master_Cat
+    Name: Master_Cat
+    Type: Armor
+    Slots: 1
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1937
+  - Id: 33056
+    AegisName: Red_Rune_Saiyan
+    Name: Red_Rune_Saiyan
+    Type: Armor
+    Slots: 1
+    Locations:
+      Head_Low: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1938
+  - Id: 33057
+    AegisName: TZangetsu
+    Name: TZangetsu
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1939
+  - Id: 33058
+    AegisName: rainbowinghat
+    Name: rainbowinghat
+    Type: Armor
+    Slots: 1
+    Locations:
+      Costume_Head_Top: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1940
+  - Id: 33060
+    AegisName: Amber_Perle
+    Name: Amber_Perle
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33061
+    AegisName: +10 Armor up
+    Name: +10 Armor up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33062
+    AegisName: +12 Armor up
+    Name: +12 Armor up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33063
+    AegisName: +13 Armor up
+    Name: +13 Armor up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33064
+    AegisName: +14 Armor up
+    Name: +14 Armor up
+    Type: Etc
+    Locations:
+      Right_Accessory: true
+      Shoes: true
+      Right_Hand: true
+      Head_Top: true
+    Flags:
+      BuyingStore: true
+  - Id: 33065
+    AegisName: +15 Armor up
+    Name: +15 Armor up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33066
+    AegisName: +16 Armor up
+    Name: +16 Armor up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33067
+    AegisName: +17 Armor up
+    Name: +17 Armor up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33068
+    AegisName: +18 Armor up
+    Name: +18 Armor up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33069
+    AegisName: +19 Armor up
+    Name: +19 Armor up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33070
+    AegisName: +20 Armor up
+    Name: +20 Armor up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33071
+    AegisName: +10 Weapon up
+    Name: +10 Weapon up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33072
+    AegisName: +12 Weapon up
+    Name: +12 Weapon up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33073
+    AegisName: +13 Weapon up
+    Name: +13 Weapon up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33074
+    AegisName: +14 Weapon up
+    Name: +14 Weapon up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33075
+    AegisName: +15 Weapon up
+    Name: +15 Weapon up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33076
+    AegisName: +16 Weapon up
+    Name: +16 Weapon up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33077
+    AegisName: +17 Weapon up
+    Name: +17 Weapon up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33078
+    AegisName: +18 Weapon up
+    Name: +18 Weapon up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33079
+    AegisName: +19 Weapon up
+    Name: +19 Weapon up
+    Type: Etc
+    Flags:
+      BuyingStore: true
+  - Id: 33080
+    AegisName: +20 Weapon up
+    Name: +20 Weapon up
+    Type: Etc
+  - Id: 33086
+    AegisName: Schmetterling
+    Name: Schmetterling
+    Type: Armor
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1949
+    Script: |
+      bonus bLuk,5;
+  - Id: 33081
+    AegisName: OsterEvent
+    Name: OsterEvent
+    Type: Etc
+  - Id: 33082
+    AegisName: AdminNerviCat
+    Name: AdminNerviCat
+    Type: Armor
+    Gender: Female
+    Locations:
+      Costume_Head_Top: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1945
+  - Id: 33085
+    AegisName: Wir waren hier
+    Name: Wir waren hier
+    Type: Armor
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1948
+    Script: |
+      bonus bMaxHP,500; bonus bDex,3; bonus bVit,2;
+  - Id: 33087
+    AegisName: Kleiner Shiba
+    Name: Kleiner Shiba
+    Type: Armor
+    Locations:
+      Costume_Head_Top: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1950
+    Script: |
+      bonus bStr,3; bonus bInt,4; bonus bCritical,10;
+  - Id: 33089
+    AegisName: COSTAMA EGGV02
+    Name: COSTAMA EGGV02
+    Type: Healing
+    Classes:
+      All: false
+    Gender: Female
+  - Id: 33090
+    AegisName: TeddyTakeRO
+    Name: TeddyTakeRO
+    Type: Armor
+    Locations:
+      Head_Low: true
+    EquipLevelMin: 1
+    View: 1950
+    Script: |
+      bonus bLuk,10;
+  - Id: 33091
+    AegisName: Jen Spezial Ballonp
+    Name: Jen Spezial Ballonp
+    Type: Armor
+    Locations:
+      Head_Low: true
+    View: 1952
+    Script: |
+      bonus bStr,3; bonus bVit,3; bonus bAgi,5; bonus bDex,5; bonus bLuk,2;
+  - Id: 33092
+    AegisName: Pikachu
+    Name: Pikachu
+    Type: Armor
+    Locations:
+      Head_Low: true
+    EquipLevelMin: 1
+    View: 1952
+    Script: |
+      bonus2 bAddRace,RC_DemiHuman,25;
+  - Id: 33093
+    AegisName: My life is Pink
+    Name: My life is Pink
+    Type: Armor
+    Locations:
+      Costume_Head_Top: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1953
+    Script: |
+      bonus bLuk,3; bonus bFlee,15;
+  - Id: 200000041
+    AegisName: One Wing Angel FF7
+    Name: One Wing Angel FF7
+    Type: Armor
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 8001
+  - Id: 33095
+    AegisName: Sei ein BETA
+    Name: Sei ein BETA
+    Type: Armor
+    Locations:
+      Costume_Head_Top: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1947
+  - Id: 33096
+    AegisName: Foxy
+    Name: Foxy
+    Type: Armor
+    Locations:
+      Costume_Head_Top: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1955
+    Script: |
+      bonus bInt,3;
+  - Id: 33097
+    AegisName: Kitty Hat
+    Name: Kitty Hat
+    Type: Armor
+    Locations:
+      Head_Low: true
+    View: 1956
+  - Id: 33098
+    AegisName: vip1
+    Name: vip1
+    Type: Healing
+    Script: |
+      atcommand "@vip +24h "+strcharinfo(0)+""; dispbottom "+ 24 Stunden VIP !";
+  - Id: 33099
+    AegisName: vip7
+    Name: vip7
+    Type: Healing
+    Script: |
+      atcommand "@vip +7d "+strcharinfo(0)+""; dispbottom "+ 7tage VIP !";
+  - Id: 33100
+    AegisName: vpi30
+    Name: vip30
+    Type: Healing
+    Script: |
+      atcommand "@vip +30d "+strcharinfo(0)+""; dispbottom "+ 30 Tage VIP!";
+  - Id: 33101
+    AegisName: amberbox10
+    Name: amberbox10
+    Type: Healing
+    Script: |
+      getitem 33060,10;
+  - Id: 33102
+    AegisName: amberbox25
+    Name: amberbox25
+    Type: Healing
+    Script: |
+      getitem 33060,25;
+  - Id: 33103
+    AegisName: amberbox50
+    Name: amberbox50
+    Type: Healing
+    Script: |
+      getitem 33060,50;
+  - Id: 31024
+    AegisName: Immortal_Cursed_Knight_Card
+    Name: Immortal Cursed Knight Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Script: |
+      bonus bAtkRate,10; bonus5 bAutoSpell,2066,5,20,ATF_WEAPON,1;
+  - Id: 31025
+    AegisName: Immortal_Wind_Ghost_Card
+    Name: Immortal Wind Ghost Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Script: |
+      bonus bMatkRate,10; bonus5 bAutoSpell,2450,5,20,ATF_MAGIC,1;
+  - Id: 31026
+    AegisName: Stefan_J_E_Wolf_Card
+    Name: Stefan J E Wolf Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Shoes: true
+    Script: |
+      bonus5 bAutoSpellWhenHit,2443,5,35,ATF_WEAPON,0; bonus5 bAutoSpellWhenHit,2444,5,80,ATF_MAGIC,0; autobonus "{ bonus bFlee,200; }",30,10000,BF_WEAPON; autobonus "{ bonus bSpeedRate,10; }",25,10000,BF_MAGIC;
+  - Id: 33104
+    AegisName: Fcp Scroll
+    Name: Fcp Scroll
+    Type: Healing
+    Script: |
+      sc_start SC_CP_WEAPON,360000,5; sc_start SC_CP_SHIELD,360000,5; sc_start SC_CP_ARMOR,360000,5; sc_start SC_CP_HELM,360000,5;
+  - Id: 33105
+    AegisName: Fcp Scroll Box
+    Name: Fcp Scroll Box
+    Type: Healing
+    Script: |
+      getitem 33104,20;
+  - Id: 25268
+    AegisName: Sticky_Blood
+    Name: Sticky Blood
+    Type: Etc
+    Buy: 36
+    Weight: 36
+  - Id: 25269
+    AegisName: Mushroom_Sap
+    Name: Mushroom Sap
+    Type: Etc
+    Buy: 36
+  - Id: 1943
+    AegisName: Erhu
+    Name: Erhu
+    Type: Weapon
+    SubType: Musical
+    Buy: 20
+    Weight: 700
+    Attack: 50
+    Range: 1
+    Slots: 3
+    Classes:
+      All_Third: true
+    Gender: Male
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 2
+    EquipLevelMin: 90
+    Refineable: true
+  - Id: 7321
+    AegisName: Fragment_Of_Crystal
+    Name: Fragment Of Crystal
+    Type: Etc
+    Sell: 207
+    Weight: 10
+  - Id: 18968
+    AegisName: Jinn_Marin_Balloon
+    Name: Jinn Marin Balloon
+    Type: Armor
+    Defense: 5
+    Locations:
+      Head_Low: true
+    EquipLevelMin: 1
+    View: 1133
+    Script: |
+      bonus bInt,1; bonus bDex,1; bonus bMaxHP,100; bonus bBaseAtk,5; bonus bMatk,5;
+  - Id: 25261
+    AegisName: Ripped_Paper_Sheet
+    Name: Ripped Paper Sheet
+    Type: Etc
+    Buy: 20
+    Weight: 10
+  - Id: 25262
+    AegisName: Well_Dried_Clover
+    Name: Well Dried Clover
+    Type: Etc
+    Buy: 20
+    Weight: 10
+  - Id: 25263
+    AegisName: Short_Bat_Fur
+    Name: Short Bat Fur
+    Type: Etc
+    Buy: 650
+    Weight: 10
+  - Id: 25264
+    AegisName: Clump_of_Nightmares
+    Name: Clump of Nightmares
+    Type: Etc
+    Buy: 778
+    Weight: 10
+  - Id: 25265
+    AegisName: Glowing_Spores
+    Name: Glowing Spores
+    Type: Etc
+    Buy: 20
+    Weight: 10
+  - Id: 25266
+    AegisName: Dried_Yggdrasil_Leaf
+    Name: Dried Yggdrasil Leaf
+    Type: Etc
+    Buy: 620
+    Weight: 10
+  - Id: 25267
+    AegisName: Suspicious_Magical_Circle
+    Name: Suspicious Magical Circle
+    Type: Etc
+    Buy: 580
+    Weight: 10
+  - Id: 25270
+    AegisName: Wavy_Mane
+    Name: Wavy Mane
+    Type: Etc
+    Buy: 973
+    Weight: 10
+  - Id: 25728
+    AegisName: Shadowdecon_Ore
+    Name: Shadowdecon Ore
+    Type: Etc
+    Buy: 20
+    Weight: 10
+  - Id: 25729
+    AegisName: Shadowdecon
+    Name: Shadowdecon
+    Type: Etc
+    Buy: 20
+    Weight: 20
+  - Id: 33106
+    AegisName: Lucky Clip Light Box
+    Name: Lucky Clip Light Box
+    Type: Healing
+    Script: |
+      rentitem 2742,3600;
+  - Id: 25739
+    AegisName: Curse_Devoured_Crystal
+    Name: Curse Devoured Crystal
+    Type: Etc
+  - Id: 25740
+    AegisName: Curse_Devoured_Gemstone
+    Name: Curse Devoured Gemstone
+    Type: Etc
+  - Id: 19478
+    AegisName: Temporal_Circlet_(Guillotine_Cross)
+    Name: Temporal Circlet (Guillotine Cross)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Assassin: true
+    Classes:
+      All_Third: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bAtk,.@r/2*15; bonus bAspdRate,.@r/3*2; bonus2 bSkillAtk,"GC_ROLLINGCUTTER",.@r/3*20; bonus2 bSkillAtk,"GC_COUNTERSLASH",.@r/3*20; bonus2 bAddClass,Class_All,.@r/4*2; if (.@r >= 11) { bonus bDelayrate,-5; }
+  - Id: 23986
+    AegisName: Odin_Relic
+    Name: Odin Relic
+    Type: Usable
+    Buy: 20
+    Weight: 50
+    Script: |
+      getitem callfunc("F_Rand",15397,15398,15399,15400,15401,15402,20947,22209,25767,7511,70631;
+  - Id: 1336
+    AegisName: Guardian_Knight_Axe
+    Name: Guardian Knight Axe
+    Type: Weapon
+    SubType: 1hAxe
+    Weight: 1500
+    Attack: 210
+    Range: 1
+    Slots: 2
+    Jobs:
+      Blacksmith: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bUnbreakableWeapon; bonus2 bAddClass,Class_All,5; bonus bLongAtkRate,.@r; if(.@r >= 9){ bonus2 bSkillAtk,"NC_POWERSWING",20; } if(.@r >= 11){ bonus2 bAddRace,RC_Undead,20; bonus2 bAddRace,RC_Angel,20; }
+  - Id: 1870
+    AegisName: Royal_Knuckle
+    Name: Royal Knuckle
+    Type: Weapon
+    SubType: Knuckle
+    Weight: 1500
+    Attack: 190
+    Range: 1
+    Slots: 2
+    Jobs:
+      Monk: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,15; bonus bAtk,.@r * 4; if (.@r >= 9) { bonus2 bSkillAtk,"SR_RAMPAGEBLASTER",20; } if (.@r >= 11) { bonus2 bSkillCooldown,"SR_RAMPAGEBLASTER",1000; bonus2 bAddRace,RC_Angel,20; bonus2 bAddRace,RC_Undead,20; }
+  - Id: 2060
+    AegisName: Royal_Magician_Staff
+    Name: Royal Magician Staff
+    Type: Weapon
+    SubType: 2hStaff
+    Weight: 1500
+    Attack: 100
+    MagicAttack: 270
+    Range: 1
+    Slots: 2
+    Jobs:
+      Wizard: true
+    Classes:
+      All_Third: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bUnbreakable; bonus bMatkRate,5; bonus bMatk,.@r*5; if(.@r >= 9){ bonus2 bSkillAtk,"WL_CHAINLIGHTNING",20; bonus2 bSkillAtk,"WL_EARTHSTRAIN",20; } if(.@r >= 11){ bonus2 bMagicAddRace,RC_Angel,20; bonus2 bMagicAddRace,RC_Undead,20; }
+  - Id: 13347
+    AegisName: Royal_Huuma_Shuriken
+    Name: Royal Huuma Shuriken
+    Type: Weapon
+    SubType: Huuma
+    Weight: 1500
+    Attack: 240
+    Range: 1
+    Slots: 2
+    Jobs:
+      Ninja: true
+    Classes:
+      All_Third: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,15; bonus bAtk,.@r*4; if(.@r >= 9){ bonus2 bSkillAtk,"KO_JYUMONJIKIRI",20; } if(.@r >= 11){ bonus2 bSkillCooldown,"KO_JYUMONJIKIRI",2000; bonus2 bAddRace,RC_Angel,20; bonus2 bAddRace,RC_Undead,20; }
+  - Id: 18191
+    AegisName: Guardian_Knight_Bow
+    Name: Guardian Knight Bow
+    Type: Weapon
+    SubType: Bow
+    Weight: 1500
+    Attack: 180
+    Range: 5
+    Slots: 2
+    Jobs:
+      Rogue: true
+    Classes:
+      All_Third: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,15; bonus bAtk,.@r*4; if(.@r >= 9){ bonus2 bSkillAtk,"SC_TRIANGLESHOT",20; } if(.@r >= 11){ bonus2 bAddRace,RC_Angel,20; bonus2 bAddRace,RC_Undead,20; }
+  - Id: 18198
+    AegisName: Royal_Knight_Archer_Bow
+    Name: Royal Knight Archer Bow
+    Type: Weapon
+    SubType: Bow
+    Weight: 1700
+    Attack: 190
+    Slots: 2
+    Jobs:
+      Hunter: true
+    Classes:
+      All_Third: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,15; bonus bAtk,.@r*4; if(.@r >= 9){ bonus2 bSkillAtk,"RA_AIMEDBOLT",20; bonus bDelayrate,12; } if(.@r >= 11){ bonus2 bSkillCooldown,"RA_AIMEDBOLT",1000; bonus2 bAddRace,RC_Angel,20; bonus2 bAddRace,RC_Undead,20; }
+  - Id: 19474
+    AegisName: Temporal_Circlet_(Rune_Knight)
+    Name: Temporal Circlet (Rune Knight)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Knight: true
+    Classes:
+      All_Third: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bMaxHP,.@r/2*250; bonus bMaxSPrate,.@r/3*2; bonus2 bSkillAtk,"RK_DRAGONBREATH",.@r/3*15; bonus2 bSkillAtk,"RK_DRAGONBREATH_WATER",.@r/3*15; bonus bLongAtkRate,.@r/4*5; if (.@r >= 11) { bonus bDelayrate,-5; }
+  - Id: 19475
+    AegisName: Temporal_Circlet_(Royal_Guard)
+    Name: Temporal Circlet (Royal Guard)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Crusader: true
+    Classes:
+      All_Third: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bAtk,.@r/2*15; bonus bAspdRate,.@r/3*2; bonus2 bSkillAtk,"LG_CANNONSPEAR",.@r/3*15; bonus2 bSkillAtk,"LG_BANISHINGPOINT",.@r/3*15; bonus bLongAtkRate,.@r/4*5; if (.@r >= 11) { bonus2 bAddClass,Class_All,5; }
+  - Id: 19476
+    AegisName: Temporal_Circlet_(Mechanic)
+    Name: Temporal Circlet (Mechanic)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Blacksmith: true
+    Classes:
+      All_Third: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bAtk,.@r/2*15; bonus bAspdRate,.@r/3*2; bonus2 bSkillAtk,"NC_ARMSCANNON",.@r/3*10; bonus2 bSkillAtk,"NC_BOOSTKNUCKLE",.@r/3*10; bonus bLongAtkRate,.@r/4*5; if (.@r >= 11) { bonus bDelayrate,-5; }
+  - Id: 19477
+    AegisName: Temporal_Circlet_(Genetic)
+    Name: Temporal Circlet (Genetic)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Alchemist: true
+    Classes:
+      All_Third: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bAtk,.@r/2*15; bonus bAspdRate,.@r/3*2; bonus2 bSkillAtk,"GN_CART_TORNADO",.@r/3*20; bonus2 bSkillAtk,"GN_SPORE_EXPLOSION",.@r/3*20; bonus2 bAddClass,Class_All,.@r/4*2; if (.@r >= 11) { bonus bDelayrate,-5; }
+  - Id: 19479
+    AegisName: Temporal_Circlet_(Shadow_Chaser)
+    Name: Temporal Circlet (Shadow Chaser)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Rogue: true
+    Classes:
+      All_Third: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bAtk,.@r/2*15; bonus bAspdRate,.@r/3*2; bonus2 bSkillAtk,"SC_STARTMARK",.@r/3*30; bonus2 bSkillAtk,"SC_FEINTBOMB",.@r/3*30; bonus2 bAddClass,Class_All,.@r/4*2; if (.@r >= 11) { bonus bDelayrate,-5; }
+  - Id: 19480
+    AegisName: Temporal_Circlet_(Archbishop)
+    Name: Temporal Circlet (Archbishop)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Priest: true
+    Classes:
+      All_Third: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bMatk,.@r/2*15; bonus bCastrate,.@r/3*-3; bonus2 bSkillAtk,"AB_ADORAMUS",.@r/3*20; bonus2 bMagicAddEle,Ele_Holy,.@r/4*7; if (.@r >= 11) { bonus bMatkRate,5; }
+  - Id: 19481
+    AegisName: Temporal_Circlet_(Sura)
+    Name: Temporal Circlet (Sura)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Monk: true
+    Classes:
+      All_Third: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bAtk,.@r/2*15; bonus bMaxHPrate,.@r/3*2; bonus2 bSkillAtk,"SR_KNUCKLEARROW",.@r/3*10; bonus2 bSkillAtk,"SR_TIGERCANNON",.@r/3*10; bonus bLongAtkRate,.@r/4*5; if (.@r >= 11) { bonus2 bAddClass,Class_All,5; }
+  - Id: 19482
+    AegisName: Temporal_Circlet_(Warlock)
+    Name: Temporal Circlet (Warlock)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Wizard: true
+    Classes:
+      All_Third: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bMatk,.@r/2*15; bonus bCastrate,.@r/3*-3; bonus2 bSkillAtk,"WL_CHAINLIGHTNING",.@r/3*20; bonus2 bSkillAtk,"WL_JACKFROST",.@r/3*20; bonus2 bMagicAddEle,Ele_Water,.@r/4*5; bonus2 bMagicAddEle,Ele_Wind,.@r/4*5; if (.@r >= 11) { bonus bMatkRate,5; }
+  - Id: 19483
+    AegisName: Temporal_Circlet_(Sorcerer)
+    Name: Temporal Circlet (Sorcerer)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Sage: true
+    Classes:
+      All_Third: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bMatk,.@r/2*15; bonus bCastrate,.@r/3*-3; bonus2 bSkillAtk,"SO_PSYCHIC_WAVE",.@r/3*20; bonus2 bSkillAtk,"SO_DIAMONDDUST",.@r/3*20; bonus2 bMagicAddEle,Ele_Water,.@r/4*5; bonus2 bMagicAddEle,Ele_Neutral,.@r/4*5; if (.@r >= 11) { bonus bMatkRate,5; }
+  - Id: 19484
+    AegisName: Temporal_Circlet_(Ranger)
+    Name: Temporal Circlet (Ranger)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Hunter: true
+    Classes:
+      All_Third: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bAtk,.@r/2*15; bonus bCritAtkRate,.@r/3*5; bonus2 bSkillAtk,"RA_AIMEDBOLT",.@r/3*20; bonus2 bSkillAtk,"RA_ARROWSTORM",.@r/3*20; bonus bLongAtkRate,.@r/4*5; if (.@r >= 11) { bonus2 bSkillCooldown,"RA_ARROWSTORM",-1000; }
+  - Id: 19485
+    AegisName: Temporal_Circlet_(Wanderer_&_Minstrel)
+    Name: Temporal Circlet (Wanderer & Minstrel)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      BardDancer: true
+    Classes:
+      All_Third: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bMatk,.@r/2*15; bonus bCastrate,.@r/3*-5; bonus2 bSkillAtk,"WM_REVERBERATION",.@r/3*20; bonus2 bSkillAtk,"WM_METALICSOUND",.@r/3*20; bonus2 bMagicAddEle,Ele_Neutral,.@r/4*7; if (.@r >= 11) { bonus bMatkRate,5; }
+  - Id: 19486
+    AegisName: Temporal_Circlet_(Star_Emperor)
+    Name: Temporal Circlet (Star Emperor)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      StarGladiator: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bAtk,.@r/2*15; bonus bAspdRate,.@r/3*2; bonus2 bSkillAtk,"SJ_FALLINGSTAR",.@r/3*30; bonus2 bAddSize,Size_All,.@r/5*2; if (.@r >= 11) { bonus2 bAddClass,Class_All,5; }
+  - Id: 19487
+    AegisName: Temporal_Circlet_(Soul_Reaper)
+    Name: Temporal Circlet (Soul Reaper)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      SoulLinker: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bMatk,.@r/2*15; bonus bCastrate,.@r/3*-3; bonus2 bSkillAtk,"SP_SWHOO",.@r/3*20; bonus2 bSkillAtk,"SP_CURSEEXPLOSION",.@r/3*20; bonus2 bMagicAddEle,Ele_Dark,.@r/4*7; if (.@r >= 11) { bonus bMatkRate,5; }
+  - Id: 19488
+    AegisName: Temporal_Circlet_(Rebellion)
+    Name: Temporal Circlet (Rebellion)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Gunslinger: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bAtk,.@r/2*15; bonus bAspdRate,.@r/3*2; bonus2 bSkillAtk,"RL_R_TRIP",.@r/3*20; bonus2 bSkillAtk,"RL_BANISHING_BUSTER",.@r/3*20; bonus bLongAtkRate,.@r/4*5; if (.@r >= 11) { bonus bDelayrate,-5; }
+  - Id: 19489
+    AegisName: Temporal_Circlet_(Oboro)
+    Name: Temporal Circlet (Oboro)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Ninja: true
+    Gender: Female
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bMatk,.@r/2*15; bonus bCastrate,.@r/3*-3; bonus bAspdRate,.@r/3*2; bonus2 bSkillAtk,"NJ_HUUJIN",.@r/3*20; bonus2 bSkillAtk,"NJ_HYOUSENSOU",.@r/3*20; bonus2 bMagicAddEle,Ele_Water,.@r/4*5; bonus2 bMagicAddEle,Ele_Wind,.@r/4*5; if (.@r >= 11) { bonus bMatkRate,5; }
+  - Id: 19490
+    AegisName: Temporal_Circlet_(Kagerou)
+    Name: Temporal Circlet (Kagerou)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Ninja: true
+    Gender: Male
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bAtk,.@r/2*15; bonus bAspdRate,.@r/3*2; bonus2 bSkillAtk,"KO_JYUMONJIKIRI",.@r/3*30; bonus2 bSkillAtk,"KO_BAKURETSU",.@r/3*30; bonus2 bAddSize,Size_All,.@r/5*2; if (.@r >= 11) { bonus2 bAddClass,Class_All,5; }
+  - Id: 19491
+    AegisName: Temporal_Circlet_(Super_Novice)
+    Name: Temporal Circlet (Super Novice)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Novice: true
+      SuperNovice: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bAtk,.@r/2*10; bonus bMatk,.@r/2*10; bonus bAspdRate,.@r/3*4; bonus bCastrate,.@r/3*-4; bonus bCritAtkRate,.@r/4*5; bonus bMagicAddEle,Ele_All,.r/4*5; if (.@r >= 11) { bonus bDelayrate,-5; }
+  - Id: 19492
+    AegisName: Temporal_Circlet_(Summoner)
+    Name: Temporal Circlet (Summoner)
+    Type: Armor
+    Buy: 100
+    Sell: 20
+    Defense: 10
+    Slots: 1
+    Jobs:
+      KagerouOboro: true
+      Rebellion: true
+      Summoner: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 335
+    Script: |
+      .@r = getrefine(); bonus bAtk,.@r/2*15; bonus bAspdRate,.@r/3*2; bonus2 bSkillAtk,"SU_CN_METEOR",.@r/3*20; bonus2 bSkillAtk,"SU_PICKYPECK",.@r/3*20; bonus bLongAtkRate,.@r/4*5; bonus bMagicAddEle,Ele_Neutral,.r/4*5; if (.@r >= 11) { bonus bDelayrate,-5; }
+  - Id: 21055
+    AegisName: Guardian_Knight_Claymore
+    Name: Guardian Knight Claymore
+    Type: Weapon
+    SubType: 2hSword
+    Weight: 4000
+    Attack: 280
+    Range: 1
+    Slots: 2
+    Jobs:
+      Knight: true
+    Classes:
+      All_Third: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddClass,Class_All,5; bonus bAtk,.@r * 4; if (.@r >= 9) { bonus bCritical,5; bonus bCritAtkRate,25; } if (.@r >= 11) { bonus bUnbreakable; bonus2 bAddRace,RC_Angel,20; bonus2 bAddRace,RC_Undead,20; }
+  - Id: 25864
+    AegisName: Sealed_Temporal_Circlet
+    Name: Sealed Temporal Circlet
+    Type: Etc
+    Buy: 20
+    Weight: 100
+  - Id: 25865
+    AegisName: Temporal_Gemstone
+    Name: Temporal Gemstone
+    Type: Etc
+    Buy: 20
+    Weight: 10
+  - Id: 25866
+    AegisName: Temporal_Spell
+    Name: Temporal Spell
+    Type: Etc
+    Buy: 20
+    Weight: 10
+  - Id: 25867
+    AegisName: Temporal_Fragment
+    Name: Temporal Fragment
+    Type: Etc
+    Buy: 20
+    Weight: 1
+  - Id: 26165
+    AegisName: Royal_Cleric_Staff
+    Name: Royal Cleric Staff
+    Type: Weapon
+    SubType: Staff
+    Weight: 1500
+    Attack: 100
+    MagicAttack: 170
+    Range: 1
+    Slots: 2
+    Jobs:
+      Priest: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bUnbreakable; bonus bMatkRate,5; bonus bMatk,.@r*4; if(.@r >= 9){ bonus2 bSkillAtk,"AB_ADORAMUS",20; } if(.@r >= 11){ bonus2 bMagicAddRace,RC_Angel,20; bonus2 bMagicAddRace,RC_Undead,20; }
+  - Id: 26166
+    AegisName: Royal_Magician_Wand
+    Name: Royal Magician Wand
+    Type: Weapon
+    SubType: Staff
+    Weight: 1500
+    Attack: 80
+    MagicAttack: 180
+    Range: 1
+    Slots: 2
+    Jobs:
+      Wizard: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bUnbreakable; bonus2 bMagicAtkEle,Ele_Fire,5; bonus bMatk,.@r*4; if(.@r >= 9){ bonus2 bSkillAtk,"WL_HELLINFERNO",20; bonus2 bSkillAtk,"WL_CRIMSONROCK",20; } if(.@r >= 11){ bonus2 bMagicAddRace,RC_Angel,20; bonus2 bMagicAddRace,RC_Undead,20; }
+  - Id: 26172
+    AegisName: Royal_Foxtail
+    Name: Royal Foxtail
+    Type: Weapon
+    SubType: Staff
+    Weight: 1500
+    Attack: 275
+    MagicAttack: 350
+    Range: 1
+    Slots: 2
+    Jobs:
+      KagerouOboro: true
+      Rebellion: true
+      Summoner: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bUnbreakable; bonus bMatkRate,5; bonus bMatk,.@r*4; if(.@r >= 9){ bonus2 bSkillAtk,"SU_CN_METEOR",20; bonus2 bSkillAtk,"SU_PICKYPECK",20; } if(.@r >= 11){ bonus2 bAddRace,RC_Angel,20; bonus2 bAddRace,RC_Undead,20; }
+  - Id: 26216
+    AegisName: Royal_Whip
+    Name: Royal Whip
+    Type: Weapon
+    SubType: Whip
+    Weight: 1500
+    Attack: 100
+    MagicAttack: 180
+    Slots: 2
+    Jobs:
+      BardDancer: true
+    Classes:
+      All_Third: true
+    Gender: Female
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bUnbreakable; bonus2 bMagicAtkEle,Ele_Neutral,5; bonus bMatk,.@r*4; if(.@r >= 9){ bonus2 bSkillAtk,"WM_REVERBERATION",20; bonus2 bSkillAtk,"WM_METALICSOUND",20; bonus2 bSkillCooldown,"WM_METALICSOUND",1000; } if(.@r >= 11){ bonus2 bMagicAddRace,RC_Angel,20; bonus2 bMagicAddRace,RC_Undead,20; }
+  - Id: 28141
+    AegisName: Guardian_Knight_Battle_Axe
+    Name: Guardian Knight Battle Axe
+    Type: Weapon
+    SubType: 2hAxe
+    Weight: 5000
+    Attack: 270
+    Range: 1
+    Slots: 2
+    Jobs:
+      Blacksmith: true
+    Classes:
+      All_Third: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bUnbreakableWeapon; bonus2 bAddClass,Class_All,5; bonus2 bSubSize,Size_Medium,10; bonus2 bSubSize,Size_Large,10; bonus bLongAtkRate,.@r; if(.@r >= 9){ bonus2 bSkillAtk,"NC_AXETORNADO",20; bonus2 bSkillAtk,"NC_MAGMA_ERUPTION",20; bonus2 bSkillCooldown,"NC_AXETORNADO",1000; } if(.@r >= 11){ bonus2 bAddRace,RC_Undead,20; bonus2 bAddRace,RC_Angel,20; }
+  - Id: 28774
+    AegisName: Royal_Gladius_(R)
+    Name: Royal Gladius (R)
+    Type: Weapon
+    SubType: Dagger
+    Weight: 1500
+    Attack: 200
+    Range: 1
+    Slots: 2
+    Jobs:
+      Assassin: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      bonus2 bAddClass,Class_All,5;
+  - Id: 28775
+    AegisName: Royal_Gladius_(L)
+    Name: Royal Gladius (L)
+    Type: Weapon
+    SubType: Dagger
+    Weight: 1000
+    Attack: 100
+    Range: 1
+    Slots: 3
+    Jobs:
+      Assassin: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+  - Id: 32027
+    AegisName: Guardian_Knight_Spear_
+    Name: Guardian Knight Spear
+    Type: Weapon
+    SubType: 1hSpear
+    Weight: 4000
+    Attack: 205
+    Range: 2
+    Slots: 2
+    Jobs:
+      Crusader: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,.@r; if(.@r >= 9){ bonus2 bSkillAtk,"LG_CANNONSPEAR",20; bonus2 bSkillAtk,"LG_BANISHINGPOINT",20; } if(.@r >= 11){ bonus2 bAddRace,RC_Undead,20; bonus2 bAddRace,RC_Angel,20; }
+  - Id: 32111
+    AegisName: Royal_Cello
+    Name: Royal Cello
+    Type: Weapon
+    SubType: Musical
+    Weight: 1000
+    Attack: 90
+    MagicAttack: 180
+    Range: 1
+    Slots: 2
+    Jobs:
+      BardDancer: true
+    Classes:
+      All_Third: true
+    Gender: Male
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bUnbreakable; bonus2 bMagicAtkEle,Ele_Neutral,5; bonus bMatk,.@r*4; if(.@r >= 9){ bonus2 bSkillAtk,"WM_REVERBERATION",20; bonus2 bSkillAtk,"WM_METALICSOUND",20; bonus2 bSkillCooldown,"WM_METALICSOUND",1000; } if(.@r >= 11){ bonus2 bMagicAddRace,RC_Angel,20; bonus2 bMagicAddRace,RC_Undead,20; }
+  - Id: 32304
+    AegisName: Royal_Revolver
+    Name: Royal Revolver
+    Type: Weapon
+    SubType: Mace
+    Weight: 700
+    Attack: 150
+    Range: 5
+    Slots: 2
+    Jobs:
+      Gunslinger: true
+    Classes:
+      All_Third: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,15; bonus bAtk,.@r*4; if(.@r >= 9){ bonus2 bSkillAtk,"RL_FIREDANCE",20; } if(.@r >= 11){ bonus2 bSkillCooldown,"RL_HEAT_BARREL",5000; bonus2 bAddRace,RC_Undead,20; bonus2 bAddRace,RC_Angel,20; }
+  - Id: 32353
+    AegisName: Guardian_Knight_Jewel_Sword
+    Name: Guardian Knight Jewel Sword
+    Type: Weapon
+    SubType: 1hSword
+    Weight: 4000
+    Attack: 130
+    MagicAttack: 180
+    Range: 1
+    Slots: 2
+    Jobs:
+      Crusader: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMaxHPrate,.@r; bonus2 bSkillAtk,"CR_GRANDCROSS",.@r*2; if(.@r >= 9){ bonus2 bSkillAtk,"LG_SHIELDPRESS",20; } if(.@r >= 11){ bonus2 bAddRace,RC_Undead,20; bonus2 bAddRace,RC_Angel,20; }
+  - Id: 32401
+    AegisName: Royal_Pillar
+    Name: Royal Pillar
+    Type: Weapon
+    SubType: Mace
+    Weight: 5000
+    Attack: 220
+    Range: 1
+    Slots: 2
+    Jobs:
+      Blacksmith: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddClass,Class_All,5; bonus bLongAtkRate,.@r; if(.@r >= 9){ bonus2 bSkillAtk,"NC_ARMSCANNON",20; } if(.@r >= 11){ bonus2 bAddRace,RC_Undead,20; bonus2 bAddRace,RC_Angel,20; }
+  - Id: 32402
+    AegisName: Royal_Syringe
+    Name: Royal Syringe
+    Type: Weapon
+    SubType: Mace
+    Weight: 1500
+    Attack: 210
+    Range: 1
+    Slots: 2
+    Jobs:
+      Alchemist: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bUnbreakable; bonus2 bAddClass,Class_All,5; bonus bLongAtkRate,.@r; if(.@r >= 9){ bonus2 bSkillAtk,"GN_CARTCANNON",20; bonus2 bSkillAtk,"GN_SPORE_EXPLOSION",20; } if(.@r >= 11){ bonus2 bAddRace,RC_Undead,20; bonus2 bAddRace,RC_Angel,20; }
+  - Id: 32403
+    AegisName: Royal_Alchemy_Staff
+    Name: Royal Alchemy Staff
+    Type: Weapon
+    SubType: Mace
+    Weight: 1500
+    Attack: 200
+    Range: 1
+    Slots: 2
+    Jobs:
+      Alchemist: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bUnbreakable; bonus2 bAddClass,Class_All,5; bonus bLongAtkRate,.@r; if(.@r >= 9){ bonus2 bSkillAtk,"GN_CRAZYWEED",20; bonus2 bSkillCooldown,"GN_CRAZYWEED",1000; } if(.@r >= 11){ bonus2 bAddRace,RC_Undead,20; bonus2 bAddRace,RC_Angel,20; }
+  - Id: 25297
+    AegisName: Frozen_Stone_Fragment
+    Name: Frozen Stone Fragment
+    Type: Etc
+    Sell: 345
+    Weight: 10
+  - Id: 25298
+    AegisName: Spirit_Jewel
+    Name: Spirit Jewel
+    Type: Etc
+    Sell: 294
+    Weight: 10
+  - Id: 25299
+    AegisName: Snowball
+    Name: Snowball
+    Type: Etc
+    Sell: 278
+    Weight: 10
+  - Id: 25300
+    AegisName: Ktullanux_Eye
+    Name: Ktullanux Eye
+    Type: Etc
+  - Id: 25309
+    AegisName: Dry_Twigs
+    Name: Dry Twigs
+    Type: Etc
+  - Id: 25787
+    AegisName: Biological Experiment Fragment
+    Name: Biological Experiment Fragment
+    Type: Etc
+  - Id: 25786
+    AegisName: Biological Research Documents
+    Name: Biological Research Documents
+    Type: Etc
+  - Id: 33107
+    AegisName: Bubble Gum Light Box
+    Name: Bubble Gum Light Box
+    Type: Healing
+    Script: |
+      rentitem 5394,3600;
+  - Id: 200000028
+    AegisName: Weihnachts_Lucky_Clip
+    Name: Weihnachts Lucky Clip
+    Type: Armor
+    Locations:
+      Both_Accessory: true
+    Script: |
+      bonus2 bDropAddRace,RC_All,400;
+  - Id: 23992
+    AegisName: Biolab Inogarnic Crate
+    Name: Biolab Inogarnic Crate
+    Type: Healing
+    Script: |
+      getitem callfunc("F_Rand",21051,21052,1333,16092,28138,28765,28766,28044,28042,26158,2055,2056,26161,2057,16095,18185,18187,18186,16093,16094,28767,28768,18184,28633,26159,26160,1865,1866,16096,18188,26212,26213,32023,32107,32108,32350,32024,32025,323511;
+  - Id: 15397
+    AegisName: STR_Soutane
+    Name: STR Soutane
+    Type: Weapon
+    Buy: 20
+    Weight: 800
+    Defense: 100
+    Slots: 1
+    Locations:
+      Armor: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bAspdRate,10; bonus bStr,.@r/3*5; bonus2 bAddSize,Size_All,.@r/2*3;bonus2 bAddRace,RC_Angel,.@r / 4 * 8; bonus2 bAddRace,RC_Demon,.@r / 4 * 8;
+  - Id: 15398
+    AegisName: AGI_Soutane
+    Name: AGI Soutane
+    Type: Weapon
+    Buy: 20
+    Weight: 800
+    Defense: 100
+    Slots: 1
+    Locations:
+      Armor: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bAspdRate,10; bonus bAgi,.@r/3*5; bonus bLongAtkRate,.@r/2*3;bonus2 bAddRace,RC_Angel,.@r / 4 * 8;bonus2 bAddRace,RC_Demon,.@r / 4 * 8;
+  - Id: 15399
+    AegisName: VIT_Soutane
+    Name: VIT Soutane
+    Type: Weapon
+    Buy: 20
+    Weight: 800
+    Defense: 100
+    Slots: 1
+    Locations:
+      Armor: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMaxHPrate,15; bonus bMaxSPrate,5; bonus bAspdRate,7; bonus bVariableCastrate,-7; bonus bVit,.@r/3*5; bonus bMaxHPrate,.@r/2*2;bonus2 bAddRace,RC_Angel,.@r / 4 * 10;bonus2 bAddRace,RC_Demon,.@r / 4 * 10;bonus2 bMagicAddRace,RC_Angel,.@r / 4 * 10;bonus2 bMagicAddRace,RC_Demon,.@r / 4 * 10;
+  - Id: 15400
+    AegisName: DEX_Soutane
+    Name: DEX Soutane
+    Type: Weapon
+    Buy: 20
+    Weight: 800
+    Defense: 100
+    Slots: 1
+    Locations:
+      Armor: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bAspdRate,10; bonus bVariableCastrate,-10; bonus bDex,.@r/3*5;bonus2 bAddSize,Size_All,.@r/2*1;bonus bMatkRate,.@r/2*1;bonus2 bAddRace,RC_Angel,.@r / 4 * 8;bonus2 bAddRace,RC_Demon,.@r / 4 * 8;bonus2 bMagicAddRace,RC_Angel,.@r / 4 * 8;bonus2 bMagicAddRace,RC_Demon,.@r / 4 * 8;
+  - Id: 15401
+    AegisName: INT_Soutane
+    Name: INT Soutane
+    Type: Weapon
+    Buy: 20
+    Weight: 800
+    Defense: 100
+    Slots: 1
+    Locations:
+      Armor: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMaxHPrate,5; bonus bMaxSPrate,15; bonus bAspdRate,10; bonus bVariableCastrate,-10; bonus bInt,.@r/3*5;bonus bMatkRate,.@r/2*3;bonus2 bMagicAddRace,RC_Angel,.@r / 4 * 6;bonus2 bMagicAddRace,RC_Demon,.@r / 4 * 6;
+  - Id: 15402
+    AegisName: LUK_Soutane
+    Name: LUK Soutane
+    Type: Weapon
+    Buy: 20
+    Weight: 800
+    Defense: 100
+    Slots: 1
+    Locations:
+      Armor: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bAspdRate,10; bonus bCritical,.@r/2*3; bonus bCritAtkRate,.@r/2*3;bonus bLuk,.@r/3*5;bonus2 bAddRace,RC_Angel,.@r / 4 * 8;bonus2 bAddRace,RC_Demon,.@r / 4 * 8;
+  - Id: 20947
+    AegisName: Clergy_Manteau
+    Name: Clergy Manteau
+    Type: Weapon
+    Buy: 20
+    Weight: 450
+    Defense: 40
+    Locations:
+      Garment: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine();bonus bMaxSPrate,5;bonus bMdef,10;bonus bVariableCastrate,-10;bonus2 bMagicAddRace,RC_Angel,.@r/2*1;bonus2 bMagicAddRace,RC_Demon,.@r/2*1;bonus2 bSubRace,RC_Angel,.@r/3*1;bonus2 bSubRace,RC_Demon,.@r/3*1;if(.@r >=7) bonus bVariableCastrate,-10;
+  - Id: 22209
+    AegisName: Clergy_Boots
+    Name: Clergy Boots
+    Type: Weapon
+    Weight: 400
+    Defense: 35
+    Locations:
+      Shoes: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMaxHPrate,5; bonus bMdef,10; bonus bAspdRate,10; bonus2 bMagicAddRace,RC_Angel,.@r/2*1; bonus2 bMagicAddRace,RC_Demon,.@r/2*1; bonus2 bSubRace,RC_Angel,.@r/3*1; bonus2 bSubRace,RC_Demon,.@r/3*1;if(.@r >= 7) bonus bAspdRate,10;
+  - Id: 25767
+    AegisName: Angel_Dream
+    Name: Angel Dream
+    Type: Etc
+  - Id: 25768
+    AegisName: Ingrid_Armor_Piece
+    Name: Ingrid Armor Piece
+    Type: Etc
+  - Id: 25769
+    AegisName: Reginleif_Armor_Piece
+    Name: Reginleif Armor Piece
+    Type: Etc
+  - Id: 19439
+    AegisName: Vicious_Mind_Aura_Mid
+    Name: Vicious Mind Aura Mid
+    Type: Armor
+    Locations:
+      Head_Low: true
+    EquipLevelMin: 1
+    View: 1267
+  - Id: 310076
+    AegisName: STR_Blessing
+    Name: STR Blessing
+    Type: Card
+    Script: |
+      bonus bStr,10; bonus2 bAddSize,Size_All,10; bonus bDef,25;bonus bMdef,3;
+  - Id: 310077
+    AegisName: AGI_Blessing
+    Name: AGI Blessing
+    Type: Card
+    Script: |
+      bonus bAgi,10; bonus bLongAtkRate,10; bonus bDef,25;bonus bMdef,3;
+  - Id: 310078
+    AegisName: VIT_Blessing
+    Name: VIT Blessing
+    Type: Card
+    Script: |
+      bonus bVit,10;bonus bMaxHPrate,10;bonus bMaxSPrate,10;bonus bDef,25;bonus bMdef,3;
+  - Id: 310079
+    AegisName: DEX_Blessing
+    Name: DEX Blessing
+    Type: Card
+    Script: |
+      bonus bDex,10;bonus bAspdRate,10;bonus bVariableCastrate,-10;bonus bDef,25;bonus bMdef,3;
+  - Id: 310080
+    AegisName: INT_Blessing
+    Name: INT Blessing
+    Type: Card
+    Script: |
+      bonus bInt,10;bonus bMatkRate,10;bonus bDef,20;bonus bMdef,3;
+  - Id: 310081
+    AegisName: LUK_Blessing
+    Name: LUK Blessing
+    Type: Card
+    Script: |
+      bonus bLuk,10;bonus bCritAtkRate,15; bonus bDef,25;bonus bMdef,3;
+  - Id: 33115
+    AegisName: Kiel_Pet
+    Name: Kiel Pet
+    Type: Petegg
+  - Id: 33116
+    AegisName: Lost_dragon_egg
+    Name: Lost dragon egg
+    Type: Petegg
+  - Id: 25809
+    AegisName: Redium
+    Name: Redium
+    Type: Etc
+  - Id: 25811
+    AegisName: Odium
+    Name: Odium
+    Type: Etc
+  - Id: 25810
+    AegisName: Rindium
+    Name: Rindium
+    Type: Etc
+  - Id: 25812
+    AegisName: Purdium
+    Name: Purdium
+    Type: Etc
+  - Id: 25813
+    AegisName: Whidium
+    Name: Whidium
+    Type: Etc
+  - Id: 25814
+    AegisName: Dynite
+    Name: Dynite
+    Type: Etc
+  - Id: 9514
+    AegisName: Physical Modification Permit
+    Name: Physical Modification Permit
+    Type: Etc
+  - Id: 9529
+    AegisName: Magical Modification Permit
+    Name: Magical Modification Permit
+    Type: Etc
+  - Id: 32303
+    AegisName: Bolt_Revolver
+    Name: Bolt Revolver
+    Type: Weapon
+    SubType: Shotgun
+    Slots: 2
+    Jobs:
+      Acolyte: true
+      Assassin: true
+      Mage: true
+      Merchant: true
+      Novice: true
+      SuperNovice: true
+      Swordman: true
+      Thief: true
+    Classes:
+      All_Third: true
+      Upper: true
+      Baby: true
+      All_Upper: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,15; bonus2 bSkillAtk,"RL_FIREDANCE",(.@r>=9)?35:15; if (.@r>=7) { bonus bBaseAtk,60; bonus bVariableCastrate,-10; } if (.@r>=9) { autobonus "{ bonus2 bAddSize,Size_All,20; }",20,10000,BF_WEAPON,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus bDelayrate,-20; }
+  - Id: 550006
+    AegisName: Safety_Foxtail
+    Name: Safety Foxtail
+    Type: Weapon
+    SubType: Bow
+    Weight: 170
+    Attack: 210
+    Slots: 2
+    Jobs:
+      Summoner: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMatkRate,7; bonus bUnbreakableWeapon,1; bonus2 bAddClass,Class_All,7; bonus2 bSkillAtk,"SU_CN_METEOR",(.@r>=9)?35:15; bonus2 bSkillAtk,"SU_PICKYPECK",(.@r>=9)?35:15; if (.@r>=7) { bonus bVariableCastrate,-10; bonus bAspdRate,10; } if (.@r>=9) { autobonus "{ bonus2 bAddSize,Size_All,10; bonus2 bMagicAddSize,Size_All,10; }",20,10000,BF_WEAPON|BF_MAGIC,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus bDelayrate,-20; }
+  - Id: 28772
+    AegisName: Jewel_Detector_Mk47
+    Name: Jewel Detector Mk47
+    Type: Weapon
+    SubType: Dagger
+    Weight: 100
+    MagicAttack: 180
+    Slots: 2
+    Jobs:
+      Archer: true
+      Blacksmith: true
+      Hunter: true
+      Knight: true
+      Mage: true
+      Merchant: true
+      Novice: true
+      Priest: true
+      SuperNovice: true
+      Swordman: true
+      Thief: true
+      Wizard: true
+    Classes:
+      All_Third: true
+      Upper: true
+      Baby: true
+      All_Upper: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMatkRate,10; bonus2 bMagicAtkEle,Ele_Neutral,(.@r>=9)?15:7; if (.@r>=7) { bonus bMatk,40; bonus bAspdRate,10; } if (.@r>=9) { bonus2 bMagicAtkEle,Ele_Fire,15; autobonus "{ bonus2 bMagicAddSize,Size_All,15; }",20,10000,BF_MAGIC,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus bDelayrate,-20; }
+  - Id: 28771
+    AegisName: Metal_Detector_Mk47
+    Name: Metal Detector Mk47
+    Type: Weapon
+    SubType: Dagger
+    Weight: 100
+    Attack: 200
+    Slots: 2
+    Jobs:
+      Assassin: true
+    Classes:
+      All_Third: true
+      Upper: true
+      Baby: true
+      All_Upper: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddClass,Class_All,10; bonus2 bSkillAtk,"GC_CROSSIMPACT",(.@r>=9)?25:10; if (.@r>=7) { bonus bBaseAtk,40; bonus bAspdRate,10; } if (.@r>=9) { autobonus "{ bonus2 bAddSize,Size_All,15; }",100,10000,BF_WEAPON,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus bDelayrate,-20; }
+  - Id: 28140
+    AegisName: Saw_Axe
+    Name: Saw Axe
+    Type: Weapon
+    SubType: 2hAxe
+    Weight: 500
+    Attack: 350
+    Slots: 2
+    Jobs:
+      Blacksmith: true
+      Hunter: true
+      Knight: true
+      Merchant: true
+      Priest: true
+      Thief: true
+      Wizard: true
+    Classes:
+      All_Third: true
+      Upper: true
+      Baby: true
+      All_Upper: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bUnbreakableWeapon,1; bonus2 bAddClass,Class_All,10; bonus2 bSkillAtk,"NC_ARMSCANNON",10; if (.@r>=7) { bonus bBaseAtk,60; bonus bVariableCastrate,-10; } if (.@r>=9) { bonus bLongAtkRate,10; autobonus "{ bonus2 bAddSize,Size_All,15; }",20,5000,BF_WEAPON,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus bDelayrate,-20; }
+  - Id: 26215
+    AegisName: Safety_Whip
+    Name: Safety Whip
+    Type: Weapon
+    SubType: Whip
+    Weight: 140
+    Attack: 200
+    Slots: 2
+    Jobs:
+      Archer: true
+      Blacksmith: true
+      Hunter: true
+      Knight: true
+      Mage: true
+      Merchant: true
+      Priest: true
+      Thief: true
+      Wizard: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,10; bonus2 bSkillAtk,"WM_SEVERE_RAINSTORM",(.@r>=9)?25:10; if (.@r>=7) { bonus bBaseAtk,40; bonus bVariableCastrate,-10; } if (.@r>=9) { autobonus "{ bonus2 bAddSize,Size_All,15; }",20,10000,BF_WEAPON,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus2 bSkillCooldown,"WM_SEVERE_RAINSTORM",-2000; bonus bDelayrate,-20; }
+  - Id: 21054
+    AegisName: Claw_Sword
+    Name: Claw Sword
+    Type: Weapon
+    SubType: 2hSword
+    Weight: 350
+    Attack: 300
+    Slots: 2
+    Jobs:
+      Acolyte: true
+      Archer: true
+      Blacksmith: true
+      Hunter: true
+      Knight: true
+      Mage: true
+      Priest: true
+      Thief: true
+      Wizard: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddClass,Class_All,15; bonus bCritical,(.@r>=11)?12:5; if (.@r>=7) { bonus bCritAtkRate,25; bonus bAspdRate,10; } if (.@r>=9) { autobonus "{ bonus2 bAddSize,Size_All,20; }",20,5000,BF_WEAPON,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus bDelayrate,-20; }
+  - Id: 18190
+    AegisName: Bolt_Shooter
+    Name: Bolt Shooter
+    Type: Weapon
+    SubType: Bow
+    Weight: 170
+    Attack: 210
+    Slots: 2
+    Jobs:
+      Acolyte: true
+      Archer: true
+      Blacksmith: true
+      Hunter: true
+      Knight: true
+      Mage: true
+      Priest: true
+      Swordman: true
+      Thief: true
+      Wizard: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddClass,Class_All,10; bonus2 bSkillAtk,"RA_AIMEDBOLT",(.@r>=9)?25:10; if (.@r>=7) { bonus bBaseAtk,60; bonus bVariableCastrate,-10; } if (.@r>=9) { autobonus "{ bonus2 bAddSize,Size_All,15; }",20,10000,BF_WEAPON,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus bDelayrate,-20; }
+  - Id: 13346
+    AegisName: Grinder_Huuma_Shuriken
+    Name: Grinder Huuma Shuriken
+    Type: Weapon
+    SubType: Huuma
+    Weight: 180
+    Attack: 280
+    Slots: 2
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddClass,Class_All,15; bonus2 bSkillAtk,"KO_HUUMARANKA",(.@r>=9)?35:15; if (.@r>=7) { bonus bBaseAtk,60; bonus bVariableCastrate,-15; } if (.@r>=9) { autobonus "{ bonus2 bAddSize,Size_All,20; }",20,10000,BF_WEAPON,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus2 bSkillCooldown,"KO_HUUMARANKA",-1000; bonus bDelayrate,-20; }
+  - Id: 16099
+    AegisName: Rubber_Hammer
+    Name: Rubber Hammer
+    Type: Weapon
+    SubType: Mace
+    Weight: 190
+    MagicAttack: 160
+    Slots: 2
+    Jobs:
+      Acolyte: true
+      Archer: true
+      Blacksmith: true
+      Hunter: true
+      Knight: true
+      Mage: true
+      Novice: true
+      Priest: true
+      SuperNovice: true
+      Swordman: true
+      Thief: true
+      Wizard: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMatkRate,7; bonus bUnbreakableWeapon,1; bonus2 bSkillAtk,"AB_ADORAMUS",(.@r>=9)?25:10; if (.@r>=7) { bonus2 bMagicAtkEle,Ele_Holy,7; bonus bVariableCastrate,-10; } if (.@r>=9) { bonus2 bMagicAtkEle,Ele_Fire,15; autobonus "{ bonus2 bMagicAddSize,Size_All,15; }",20,5000,BF_MAGIC,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus bDelayrate,-20; }
+  - Id: 2058
+    AegisName: Detecting_Staff
+    Name: Detecting Staff
+    Type: Weapon
+    SubType: 2hStaff
+    Weight: 200
+    MagicAttack: 180
+    Slots: 2
+    Jobs:
+      Acolyte: true
+      Archer: true
+      Blacksmith: true
+      Hunter: true
+      Knight: true
+      Mage: true
+      Novice: true
+      Priest: true
+      SuperNovice: true
+      Thief: true
+      Wizard: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMatkRate,10; bonus bUnbreakableWeapon,1; if (.@r>=7) { bonus bMatk,60; bonus bVariableCastrate,-10; } if (.@r>=9) { bonus2 bMagicAtkEle,Ele_Fire,15; autobonus "{ bonus2 bMagicAddSize,Size_All,20; }",20,10000,BF_MAGIC,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus bDelayrate,-20; }
+  - Id: 1867
+    AegisName: Safety_Knuckle
+    Name: Safety Knuckle
+    Type: Weapon
+    SubType: Knuckle
+    Weight: 180
+    Attack: 210
+    Slots: 2
+    Jobs:
+      Archer: true
+      Blacksmith: true
+      Hunter: true
+      Knight: true
+      Mage: true
+      Merchant: true
+      Novice: true
+      Priest: true
+      SuperNovice: true
+      Thief: true
+      Wizard: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddClass,Class_All,10; bonus2 bSkillAtk,"SR_KNUCKLEARROW",(.@r>=9)?25:10; if (.@r>=7) { bonus bBaseAtk,40; bonus bAspdRate,15; } if (.@r>=9) { autobonus "{ bonus2 bAddSize,Size_All,15; }",20,10000,BF_WEAPON,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus bDelayrate,-20; }
+  - Id: 26162
+    AegisName: Welding_Wand
+    Name: Welding Wand
+    Type: Weapon
+    SubType: Staff
+    Weight: 120
+    Attack: 160
+    Slots: 2
+    Jobs:
+      Acolyte: true
+      Assassin: true
+      Knight: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 175
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Neutral,(.@r>=9)?15:7; bonus2 bMagicAtkEle,Ele_Fire,(.@r>=9)?15:7; bonus2 bMagicAtkEle,Ele_Water,(.@r>=9)?15:7; bonus bUnbreakableWeapon,1; if (.@r>=7) { bonus bMatk,70; bonus bVariableCastrate,-10; } if (.@r>=9) { autobonus "{ bonus2 bMagicAddSize,Size_All,15; }",20,10000,BF_MAGIC,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus bDelayrate,-20; }
+  - Id: 32026
+    AegisName: Blocking_Spear
+    Name: Blocking Spear
+    Type: Weapon
+    SubType: 1hSpear
+    Weight: 300
+    Attack: 210
+    Slots: 2
+    Jobs:
+      Archer: true
+      Blacksmith: true
+      Hunter: true
+      Knight: true
+      Merchant: true
+      Novice: true
+      Priest: true
+      SuperNovice: true
+      Thief: true
+      Wizard: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddClass,Class_All,10; bonus2 bSkillAtk,"LG_BANISHINGPOINT",(.@r>=9)?25:10; if (.@r>=7) { bonus bBaseAtk,40; bonus bAspdRate,15; } if (.@r>=9) { autobonus "{ bonus2 bAddSize,Size_All,15; }",20,10000,BF_WEAPON,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus bDelayrate,-20; }
+  - Id: 32110
+    AegisName: Safety_Lute
+    Name: Safety Lute
+    Type: Etc
+    Slots: 2
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    View: 16
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,10; bonus2 bSkillAtk,"WM_SEVERE_RAINSTORM",(.@r>=9)?25:10; if (.@r>=7) { bonus bBaseAtk,40; bonus bVariableCastrate,-10; } if (.@r>=9) { autobonus "{ bonus2 bAddSize,Size_All,15; }",20,10000,BF_WEAPON,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus2 bSkillCooldown,"WM_SEVERE_RAINSTORM",-2000; bonus bDelayrate,-20; }
+  - Id: 28635
+    AegisName: Safety Manual
+    Name: Safety Manual
+    Type: Weapon
+    SubType: Book
+    Weight: 70
+    Attack: 10
+    Slots: 2
+    Jobs:
+      Archer: true
+      Assassin: true
+      Knight: true
+      Mage: true
+      Novice: true
+      SuperNovice: true
+      Swordman: true
+    Classes:
+      All_Third: true
+      Upper: true
+      Baby: true
+      All_Upper: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bCritical,3; bonus2 bAddClass,Class_All,10; if (.@r>=7) { bonus bBaseAtk,40; bonus bAspdRate,10; } if (.@r>=9) { bonus bCritAtkRate,15; bonus bLongAtkRate,10; autobonus "{ bonus2 bAddSize,Size_All,15; }",20,5000,BF_WEAPON,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus bDelayrate,-20; }
+  - Id: 28045
+    AegisName: Bolt_Crusher
+    Name: Bolt Crusher
+    Type: Weapon
+    SubType: Katar
+    Weight: 200
+    Attack: 300
+    Slots: 2
+    Jobs:
+      Assassin: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddClass,Class_All,10; bonus2 bSkillAtk,"GC_ROLLINGCUTTER",(.@r>=9)?25:10; if (.@r>=7) { bonus bBaseAtk,60; bonus bAspdRate,10; } if (.@r>=9) { autobonus "{ bonus2 bAddSize,Size_All,20; }",20,10000,BF_WEAPON,"{ specialeffect2 EF_BLOODDRAIN; }"; } if (.@r>=11) { bonus bDelayrate,-20; }
+  - Id: 32248
+    AegisName: Safety_Pendant_R
+    Name: Safety Pendant R
+    Type: Armor
+    Weight: 10
+    Defense: 10
+    Slots: 1
+    Locations:
+      Right_Accessory: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Script: |
+      bonus bAspdRate,5; bonus bAllStats,5;
+  - Id: 32250
+    AegisName: Safety_Epaulet_R
+    Name: Safety Epaulet R
+    Type: Armor
+    Weight: 10
+    Defense: 10
+    Slots: 1
+    Locations:
+      Right_Accessory: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Script: |
+      bonus2 bAddClass,Class_All,5;
+  - Id: 32249
+    AegisName: Safety_Pendant_B
+    Name: Safety Pendant B
+    Type: Armor
+    Weight: 10
+    Defense: 10
+    Slots: 1
+    Locations:
+      Left_Accessory: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Script: |
+      bonus bVariableCastrate,-5; bonus bAllStats,5;
+  - Id: 32251
+    AegisName: Safety_Epaulet_B
+    Name: Safety Epaulet B
+    Type: Armor
+    Weight: 10
+    Defense: 10
+    Slots: 1
+    Locations:
+      Left_Accessory: true
+    Script: |
+      bonus bMatkRate,5;
+  - Id: 32352
+    AegisName: Safety_Saber
+    Name: Safety Saber
+    Type: Weapon
+    SubType: 1hSword
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddClass,Class_All,10; bonus2 bSkillAtk,"GN_CARTCANNON",(.@r>=9)?25:10; if (.@r>=7) { bonus bBaseAtk,40; bonus bVariableCastrate,-10; } if (.@r>=9) { bonus bLongAtkRate,7; } if (.@r>=11) { bonus bDelayrate,-20; }
+  - Id: 40935
+    AegisName: Burning_Dragons_Power
+    Name: Burning Dragons Power
+    Type: Etc
+  - Id: 23981
+    AegisName: Turbulence_Dragons_Power
+    Name: Turbulence Dragons Power
+    Type: Etc
+  - Id: 40937
+    AegisName: Stable_Dragons_Power
+    Name: Stable Dragons Power
+    Type: Etc
+  - Id: 5759
+    AegisName: Green_Dragon_Orb
+    Name: Green Dragon Orb
+    Type: Etc
+  - Id: 25760
+    AegisName: Blue_Dragon_Orb
+    Name: Blue Dragon Orb
+    Type: Etc
+  - Id: 25761
+    AegisName: Red_Dragon_Orb
+    Name: Red Dragon Orbe
+    Type: Etc
+  - Id: 25762
+    AegisName: Gold_Dragon_Orb
+    Name: Gold Dragon Orb
+    Type: Etc
+  - Id: 25763
+    AegisName: Purple_Dragon_Orb
+    Name: Purple Dragon Orb
+    Type: Etc
+  - Id: 25764
+    AegisName: Silver_Dragon_Orb
+    Name: Silver Dragon Orb
+    Type: Etc
+  - Id: 25765
+    AegisName: Large_Dragon_Bone
+    Name: Large Dragon Bone
+    Type: Etc
+  - Id: 25766
+    AegisName: Small_Dragon_Bone
+    Name: Small Dragon Bone
+    Type: Etc
+  - Id: 23985
+    AegisName: Dragons_Treasure
+    Name: Dragons Treasure
+    Type: Etc
+  - Id: 40936
+    AegisName: Hot Dragons Power
+    Name: Hot Dragons Power
+    Type: Etc
+  - Id: 15391
+    AegisName: Red_Dragon_Plate
+    Name: Red Dragon Plate
+    Type: Armor
+    Weight: 120
+    Defense: 110
+    Slots: 1
+    Locations:
+      Armor: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bStr,12; bonus bMaxHPrate,15; bonus bMaxSPrate,10; bonus2 bAddClass,Class_All,2*(.@r/2); bonus2 bAddRace,RC_Dragon,7*(.@r/3); if (.@r>=11) { bonus2 bAddSize,Size_Medium,10; bonus2 bAddSize,Size_Large,10; bonus bFixedCast,-200; }
+  - Id: 15392
+    AegisName: Green_Dragon_Plate
+    Name: Green Dragon Plate
+    Type: Armor
+    Weight: 120
+    Defense: 110
+    Slots: 1
+    Locations:
+      Armor: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bAgi,12; bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bLongAtkRate,2*(.@r/2); bonus2 bAddRace,RC_Dragon,7*(.@r/3); if (.@r>=11) { bonus2 bAddSize,Size_Medium,10; bonus2 bAddSize,Size_Large,10; bonus bFixedCast,-200; }
+  - Id: 15393
+    AegisName: Gold_Dragon_Plate
+    Name: Gold Dragon Plate
+    Type: Armor
+    Weight: 120
+    Defense: 110
+    Slots: 1
+    Locations:
+      Armor: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bVit,12; bonus bMaxHPrate,20; bonus bMaxSPrate,5; bonus bAspdRate,3*(.@r/2); bonus bVariableCastrate,-3*(.@r/2); bonus2 bMagicAddRace,RC_Dragon,7*(.@r/3); bonus2 bAddRace,RC_Dragon,7*(.@r/3); if (.@r>=11) { bonus2 bAddSize,Size_Medium,10; bonus2 bAddSize,Size_Large,10; bonus2 bMagicAddSize,Size_Large,7; bonus2 bMagicAddSize,Size_Medium,7; bonus bFixedCast,-200; }
+  - Id: 15394
+    AegisName: Purple_Dragon_Plate
+    Name: Purple Dragon Plate
+    Type: Armor
+    Weight: 120
+    Defense: 110
+    Slots: 1
+    Locations:
+      Armor: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bDex,12; bonus bMaxHPrate,15; bonus bMaxSPrate,10; bonus bAspdRate,4*(.@r/2); bonus bVariableCastrate,-4*(.@r/2); bonus2 bMagicAddRace,RC_Dragon,8*(.@r/3); bonus2 bAddRace,RC_Dragon,8*(.@r/3); if (.@r>=11) { bonus2 bAddSize,Size_Medium,8; bonus2 bAddSize,Size_Large,8; bonus2 bMagicAddSize,Size_Large,8; bonus2 bMagicAddSize,Size_Medium,8; bonus bFixedCast,-200; }
+  - Id: 15395
+    AegisName: Blue_Dragon_Plate
+    Name: Blue Dragon Plate
+    Type: Armor
+    Weight: 120
+    Defense: 110
+    Slots: 1
+    Locations:
+      Armor: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bInt,12; bonus bMaxHPrate,5; bonus bMaxSPrate,20; bonus bHealPower,4*(.@r/2); bonus bMatkRate,2*(.@r/2); bonus2 bMagicAddRace,RC_Dragon,7*(.@r/3); if (.@r>=11) { bonus2 bMagicAddSize,Size_Large,10; bonus2 bMagicAddSize,Size_Medium,10; bonus bFixedCast,-200; }
+  - Id: 15396
+    AegisName: Silver_Dragon_Plate
+    Name: Silver Dragon Plate
+    Type: Armor
+    Weight: 120
+    Defense: 110
+    Slots: 1
+    Locations:
+      Armor: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLuk,12; bonus bMaxHPrate,15; bonus bMaxSPrate,15; bonus bCritAtkRate,4*(.@r/2); bonus bCritical,2*(.@r/2); bonus2 bAddRace,RC_Dragon,7*(.@r/3); if (.@r>=11) { bonus2 bAddRace,Size_Large,10; bonus2 bAddRace,Size_Medium,10; bonus bFixedCast,-200; }
+  - Id: 20946
+    AegisName: Dragon_Scale_Hood
+    Name: Dragon Scale Hood
+    Type: Armor
+    Weight: 50
+    Defense: 23
+    Slots: 1
+    Locations:
+      Garment: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bDef,20; bonus bHealPower2,15; bonus bAddItemHealRate,15; bonus bMdef,2; if (.@r>=7) { bonus2 bSubRace,RC_Dragon,(.@r>11)?5:2; } if (.@r>=9) { autobonus2 "{ bonus2 bHPRegenRate,2000,1000; }",20,3000,BF_WEAPON|BF_MAGIC,"{ specialeffect2 EF_HEAL3; }"; }
+  - Id: 22208
+    AegisName: Dragon_Scale_Boots
+    Name: Dragon Scale Boots
+    Type: Armor
+    Weight: 60
+    Defense: 25
+    Slots: 1
+    Locations:
+      Shoes: true
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMaxSP,500; bonus bAspdRate,7; bonus bVariableCastrate,-7; if (.@r>=7) { bonus2 bSubRace,RC_Dragon,(.@r>11)?5:2; } if (.@r>=9) { autobonus2 "{ bonus2 bSPRegenRate,500,1000; }",20,3000,BF_WEAPON|BF_MAGIC,"{ specialeffect2 EF_HEAL3; }"; }
+  - Id: 300008
+    AegisName: Angelgolt_Card
+    Name: Angelgolt Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Script: |
+      bonus2 bMagicAddRace,RC_Demon,10;
+  - Id: 300009
+    AegisName: Spectrum_Plasma_Card
+    Name: Spectrum Plasma Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Script: |
+      .@r = getrefine(); if (.@r>=14) { .@dmg += 40; } else if (.@r>=10) { .@dmg += 20; } .@i = getiteminfo(getequipid(EQI_HAND_R11); if(.@i==W_STAFF || .@i==W_2HSTAFF) { .@dmg += 20; } bonus2 bMagicAtkEle,Ele_Ghost,.@dmg;
+  - Id: 300010
+    AegisName: Arch_Plasma_Card
+    Name: Arch Plasma Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Script: |
+      .@r = getrefine(); if (.@r>=14) { .@dmg += 40; } else if (.@r>=10) { .@dmg += 20; } .@i = getiteminfo(getequipid(EQI_HAND_R11); if(.@i==W_STAFF || .@i==W_2HSTAFF) { .@dmg += 20; } bonus2 bMagicAtkEle,Ele_Wind,.@dmg;
+  - Id: 300011
+    AegisName: Holy_Frus_Card
+    Name: Holy Frus Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Script: |
+      .@r = getrefine(); if (.@r>=14) { .@dmg += 40; } else if (.@r>=10) { .@dmg += 20; } .@i = getiteminfo(getequipid(EQI_HAND_R11); if(.@i==W_STAFF || .@i==W_2HSTAFF) { .@dmg += 20; } bonus2 bMagicAtkEle,Ele_Holy,.@dmg;
+  - Id: 300012
+    AegisName: Holy_Skogul_Card
+    Name: Holy Skogul Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Shoes: true
+    Script: |
+      .@r = getrefine(); bonus bHealPower,(.@r>=9)?10:(.@r>=7)?8:5;
+  - Id: 300013
+    AegisName: Reginleif_Card
+    Name: Reginleif Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Armor: true
+    Script: |
+      bonus bUnbreakableArmor,1; bonus bMaxHPrate,-15; bonus2 bAddClass,Class_All,30;
+  - Id: 300014
+    AegisName: Ingrid_Card
+    Name: Ingrid Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Armor: true
+    Script: |
+      bonus bMaxHPrate,40; bonus2 bAddClass,Class_All,-15; bonus bUnbreakableArmor,1; bonus2 bHPLossRate,1000,4000;
+  - Id: 300015
+    AegisName: Purple_Ferus_Card
+    Name: Purple Ferus Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Head_Top: true
+      Head_Mid: true
+      Head_Low: true
+    Script: |
+      bonus2 bAddClass,Class_All,3+getrefine()/4; bonus bMaxHPrate,-5; bonus bMaxSPrate,-5;
+  - Id: 300016
+    AegisName: Treasure_Mimic_Card
+    Name: Treasure Mimic Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Garment: true
+    Script: |
+      bonus bFlee,30; bonus bCritical,5;
+  - Id: 300017
+    AegisName: Black_Acidus_Card
+    Name: Black Acidus Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Script: |
+      bonus2 bAddEle,Ele_Dark,25;
+  - Id: 300019
+    AegisName: Bone_Ferus_Card
+    Name: Bone Ferus Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Left_Accessory: true
+    Script: |
+      bonus2 bAddRace,RC_Dragon,5;
+  - Id: 300020
+    AegisName: Bone_Acidus_Card
+    Name: Bone Acidus Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Accessory: true
+    Script: |
+      bonus2 bAddRace,RC_Brute,5;
+  - Id: 300021
+    AegisName: Bone_Detardeurus_Card
+    Name: Bone Detardeurus Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Armor: true
+    Script: |
+      bonus2 bAddRace,RC_Dragon,40; bonus2 bAddRace,RC_Undead,40; bonus2 bAddEle,Ele_Undead,40; bonus2 bAddEle,Ele_Ghost,40;
+  - Id: 300018
+    AegisName: Silver_Acidus_Card
+    Name: Silver Acidus Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Script: |
+      bonus2 bAddEle,Ele_Holy,25;
+  - Id: 300001
+    AegisName: Poisonous_Card
+    Name: Poisonous Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Script: |
+      bonus2 bAddEle,Ele_Poison,25;
+  - Id: 300002
+    AegisName: Toxious_Card
+    Name: Toxious Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Armor: true
+    Script: |
+      bonus bMaxHPrate,10; bonus bLongAtkDef,5;
+  - Id: 300003
+    AegisName: White_Porcellio_Card
+    Name: White Porcellio Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Shoes: true
+    Script: |
+      bonus bBaseAtk,20+getrefine();
+  - Id: 300004
+    AegisName: Neo_Mineral_Card
+    Name: Neo Mineral Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Garment: true
+    Script: |
+      bonus bDef,30+getrefine()*3;
+  - Id: 300005
+    AegisName: Abyssman_Card
+    Name: Abyssman Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Shoes: true
+    Script: |
+      bonus bMaxHPrate,10; bonus2 bSkillAtk,"SO_EARTHGRAVE",10;
+  - Id: 300006
+    AegisName: Jewelry_Ant_Card
+    Name: Jewelry Ant Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Left_Accessory: true
+    Script: |
+      bonus3 bAutoSpell,"SO_PSYCHIC_WAVE",1,20;
+  - Id: 300007
+    AegisName: Jewgoliant_Card
+    Name: Jewgoliant Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Armor: true
+    Script: |
+      bonus2 bAddRace,RC_Plant,40; bonus2 bAddRace,RC_Formless,40; bonus2 bAddEle,Ele_Fire,40; bonus2 bAddEle,Ele_Water,40;
+  - Id: 33118
+    AegisName: Pikachu_Egg
+    Name: Pikachu Egg
+    Type: Petegg
+  - Id: 51022
+    AegisName: Alternate Outfit Ticket
+    Name: Alternate Outfit Ticket
+    Type: Healing
+    Script: |
+      atcommand "@bodystyle 1 "+strcharinfo(0)+""; dispbottom "+ HF!";
+  - Id: 33119
+    AegisName: Illusion Morriganes Helm
+    Name: Illusion Morriganes Helm
+    Type: Armor
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 130
+    Refineable: true
+    View: 257
+    Script: |
+      .@r = getrefine(); bonus bStr,5; bonus bCritical,5; if (.@r>=7)  bonus bBaseAtk,50;  if (.@r>=9)  bonus bAspdRate,10;
+  - Id: 33120
+    AegisName: homfriendly
+    Name: homfriendly
+    Type: Healing
+    Script: |
+      atcommand "@homfriendly "+((gethominfo(3)/100)+5)+" "+strcharinfo(0); dispbottom "+ HF!";
+  - Id: 33121
+    AegisName: C_RWC_Champ_Crown_QF
+    Name: C RWC Champ Crown Fourth Place
+    Type: Armor
+    Buy: 20
+    Weight: 500
+    Defense: 12
+    Slots: 1
+    Locations:
+      Costume_Head_Top: true
+    EquipLevelMin: 1
+    View: 914
+    Script: |
+      bonus2 bResEff,Eff_Curse,10000; bonus bUnbreakableHelm; bonus bAllStats,2;
+  - Id: 33125
+    AegisName: Totoro_Ballon
+    Name: Totoro Ballon
+    Type: Armor
+    Buy: 20
+    Weight: 50
+    Defense: 5
+    Locations:
+      Head_Low: true
+    View: 1946
+    Script: |
+      bonus bAllStats,2; bonus bUnbreakableHelm; bonus bFlee,20;
+  - Id: 33083
+    AegisName: TakeRO Angel Wing
+    Name: TakeRO Angel Wing
+    Type: Armor
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1958
+    Script: |
+      bonus bAgi,5;
+  - Id: 33084
+    AegisName: TakeRO Osterhead
+    Name: TakeRO Osterhead
+    Type: Armor
+    Locations:
+      Costume_Head_Top: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1957
+    Script: |
+      bonus bStr,1; bonus bDex,1; bonus bLuk,1;
+  - Id: 33126
+    AegisName: Arcanine_Egg
+    Name: Arcanine Egg
+    Type: Petegg
+  - Id: 33127
+    AegisName: Blastoise_Egg
+    Name: Blastoise Egg
+    Type: Petegg
+  - Id: 33128
+    AegisName: Bulbasaur_Egg
+    Name: Bulbasaur Egg
+    Type: Petegg
+  - Id: 33129
+    AegisName: Charizard_Egg
+    Name: Charizard Egg
+    Type: Petegg
+  - Id: 33130
+    AegisName: Chikorita_Egg
+    Name: Chikorita Egg
+    Type: Petegg
+  - Id: 33131
+    AegisName: Cyndaquil_Egg
+    Name: Cyndaquil Egg
+    Type: Petegg
+  - Id: 33132
+    AegisName: Dragonair_Egg
+    Name: Dragonair Egg
+    Type: Petegg
+  - Id: 33133
+    AegisName: Flareon_Egg
+    Name: Flareon Egg
+    Type: Petegg
+  - Id: 33134
+    AegisName: Ivysaur_Egg
+    Name: Ivysaur Egg
+    Type: Petegg
+  - Id: 33135
+    AegisName: Larvitar_Egg
+    Name: Larvitar Egg
+    Type: Petegg
+  - Id: 33136
+    AegisName: Raikou_Egg
+    Name: Raikou Egg
+    Type: Petegg
+  - Id: 33137
+    AegisName: Squirtle_Egg
+    Name: Squirtle Egg
+    Type: Petegg
+  - Id: 33138
+    AegisName: Typhlosion_Egg
+    Name: Typhlosion Egg
+    Type: Petegg
+  - Id: 33139
+    AegisName: Tyranitar_Egg
+    Name: Tyranitar Egg
+    Type: Petegg
+  - Id: 33140
+    AegisName: Vaporeon_Egg
+    Name: Vaporeon Egg
+    Type: Petegg
+  - Id: 33141
+    AegisName: Vulpix_Egg
+    Name: Vulpix Egg
+    Type: Petegg
+  - Id: 33142
+    AegisName: Venusaur_Egg
+    Name: Venusaur Egg
+    Type: Petegg
+  - Id: 33143
+    AegisName: articuno_Egg
+    Name: articuno Egg
+    Type: Petegg
+  - Id: 33144
+    AegisName: Hooh_Egg
+    Name: Hooh Egg
+    Type: Petegg
+  - Id: 33145
+    AegisName: Lugia_Egg
+    Name: Lugia Egg
+    Type: Petegg
+  - Id: 33146
+    AegisName: Entei_Egg
+    Name: Entei Egg
+    Type: Petegg
+  - Id: 33147
+    AegisName: Gyarados_Egg
+    Name: Gyarados Egg
+    Type: Petegg
+  - Id: 33148
+    AegisName: Rayquaza_Egg
+    Name: Rayquaza Egg
+    Type: Petegg
+  - Id: 33149
+    AegisName: Suicune_Egg
+    Name: Suicune Egg
+    Type: Petegg
+  - Id: 33150
+    AegisName: Arcanine_Poke_Ball
+    Name: Arcanine Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30019;
+  - Id: 33151
+    AegisName: Hooh_Poke_Ball
+    Name: Hooh Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30020;
+  - Id: 33152
+    AegisName: Lugia_Poke_Ball
+    Name: Lugia Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30021;
+  - Id: 33153
+    AegisName: Blastoise_Poke_Ball
+    Name: Blastoise Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30022;
+  - Id: 33154
+    AegisName: Bulbasaur_Poke_Ball
+    Name: Bulbasaur Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30023;
+  - Id: 33155
+    AegisName: Charizard_Poke_Ball
+    Name: Charizard Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30024;
+  - Id: 33156
+    AegisName: Chikorita_Poke_Ball
+    Name: Chikorita Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30025;
+  - Id: 33157
+    AegisName: Cyndaquil_Poke_Ball
+    Name: Cyndaquil Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30026;
+  - Id: 33158
+    AegisName: Dragonair_Poke_Ball
+    Name: Dragonair Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30027;
+  - Id: 33159
+    AegisName: Entei_Poke_Ball
+    Name: Entei Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30028;
+  - Id: 33160
+    AegisName: Flareon_Poke_Ball
+    Name: Flareon Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30029;
+  - Id: 33161
+    AegisName: Gyarados_Poke_Ball
+    Name: Gyarados Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30030;
+  - Id: 33162
+    AegisName: Ivysaur_Poke_Ball
+    Name: Ivysaur Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30031;
+  - Id: 33163
+    AegisName: Larvitar_Poke_Ball
+    Name: Larvitar Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30032;
+  - Id: 33164
+    AegisName: Pidgeot_Poke_Ball
+    Name: Pidgeot Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30033;
+  - Id: 33165
+    AegisName: Raikou_Poke_Ball
+    Name: Raikou Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30034;
+  - Id: 33166
+    AegisName: Rayquaza_Poke_Ball
+    Name: Rayquaza Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30035;
+  - Id: 33167
+    AegisName: Squirtle_Poke_Ball
+    Name: Squirtle Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30036;
+  - Id: 33168
+    AegisName: Suicune_Poke_Ball
+    Name: Suicune Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30037;
+  - Id: 33169
+    AegisName: Typhlosion_Poke_Ball
+    Name: Typhlosion Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30038;
+  - Id: 33170
+    AegisName: Tyranitar_Poke_Ball
+    Name: Tyranitar Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30039;
+  - Id: 33171
+    AegisName: Vaporeon_Poke_Ball
+    Name: Vaporeon Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30040;
+  - Id: 33172
+    AegisName: Vulpix_Poke_Ball
+    Name: Vulpix Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30041;
+  - Id: 33173
+    AegisName: Venusaur_Poke_Ball
+    Name: Venusaur Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30042;
+  - Id: 33174
+    AegisName: articuno_Poke_Ball
+    Name: articuno Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      pet 30043;
+  - Id: 300140
+    AegisName: Deep_Sea_Sropho_Card
+    Name: " Deep Sea Sropho Card"
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Wind,(.@r>=11)?10:(.@r>=9)?5:3;
+  - Id: 300141
+    AegisName: Deep_Sea_Obeaune_Card
+    Name: " Deep Sea Obeaune Card"
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Both_Accessory: true
+    Script: |
+      bonus bMatk,30;
+  - Id: 300142
+    AegisName: Deep_Sea_Deviace_Card
+    Name: Deep Sea Deviace Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddEle,Ele_Water,(.@r>=9)?15:(.@r>=7)?10:5; bonus2 bAddRace,RC_Fish,(.@r>=9)?15:(.@r>=7)?10:5;
+  - Id: 300143
+    AegisName: Deep_Sea_Marse_Card
+    Name: Deep Sea Marse Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Left_Hand: true
+    Script: |
+      bonus2 bAddEle,Ele_Holy,25;
+  - Id: 300144
+    AegisName: Deep_Sea_Merman_Card
+    Name: Deep Sea Merman Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Shoes: true
+    Script: |
+      bonus bBaseAtk,4*readparam(bStr)/15;
+  - Id: 300145
+    AegisName: Deep_Sea_Witch_Card
+    Name: Deep Sea Witch Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Garment: true
+    Script: |
+      bonus2 bMagicAtkEle,Ele_Fire,100; bonus2 bMagicAtkEle,Ele_Dark,100; bonus2 bSubEle,Ele_All,-30;
+  - Id: 300146
+    AegisName: Deep_Sea_Sedora_Card
+    Name: Deep Sea Sedora Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Script: |
+      bonus2 bCriticalAddRace,RC_Fish,30;
+  - Id: 300147
+    AegisName: Deep_Sea_Swordfish_Card
+    Name: Deep Sea Swordfish Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Head_Top: true
+      Head_Mid: true
+      Head_Low: true
+    Script: |
+      bonus2 bSubEle,Ele_Water,10; if(getrefine()>=9) { bonus2 bMagicAddEle,Ele_Water,10; }
+  - Id: 300148
+    AegisName: Deep_Sea_Strouf_Card
+    Name: Deep Sea Strouf Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Armor: true
+    Script: |
+      bonus bMaxHPrate,10; bonus bMaxSPrate,5; if(getrefine()>=9) { bonus2 bMagicAddEle,Ele_Water,5; bonus2 bAddEle,Ele_Water,5; }
+  - Id: 300149
+    AegisName: Deep_Sea_Phen_Card
+    Name: Deep Sea Phen Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Garment: true
+    Script: |
+      .@r = getrefine(); bonus2 bSubEle,Ele_Neutral,15; bonus2 bMagicAtkEle,Ele_Wind,3*.@r;
+  - Id: 300150
+    AegisName: Deep_Sea_King_Dramoh_Card
+    Name: Deep Sea King Dramoh Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Head_Top: true
+      Head_Mid: true
+      Head_Low: true
+    Script: |
+      bonus bMaxHPrate,-5; bonus2 bAddClass,Class_All,getrefine()/3;
+  - Id: 300151
+    AegisName: Deep_Sea_Kraken_Card
+    Name: Deep Sea Kraken Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Script: |
+      bonus bLongAtkRate,25; bonus bPerfectHitAddRate,5;
+  - Id: 2832
+    AegisName: Freyja_Ring
+    Name: Freyja\s Ring
+    Type: Armor
+    Buy: 20
+    Locations:
+      Both_Accessory: true
+    EquipLevelMin: 1
+    Script: |
+      skill "AL_TELEPORT",1; skill "AL_HEAL",1;
+  - Id: 200000000
+    AegisName: Brynhild1
+    Name: Brynhild1
+    Type: Armor
+    Buy: 20
+    Weight: 400
+    Defense: 120
+    Slots: 1
+    Locations:
+      Armor: true
+    EquipLevelMin: 94
+    Script: |
+      bonus bMdef,15; bonus bMaxHP,30*BaseLevel; bonus bMaxSP,8*BaseLevel; bonus2 bAddClass,Class_All,16; bonus bMatkRate,15; bonus bUnbreakableArmor; bonus bNoKnockback
+  - Id: 200000004
+    AegisName: Asprika1
+    Name: Asprika1
+    Type: Armor
+    Buy: 20
+    Weight: 400
+    Defense: 40
+    Slots: 1
+    Locations:
+      Garment: true
+    EquipLevelMin: 94
+    Script: |
+      bonus bMdef,8; bonus3 bSubEle,Ele_Neutral,45,BF_SHORT; bonus3 bSubEle,Ele_Water,45,BF_SHORT; bonus3 bSubEle,Ele_Earth,45,BF_SHORT; bonus3 bSubEle,Ele_Fire,45,BF_SHORT; bonus3 bSubEle,Ele_Wind,45,BF_SHORT; bonus3 bSubEle,Ele_Poison,45,BF_SHORT; bonus3 bSubEle,Ele_Holy,45,BF_SHORT; bonus3 bSubEle,Ele_Dark,45,BF_SHORT; bonus3 bSubEle,Ele_Ghost,45,BF_SHORT; bonus3 bSubEle,Ele_Undead,45,BF_SHORT; bonus bFlee,45; skill "AL_TELEPORT",1; bonus bUnbreakableGarment;
+  - Id: 450127
+    AegisName: Automatic_Armor_A-type
+    Name: Automatic Armor A-type
+    Type: Armor
+    Weight: 100
+    Defense: 110
+    Slots: 1
+    Locations:
+      Armor: true
+    EquipLevelMin: 160
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bBaseAtk,125+10*.@r/2; if (.@r>=7) { bonus bAspdRate,15; }
+  - Id: 450128
+    AegisName: Automatic_Armor_B-type
+    Name: Automatic Armor B-type
+    Type: Armor
+    Weight: 100
+    Defense: 110
+    Slots: 1
+    Locations:
+      Armor: true
+    EquipLevelMin: 160
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMatk,125+10*.@r/2; if (.@r>=7) { bonus bVariableCastrate,-15; }
+  - Id: 24445
+    AegisName: Ignition_Shadow_Earring
+    Name: " Ignition Shadow Earring"
+    Type: Shadowgear
+    Locations:
+      Shadow_Right_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      bonus2 bSkillCooldown,"RK_IGNITIONBREAK",-200+(-100*(getrefine()/3));
+  - Id: 24443
+    AegisName: Ignition_Shadow_Weapon
+    Name: Ignition Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Weapon: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); .@sk = getskilllv("RK_IGNITIONBREAK"); bonus3 bAutoSpell,"RK_IGNITIONBREAK",(.@sk>3)?.@sk:3,(.@r>=9)?40:(.@r>=7)?20:10;
+  - Id: 24444
+    AegisName: Ignition_Shadow_Pendant
+    Name: Ignition Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Left_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"RK_IGNITIONBREAK",5+(2*.@r);
+  - Id: 24487
+    AegisName: Tiger_Cannon_Shadow_Earring
+    Name: " Tiger Cannon Shadow Earring"
+    Type: Shadowgear
+    Locations:
+      Shadow_Right_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"SR_TIGERCANNON",-2+(-1*.@r);
+  - Id: 24485
+    AegisName: Tiger_Cannon_Shadow_Weapon
+    Name: Tiger Cannon Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Weapon: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddSize,Size_All,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24486
+    AegisName: Tiger_Cannon_Shadow_Pendant
+    Name: " Tiger Cannon Shadow Pendant"
+    Type: Shadowgear
+    Locations:
+      Shadow_Left_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"SR_TIGERCANNON",5+(2*.@r);
+  - Id: 24560
+    AegisName: Tornado_Cart_Shadow_Armor
+    Name: Tornado Cart Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"GN_CART_TORNADO",5+(2*.@r);
+  - Id: 24561
+    AegisName: Tornado_Cart_Shadow_Shield
+    Name: Tornado Cart Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddSize,Size_All,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24562
+    AegisName: Tornado_Cart_Shadow_Shoes
+    Name: Tornado Cart Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"GN_CART_TORNADO",2+.@r;
+  - Id: 24493
+    AegisName: Adoramus_Shadow_Earring
+    Name: " Adoramus Shadow Earring"
+    Type: Shadowgear
+    Locations:
+      Shadow_Right_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"AB_ADORAMUS",-2+(-1*.@r);
+  - Id: 24491
+    AegisName: Adoramus_Shadow_Weapon
+    Name: Adoramus Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Weapon: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Holy,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24492
+    AegisName: Adoramus_Shadow_Pendant
+    Name: Adoramus Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Left_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"AB_ADORAMUS",5+(2*.@r);
+  - Id: 24457
+    AegisName: Aimed_Shadow_Earring
+    Name: Aimed Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Right_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 3; bonus2 bAddSize,Size_All,3+(2*.@r);
+  - Id: 24456
+    AegisName: Aimed_Shadow_Pendant
+    Name: Aimed Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Left_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"RA_AIMEDBOLT",5+(2*.@r);
+  - Id: 24455
+    AegisName: Aimed_Shadow_Weapon
+    Name: Aimed Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Weapon: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24475
+    AegisName: Arm_Shadow_Earring
+    Name: Arm Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Right_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"NC_ARMSCANNON",-2+(-1*.@r);
+  - Id: 24474
+    AegisName: Arm_Shadow_Pendant
+    Name: Arm Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Left_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"NC_ARMSCANNON",5+(2*.@r);
+  - Id: 24473
+    AegisName: Arm_Shadow_Weapon
+    Name: Arm Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Weapon: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24458
+    AegisName: Arrow_Shadow_Armor
+    Name: Arrow Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"RA_ARROWSTORM",5+(2*.@r);
+  - Id: 24459
+    AegisName: Arrow_Shadow_Shield
+    Name: Arrow Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24460
+    AegisName: Arrow_Shadow_Shoes
+    Name: Arrow Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"RA_ARROWSTORM",-2+(-1*.@r);
+  - Id: 24505
+    AegisName: Arrow_Vulcan_Shadow_Earring
+    Name: Arrow Vulcan Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Right_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      bonus2 bSkillCooldown,"CG_ARROWVULCAN",-200+(-100*(getrefine()/3));
+  - Id: 24504
+    AegisName: Arrow_Vulcan_Shadow_Pendant
+    Name: Arrow Vulcan Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Left_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"CG_ARROWVULCAN",5+(2*.@r);
+  - Id: 24503
+    AegisName: Arrow_Vulcan_Shadow_Weapon
+    Name: Arrow Vulcan Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Weapon: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24469
+    AegisName: Boomerang_Shadow_Earring
+    Name: Boomerang Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Right_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      bonus2 bSkillCooldown,"NC_AXEBOOMERANG",-100+(-100*(getrefine()/4));
+  - Id: 24468
+    AegisName: Boomerang_Shadow_Pendant
+    Name: Boomerang Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Left_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"NC_AXEBOOMERANG",5+(2*.@r);
+  - Id: 24467
+    AegisName: Boomerang_Shadow_Weapon
+    Name: Boomerang Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Weapon: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24565
+    AegisName: Cannon_Cart_Shadow_Earring
+    Name: Cannon Cart Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Right_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bAddSize,Size_All,5+.@r;
+  - Id: 24564
+    AegisName: Cannon_Cart_Shadow_Pendant
+    Name: Cannon Cart Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Left_Accessory: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"GN_CARTCANNON",5+(2*.@r)
+  - Id: 24563
+    AegisName: Cannon_Cart_Shadow_Weapon
+    Name: Cannon Cart Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Weapon: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24572
+    AegisName: Brand_Shadow_Armor
+    Name: Brand Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"LG_OVERBRAND",5+(2*.@r);
+  - Id: 24573
+    AegisName: Brand_Shadow_Shield
+    Name: Brand Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddSize,Size_All,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24574
+    AegisName: Brand_Shadow_Shoes
+    Name: Brand Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 3; bonus2 bSkillAtk,"LG_OVERBRAND",5; bonus bDelayrate,-1*.@r;
+  - Id: 24577
+    AegisName: Chain_Press_Shadow_Earring
+    Name: Chain Press Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"PA_SHIELDCHAIN",5+(2*.@r);
+  - Id: 24576
+    AegisName: Chain_Press_Shadow_Pendant
+    Name: Chain Press Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"LG_SHIELDPRESS",5+(2*.@r);
+  - Id: 24575
+    AegisName: Chain_Press_Shadow_Weapon
+    Name: Chain Press Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddSize,Size_All,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24523
+    AegisName: Chain_Shadow_Earring
+    Name: Chain Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"WL_CHAINLIGHTNING",-4+(-1*.@r);
+  - Id: 24522
+    AegisName: Chain_Shadow_Pendant
+    Name: Chain Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"WL_CHAINLIGHTNING",5+(2*.@r);
+  - Id: 24521
+    AegisName: Chain_Shadow_Weapon
+    Name: Chain Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Wind,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24452
+    AegisName: Cluster_Shadow_Armor
+    Name: Cluster Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"RA_CLUSTERBOMB",5+(2*.@r);
+  - Id: 24453
+    AegisName: Cluster_Shadow_Shield
+    Name: Cluster Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bSkillAtk,"RA_CLUSTERBOMB",(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24454
+    AegisName: Cluster_Shadow_Shoes
+    Name: Cluster Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"RA_CLUSTERBOMB",5+(2*.@r);
+  - Id: 24446
+    AegisName: Cold_Breath_Shadow_Armor
+    Name: Cold Breath Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"RK_DRAGONBREATH_WATER",5+(2*.@r);
+  - Id: 24447
+    AegisName: Cold_Breath_Shadow_Shield
+    Name: " \tCold Breath Shadow Shield"
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24448
+    AegisName: Cold_Breath_Shadow_Shoes
+    Name: Cold Breath Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"RK_DRAGONBREATH_WATER",-2+(-1*.@r);
+  - Id: 24571
+    AegisName: Crazy_Shadow_Earring
+    Name: Crazy Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 3; bonus2 bSkillCooldown,"GN_CRAZYWEED",-200+(-100*.@r);
+  - Id: 24570
+    AegisName: Crazy_Shadow_Pendant
+    Name: Crazy Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"GN_CRAZYWEED",5+(2*.@r);
+  - Id: 24569
+    AegisName: Crazy_Shadow_Weapon
+    Name: Crazy Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddSize,Size_All,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24518
+    AegisName: Crimson_Shadow_Armor
+    Name: Crimson Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"WL_CRIMSONROCK",5+(2*.@r);
+  - Id: 24519
+    AegisName: Crimson_Shadow_Shield
+    Name: Crimson Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Fire,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24520
+    AegisName: Crimson_Shadow_Shoes
+    Name: Crimson Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"WL_CRIMSONROCK",4+.@r;
+  - Id: 24625
+    AegisName: Cross_Shuriken_Shadow_Earring
+    Name: Cross Shuriken Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=7)?6:3; if (.@r >= 9) { bonus bUseSPrate,-10; }
+  - Id: 24626
+    AegisName: Cross_Shuriken_Shadow_Pendant
+    Name: Cross Shuriken Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bSkillAtk,"KO_HUUMARANKA",5+2*(.@r/2);
+  - Id: 24627
+    AegisName: Cross_Shuriken_Shadow_Shoes
+    Name: Cross Shuriken Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bSkillAtk,"KO_JYUMONJIKIRI",5+2*(.@r/2);
+  - Id: 24488
+    AegisName: Duple_Light_Shadow_Armor
+    Name: Duple Light Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"AB_DUPLELIGHT",5+(2*.@r);
+  - Id: 24489
+    AegisName: Duple_Light_Shadow_Shield
+    Name: Duple Light Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Holy,(.@r>=9)?5:(.@r>=7)?3:1; bonus2 bAddSize,Size_All,(.@r>=9)?5:(.@r>=7)?3:1;
+  - Id: 24490
+    AegisName: Duple_Light_Shadow_Shoes
+    Name: Duple Light Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus bCritAtkRate,5+.@r;
+  - Id: 24548
+    AegisName: Dust_Shadow_Armor
+    Name: Dust Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"SO_DIAMONDDUST",5+(2*.@r);
+  - Id: 24549
+    AegisName: Dust_Shadow_Shield
+    Name: Dust Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Water,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24550
+    AegisName: Dust_Shadow_Shoes
+    Name: Dust Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"SO_DIAMONDDUST",-2+(-1*.@r);
+  - Id: 24657
+    AegisName: Es_Shadow_Armor
+    Name: Es Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"SL_SMA",5; if (.@r) { bonus2 bSkillAtk,"SP_SPA",.@r; bonus2 bSkillAtk,"SP_SWHOO",.@r; }
+  - Id: 24656
+    AegisName: Es_Shadow_Shield
+    Name: Es Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bMagicAddSize,Size_All,5+(.@r*2);
+  - Id: 24655
+    AegisName: Es_Shadow_Weapon
+    Name: Es Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMaxSPrate,5; if (.@r>=7) { bonus2 bSkillAtk,"SL_SMA",10; } if (.@r>=9) { bonus2 bSkillUseSPrate,"SP_SPA",-10; }
+  - Id: 24535
+    AegisName: Feint_Shadow_Earring
+    Name: Feint Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      bonus2 bSkillCooldown,"SC_FEINTBOMB",-200+(-100*(getrefine()/3));
+  - Id: 24534
+    AegisName: Feint_Shadow_Pendant
+    Name: Feint Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"SC_FEINTBOMB",5+(2*.@r);
+  - Id: 24533
+    AegisName: Feint_Shadow_Weapon
+    Name: Feint Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddSize,Size_All,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24451
+    AegisName: Fire_Breath_Shadow_Earring
+    Name: Fire Breath Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"RK_DRAGONBREATH",-2+(-1*.@r);
+  - Id: 24450
+    AegisName: Fire_Breath_Shadow_Pendant
+    Name: Fire Breath Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"RK_DRAGONBREATH",5+(2*.@r);
+  - Id: 24449
+    AegisName: Fire_Breath_Shadow_Weapon
+    Name: Fire Breath Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24630
+    AegisName: First_Exploding_Draft_Shadow_Armor
+    Name: " First Exploding Draft Shadow Armor"
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAddEle,Ele_All,5+(.@r/2);
+  - Id: 24629
+    AegisName: First_Exploding_Draft_Shadow_Shield
+    Name: First Exploding Draft Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bSkillAtk,"NJ_BAKUENRYU",5+2*(.@r/2); bonus2 bSkillAtk,"NJ_HYOUSYOURAKU",5+2*(.@r/2); bonus2 bSkillAtk,"NJ_KAMAITACHI",5+2*(.@r/2);
+  - Id: 24628
+    AegisName: First_Exploding_Draft_Shadow_Weapon
+    Name: First Exploding Draft Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bSkillAtk,"NJ_BAKUENRYU",(.@r>=9)?15:(.@r>=7)?10:5; bonus2 bSkillAtk,"NJ_HYOUSYOURAKU",(.@r>=9)?15:(.@r>=7)?10:5; bonus2 bSkillAtk,"NJ_KAMAITACHI",(.@r>=9)?15:(.@r>=7)?10:5;
+  - Id: 24604
+    AegisName: Flare_Dance_Shadow_Earring
+    Name: Flare Dance Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMaxHPrate,(.@r>=7)?10:5; if (.@r >= 9) { bonus bMaxHP,2000; bonus bMaxSP,200; bonus bLongAtkRate,7; }
+  - Id: 24605
+    AegisName: Flare_Dance_Shadow_Pendant
+    Name: Flare Dance Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"RL_FIREDANCE",5+2*.@r;
+  - Id: 24606
+    AegisName: Flare_Dance_Shadow_Shoes
+    Name: Flare Dance Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddSize,Size_All,5+.@r/2;
+  - Id: 24583
+    AegisName: Genesis_Shadow_Earring
+    Name: Genesis Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 3; bonus2 bSkillCooldown,"LG_RAYOFGENESIS",-200+(-100*.@r);
+  - Id: 24582
+    AegisName: Genesis_Shadow_Pendant
+    Name: Genesis Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"LG_RAYOFGENESIS",5+(2*.@r);
+  - Id: 24581
+    AegisName: Genesis_Shadow_Weapon
+    Name: Genesis Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Holy,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24553
+    AegisName: Grave_Shadow_Earring
+    Name: Grave Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      bonus2 bSkillCooldown,"SO_EARTHGRAVE",-200+(-100*(getrefine()/3));
+  - Id: 24552
+    AegisName: Grave_Shadow_Pendant
+    Name: Grave Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"SO_EARTHGRAVE",5+(2*.@r);
+  - Id: 24551
+    AegisName: Grave_Shadow_Weapon
+    Name: Grave Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Earth,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24512
+    AegisName: Jack_Shadow_Armor
+    Name: Jack Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"WL_JACKFROST",5+(2*.@r);
+  - Id: 24513
+    AegisName: Jack_Shadow_Shield
+    Name: Jack Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Water,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24514
+    AegisName: Jack_Shadow_Shoes
+    Name: Jack Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillCooldown,"WL_JACKFROST",-1000+(-100*.@r);
+  - Id: 24494
+    AegisName: Judex_Shadow_Armor
+    Name: Judex Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"AB_JUDEX",5+(2*.@r);
+  - Id: 24495
+    AegisName: Judex_Shadow_Shield
+    Name: Judex Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Holy,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24496
+    AegisName: Judex_Shadow_Shoes
+    Name: Judex Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 3; bonus2 bMagicAddSize,Size_All,3+(.@r*2);
+  - Id: 24624
+    AegisName: Kunai_Shadow_Armor
+    Name: Kunai Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bSkillAtk,"KO_BAKURETSU",5+2*(.@r/2);
+  - Id: 24623
+    AegisName: Kunai_Shadow_Shield
+    Name: Kunai Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddSize,Size_All,5+(.@r/2);
+  - Id: 24622
+    AegisName: Kunai_Shadow_Weapon
+    Name: Kunai Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24506
+    AegisName: Metallic_Shadow_Armor
+    Name: Metallic Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"WM_METALICSOUND",5+(2*.@r);
+  - Id: 24507
+    AegisName: Metallic_Shadow_Shield
+    Name: Metallic Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Neutral,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24508
+    AegisName: Metallic_Shadow_Shoes
+    Name: Metallic Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"WM_METALICSOUND",-2+(-1*.@r);
+  - Id: 24556
+    AegisName: Psychic_Shadow_Shoes
+    Name: Psychic Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"SO_PSYCHIC_WAVE",-4+(-1*.@r);
+  - Id: 24555
+    AegisName: Psychic_Shadow_Shield
+    Name: Psychic Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Neutral,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24554
+    AegisName: Psychic_Shadow_Armor
+    Name: Psychic Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bSkillAtk,"SO_PSYCHIC_WAVE",5+(2*.@r);
+  - Id: 24500
+    AegisName: Rainstorm_Shadow_Armor
+    Name: Rainstorm Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"WM_SEVERE_RAINSTORM",5+(2*.@r);
+  - Id: 24501
+    AegisName: Rainstorm_Shadow_Shield
+    Name: Rainstorm Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24502
+    AegisName: Rainstorm_Shadow_Shoes
+    Name: Rainstorm Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"WM_SEVERE_RAINSTORM",-2+(-1*.@r);
+  - Id: 24476
+    AegisName: Rampage_Shadow_Armor
+    Name: Rampage Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"SR_RAMPAGEBLASTER",5+(2*.@r);
+  - Id: 24477
+    AegisName: Rampage_Shadow_Shield
+    Name: Rampage Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24478
+    AegisName: Rampage_Shadow_Shoes
+    Name: Rampage Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      bonus2 bSkillCooldown,"SR_RAMPAGEBLASTER",-200+(-100*(getrefine()/3));
+  - Id: 24511
+    AegisName: Reverberation_Shadow_Earring
+    Name: Reverberation Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"WM_REVERBERATION",-2+(-1*.@r);
+  - Id: 24510
+    AegisName: Reverberation_Shadow_Pendant
+    Name: Reverberation Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"WM_REVERBERATION",5+(2*.@r);
+  - Id: 24509
+    AegisName: Reverberation_Shadow_Weapon
+    Name: Reverberation Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Neutral,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24547
+    AegisName: Ripper_Shadow_Earring
+    Name: Ripper Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bAddSize,Size_All,5+.@r;
+  - Id: 24546
+    AegisName: Ripper_Shadow_Pendant
+    Name: Ripper Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"GC_CROSSRIPPERSLASHER",5+(2*.@r);
+  - Id: 24545
+    AegisName: Ripper_Shadow_Weapon
+    Name: Ripper Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24536
+    AegisName: Rolling_Shadow_Armor
+    Name: Rolling Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"GC_ROLLINGCUTTER",5+(2*.@r);
+  - Id: 24537
+    AegisName: Rolling_Shadow_Shield
+    Name: Rolling Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddSize,Size_All,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24538
+    AegisName: Rolling_Shadow_Shoes
+    Name: Rolling Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"GC_ROLLINGCUTTER",-2+(-1*.@r);
+  - Id: 24529
+    AegisName: Shadowspell_Shadow_Earring
+    Name: Shadowspell Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 3; bonus2 bMagicAtkEle,Ele_Neutral,2+(2*.@r); bonus2 bMagicAtkEle,Ele_Fire,2+(2*.@r);
+  - Id: 24528
+    AegisName: Shadowspell_Shadow_Pendant
+    Name: Shadowspell Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"WZ_METEOR",5+(3*.@r);
+  - Id: 24527
+    AegisName: Shadowspell_Shadow_Weapon
+    Name: Shadowspell Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus3 bAutoSpell,"SO_PSYCHIC_WAVE",3,(.@r>=9)?40:(.@r>=7)?20:10;
+  - Id: 24610
+    AegisName: Shatter_Buster_Shadow_Earring
+    Name: Shatter Buster Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMaxSPrate,5; if(.@r >= 7) { bonus bLongAtkRate,7; } if(.@r >= 9) { bonus2 bSkillUseSPrate,"RL_BANISHING_BUSTER",-15; }
+  - Id: 24611
+    AegisName: Shatter_Buster_Shadow_Pendant
+    Name: Shatter Buster Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"RL_S_STORM",5+2*.@r;
+  - Id: 24612
+    AegisName: Shatter_Buster_Shadow_Shoes
+    Name: Shatter Buster Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"RL_BANISHING_BUSTER",5+2*.@r;
+  - Id: 24463
+    AegisName: Shooting_Shadow_Earring
+    Name: Shooting Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"SN_SHARPSHOOTING",-2+(-1*.@r);
+  - Id: 24462
+    AegisName: Shooting_Shadow_Pendant
+    Name: Shooting Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"SN_SHARPSHOOTING",5+(2*.@r);
+  - Id: 24461
+    AegisName: Shooting_Shadow_Weapon
+    Name: Shooting Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24481
+    AegisName: Sky_Net_Blow_Shadow_Earring
+    Name: Sky Net Blow Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 3; bonus2 bAddClass,Class_Normal,2+.@r;
+  - Id: 24480
+    AegisName: Sky_Net_Blow_Shadow_Pendant
+    Name: Sky Net Blow Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"SR_SKYNETBLOW",5+(2*.@r);
+  - Id: 24479
+    AegisName: Sky_Net_Blow_Shadow_Weapon
+    Name: Sky Net Blow Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddSize,Size_All,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24542
+    AegisName: Slash_Shadow_Armor
+    Name: Slash Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"GC_COUNTERSLASH",5+(2*.@r);
+  - Id: 24543
+    AegisName: Slash_Shadow_Shield
+    Name: Slash Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddSize,Size_All,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24544
+    AegisName: Slash_Shadow_Shoes
+    Name: Slash Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"GC_COUNTERSLASH",-2+(-1*.@r);
+  - Id: 24440
+    AegisName: Sonic_Shadow_Armor
+    Name: Sonic Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"RK_SONICWAVE",5+(2*.@r);
+  - Id: 24441
+    AegisName: Sonic_Shadow_Shield
+    Name: Sonic Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24442
+    AegisName: Sonic_Shadow_Shoes
+    Name: Sonic Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"RK_SONICWAVE",-2+(-1*.@r);
+  - Id: 24566
+    AegisName: Spore_Bomb_Shadow_Armor
+    Name: Spore Bomb Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"GN_SPORE_EXPLOSION",5+(2*.@r);
+  - Id: 24567
+    AegisName: Spore_Bomb_Shadow_Shield
+    Name: Spore Bomb Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddSize,Size_All,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24568
+    AegisName: Spore_Bomb_Shadow_Shoes
+    Name: Spore Bomb Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 3; bonus2 bSkillCooldown,"GN_SPORE_EXPLOSION",-200+(-100*.@r);
+  - Id: 24517
+    AegisName: Strain_Shadow_Earring
+    Name: Strain Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 3; bonus2 bSkillCooldown,"WL_EARTHSTRAIN",-200+(-100*.@r);
+  - Id: 24516
+    AegisName: Strain_Shadow_Pendant
+    Name: Strain Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"WL_EARTHSTRAIN",5+(2*.@r);
+  - Id: 24515
+    AegisName: Strain_Shadow_Weapon
+    Name: Strain Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Earth,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24648
+    AegisName: Sunshine_Shadow_Armor
+    Name: Sunshine Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"SJ_PROMINENCEKICK",5+(.@r*2);
+  - Id: 24647
+    AegisName: Sunshine_Shadow_Shield
+    Name: Sunshine Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bAddSize,Size_All,5+.@r;
+  - Id: 24646
+    AegisName: Sunshine_Shadow_Weapon
+    Name: Sunshine Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bShortAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24603
+    AegisName: Tail_Dragon_Shadow_Armor
+    Name: Tail Dragon Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddSize,Size_All,5+.@r/2;
+  - Id: 24602
+    AegisName: Tail_Dragon_Shadow_Shield
+    Name: Tail Dragon Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"RL_D_TAIL",5+2*.@r;
+  - Id: 24601
+    AegisName: Tail_Dragon_Shadow_Weapon
+    Name: Tail Dragon Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24464
+    AegisName: Tornado_Shadow_Armor
+    Name: Tornado Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"NC_AXETORNADO",5+(2*.@r);
+  - Id: 24465
+    AegisName: Tornado_Shadow_Shield
+    Name: Tornado Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddSize,Size_All,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24466
+    AegisName: Tornado_Shadow_Shoes
+    Name: Tornado Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"NC_AXETORNADO",-2+(-1*.@r);
+  - Id: 24524
+    AegisName: Triangle_Shadow_Armor
+    Name: Triangle Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"SC_TRIANGLESHOT",5+(2*.@r);
+  - Id: 24525
+    AegisName: Triangle_Shadow_Shield
+    Name: Triangle Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24526
+    AegisName: Triangle_Shadow_Shoes
+    Name: Triangle Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"SC_TRIANGLESHOT",-2+(-1*.@r);
+  - Id: 24615
+    AegisName: Trip_Shadow_Armor
+    Name: Trip Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bAddSize,Size_All,5+.@r;
+  - Id: 24614
+    AegisName: Trip_Shadow_Shield
+    Name: Trip Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"RL_R_TRIP",5+2*.@r;
+  - Id: 24613
+    AegisName: Trip_Shadow_Weapon
+    Name: Trip Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=7)?6:3; if (.@r >= 9) { bonus bMaxHPrate,10; }
+  - Id: 24578
+    AegisName: Vanishing_Cannon_Shadow_Armor
+    Name: Vanishing Cannon Shadow Armor
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; if (.@r) { bonus2 bSkillAtk,"LG_CANNONSPEAR",.@r*2; } bonus2 bSkillAtk,"LG_BANISHINGPOINT",5;
+  - Id: 24579
+    AegisName: Vanishing_Cannon_Shadow_Shield
+    Name: Vanishing Cannon Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bAddSize,Size_All,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24580
+    AegisName: Vanishing_Cannon_Shadow_Shoes
+    Name: Vanishing Cannon Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 3; bonus2 bSkillCooldown,"LG_CANNONSPEAR",-200+(-100*.@r);
+  - Id: 24559
+    AegisName: Varetyr_Shadow_Earring
+    Name: Varetyr Shadow Earring
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"SO_VARETYR_SPEAR",-4+(-1*.@r);
+  - Id: 24558
+    AegisName: Varetyr_Shadow_Pendant
+    Name: Varetyr Shadow Pendant
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillAtk,"SO_VARETYR_SPEAR",5+(2*.@r);
+  - Id: 24470
+    AegisName: Varetyr_Shadow_Weapon
+    Name: Varetyr Shadow Weapon
+    Type: Shadowgear
+    Locations:
+      Shadow_Armor: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus2 bMagicAtkEle,Ele_Wind,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24471
+    AegisName: Vulcan_Shadow_Shield
+    Name: Vulcan Shadow Shield
+    Type: Shadowgear
+    Locations:
+      Shadow_Shield: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bLongAtkRate,(.@r>=9)?10:(.@r>=7)?6:3;
+  - Id: 24472
+    AegisName: Vulcan_Shadow_Shoes
+    Name: VVulcan Shadow Shoes
+    Type: Shadowgear
+    Locations:
+      Shadow_Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      .@r = getrefine() / 2; bonus2 bSkillUseSPrate,"NC_VULCANARM",-2+(-1*.@r);
+  - Id: 29302
+    AegisName: Water_Property_(Armor)
+    Name: Water Property (Armor)
+    Type: Card
+    Script: |
+      bonus bDefEle,Ele_Water;
+  - Id: 29303
+    AegisName: Wind_Property_(Armor)
+    Name: Wind Property (Armor)
+    Type: Card
+    Script: |
+      bonus bDefEle,Ele_Wind;
+  - Id: 29304
+    AegisName: Earth_Property_(Armor)
+    Name: Earth Property (Armor)
+    Type: Card
+    Script: |
+      bonus bDefEle,Ele_Earth;
+  - Id: 29305
+    AegisName: Fire_Property_(Armor)
+    Name: Fire Property (Armor)
+    Type: Card
+    Script: |
+      bonus bDefEle,Ele_Fire;
+  - Id: 29306
+    AegisName: Shadow_Property_(Armor)
+    Name: Shadow Property (Armor)
+    Type: Card
+    Script: |
+      bonus bDefEle,Ele_Dark;
+  - Id: 29307
+    AegisName: Holy_Property_(Armor)
+    Name: Holy Property (Armor)
+    Type: Card
+    Script: |
+      bonus bDefEle,Ele_Holy;
+  - Id: 29308
+    AegisName: Undead_Property_(Armor)
+    Name: Undead Property (Armor)
+    Type: Card
+    Script: |
+      bonus bDefEle,Ele_Undead;
+  - Id: 29309
+    AegisName: Poison_Property_(Armor)
+    Name: Poison Property (Armor)
+    Type: Card
+    Script: |
+      bonus bDefEle,Ele_Poison;
+  - Id: 29587
+    AegisName: Flash
+    Name: Flash
+    Type: Card
+  - Id: 29588
+    AegisName: Strong
+    Name: Strong
+    Type: Card
+  - Id: 29589
+    AegisName: Celestial_Bow
+    Name: Celestial Bow
+    Type: Card
+  - Id: 29590
+    AegisName: Divine_Power
+    Name: Divine Power
+    Type: Card
+  - Id: 29591
+    AegisName: Rigid
+    Name: Rigid
+    Type: Card
+  - Id: 29592
+    AegisName: White_Cloud
+    Name: White Cloud
+    Type: Card
+  - Id: 32107
+    AegisName: Black_Circle
+    Name: Black Circle
+    Type: Weapon
+    SubType: Whip
+    Weight: 1200
+    Attack: 100
+    MagicAttack: 190
+    Range: 2
+    Slots: 2
+    Jobs:
+      BardDancer: true
+    Classes:
+      All_Upper: true
+    Gender: Male
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    Script: |
+      .@r = getrefine(); bonus bMatk,4*.@r; bonus2 bMagicAtkEle,Ele_Neutral,10; if (.@r>=9) bonus2 bSkillAtk,"WM_METALICSOUND",30; if (.@r>=11) bonus2 bSkillCooldown,"WM_METALICSOUND",-2000;
+  - Id: 200000008
+    AegisName: Shadow_Box_armor_1
+    Name: Shadow Box armor 1
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",15280,24000,24006,24013,24024,24027,24028,24029,24030,24037,24040,24072,24073,24074,24081,24084,24091,24093,24095,24097,24112,24114,24120,24126,24132,24138,24144,24154,24180,24186,24187,24188,24189,24190,24191,24192,24193,24194,24195,241971;
+  - Id: 200000009
+    AegisName: Shadow_Box_armor_2
+    Name: Shadow Box armor 2
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24216,24219,24220,24221,24222,24242,24245,24269,24270,24271,24272,24273,24274,24275,24276,24277,24278,24279,24280,24281,24325,24326,24330,24331,24334,24337,24344,24347,24348,24349,24350,24351,24352,24354,24375,24376,24377,24378,24379,243871;
+  - Id: 200000010
+    AegisName: Shadow_Box_armor_3
+    Name: Shadow Box armor 3
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24395,24398,24401,24402,24403,24404,24408,24410,24412,24414,24417,24424,24440,24446,24451,24452,24458,24463,24464,244701;
+  - Id: 200000011
+    AegisName: Shadow_Box_armor_4
+    Name: Shadow Box armor 4
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24476,24481,24488,24494,24500,24506,24511,24512,24517,24518,24523,24524,24529,24535,24536,24542,24547,24548,24553,24554,24559,24560,24566,24571,24572,24577,24578,24583,24603,24604,24610,24615,24624,24625,24630,24648,246571;
+  - Id: 200000012
+    AegisName: Shadow_Box_weapon_1
+    Name: Shadow Box weapon 1
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24001,24007,24012,24019,24022,24031,24032,24033,24034,24043,24075,24076,24077,24078,24087,24099,24104,24110,24117,24123,24129,24135,24141,24147,24152,24156,24157,24158,24159,24160,24161,24162,24163,24164,24165,24170,24171,24172,24173,241741;
+  - Id: 200000013
+    AegisName: Shadow_Box_weapon_2
+    Name: Shadow Box weapon 2
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24163,24164,24165,24170,24171,24172,24173,24174,24175,24176,24177,24178,24179,24183,24223,24224,24227,24228,24233,24282,24283,24284,24285,24286,24287,24288,24289,24290,24291,24292,24293,242941;
+  - Id: 200000014
+    AegisName: Shadow_Box_weapon_3
+    Name: Shadow Box weapon 3
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24295,24296,24297,24298,24299,24300,24324,24328,24329,24335,24343,24356,24358,24033,24043,24001,24104,24078,24076,24160,24159,24157,24165,241641;
+  - Id: 200000015
+    AegisName: Shadow_Box_weapon_4
+    Name: Shadow Box weapon 4
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24329,24335,24343,24356,24358,24360,24363,24370,24380,24383,24386,24390,24416,24423,24443,24455,24467,24473,24485,24491,24503,24563,24223,24228,24175,24034,24019,24117,240991;
+  - Id: 200000016
+    AegisName: Shadow_Box_Shield_1
+    Name: Shadow Box Shield 1
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24002,24008,24015,24026,24039,24044,24052,24053,24054,24055,24056,24057,24058,24059,24060,24061,24083,24086,24090,24113,24116,24122,24128,24134,24140,24146,24182,24198,24199,24200,24201,24202,24203,24204,24205,24206,24207,24209,24211,242131;
+  - Id: 200000017
+    AegisName: Shadow_Box_Shield_2
+    Name: Shadow Box Shield 2
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24215,24232,24241,24244,24301,24302,24303,24304,24305,24306,24307,24308,24309,24310,24311,24312,24313,24314,24315,24316,24317,24318,24319,24323,24327,24332,24336,24342,24345,24366,24374,24388,24394,24397,243991;
+  - Id: 200000018
+    AegisName: Shadow_Box_Shield_3
+    Name: Shadow Box Shield 3
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24418,24441,24447,24450,24453,24459,24462,24465,24471,24477,24480,24489,24495,24501,24507,24510,24513,24516,24519,24522,24525,24528,24534,24537,24543,24546,24549,24552,24555,245581;
+  - Id: 200000019
+    AegisName: Shadow_Box_Shield_4
+    Name: Shadow Box Shield 4
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24561,24567,24570,24573,24576,24579,24582,24602,24605,24611,24614,24623,24626,24629,24647,24656,24200,24199,24204,242091;
+  - Id: 200000020
+    AegisName: Shadow_Box_Shoes_1
+    Name: Shadow Box Shoes 1
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24003,24009,24014,24025,24038,24045,24062,24063,24064,24065,24066,24067,24068,24069,24070,24071,24082,24085,24092,24094,24096,24098,24111,24115,24121,24127,24133,24139,24145,24181,24196,24208,24210,24212,24214,24231,24240,24243,24256,242571;
+  - Id: 200000021
+    AegisName: Shadow_Box_Shoes_2
+    Name: Shadow Box Shoes 2
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24258,24259,24260,24261,24262,24263,24264,24265,24266,24267,24268,24320,24333,24338,24341,24346,24353,24355,24367,24373,24389,24393,24396,244001;
+  - Id: 200000022
+    AegisName: Shadow_Box_Shoes_3
+    Name: Shadow Box Shoes 3
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24405,24406,24407,24409,24411,24413,24415,24419,24442,24448,24449,24454,24460,24461,24466,24472,24478,24479,24490,24496,24502,24508,245091;
+  - Id: 200000023
+    AegisName: Shadow_Box_Shoes_4
+    Name: Shadow Box Shoes 4
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24514,24515,24520,24521,24526,24527,24533,24538,24544,24545,24550,24551,24556,24562,24568,24569,24574,24575,24580,24581,24601,24606,24612,24613,24622,24627,24628,24646,246551;
+  - Id: 200000024
+    AegisName: Shadow_Box_Accessory_1
+    Name: Shadow Box Accessory 1
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24004,24010,24016,24018,24021,24035,24042,24049,24050,24051,24079,24088,24100,24102,24105,24107,24109,24118,24124,24130,24136,24142,24148,24150,24153,24166,24168,24184,24217,24225,24229,24234,24236,24238,24246,24247,24248,24249,24322,24339
+  - Id: 200000025
+    AegisName: Shadow_Box_Accessory_2
+    Name: Shadow Box Accessory 2
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24357,24361,24364,24368,24371,24381,24384,24391,24420,24445,24457,24469,24475,24487,24493,24505,24565,28391,283921;
+  - Id: 200000026
+    AegisName: Shadow_Box_Accessory_3
+    Name: Shadow Box Accessory 3
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24005,24011,24017,24020,24023,24036,24041,24046,24047,24048,24080,24089,24101,24103,24106,24108,24119,24125,24131,24137,24143,24149,24151,24155,24167,24169,241851;
+  - Id: 200000027
+    AegisName: Shadow_Box_Accessory_4
+    Name: Shadow Box Accessory 4
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",24218,24226,24230,24235,24237,24239,24250,24251,24252,24253,24254,24255,24321,24340,24359,24362,24365,24369,24372,24382,24385,24392,24421,24444,24456,24468,24474,24486,24492,24504,245641;
+  - Id: 33117
+    AegisName: Poke_Ball
+    Name: Poke Ball
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Script: |
+      ;
+  - Id: 200000029
+    AegisName: Weihnachts_Lucky_Clip_Box
+    Name: Weihnachts Lucky Clip Box
+    Type: Cash
+    Buy: 20
+    Weight: 10
+    Script: |
+      rentitem 200000028,3600;
+  - Id: 200000030
+    AegisName: GL_Mixing_Box
+    Name: GL Mixing Box
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",6596,6594,6597,6602,6601,6600,6599,6603,7076,7086,7079,7080,7082,7087,7085,7090,7092,7077,7073,7089,7078,7075,7074,7834,7833,7831,7830,7838,7836,78351;
+  - Id: 200000001
+    AegisName: Magingiorde1
+    Name: Megingjard1
+    Type: Armor
+    Buy: 20
+    Weight: 8000
+    Defense: 2
+    Slots: 1
+    Locations:
+      Both_Accessory: true
+    EquipLevelMin: 94
+    Script: |
+      bonus bStr,60+BaseLevel/5; bonus bMdef,11; if(readparam(bStr)>=120) bonus2 bAddClass,Class_Boss,20;
+  - Id: 200000002
+    AegisName: Brysinggamen1
+    Name: Brisingamen1
+    Type: Armor
+    Buy: 20
+    Weight: 1500
+    Defense: 1
+    Slots: 1
+    Locations:
+      Both_Accessory: true
+    EquipLevelMin: 94
+    Script: |
+      bonus bStr,9; bonus bAgi,9; bonus bVit,9; bonus bInt,15; bonus bLuk,15; bonus bMdef,8; bonus bHealPower,9;
+  - Id: 200000003
+    AegisName: Sleipnir1
+    Name: Sleipnir1
+    Type: Armor
+    Buy: 20
+    Weight: 3500
+    Defense: 40
+    Slots: 1
+    Locations:
+      Shoes: true
+    EquipLevelMin: 94
+    Script: |
+      bonus bMdef,10; bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSPrecovRate,25; bonus bSpeedRate,25; bonus bInt,37;
+  - Id: 200000005
+    AegisName: Mjolnir1
+    Name: Mjolnir1
+    Type: Weapon
+    SubType: Mace
+    Buy: 20
+    Weight: 6000
+    Attack: 350
+    Range: 1
+    Slots: 1
+    Jobs:
+      Alchemist: true
+      Blacksmith: true
+      Crusader: true
+      Knight: true
+      Merchant: true
+      Swordman: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 95
+    Script: |
+      bonus bAtkEle,Ele_Wind; bonus bInt,15; bonus bDex,75; bonus bStr,32; bonus bAspdRate,15; bonus3 bAutoSpell,"MG_THUNDERSTORM",10,100; autobonus "{ bonus bSplashRange,1; }",50,10000;
+  - Id: 200000006
+    AegisName: Hervor1
+    Name: Hervor1
+    Type: Armor
+    Buy: 10
+    Weight: 1500
+    Defense: 100
+    Slots: 1
+    Locations:
+      Left_Hand: true
+    EquipLevelMin: 1
+    View: 2
+    Script: |
+      bonus bMdef,8; bonus2 bSubRace,RC_All,45; bonus bUnbreakableShield;
+  - Id: 200000007
+    AegisName: Jormungand1
+    Name: Jormungand1
+    Type: Weapon
+    SubType: 2hStaff
+    Buy: 10
+    Weight: 3000
+    Attack: 200
+    MagicAttack: 280
+    Slots: 1
+    Jobs:
+      Sage: true
+      SoulLinker: true
+      Wizard: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 1
+    Script: |
+      bonus bInt,30; bonus3 bAddEff,Eff_Poison,3000,ATF_MAGIC; bonus2 bAddEffWhenHit,Eff_DPoison,100; bonus bUnbreakableWeapon; bonus bMatk,140;
+  - Id: 200000031
+    AegisName: Weihnachts_Premium_Manual
+    Name: Weihnachts Premium Manual
+    Type: Usable
+    Buy: 2
+    Script: |
+      sc_start SC_EXPBOOST,8640000,200; sc_start SC_ITEMBOOST,8640000,250;
+  - Id: 200000032
+    AegisName: Wolf_King_Chain
+    Name: Wolf King Chain
+    Type: Etc
+    Weight: 10
+  - Id: 200000033
+    AegisName: Thomas_Sabo
+    Name: Thomas Sabo
+    Type: Etc
+    Weight: 10
+  - Id: 200000034
+    AegisName: etNox
+    Name: etNox
+    Type: Etc
+    Weight: 10
+  - Id: 25717
+    AegisName: Guillotine_Cross_Stone_Garment
+    Name: Guillotine Cross Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25797
+    AegisName: Sura_Stone_II_Garment
+    Name: Sura Stone II (Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25710
+    AegisName: Paladin_Stone_Upper
+    Name: Paladin Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25412
+    AegisName: Sura_Stone_Garment
+    Name: Sura Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25416
+    AegisName: Ranger_Stone_Garment
+    Name: Ranger Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25420
+    AegisName: Sorcerer_Stone_Garment
+    Name: Sorcerer Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25448
+    AegisName: Rune_Knight_Stone_Garment
+    Name: Rune Knight Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25449
+    AegisName: Geneticist_Stone_Garment
+    Name: Geneticist Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25456
+    AegisName: Warlock_Stone_Garment
+    Name: Warlock Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25493
+    AegisName: Shadow_Chaser_Stone_Garment
+    Name: Shadow Chaser Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25497
+    AegisName: Mechanic_Stone_Garment
+    Name: Mechanic Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25501
+    AegisName: Wanderer_Minstrel_Stone_Garment
+    Name: Wanderer Minstrel Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25709
+    AegisName: Arch_Bishop_Stone_Garment
+    Name: Arch Bishop Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25713
+    AegisName: Royal_Guard_Stone_Garment
+    Name: Royal Guard Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25801
+    AegisName: Sorcerer_Stone_II_Garment
+    Name: Sorcerer Stone II (Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25805
+    AegisName: Shadow_Chaser_Stone_II_Garment
+    Name: Shadow Chaser Stone II (Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25842
+    AegisName: Soul_Reaper_Stone_Garment
+    Name: Soul Reaper Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25849
+    AegisName: Star_Emperor_Stone_Garment
+    Name: Star Emperor Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25853
+    AegisName: Kagerou_Stone_Garment
+    Name: Kagerou Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25854
+    AegisName: Oboro_Stone_Garment
+    Name: Oboro Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25858
+    AegisName: Rebellion_Stone_Garment
+    Name: Rebellion Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25862
+    AegisName: Doram_Stone_Garment
+    Name: Doram Stone(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45003
+    AegisName: Ranger_Stone_II_Garment
+    Name: Ranger Stone II(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45007
+    AegisName: Mechanic_Stone_II_Garment
+    Name: Mechanic Stone II(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45011
+    AegisName: Archbishop_Stone_II_Garment
+    Name: Archbishop Stone II(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45015
+    AegisName: Warlock_Stone_II_Garment
+    Name: Warlock Stone II(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45023
+    AegisName: Guillotine_Cross_Stone_II_Garment
+    Name: Guillotine Cross Stone II(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000217
+    AegisName: Royal_Guard_Stone_II_Garment
+    Name: Royal Guard Stone II (Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000296
+    AegisName: Rune_Knight_Stone_II_Garment
+    Name: Rune Knight Stone II(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000300
+    AegisName: Geneticist_Stone_II_Garment
+    Name: Geneticist Stone II(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000304
+    AegisName: Wanderer_Minstrel_Stone_II_Garment
+    Name: Wanderer Minstrel Stone II(Garment)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25411
+    AegisName: Champion_Stone_Lower
+    Name: Champion Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25415
+    AegisName: Sniper_Stone_Lower
+    Name: Sniper Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25419
+    AegisName: Professor_Stone_Lower
+    Name: Professor Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25447
+    AegisName: Lord_Knight_Stone_Lower
+    Name: Lord Knight Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25452
+    AegisName: Creator_Stone_Lower
+    Name: Creator Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25455
+    AegisName: High_Wizard_Stone_Lower
+    Name: High Wizard Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25492
+    AegisName: Stalker_Stone_Lower
+    Name: Stalker Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25496
+    AegisName: Whitesmith_Stone_Lower
+    Name: Whitesmith Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25500
+    AegisName: Clown_Gypsy_Stone_Lower
+    Name: Clown Gypsy Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25708
+    AegisName: High_Priest_Stone_Lower
+    Name: High Priest Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25712
+    AegisName: Paladin_Stone_Lower
+    Name: Paladin Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25716
+    AegisName: Assassin_Cross_Stone_Lower
+    Name: Assassin Cross Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25798
+    AegisName: Champion_Stone_II_Lower
+    Name: Champion Stone II (Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25802
+    AegisName: Professor_Stone_II_Lower
+    Name: Professor Stone II (Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25806
+    AegisName: Stalker_Stone_II_Lower
+    Name: Stalker Stone II (Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25845
+    AegisName: Soul_Linker_Stone_Lower
+    Name: Soul Linker Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25848
+    AegisName: Star_Gladiator_Stone_Lower
+    Name: Star Gladiator Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25852
+    AegisName: Ninja_Stone_Lower
+    Name: Ninja Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25857
+    AegisName: Gunslinger_Stone_Lower
+    Name: Gunslinger Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25861
+    AegisName: Doram_Stone_Lower
+    Name: Doram Stone(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45002
+    AegisName: Sniper_Stone_II_Bottom
+    Name: Sniper Stone II(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45006
+    AegisName: Mastersmith_Stone_II_Bottom
+    Name: Mastersmith Stone II(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45010
+    AegisName: High_Priest_Stone_II_Bottom
+    Name: High Priest Stone II(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45014
+    AegisName: High_Wizard_Stone_II_Lower
+    Name: High Wizard Stone II(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45022
+    AegisName: Assassin_Cross_Stone_II_Lower
+    Name: Assassin Cross Stone II(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000220
+    AegisName: Paladin_Stone_II_Lower
+    Name: Paladin Stone II (Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000299
+    AegisName: Lord_Knight_Stone_II_Lower
+    Name: Lord Knight Stone II(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000303
+    AegisName: Biochemist_Stone_II_Lower
+    Name: Biochemist Stone II(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000307
+    AegisName: Clown_Gypsy_Stone_II_Lower
+    Name: Clown Gypsy Stone II(Lower)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25410
+    AegisName: Champion_Stone_Middle
+    Name: Champion Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25414
+    AegisName: Sniper_Stone_Middle
+    Name: Sniper Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25418
+    AegisName: Professor_Stone_Middle
+    Name: Professor Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45012
+    AegisName: High_Wizard_Stone_II_Top
+    Name: High Wizard Stone II(Top)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45020
+    AegisName: Assassin_Cross_Stone_II_Top
+    Name: Assassin Cross Stone II(Top)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25409
+    AegisName: Champion_Stone_Upper
+    Name: Champion Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25413
+    AegisName: Sniper_Stone_Upper
+    Name: Sniper Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25417
+    AegisName: Professor_Stone_Upper
+    Name: Professor Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25445
+    AegisName: Lord_Knight_Stone_Upper
+    Name: Lord Knight Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25450
+    AegisName: Creator_Stone_Upper
+    Name: Creator Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25453
+    AegisName: High_Wizard_Stone_Upper
+    Name: High Wizard Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25490
+    AegisName: Stalker_Stone_Upper
+    Name: Stalker Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25494
+    AegisName: Whitesmith_Stone_Upper
+    Name: Whitesmith Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25498
+    AegisName: Clown_Gypsy_Stone_Upper
+    Name: Clown Gypsy Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25706
+    AegisName: High_Priest_Stone_Upper
+    Name: High Priest Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25714
+    AegisName: Assassin_Cross_Stone_Upper
+    Name: Assassin Cross Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25800
+    AegisName: Champion_Stone_II_Upper
+    Name: Champion Stone II (Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25804
+    AegisName: Professor_Stone_II_Upper
+    Name: Professor Stone II (Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25808
+    AegisName: Stalker_Stone_II_Upper
+    Name: Stalker Stone II (Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25843
+    AegisName: Soul_Linker_Stone_Upper
+    Name: Soul Linker Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25846
+    AegisName: Star_Gladiator_Stone_Upper
+    Name: Star Gladiator Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25850
+    AegisName: Ninja_Stone_Upper
+    Name: Ninja Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25855
+    AegisName: Gunslinger_Stone_Upper
+    Name: Gunslinger Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25859
+    AegisName: Doram_Stone_Upper
+    Name: Doram Stone(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45000
+    AegisName: Sniper_Stone_II_Upper
+    Name: Sniper Stone II(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45004
+    AegisName: Mastersmith_Stone_II_Upper
+    Name: Mastersmith Stone II(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45008
+    AegisName: High_Priest_Stone_II_Upper
+    Name: High Priest Stone II(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000218
+    AegisName: Paladin_Stone_II_Upper
+    Name: Paladin Stone II (Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000297
+    AegisName: Lord_Knight_Stone_II_Upper
+    Name: Lord Knight Stone II(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000301
+    AegisName: Biochemist_Stone_II_Upper
+    Name: Biochemist Stone II(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000305
+    AegisName: Clown_Gypsy_Stone_II_Upper
+    Name: Clown Gypsy Stone II(Upper)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25446
+    AegisName: Lord_Knight_Stone_Middle
+    Name: Lord Knight Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25451
+    AegisName: Creator_Stone_Middle
+    Name: Creator Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25454
+    AegisName: High_Wizard_Stone_Middle
+    Name: High Wizard Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25491
+    AegisName: Stalker_Stone_Middle
+    Name: Stalker Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25495
+    AegisName: Whitesmith_Stone_Middle
+    Name: Whitesmith Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25499
+    AegisName: Clown_Gypsy_Stone_Middle
+    Name: Clown Gypsy Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25707
+    AegisName: High_Priest_Stone_Middle
+    Name: High Priest Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25711
+    AegisName: Paladin_Stone_Middle
+    Name: Paladin Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25715
+    AegisName: Assassin_Cross_Stone_Middle
+    Name: Assassin Cross Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25799
+    AegisName: Champion_Stone_II_Middle
+    Name: Champion Stone II (Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25807
+    AegisName: Stalker_Stone_II_Middle
+    Name: Stalker Stone II (Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25844
+    AegisName: Soul_Linker_Stone_Middle
+    Name: Soul Linker Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25847
+    AegisName: Star_Gladiator_Stone_Middle
+    Name: Star Gladiator Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25851
+    AegisName: Ninja_Stone_Middle
+    Name: Ninja Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25856
+    AegisName: Gunslinger_Stone_Middle
+    Name: Gunslinger Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 25860
+    AegisName: Doram_Stone_Middle
+    Name: Doram Stone(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45001
+    AegisName: Sniper_Stone_II_Middle
+    Name: Sniper Stone II(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45005
+    AegisName: Mastersmith_Stone_II_Middle
+    Name: Mastersmith Stone II(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45009
+    AegisName: High_Priest_Stone_II_Middle
+    Name: High Priest Stone II(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45013
+    AegisName: High_Wizard_Stone_II_Middle
+    Name: High Wizard Stone II(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 45021
+    AegisName: Assassin_Cross_Stone_II_Middle
+    Name: Assassin Cross Stone II(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000219
+    AegisName: Paladin_Stone_II_Middle
+    Name: Paladin Stone II (Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000298
+    AegisName: Lord_Knight_Stone_II_Middle
+    Name: Lord Knight Stone II(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000302
+    AegisName: Biochemist_Stone_II_Middle
+    Name: Biochemist Stone II(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 1000306
+    AegisName: Clown_Gypsy_Stone_II_Middle
+    Name: Clown Gypsy Stone II(Middle)
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 200000035
+    AegisName: Costume_Enchants_Class
+    Name: Costume Enchants Class Stones
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",25411,25415,25419,25447,25452,25455,25492,25496,25500,25708,25712,25716,25798,25802,25806,25845,25848,25852,25857,25861,45002,45006,45010,45014,45022,1000220,1000299,1000303,1000307,25410,25414,25418,25446,25451,25454,25491,25495,25499,25707,25711,25715,25799,25807,25844,25847,25851,25856,25860,45001,45005,45009,45013,45021,1000219,1000298,1000302,1000306,45012,45020,25409,25413,25417,25445,25450,25453,25490,25494,25498,25706,25710,25710,25714,25800,25804,25808,25843,25846,25850,25855,25859,45000,45004,45008,1000218,1000297,1000301,1000305,25412,25416,25420,25448,25449,25456,25493,25497,25501,25709,25713,25717,25797,25801,25805,25842,25849,25853,25854,25858,25862,45003,45007,45011,45015,45023,1000217,1000296,1000300,10003041;
+  - Id: 200000036
+    AegisName: Costume_Ticket
+    Name: Costume Ticket
+    Type: Card
+    Buy: 10
+    Weight: 100
+  - Id: 200000038
+    AegisName: Horror_Ticket
+    Name: Horror Ticket
+    Type: Etc
+    Buy: 10
+    Weight: 100
+  - Id: 200000039
+    AegisName: Refine_ticket_box
+    Name: Refine Ticket Box
+    Type: Cash
+    Buy: 10
+    Weight: 10
+    Script: |
+      getitem callfunc("F_Rand",6231,6230,6229,6228,6456,6238,33071,33072,33073,33074,33075,33076,33077,33078,33061,33062,33063,33064,33065,33066,33067,33068,6457,6235,6234,6233,6232,6239,7711,330991;
+  - Id: 200000037
+    AegisName: TakeRo_Coin
+    Name: TakeRo Coin
+    Type: Etc
+    Buy: 10
+    Weight: 10
+  - Id: 200000040
+    AegisName: TakeRo-Test
+    Name: TakeRo-Test
+    Type: Armor
+    Buy: 50000
+    Sell: 1
+    Slots: 1
+    Locations:
+      Costume_Head_Mid: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 8000
+    Script: |
+      bonus bAllStats,5;
+  - Id: 490026
+    AegisName: Automatic_Battle_Chip_R
+    Name: Automatic Battle Chip R
+    Type: Armor
+    Weight: 100
+    Slots: 1
+    Locations:
+      Right_Accessory: true
+    Script: |
+      bonus bMatkRate,5; bonus bMaxHPrate,5;
+  - Id: 28046
+    AegisName: Royal_Katar
+    Name: Royal Katar
+    Type: Weapon
+    SubType: Katar
+    Weight: 1500
+    Attack: 200
+    Range: 1
+    Slots: 2
+    Jobs:
+      Assassin: true
+    Classes:
+      All_Third: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    Refineable: true
+    UnEquipScript: |
+      .@r = getrefine(); bonus bUnbreakableWeapon; bonus2 bAddClass,Class_All,5; bonus bLongAtkRate,.@r; if(.@r >= 9){ bonus2 bSkillAtk, "GC_ROLLINGCUTTER",20; bonus2 bSkillAtk, "GC_COUNTERSLASH",20; } if(.@r >= 11){ bonus2 bAddRace,RC_Undead,20; bonus2 bAddRace,RC_Angel,20; }
+  - Id: 28636
+    AegisName: Royal_Sage_Book
+    Name: Royal Sage Book
+    Type: Weapon
+    SubType: Book
+    Weight: 1000
+    Attack: 90
+    MagicAttack: 170
+    Range: 1
+    Slots: 2
+    Jobs:
+      Sage: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    UnEquipScript: |
+      .@r = getrefine(); bonus bUnbreakable; bonus2 bMagicAtkEle, Ele_Water, 5; bonus2 bMagicAtkEle, Ele_Wind, 5; bonus bMatk, .@r*4; if(.@r >= 9){ bonus2 bSkillAtk, "SO_VARETYR_SPEAR", 20; bonus2 bSkillAtk, "SO_DIAMONDDUST", 20; } if(.@r >= 11){ bonus2 bMagicAddRace, RC_Angel,20; bonus2 bMagicAddRace, RC_Undead,20; }
+  - Id: 28776
+    AegisName: Royal_Magician_Dagger
+    Name: Royal Magician Dagger
+    Type: Weapon
+    SubType: Dagger
+    Weight: 1500
+    Attack: 200
+    MagicAttack: 170
+    Range: 1
+    Slots: 2
+    Jobs:
+      Rogue: true
+    Classes:
+      All_Third: true
+    WeaponLevel: 4
+    EquipLevelMin: 170
+    Refineable: true
+    UnEquipScript: |
+      .@r = getrefine(); bonus bMatk, .@r*4; if(.@r >= 9){ bonus2 bMagicAtkEle, Ele_Fire, 15; bonus2 bMagicAtkEle, Ele_Neutral, 15; } if(.@r >= 11){ bonus2 bMagicAddRace, RC_Angel,20; bonus2 bMagicAddRace, RC_Undead,20; }
