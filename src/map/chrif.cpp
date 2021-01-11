@@ -1968,8 +1968,7 @@ void do_init_chrif(void) {
 		exit(EXIT_FAILURE);
 	}
 
-	//if (sizeof(struct s_storage) > 0xFFFF) {
-	if (static_cast(sizeof(struct s_storage)) > 0xFFFF) {
+	if (sizeof(struct s_storage) > 0xFFFFFFFF) {
 		ShowError("s_storage size = %" PRIuPTR " is too big to be transmitted. (must be below 0xFFFF)\n", sizeof(struct s_storage));
 		exit(EXIT_FAILURE);
 	}
