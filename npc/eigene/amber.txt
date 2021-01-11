@@ -33,7 +33,7 @@ takero,307,365,2	script	Mayu	103,{
 			setarray .@chance[1],100,95,77,62,42,37,32; //Event
 		}
 		if(.@event == 2){
-			setarray .@chance[1],100,99,81,66,46,43,36; //Event spezial
+			setarray .@chance[1],100,100,100,100,100,100,100; //Event spezial
 		}
 		if(#lang == 0){	set .@menu$,"Start game:Use green eggs:Use blue eggs";	}
 		if(#lang == 1){	set .@menu$,"Spiel starten:Green eggs benutzen:Blue eggs benutzen";	}
