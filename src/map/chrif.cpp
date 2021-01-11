@@ -1969,11 +1969,11 @@ void do_init_chrif(void) {
 	}
 
 	//if (sizeof(struct s_storage) > 0xFFFF) {
-	/*if (static_cast(sizeof(struct s_storage)) > 0xFFFF) {
+	if (static_cast(sizeof(struct s_storage)) > 0xFFFF) {
 		ShowError("s_storage size = %" PRIuPTR " is too big to be transmitted. (must be below 0xFFFF)\n", sizeof(struct s_storage));
 		exit(EXIT_FAILURE);
-	}*/
-	static_assert(sizeof(struct s_storage) < UINT16_MAX, "s_storage size = %" PRIuPTR " is too big to be transmitted. (must be below 0xFFFF)\n")
+	}
+	//static_assert(sizeof(struct s_storage)) < UINT16_MAX, "s_storage size = %" PRIuPTR " is too big to be transmitted. (must be below 0xFFFF)\n")
 
 	if((sizeof(struct bonus_script_data) * MAX_PC_BONUS_SCRIPT) > 0xFFFF){
 		ShowError("bonus_script_data size = %d is too big, please reduce MAX_PC_BONUS_SCRIPT (%d) size. (must be below 0xFFFF).\n",
