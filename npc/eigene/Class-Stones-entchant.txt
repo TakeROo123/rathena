@@ -50,6 +50,8 @@ takero,383,262,5	script	Lace	622,{
 	case 20764:	// C_Fallen_Angel_Wing
 	case 20765:	// C_Archangel_Wing
 	case 33028: //C TakeRo Wings of PVM God
+	case 20516:	// Costume Wings of Michael	
+	
 
 		break;
 	default:
@@ -638,6 +640,7 @@ takero,383,258,8	script	Aver	618,{
 		case 31505:	// C_Falcon_Mask
 		case 33052: // C Blade of Dragon
 		case 33011: // C Ultimaweapon
+		case 33002: // sao	
 			break;
 		default:
 			mes "[Aver]";
@@ -770,7 +773,7 @@ takero,383,258,8	script	Aver	618,{
 		case 31611:	// C_Dark_Snake_Lord_Stall
 		case 31616:	// C_Sleep_Sheep_TW
 		case 31625:	// C_Protect_Cloth
-		case 31698:	// C_Pigtail_Red_Hood
+		case 31698:	// C_Pigtail_Red_Hood	
 			break;
 		default:
 			mes "[Aver]";
@@ -911,7 +914,7 @@ takero,383,258,8	script	Aver	618,{
 			1000220, 1000220, "Paladin_Stone_II_Lower",
 			1000299, 1000299, "Lord_Knight_Stone_II_Lower",
 			1000303, 1000303, "Biochemist_Stone_II_Lower",
-			1000307, 1000307, "Clown_Gypsy_Stone_II_Lower",
+			1000307, 1000307, "Clown_Gypsy_Stone_II_Lower";
 
 		break;
 	default:
