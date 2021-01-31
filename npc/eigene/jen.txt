@@ -15,5 +15,8 @@ mag_dun03,0,0	boss_monster	Rigid Muspellskoll	20419,1,7200000,600000
 
 
 
-
+einbroch,116,249,5	script	Willi	615,{
+		mes "du stinkst";
+			end;
+    }
 

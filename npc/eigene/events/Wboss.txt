@@ -1,6 +1,6 @@
 prontera,164,173,4	script	Freya	123,{
 	.@kill_count = (.monster_kill_requirement - $world_boss_counter_freya);
-	mes "[ World Boss ]";
+	mes .nF$;
 	mes "Status :" +($world_boss_active_freya == 1?"^00FF00Active^000000":"^FF0000Inactive^000000");
 	mes "Kill Remaining - [ ^0000FF"+.@kill_count+"^000000 ]";
 	end;
@@ -14,26 +14,83 @@ prontera,164,173,4	script	Freya	123,{
 	end;
 
 	OnSummon:
-		announce "[World Boss Freya] A rift on time and space is about to be opened! A World Boss will appear in Payon. Prepare your Hunting Party!",BC_ALL,0xFF0000,FW_BOLD,18;
+		announce .nF$+" A rift on time and space is about to be opened! goto World Boss Warper. Prepare your Hunting Party!",BC_ALL,0xFF0000,FW_BOLD,18;
 		$world_boss_active = 1;
 		$world_boss_active_freya = 1;
-		monster "payon",155,219,"World Boss",30015,1,"Freya::OnBossKill";
+		monster $world_boss_map$,0,0,"World Boss",30015,1,"Freya::OnBossKill";
 	end;
 		
 	OnBossKill:
-		announce "Freya: I come again !",BC_ALL,0xFF0000,FW_BOLD,18;
+		announce .n$+": I come again !",BC_ALL,0xFF0000,FW_BOLD,18;
 		$world_boss_active = 0;
 		$world_boss_active_freya = 0;
 		$world_boss_counter_freya = 0;
-		getitem 7711,50;
+		for(.@j = 0; .@j < getarraysize(.killerItemIdChanceArr)/3; .@j++) {
+			.@killerItemId = .killerItemIdChanceArr[.@j*3+0];
+			.@killerItemCount = .killerItemIdChanceArr[.@j*3+1];
+			.@killerChance = .killerItemIdChanceArr[.@j*3+2];
+			.@killerRndNumber = rand(1,100);
+			if(.@rndNumber <= .@chance) {
+				getitem .@killerItemId, .@killerItemCount;
+			}
+		}
+		if( getcharid(1) ) {
+			getpartymember getcharid(1),0;
+			getpartymember getcharid(1),1;
+			getpartymember getcharid(1),2;
+			.@count = $@partymembercount;
+			copyarray .@name$[0], $@partymembername$[0], $@partymembercount;
+			copyarray .@accountIds[0], $@partymemberaid[0], $@partymembercount;
+			copyarray .@charIds[0], $@partymembercid[0], $@partymembercount;
+			.@mapOfKiller$ = strcharinfo(3);
+			debugmes "WorldBoss | "+.n$+" | Party: [" + implode(.@name$, ", ")+"]";
+			for( .@i = 0; .@i < .@count; .@i++ ){
+					.@playerName$ = .@name$[.@i];
+					.@charId = .@charIds[.@i];
+					.@accId = .@accountIds[.@i];
+					.@isLoggedIn = isloggedin(.@accId,.@charId) == 1;
+					.@isPlayerFound = getmapxy(.@mapOfPartyPlayer$, .@x, .@y, BL_PC, .@playerName$) == 0;
+					.@isOnMap = .@isPlayerFound && .@mapOfPartyPlayer$ == .@mapOfKiller$;
+					debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" is on map: "+.@mapOfPartyPlayer$+" killer map: "+.@mapOfKiller$;
+					debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" is loggedIn: "+.@isLoggedIn;
+					debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" is on same map as killer: "+.@isOnMap;
+					if(.@isLoggedIn && .@isOnMap) {
+						debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" may get items:"+getarraysize(.itemIdChanceArr)/3;
+						for(.@j = 0; .@j < getarraysize(.itemIdChanceArr)/3; .@j++) {
+							.@itemId = .itemIdChanceArr[.@j*3+0];
+							.@itemCount = .itemIdChanceArr[.@j*3+1];
+							.@chance = .itemIdChanceArr[.@j*3+2];
+							.@rndNumber = rand(1,100);
+							debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" will may get "+.@itemCount+" "+.@itemId+" with a chance of "+.@chance+" and his lucky number is "+.@rndNumber;
+							if(.@rndNumber <= .@chance) {
+								getitem .@itemId, .@itemCount, .@accId;
+							}   
+						}
+					}
+			}
+		}
 	end;
 			
 	OnInit:
+		set .n$,strnpcinfo(0);
+		set .nF$,"[World Boss "+.n$+"]";
+		setarray .itemIdChanceArr[0],
+								//GL Mixing Box
+								200000030,1,5,
+								// Event Tickets
+								7711,10,20, 
+								7711,10,20,
+								7711,10,15,
+								7711,10,15,
+								7711,10,10
+								;
+		setarray .killerItemIdChanceArr[0],
+								200000038,1,1;
 		.monster_kill_requirement = 1500;
 		freeloop(1);
 		while(1){
 			.@kill_counth = (.monster_kill_requirement - $world_boss_counter_freya);
-			waitingroom "Freya Kill Left : ["+.@kill_counth+"]",0;
+			waitingroom .n$+" Kill Left : ["+.@kill_counth+"]",0;
 			sleep 1000; //= 1 Second Refresh
 			delwaitingroom;
 		}
@@ -43,7 +100,7 @@ prontera,164,173,4	script	Freya	123,{
 
 prontera,164,172,4	script	etNox	123,{
 	.@kill_count = (.monster_kill_requirement - $world_boss_counter_etnox);
-	mes "[ World Boss ]";
+	mes .nF$;
 	mes "Status :" +($world_boss_active_etnox == 1?"^00FF00Active^000000":"^FF0000Inactive^000000");
 	mes "Kill Remaining - [ ^0000FF"+.@kill_count+"^000000 ]";
 	end;
@@ -57,26 +114,85 @@ prontera,164,172,4	script	etNox	123,{
 	end;
 
 	OnSummon:
-		announce "[World Boss etNox] A rift on time and space is about to be opened! A World Boss will appear in Payon. Prepare your Hunting Party!",BC_ALL,0xFF0000,FW_BOLD,18;
+			announce .nF$+" A rift on time and space is about to be opened! goto World Boss Warper. Prepare your Hunting Party!",BC_ALL,0xFF0000,FW_BOLD,18;
 		$world_boss_active = 1;
 		$world_boss_active_etnox = 1;
-		monster "payon",155,219,"World Boss",30006,1,"etNox::OnBossKill";
+		monster $world_boss_map$,0,0,"World Boss",30006,1,"etNox::OnBossKill";
 	end;
 		
 	OnBossKill:
-		announce "etNox: I come again !",BC_ALL,0xFF0000,FW_BOLD,18;
+		announce .n$+": I come again !",BC_ALL,0xFF0000,FW_BOLD,18;
 		$world_boss_active = 0;
 		$world_boss_counter_etnox = 0;
 		$world_boss_active_etnox = 0;
-		getitem 7711,50;
+		for(.@j = 0; .@j < getarraysize(.killerItemIdChanceArr)/3; .@j++) {
+			.@killerItemId = .killerItemIdChanceArr[.@j*3+0];
+			.@killerItemCount = .killerItemIdChanceArr[.@j*3+1];
+			.@killerChance = .killerItemIdChanceArr[.@j*3+2];
+			.@killerRndNumber = rand(1,100);
+			if(.@rndNumber <= .@chance) {
+				getitem .@killerItemId, .@killerItemCount;
+			}
+		}
+		if( getcharid(1) ) {
+			getpartymember getcharid(1),0;
+			getpartymember getcharid(1),1;
+			getpartymember getcharid(1),2;
+			.@count = $@partymembercount;
+			copyarray .@name$[0], $@partymembername$[0], $@partymembercount;
+			copyarray .@accountIds[0], $@partymemberaid[0], $@partymembercount;
+			copyarray .@charIds[0], $@partymembercid[0], $@partymembercount;
+			.@mapOfKiller$ = strcharinfo(3);
+			debugmes "WorldBoss | "+.n$+" | Party: [" + implode(.@name$, ", ")+"]";
+			for( .@i = 0; .@i < .@count; .@i++ ){
+					.@playerName$ = .@name$[.@i];
+					.@charId = .@charIds[.@i];
+					.@accId = .@accountIds[.@i];
+					.@isLoggedIn = isloggedin(.@accId,.@charId) == 1;
+					.@isPlayerFound = getmapxy(.@mapOfPartyPlayer$, .@x, .@y, BL_PC, .@playerName$) == 0;
+					.@isOnMap = .@isPlayerFound && .@mapOfPartyPlayer$ == .@mapOfKiller$;
+					debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" is on map: "+.@mapOfPartyPlayer$+" killer map: "+.@mapOfKiller$;
+					debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" is loggedIn: "+.@isLoggedIn;
+					debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" is on same map as killer: "+.@isOnMap;
+					if(.@isLoggedIn && .@isOnMap) {
+						debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" may get items:"+getarraysize(.itemIdChanceArr)/3;
+						for(.@j = 0; .@j < getarraysize(.itemIdChanceArr)/3; .@j++) {
+							.@itemId = .itemIdChanceArr[.@j*3+0];
+							.@itemCount = .itemIdChanceArr[.@j*3+1];
+							.@chance = .itemIdChanceArr[.@j*3+2];
+							.@rndNumber = rand(1,100);
+							debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" will may get "+.@itemCount+" "+.@itemId+" with a chance of "+.@chance+" and his lucky number is "+.@rndNumber;
+							if(.@rndNumber <= .@chance) {
+								getitem .@itemId, .@itemCount, .@accId;
+							}   
+						}
+					}
+			}
+		}	
 	end;
 			
 	OnInit:
 		.monster_kill_requirement = 2000;
+		set .n$,strnpcinfo(0);
+		set .nF$,"[World Boss "+.n$+"]";
+		setarray .itemIdChanceArr[0],
+								//GL Mixing Box
+								200000030,1,5,
+								// etNox Stone
+								200000034,1,10,
+								// Event Tickets
+								7711,10,20, 
+								7711,10,20,
+								7711,10,15,
+								7711,10,15,
+								7711,10,10
+								;
+		setarray .killerItemIdChanceArr[0],
+								200000038,1,1;
 		freeloop(1);
 		while(1){
 			.@kill_count2 = (.monster_kill_requirement - $world_boss_counter_etnox);
-			waitingroom "etNox Kill Left : ["+.@kill_count2+"]",0;
+			waitingroom .n$+" Kill Left : ["+.@kill_count2+"]",0;
 			sleep 1000; //= 1 Second Refresh
 			delwaitingroom;
 		}
@@ -86,7 +202,7 @@ prontera,164,172,4	script	etNox	123,{
 
 prontera,164,171,4	script	Thomas Sabo	123,{
 	.@kill_count = (.monster_kill_requirement - $world_boss_counter_sabo);
-	mes "[ World Boss ]";
+	mes .nF$;
 	mes "Status :" +($world_boss_active_sabo == 1?"^00FF00Active^000000":"^FF0000Inactive^000000");
 	mes "Kill Remaining - [ ^0000FF"+.@kill_count+"^000000 ]";
 	end;
@@ -100,26 +216,85 @@ prontera,164,171,4	script	Thomas Sabo	123,{
 	end;
 
 	OnSummon:
-		announce "[World Boss Thomas Sabo] A rift on time and space is about to be opened! A World Boss will appear in Payon. Prepare your Hunting Party!",BC_ALL,0xFF0000,FW_BOLD,18;
+		announce .nF$+" A rift on time and space is about to be opened! goto World Boss Warper. Prepare your Hunting Party!",BC_ALL,0xFF0000,FW_BOLD,18;
 		$world_boss_active = 1;
 		$world_boss_active_sabo = 1;
-		monster "payon",155,219,"World Boss",30008,1,"Thomas Sabo::OnBossKill";
+		monster $world_boss_map$,0,0,"World Boss",30008,1,"Thomas Sabo::OnBossKill";
 	end;
 		
 	OnBossKill:
-		announce "Thomas Sabo: I come again !",BC_ALL,0xFF0000,FW_BOLD,18;
+		announce .n$+": I come again !",BC_ALL,0xFF0000,FW_BOLD,18;
 		$world_boss_active = 0;
 		$world_boss_active_sabo = 0;
 		$world_boss_counter_sabo = 0;
-		getitem 7711,50;
+		for(.@j = 0; .@j < getarraysize(.killerItemIdChanceArr)/3; .@j++) {
+			.@killerItemId = .killerItemIdChanceArr[.@j*3+0];
+			.@killerItemCount = .killerItemIdChanceArr[.@j*3+1];
+			.@killerChance = .killerItemIdChanceArr[.@j*3+2];
+			.@killerRndNumber = rand(1,100);
+			if(.@rndNumber <= .@chance) {
+				getitem .@killerItemId, .@killerItemCount;
+			}
+		}
+		if( getcharid(1) ) {
+			getpartymember getcharid(1),0;
+			getpartymember getcharid(1),1;
+			getpartymember getcharid(1),2;
+			.@count = $@partymembercount;
+			copyarray .@name$[0], $@partymembername$[0], $@partymembercount;
+			copyarray .@accountIds[0], $@partymemberaid[0], $@partymembercount;
+			copyarray .@charIds[0], $@partymembercid[0], $@partymembercount;
+			.@mapOfKiller$ = strcharinfo(3);
+			debugmes "WorldBoss | "+.n$+" | Party: [" + implode(.@name$, ", ")+"]";
+			for( .@i = 0; .@i < .@count; .@i++ ){
+					.@playerName$ = .@name$[.@i];
+					.@charId = .@charIds[.@i];
+					.@accId = .@accountIds[.@i];
+					.@isLoggedIn = isloggedin(.@accId,.@charId) == 1;
+					.@isPlayerFound = getmapxy(.@mapOfPartyPlayer$, .@x, .@y, BL_PC, .@playerName$) == 0;
+					.@isOnMap = .@isPlayerFound && .@mapOfPartyPlayer$ == .@mapOfKiller$;
+					debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" is on map: "+.@mapOfPartyPlayer$+" killer map: "+.@mapOfKiller$;
+					debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" is loggedIn: "+.@isLoggedIn;
+					debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" is on same map as killer: "+.@isOnMap;
+					if(.@isLoggedIn && .@isOnMap) {
+						debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" may get items:"+getarraysize(.itemIdChanceArr)/3;
+						for(.@j = 0; .@j < getarraysize(.itemIdChanceArr)/3; .@j++) {
+							.@itemId = .itemIdChanceArr[.@j*3+0];
+							.@itemCount = .itemIdChanceArr[.@j*3+1];
+							.@chance = .itemIdChanceArr[.@j*3+2];
+							.@rndNumber = rand(1,100);
+							debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" will may get "+.@itemCount+" "+.@itemId+" with a chance of "+.@chance+" and his lucky number is "+.@rndNumber;
+							if(.@rndNumber <= .@chance) {
+								getitem .@itemId, .@itemCount, .@accId;
+							}   
+						}
+					}
+			}
+		}
 	end;
 			
 	OnInit:
 		.monster_kill_requirement = 4000;
+		set .n$,strnpcinfo(0);
+		set .nF$,"[World Boss "+.n$+"]";
+		setarray .itemIdChanceArr[0],
+								//GL Mixing Box
+								200000030,1,5,
+								// Thomas Sabo Stone
+								200000033,1,10,
+								// Event Tickets
+								7711,10,20, 
+								7711,10,20,
+								7711,10,15,
+								7711,10,15,
+								7711,10,10
+								;
+		setarray .killerItemIdChanceArr[0],
+								200000038,1,1;
 		freeloop(1);
 		while(1){
 			.@kill_count = (.monster_kill_requirement - $world_boss_counter_sabo);
-			waitingroom "Sabo Kill Left : ["+.@kill_count+"]",0;
+			waitingroom .n$+" Kill Left : ["+.@kill_count+"]",0;
 			sleep 1000; //= 1 Second Refresh
 			delwaitingroom;
 		}
@@ -129,7 +304,7 @@ prontera,164,171,4	script	Thomas Sabo	123,{
 
 prontera,164,170,4	script	Wolf King Cain	123,{
 	.@kill_count = (.monster_kill_requirement - $world_boss_counter_cain);
-	mes "[ World Boss ]";
+	mes .nF$;
 	mes "Status :" +($world_boss_active_cain == 1?"^00FF00Active^000000":"^FF0000Inactive^000000");
 	mes "Kill Remaining - [ ^0000FF"+.@kill_count+"^000000 ]";
 	end;
@@ -143,32 +318,93 @@ prontera,164,170,4	script	Wolf King Cain	123,{
 	end;
 
 	OnSummon:
-		announce "[World Boss Wolf King Cain] A rift on time and space is about to be opened! A World Boss will appear in Payon. Prepare your Hunting Party!",BC_ALL,0xFF0000,FW_BOLD,18;
+		announce .nF$+" A rift on time and space is about to be opened! goto World Boss Warper. Prepare your Hunting Party!",BC_ALL,0xFF0000,FW_BOLD,18;
 		$world_boss_active = 1;
 		$world_boss_active_cain = 1;
-		monster "payon",155,219,"World Boss",30000,1,"Wolf King Cain::OnBossKill";
+		monster $world_boss_map$,0,0,"World Boss",30000,1,"Wolf King Cain::OnBossKill";
 	end;
 		
 	OnBossKill:
-		announce "Wolf King Cain: I come again !",BC_ALL,0xFF0000,FW_BOLD,18;
+		announce .n$+": I come again !",BC_ALL,0xFF0000,FW_BOLD,18;
 		$world_boss_active = 0;
 		$world_boss_active_cain = 0;
 		$world_boss_counter_cain = 0;
-		getitem 7711,50;
+		for(.@j = 0; .@j < getarraysize(.killerItemIdChanceArr)/3; .@j++) {
+			.@killerItemId = .killerItemIdChanceArr[.@j*3+0];
+			.@killerItemCount = .killerItemIdChanceArr[.@j*3+1];
+			.@killerChance = .killerItemIdChanceArr[.@j*3+2];
+			.@killerRndNumber = rand(1,100);
+			if(.@rndNumber <= .@chance) {
+				getitem .@killerItemId, .@killerItemCount;
+			}
+		}
+		if( getcharid(1) ) {
+			getpartymember getcharid(1),0;
+			getpartymember getcharid(1),1;
+			getpartymember getcharid(1),2;
+			.@count = $@partymembercount;
+			copyarray .@name$[0], $@partymembername$[0], $@partymembercount;
+			copyarray .@accountIds[0], $@partymemberaid[0], $@partymembercount;
+			copyarray .@charIds[0], $@partymembercid[0], $@partymembercount;
+			.@mapOfKiller$ = strcharinfo(3);
+			debugmes "WorldBoss | "+.n$+" | Party: [" + implode(.@name$, ", ")+"]";
+			for( .@i = 0; .@i < .@count; .@i++ ){
+					.@playerName$ = .@name$[.@i];
+					.@charId = .@charIds[.@i];
+					.@accId = .@accountIds[.@i];
+					.@isLoggedIn = isloggedin(.@accId,.@charId) == 1;
+					.@isPlayerFound = getmapxy(.@mapOfPartyPlayer$, .@x, .@y, BL_PC, .@playerName$) == 0;
+					.@isOnMap = .@isPlayerFound && .@mapOfPartyPlayer$ == .@mapOfKiller$;
+					debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" is on map: "+.@mapOfPartyPlayer$+" killer map: "+.@mapOfKiller$;
+					debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" is loggedIn: "+.@isLoggedIn;
+					debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" is on same map as killer: "+.@isOnMap;
+					if(.@isLoggedIn && .@isOnMap) {
+						debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" may get items:"+getarraysize(.itemIdChanceArr)/3;
+						for(.@j = 0; .@j < getarraysize(.itemIdChanceArr)/3; .@j++) {
+							.@itemId = .itemIdChanceArr[.@j*3+0];
+							.@itemCount = .itemIdChanceArr[.@j*3+1];
+							.@chance = .itemIdChanceArr[.@j*3+2];
+							.@rndNumber = rand(1,100);
+							debugmes "WorldBoss | "+.n$+" | \""+.@playerName$+"\" will may get "+.@itemCount+" "+.@itemId+" with a chance of "+.@chance+" and his lucky number is "+.@rndNumber;
+							if(.@rndNumber <= .@chance) {
+								getitem .@itemId, .@itemCount, .@accId;
+							}   
+						}
+					}
+			}
+		}
 	end;
 			
 	OnInit:
 		.monster_kill_requirement = 6000;
+		set .n$,strnpcinfo(0);
+		set .nF$,"[World Boss "+.n$+"]";
+		setarray .itemIdChanceArr[0],
+								//GL Mixing Box
+								200000030,1,5,
+								// Wolf King Cain Stone
+								200000032,1,10,
+								// Event Tickets
+								7711,10,20, 
+								7711,10,20,
+								7711,10,15,
+								7711,10,15,
+								7711,10,10
+								;
+		setarray .killerItemIdChanceArr[0],
+								200000038,1,1;
 		freeloop(1);
 		while(1){
 			.@kill_count = (.monster_kill_requirement - $world_boss_counter_cain);
-			waitingroom "Cain Kill Left : ["+.@kill_count+"]",0;
+			waitingroom .n$+" Kill Left : ["+.@kill_count+"]",0;
 			sleep 1000; //= 1 Second Refresh
 			delwaitingroom;
 		}
 		freeloop(0);
 	end;
 }
+
+
 
 takero,359,200,4	script	Wboss Reset	123,{
 	mes "whatever";
@@ -183,3 +419,57 @@ takero,359,200,4	script	Wboss Reset	123,{
 	$world_boss_counter_cain = 0;
 	end;
 }
+
+prontera,142,175,5	script	World Boss Warper	10308,{
+	query_sql(
+		"SELECT c.name "+
+		"FROM takero_main.char c "+
+		"INNER JOIN takero_main.login l ON c.account_id = l.account_id "+
+		"WHERE l.last_ip IN(SELECT l.last_ip FROM takero_main.login l WHERE l.account_id = "+getcharid(3)+");",
+		.@myCharNames$
+	);
+
+	.@isPlayerAlreadyOnMap = 0;
+	for ( set .@i,0; .@i < getarraysize(.@myCharNames$); set .@i,.@i + 1) {
+		.@charIsOnMap = getmapxy(.@mapOfPlayer$, .@x, .@y, BL_PC, .@myCharNames$[.@i]) == 0 && .@mapOfPlayer$ == $world_boss_map$;
+		.@isPlayerAlreadyOnMap = .@isPlayerAlreadyOnMap || .@charIsOnMap;
+	}
+
+	mes .n$;
+	if(.@isPlayerAlreadyOnMap){
+		goto alreadyOnMap;
+	} else {
+		goto warpToMap;
+	}
+
+	warpToMap:
+		mes "You will be warped to the world boss map!";
+		next;
+		close2;
+		warp $world_boss_map$,0,0;
+		end;
+	end;
+
+	alreadyOnMap:
+		mes "You have already a character on the map!";
+		close;
+	end;
+
+	OnInit:
+		set .n$,"["+strnpcinfo(0)+"]";
+		set $world_boss_map$,"1@pop3";
+		freeloop(1);
+		while(1){
+			sleep 1000;
+			if($world_boss_active == 0){
+				hideonnpc strnpcinfo(0);
+			} else {
+				hideoffnpc strnpcinfo(0);
+			}
+		}
+		freeloop(0);
+	end;
+}
+
+1@pop3	mapflag	nomemo
+1@pop3	mapflag	nosave

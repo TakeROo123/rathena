@@ -21,6 +21,7 @@ mes "Dark Blinder";
 mes "Elven Ears";
 mes "Evil Wing Ears";
 mes "Glasses";
+mes "Brynhild";
 mes "and Small Ribbons";
 next;
 mes "What you want to do?"; 
@@ -30,7 +31,7 @@ mes "Remember slotting a headgear is a very complicated process in which you cou
 mes "so would you like to continue?";
 if(select("Go for it:No way")==2){close;}
 mes "Add slot to...";
-switch (select("Angel Wing Ears:Black Devil's Mask:Black Frame Glasses:Blush:Dark Blinder:Elven Ears:Evil Wing Ears:Glasses:Small Ribbons:Nothing")){
+switch (select("Angel Wing Ears:Black Devil's Mask:Black Frame Glasses:Blush:Dark Blinder:Elven Ears:Evil Wing Ears:Glasses:Small Ribbons:Brynhild:Nothing")){
 
 case 1: //Evil Wing Ears
 mes "Are you completely sure about adding the slot?";
@@ -215,7 +216,26 @@ close;
 
 goto L_norew;
 break;
-case 10: goto L_exit;
+case 10: //Brynhild
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it:Not really")==2){goto L_exit;}
+if (countitem(6396)>=1 && countitem(2383)>=1){
+if (rand(1,100)>25){
+delitem 6396,1;
+delitem 2383,1;
+goto L_sorry;
+}
+delitem 6396,1;
+delitem 2383,1;
+set zeny,zeny-100000;
+getitem 200000000,1;
+mes "Enjoy yours Brynhild [1]";
+close;
+}
+
+goto L_norew;
+break;
+case 11: goto L_exit;
 break;
 }
 break; 

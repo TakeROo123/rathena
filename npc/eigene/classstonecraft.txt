@@ -298,21 +298,34 @@ OnTouch_:
 						mes "but I do owe you. Just";
 						mes "take this and I hope we never";
 						mes "bump into each other again!";
+					next;						
+							    if(countitem(200000036)<1) goto lose;
+								if(countitem(671)<1) goto lose;
+		
 							delitem 200000036,1;
-							delitem 7711,1;
 							delitem 671,1;							
 							getItem 200000035,1;
-					}
+								disablenpc "Stultus#mor_03";
+								enablenpc "Stultus#mor_01";
+
+						end;
 					box2:
+					}
 						mes "Two, huh? I can dig it.";
 						mes "Now take these and I hope";
 						mes "we never see each other";
 						mes "ever again! Ciao, baby~";
+					next;						
+							    if(countitem(200000036)<2) goto lose;
+								if(countitem(671)<2) goto lose;
+						
 							delitem 200000036,2;
-							delitem 7711,2;
 							delitem 671,2;							
 							getItem 200000035,2;
-					}
+								disablenpc "Stultus#mor_03";
+								enablenpc "Stultus#mor_01";
+						end;
+					}	
 					box3:
 						mes "You want all three?";
 						mes "Heh, you're much smarter";
@@ -320,12 +333,30 @@ OnTouch_:
 						mes "these with my compliments,";
 						mes "but I hope we never bump";
 						mes "into each other ever again!";
+					next;						
+							    if(countitem(200000036)<3) goto lose;
+								if(countitem(671)<3) goto lose;	
+								
 							delitem 200000036,3;
-							delitem 7711,3;
 							delitem 671,3;
 							getItem 200000035,3;
-					}
-				}
+								disablenpc "Stultus#mor_03";
+								enablenpc "Stultus#mor_01";
+			
+						end;
+					lose:
+						mes "[^CD0000Security Willi^000000]";
+						mes "you don't have enough items...";
+						mes "you are wasting my time...";
+							goto exit;
+    						end;
+	
+    				exit:
+      				  enable_items;
+        					close;
+    end;	
+					}				
+				}	
 		if (rand(1,2) == 1) {
 			enablenpc "Stultus#mor_01";
 			disablenpc "Stultus#mor_03";
@@ -335,8 +366,8 @@ OnTouch_:
 			disablenpc "Stultus#mor_03";
 		}
 		close;
-	}
-	
+
+	}	
 	
 	
 //===================================================

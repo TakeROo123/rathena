@@ -262,6 +262,21 @@ function	script	F_CashSiegeTele	{
 	return;
 }
 
+function	script	F_SeSiegeTele	{
+	switch(select("Vidblainn:Himinn:Andlanger:Hljod:Skidbladnir:Mardol:Syr:Horn:Gefn:Banadis")) {
+	case 1: warp "sch_gld",97,188; end;
+	case 2: warp "sch_gld",293,95; end;
+	case 3: warp "sch_gld",287,253; end;
+	case 4: warp "sch_gld",138,94; end;
+	case 5: warp "sch_gld",70,315; end;
+	case 6: warp "aru_gld",162,269; end;
+	case 7: warp "aru_gld",83,47; end;
+	case 8: warp "aru_gld",68,156; end;
+	case 9: warp "aru_gld",295,344; end;
+	case 10: warp "aru_gld",295,108; end;
+	}
+	return;
+}
 // Curious Snowball
 //============================================================ 
 // - You can get an effect of Restore, Endure, or Wing of Butterfly.

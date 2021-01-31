@@ -50,6 +50,8 @@ takero,383,262,5	script	Lace	622,{
 	case 20764:	// C_Fallen_Angel_Wing
 	case 20765:	// C_Archangel_Wing
 	case 33028: //C TakeRo Wings of PVM God
+	case 20516:	// Costume Wings of Michael	
+	
 
 		break;
 	default:
@@ -136,7 +138,7 @@ takero,383,262,5	script	Lace	622,{
 
 	delitem .@id, 1;
 	delequip .@part;
-	if (rand(100) < 50) {
+	if (rand(100) < 70) {
 		mes "[Lace La Zard]";
 		mes "Beautiful!!";
 		mes "Did I really made this myself!!!!";
@@ -619,6 +621,7 @@ takero,383,258,8	script	Aver	618,{
 		case 31673:	// C_Picnic_Basket
 		case 31688:	// C_Poring_On_Shoulder
 		case 31699:	// C_Smiling_Eyes
+		case 33002: // sao		
 			// mid + low
 		case 19554:	// C_Hahoe_Mask
 		case 19563:	// C_Dragon_Arhat_Mask
@@ -638,6 +641,7 @@ takero,383,258,8	script	Aver	618,{
 		case 31505:	// C_Falcon_Mask
 		case 33052: // C Blade of Dragon
 		case 33011: // C Ultimaweapon
+	
 			break;
 		default:
 			mes "[Aver]";
@@ -770,7 +774,7 @@ takero,383,258,8	script	Aver	618,{
 		case 31611:	// C_Dark_Snake_Lord_Stall
 		case 31616:	// C_Sleep_Sheep_TW
 		case 31625:	// C_Protect_Cloth
-		case 31698:	// C_Pigtail_Red_Hood
+		case 31698:	// C_Pigtail_Red_Hood	
 			break;
 		default:
 			mes "[Aver]";
@@ -845,34 +849,34 @@ takero,383,258,8	script	Aver	618,{
 			close;
 		}
 		setarray .@stone_id[0],
-			25410, 25410, "Champion_Stone_Middle",
-			25414, 25414, "Sniper_Stone_Middle",
-			25418, 25418, "Professor_Stone_Middle",
-			25446, 25446, "Lord_Knight_Stone_Middle",
-			25451, 25451, "Creator_Stone_Middle",
-			25454, 25454, "High_Wizard_Stone_Middle",
-			25491, 25491, "Stalker_Stone_Middle",
-			25495, 25495, "Whitesmith_Stone_Middle",
-			25499, 25499, "Clown_Gypsy_Stone_Middle",
-			25707, 25707, "High_Priest_Stone_Middle",
-			25711, 25711, "Paladin_Stone_Middle",
-			25715, 25715, "Assassin_Cross_Stone_Middle",
-			25799, 25799, "Champion_Stone_II_Middle",
-			25807, 25807, "Stalker_Stone_II_Middle",
-			25844, 25844, "Soul_Linker_Stone_Middle",
-			25847, 25847, "Star_Gladiator_Stone_Middle",
-			25851, 25851, "Ninja_Stone_Middle",
-			25856, 25856, "Gunslinger_Stone_Middle",
-			25860, 25860, "Doram_Stone_Middle",
-			45001, 45001, "Sniper_Stone_II_Middle",
-			45005, 45005, "Mastersmith_Stone_II_Middle",
-			45009, 45009, "High_Priest_Stone_II_Middle",
-			45013, 45013, "High_Wizard_Stone_II_Middle",
-			45021, 45021, "Assassin_Cross_Stone_II_Middle",
-			1000219, 1000219, "Paladin_Stone_II_Middle",
-			1000298, 1000298, "Lord_Knight_Stone_II_Middle",
-			1000302, 1000302, "Biochemist_Stone_II_Middle",
-			1000306, 1000306, "Clown_Gypsy_Stone_II_Middle";
+			25410, 25410, //Champion_Stone_Middle",
+			25414, 25414, //Sniper_Stone_Middle",
+			25418, 25418, //Professor_Stone_Middle",
+			25446, 25446, //Lord_Knight_Stone_Middle",
+			25451, 25451, //Creator_Stone_Middle",
+			25454, 25454, //High_Wizard_Stone_Middle",
+			25491, 25491, //Stalker_Stone_Middle",
+			25495, 25495, //Whitesmith_Stone_Middle",
+			25499, 25499, //Clown_Gypsy_Stone_Middle",
+			25707, 25707, //High_Priest_Stone_Middle",
+			25711, 25711, //Paladin_Stone_Middle",
+			25715, 25715, //Assassin_Cross_Stone_Middle",
+			25799, 25799, //Champion_Stone_II_Middle",
+			25807, 25807, //Stalker_Stone_II_Middle",
+			25844, 25844, //Soul_Linker_Stone_Middle",
+			25847, 25847, //Star_Gladiator_Stone_Middle",
+			25851, 25851, //Ninja_Stone_Middle",
+			25856, 25856, //Gunslinger_Stone_Middle",
+			25860, 25860, //Doram_Stone_Middle",
+			45001, 45001, //Sniper_Stone_II_Middle",
+			45005, 45005, //Mastersmith_Stone_II_Middle",
+			45009, 45009, //High_Priest_Stone_II_Middle",
+			45013, 45013, //High_Wizard_Stone_II_Middle",
+			45021, 45021, //Assassin_Cross_Stone_II_Middle",
+			1000219, 1000219, //Paladin_Stone_II_Middle",
+			1000298, 1000298, //Lord_Knight_Stone_II_Middle",
+			1000302, 1000302, //Biochemist_Stone_II_Middle",
+			1000306, 1000306; //Clown_Gypsy_Stone_II_Middle";
 
 		break;
 	case 2:
@@ -882,36 +886,36 @@ takero,383,258,8	script	Aver	618,{
 			close;
 		}
 		setarray .@stone_id[0],
-			25411, 25411, "Champion_Stone_Lower",
-			25415, 25415, "Sniper_Stone_Lower",
-			25419, 25419, "Professor_Stone_Lower",
-			25447, 25447, "Lord_Knight_Stone_Lower",
-			25452, 25452, "Creator_Stone_Lower",
-			25455, 25455, "High_Wizard_Stone_Lower",
-			25492, 25492, "Stalker_Stone_Lower",
-			25496, 25496, "Whitesmith_Stone_Lower",
-			25500, 25500, "Clown_Gypsy_Stone_Lower",
-			25708, 25708, "High_Priest_Stone_Lower",
-			25712, 25712, "Paladin_Stone_Lower",
-			25716, 25716, "Assassin_Cross_Stone_Lower",
-			25798, 25798, "Champion_Stone_II_Lower",
-			25802, 25802, "Professor_Stone_II_Lower",
-			25806, 25806, "Stalker_Stone_II_Lower",
-			25845, 25845, "Soul_Linker_Stone_Lower",
-			25848, 25848, "Star_Gladiator_Stone_Lower",
-			25852, 25852, "Ninja_Stone_Lower",
-			25857, 25857, "Gunslinger_Stone_Lower",
-			25861, 25861, "Doram_Stone_Lower",
-			45002, 45002, "Sniper_Stone_II_Bottom",
-			45006, 45006, "Mastersmith_Stone_II_Bottom",
-			45010, 45010, "High_Priest_Stone_II_Bottom",
-			45014, 45014, "High_Wizard_Stone_II_Lower",
-			45022, 45022, "Paladin_Stone_II_Middle",
-			45022, 45022, "Assassin_Cross_Stone_II_Lower",
-			1000220, 1000220, "Paladin_Stone_II_Lower",
-			1000299, 1000299, "Lord_Knight_Stone_II_Lower",
-			1000303, 1000303, "Biochemist_Stone_II_Lower",
-			1000307, 1000307, "Clown_Gypsy_Stone_II_Lower",
+			25411, 25411, //Champion_Stone_Lower
+			25415, 25415, //Sniper_Stone_Lower
+			25419, 25419, //Professor_Stone_Lower
+			25447, 25447, //Lord_Knight_Stone_Lower
+			25452, 25452, //Creator_Stone_Lower
+			25455, 25455, //High_Wizard_Stone_Lower
+			25492, 25492, //Stalker_Stone_Lower
+			25496, 25496, //Whitesmith_Stone_Lower
+			25500, 25500, //Clown_Gypsy_Stone_Lower
+			25708, 25708, //High_Priest_Stone_Lower
+			25712, 25712, //Paladin_Stone_Lower
+			25716, 25716, //Assassin_Cross_Stone_Lower
+			25798, 25798, //Champion_Stone_II_Lower
+			25802, 25802, //Professor_Stone_II_Lower
+			25806, 25806, //Stalker_Stone_II_Lower
+			25845, 25845, //Soul_Linker_Stone_Lower
+			25848, 25848, //Star_Gladiator_Stone_Lower
+			25852, 25852, //Ninja_Stone_Lower
+			25857, 25857, //Gunslinger_Stone_Lower
+			25861, 25861, //Doram_Stone_Lower
+			45002, 45002, //Sniper_Stone_II_Bottom
+			45006, 45006, //Mastersmith_Stone_II_Bottom
+			45010, 45010, //High_Priest_Stone_II_Bottom
+			45014, 45014, //High_Wizard_Stone_II_Lower
+			45022, 45022, //Paladin_Stone_II_Middle
+			45022, 45022, //Assassin_Cross_Stone_II_Lower
+			1000220, 1000220, //Paladin_Stone_II_Lower
+			1000299, 1000299, //Lord_Knight_Stone_II_Lower
+			1000303, 1000303, //Biochemist_Stone_II_Lower
+			1000307, 1000307; //Clown_Gypsy_Stone_II_Lower
 
 		break;
 	default:
@@ -950,7 +954,7 @@ takero,383,258,8	script	Aver	618,{
 		close;
 
 	delequip .@part;
-	if (rand(1,100) < 51) {
+	if (rand(1,100) < 70) {
 		mes "[Aver]";
 		mes "Wow... Elegance!!";
 		mes "This is perfect... Wow!";
