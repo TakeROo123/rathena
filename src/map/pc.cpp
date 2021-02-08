@@ -6625,7 +6625,6 @@ int pc_jobid2mapid(unsigned short b_class)
 		case JOB_ARCH_BISHOP:           return MAPID_ARCH_BISHOP;
 		case JOB_MECHANIC:              return MAPID_MECHANIC;
 		case JOB_GUILLOTINE_CROSS:      return MAPID_GUILLOTINE_CROSS;
-		case JOB_SHADOW_CROSS:			return MAPID_SHADOW_CROSS;		
 		case JOB_STAR_EMPEROR:          return MAPID_STAR_EMPEROR;
 	//3-2 Jobs
 		case JOB_ROYAL_GUARD:           return MAPID_ROYAL_GUARD;
@@ -6670,7 +6669,7 @@ int pc_jobid2mapid(unsigned short b_class)
 		case JOB_BABY_SHADOW_CHASER:    return MAPID_BABY_SHADOW_CHASER;
 		case JOB_BABY_SOUL_REAPER:      return MAPID_BABY_SOUL_REAPER;
 	//Doram Jobs
-		case JOB_SUMMONER:              return MAPID_SUMMONER;			
+		case JOB_SUMMONER:              return MAPID_SUMMONER;
 		default:
 			return -1;
 	}
@@ -6780,7 +6779,6 @@ int pc_mapid2jobid(unsigned short class_, int sex)
 		case MAPID_ARCH_BISHOP:           return JOB_ARCH_BISHOP;
 		case MAPID_MECHANIC:              return JOB_MECHANIC;
 		case MAPID_GUILLOTINE_CROSS:      return JOB_GUILLOTINE_CROSS;
-		case MAPID_SHADOW_CROSS:		  return JOB_SHADOW_CROSS;		
 		case MAPID_STAR_EMPEROR:          return JOB_STAR_EMPEROR;
 	//3-2 Jobs
 		case MAPID_ROYAL_GUARD:           return JOB_ROYAL_GUARD;
@@ -6822,7 +6820,7 @@ int pc_mapid2jobid(unsigned short class_, int sex)
 		case MAPID_BABY_SHADOW_CHASER:    return JOB_BABY_SHADOW_CHASER;
 		case MAPID_BABY_SOUL_REAPER:      return JOB_BABY_SOUL_REAPER;
 	//Doram Jobs
-		case MAPID_SUMMONER:              return JOB_SUMMONER;	
+		case MAPID_SUMMONER:              return JOB_SUMMONER;
 		default:
 			return -1;
 	}
@@ -6833,9 +6831,7 @@ int pc_mapid2jobid(unsigned short class_, int sex)
  *----------------------------------------------------*/
 const char* job_name(int class_)
 {
-	switch (class_) {	
-	case JOB_SHADOW_CROSS:
-		return msg_txt(NULL,557);	
+	switch (class_) {
 	case JOB_NOVICE:
 	case JOB_SWORDMAN:
 	case JOB_MAGE:
@@ -6970,7 +6966,7 @@ const char* job_name(int class_)
 	case JOB_RANGER:
 	case JOB_ARCH_BISHOP:
 	case JOB_MECHANIC:
-	case JOB_GUILLOTINE_CROSS:	
+	case JOB_GUILLOTINE_CROSS:
 		return msg_txt(NULL,625 - JOB_RUNE_KNIGHT+class_);
 
 	case JOB_RUNE_KNIGHT_T:
@@ -7083,7 +7079,6 @@ const char* job_name(int class_)
 
 	case JOB_BABY_STAR_EMPEROR2:
 		return msg_txt(NULL,784);
-		
 
 	default:
 		return msg_txt(NULL,655);

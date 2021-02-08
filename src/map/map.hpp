@@ -219,10 +219,8 @@ enum e_mapid : uint64{
 	MAPID_BABY_GENETIC,
 	MAPID_BABY_SHADOW_CHASER,
 	MAPID_BABY_SOUL_REAPER,
-	MAPID_SHADOW_CROSS,
 // Additional constants
 	MAPID_ALL = UINT64_MAX
-	
 };
 
 //Max size for inputs to Graffiti, Talkie Box and Vending text prompts

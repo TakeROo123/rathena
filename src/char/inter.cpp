@@ -211,7 +211,6 @@ const char* job_name(int class_) {
 		case JOB_ARCH_BISHOP:
 		case JOB_MECHANIC:
 		case JOB_GUILLOTINE_CROSS:
-		case JOB_SHADOW_CROSS:
 			return msg_txt(75 - JOB_RUNE_KNIGHT+class_);
 
 		case JOB_RUNE_KNIGHT_T:
@@ -321,7 +320,7 @@ const char* job_name(int class_) {
 			return msg_txt(118);
 
 		case JOB_BABY_STAR_EMPEROR2:
-			return msg_txt(120);					
+			return msg_txt(120);
 
 		default:
 			return msg_txt(199);
