@@ -1,0 +1,292 @@
+einbroch,116,249,5	script	Security Willi	615,{
+    mes "[^CD0000Security Willi^000000]";
+    mes "what do you want here";
+        switch(select("- Access :- Nothing!")) {
+            case 1:
+                next;
+                goto access;
+                break;
+            default:
+                next;
+        	    goto stoptalking;
+                break;
+        }
+    close;
+    access:
+            mes "[^CD0000Security Willi^000000]";	
+            mes "so you important want to go to our masters.";
+            mes "let me see if you're ready.";
+            mes "if you have a specific coin for me i will let you in!";
+        next;
+
+            mes "[^CD0000Security Willi^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1 An old Coin^000000 / "+countitem(200000044)+" ea";
+	next;
+	    if(countitem(200000044)<1) goto lose;
+
+	    mes "OKAY!!!";
+	next;
+        delitem 200000044,1;
+            next;
+            mes "[^CD0000Security Willi^000000]";     
+            mes "lets go";       
+                warp "upin",14,321;
+		end;
+		
+	lose:
+		mes "[^CD0000Security Willi^000000]";
+		mes "you do not have a coin...";
+		mes "you are wasting my time...";
+		goto exit;
+    end;
+	
+	stoptalking:
+        mes "[^CD0000Security Willi^000000]";
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+	
+    exit:
+        enable_items;
+        close;
+    end;	
+}
+
+upin,19,326,5	script	Azubi Hans	768,{
+    mes "[^CD0000Azubi Hans^000000]";
+    mes "what do you want here....";
+        next;
+	mes "[^CD0000Azubi Hans^000000]";	
+    mes "how did you come in here....";
+        next;
+    mes "[^CD0000Azubi Hans^000000]";		
+    mes "this .... wannabe securety...";
+        next;
+    mes "[^CD0000Azubi Hans^000000]";		
+    mes "i hope Egon does not find out you are here...";
+        next;
+    mes "[^CD0000Azubi Hans^000000]";		
+    mes "go quickly tell me what you want";
+		next;
+    switch(select("- +19 Armor UP :- +19 Weapon UP :- Nothing!")) {
+        case 1:
+            goto armor;
+            break;
+        case 2:
+            goto weapon;
+            break;
+        default:
+        	goto stoptalking;
+            break;
+    }
+    close;
+
+    armor:
+            mes "[^CD0000Azubi Hans^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF+18 Armor up^000000 / "+countitem(33068)+" ea";
+	        mes "^5533FF100 Gold Coin ^000000 / "+countitem(671)+" ea";            
+	next;
+	    if(countitem(33068)<1) goto lose;
+	    if(countitem(671)<99) goto lose;        
+
+        delitem 33068,1;
+        delitem 671,100;        
+            next;
+            mes "[^CD0000Azubi Hans^000000]";     
+            mes "HF";       
+                getItem 33069,1;
+		end;
+
+    weapon:
+            mes "[^CD0000Azubi Hans^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF+18 Weapon up^000000 / "+countitem(33078)+" ea";
+	        mes "^5533FF100 Gold Coin ^000000 / "+countitem(671)+" ea";            
+	next;
+	    if(countitem(33078)<1) goto lose;
+	    if(countitem(671)<99) goto lose;        
+
+        delitem 33078,1;
+        delitem 671,100;        
+            next;
+            mes "[^CD0000Azubi Hans^000000]";     
+            mes "HF";       
+                getItem 33079,1;
+		end;	
+    	
+	lose:
+		mes "[^CD0000Azubi Hans^000000]";
+		mes "you do not have enough materials...";
+			next;
+		mes "[^CD0000Azubi Hans^000000]";			
+		mes "you are wasting my time...";
+			goto exit;
+    end;
+	
+	stoptalking:
+        mes "[^CD0000Azubi Hans^000000]";
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+	
+    exit:
+        enable_items;
+        close;
+    end;	
+}
+
+upin,23,333,5	script	Meister Old Man	412,{
+    mes "[^CD0000Meister Old Man^000000]";
+    mes "what do you want here";
+        switch(select("- Access :- Nothing!")) {
+            case 1:
+                next;
+                goto access;
+                break;
+            default:
+                next;
+        	    goto stoptalking;
+                break;
+        }
+    close;
+    access:
+            mes "[^CD0000Meister Old Man^000000]";	
+            mes "so you important want to go to our masters.";
+            mes "let me see if you're ready.";
+            mes "if you have a specific coin for me i will let you in!";
+        next;
+
+            mes "[^CD0000Meister Old Man^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1 TakeRo Coin^000000 / "+countitem(200000037)+" ea";
+	next;
+	    if(countitem(200000037)<1) goto lose;
+
+	    mes "OKAY!!!";
+	next;
+        delitem 200000037,1;
+            next;
+            mes "[^CD0000Meister Old Man^000000]";     
+            mes "lets go";       
+                warp "upout",239,215;
+		end;
+		
+	lose:
+		mes "[^CD0000Meister Old Man^000000]";
+		mes "you do not have a coin...";
+            next;
+		mes "you are wasting my time...";
+		goto exit;
+    end;
+	
+	stoptalking:
+        mes "[^CD0000Meister Old Man^000000]";
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+	
+    exit:
+        enable_items;
+        close;
+    end;
+}
+
+upout,230,216,5	script	Master Egon	412,{
+    mes "[^CD0000Master Egon^000000]";
+    mes "what do you want here....";
+        next;
+	mes "[^CD0000Master Egon^000000]";	
+    mes "how did you come in here....";
+        next;
+    mes "[^CD0000Master Egon^000000]";		
+    mes "this .... wannabe Old Man...";
+        next;
+    mes "[^CD0000Master Egon^000000]";		
+    mes "I don't have time so what do you want";
+		next;
+    switch(select("- +20 Armor UP :- +20 Weapon UP :- Nothing!")) {
+        case 1:
+            goto armor;
+            break;
+        case 2:
+            goto weapon;
+            break;
+        default:
+        	goto stoptalking;
+            break;
+    }
+    close;
+
+    armor:
+            mes "[^CD0000Master Egon^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF+19 Armor up^000000 / "+countitem(33069)+" ea";
+	        mes "^5533FF1 TakeRo Coin ^000000 / "+countitem(200000037)+" ea";            
+	next;
+	    if(countitem(33069)<1) goto lose;
+	    if(countitem(200000037)<1) goto lose;        
+
+        delitem 33069,1;
+        delitem 200000037,1;        
+            next;
+            mes "[^CD0000Master Egon^000000]";     
+            mes "HF";       
+                getItem 33070,1;
+            next;
+            mes "[^CD0000Master Egon^000000]";             
+            mes "and now good bye";
+            warp "einbroch",118,246;                
+		end;
+
+    weapon:
+            mes "[^CD0000Master Egon^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF+18 Weapon up^000000 / "+countitem(33079)+" ea";
+	        mes "^5533FF1 TakeRo Coin ^000000 / "+countitem(200000037)+" ea";            
+	next;
+	    if(countitem(33079)<1) goto lose;
+	    if(countitem(200000037)<1) goto lose;        
+
+        delitem 33079,1;
+        delitem 200000037,1;        
+            next;
+            mes "[^CD0000Master Egon^000000]";     
+            mes "HF";       
+                getItem 33080,1;
+            next;
+            mes "[^CD0000Master Egon^000000]";             
+            mes "and now good bye";
+            warp "einbroch",118,246;                  
+		end;	
+    	
+	lose:
+		mes "[^CD0000Master Egon^000000]";
+		mes "you do not have enough materials...";
+			next;
+		mes "[^CD0000Master Egon^000000]";			
+		mes "you are wasting my time...";
+			goto exit;
+    end;
+	
+	stoptalking:
+        mes "[^CD0000Master Egon^000000]";
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+	
+    exit:
+        enable_items;
+        close;
+    end;	
+}
+
+
+upin	mapflag	nomemo
+upin	mapflag	nosave
+upin	mapflag	noteleport
+
+upout	mapflag	nomemo
+upout	mapflag	nosave
+upout	mapflag	noteleport

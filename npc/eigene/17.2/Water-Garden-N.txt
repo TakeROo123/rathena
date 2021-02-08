@@ -1,0 +1,418 @@
+ba_maison,240,47,5	script	Sayhu	4_EP17_SCISSORE,{
+
+	if(checkquest(30053, PLAYTIME) == 2){
+		erasequest(30053);
+	}
+
+	switch(checkquest(30053, PLAYTIME)) {
+		case -1:
+		    mes "Sayhu";
+            mes "you are ready for the Water Garden N";
+            next;
+			setquest 30053;
+			switch(select("Create", "Enter")) {
+				case 1:
+					goto createInstance;
+					end;
+				case 2:
+					goto enterInstance;
+					end;
+			}
+			end;
+		case 0:
+			goto enterInstance;
+			end;
+		case 1:
+			mes "your cooldown is still available";
+			mes "please wait for the time";
+			end;
+	}
+	end;
+
+	createInstance:
+			if(is_party_leader() == false) {
+				mes "you need to be an party leader";
+				end;
+			}
+			set .@i_inst, instance_create(.instance_name$);
+			end;
+		end;
+	
+	enterInstance:
+		switch(instance_enter(.instance_name$)) {
+				case IE_NOMEMBER: // Party/Guild/Clan not found (for party/guild/clan modes).
+					mes "Party not found";
+					end;
+				case IE_OTHER: // Other errors (invalid instance name, instance doesn't match with character/party/guild/clan).
+					mes "an unknown error has occurred";
+					end;
+				case IE_NOINSTANCE: // Character/Party/Guild/Clan does not have an instance.
+					mes "Create a instance first";
+					end;
+				case IE_OK:
+					mapannounce "glast_01", strcharinfo(0)+ "is entering "+.instance_name$, bc_map, "0x00ff99", FW_NORMAL, 12;
+					end;
+				
+			}
+		end;
+
+OnInit:
+    set .instance_name$, "Water Garden N";
+    end;
+}
+
+ba_maison,236,50,5	script	12544	123,{
+    erasequest 30053;
+}
+
+//============================================
+//====================FL1=====================
+//============================================
+1@ghg,212,59,5	script	Gardener#1	4_EP17_SCISSORE,{
+//if(!is_party_leader()) { end; }
+
+if('floor1$){ end; }
+'floor1$ = 1;
+
+    mes "Hetilla";
+    mes "We welcome all guests to the Ginseng Garden.";
+	mes "are you here to see the Papillas?";
+	mes "The Papillas are very senitive to intruders these days";
+    next;
+    mes "The Papillas are playing around over there";
+	mes "They use some sort of psychedelic substances from their wings to sprint short distances or cast dangerous magic!";
+	next;
+	mes "athough I'm just repeating the Gardener's broadcast, please be careful.";
+	mes "If you clear all the wild animals and overgrown plants, to the next area will open";		
+	close2;		
+    
+	'partyId$ = getcharid(1);
+
+		areamonster 'map$,216,99,267,47,"Papilla",atoi('pilv$),6,instance_npcname("Gardener#1")+"::OnMyMobDead";
+		areamonster 'map$,216,99,267,47,"Ruba Papilla",atoi('pilr$),6,instance_npcname("Gardener#1")+"::OnMyMobDead";
+		areamonster 'map$,216,99,267,47,"Cae Papilla",atoi('pilb$),6,instance_npcname("Gardener#1")+"::OnMyMobDead";
+		areamonster 'map$,216,99,267,47,"Aries",atoi('arie$),8,instance_npcname("Gardener#1")+"::OnMyMobDead";
+
+
+
+'mobsFloor = 26; 
+end;
+
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+		if(--'mobsFloor <= 0) {
+		enablenpc instance_npcname ("wg2");
+		mapannounce instance_mapname('map$),"Evalutations have been completed. Now let's go to the next area.",bc_map,'announceColor$;
+	}
+
+end;
+OnInstanceInit:
+	'map$ = instance_mapname("1@ghg");
+	'verp$ = 20665;
+	'pilv$ = 20669;
+	'pilr$ = 20671;
+	'pilb$ = 20674;
+	'arie$ = 20677;
+	'beta$ = 20631;
+	'smvp$ = 20667;	
+
+
+	
+	'floor1$ = 0;
+	'floor2$ = 0;
+	'floor3$ = 0;
+	'floor4$ = 0;
+	'floor5$ = 0;
+
+	disablenpc instance_npcname ("wg2");
+	disablenpc instance_npcname ("wg3");
+	disablenpc instance_npcname ("wg4");
+	disablenpc instance_npcname ("wg5");
+	disablenpc instance_npcname ("Gardener#4");
+
+
+	'announceColor$ = "0x009933";
+	'mvpAnnounce$ = "0xee6600";
+	
+	'mvpAlive$ = 1;
+end;
+} 
+//============================================
+//====================FL2=====================
+//============================================
+1@ghg,317,69,5	script	Gardener#2	4_EP17_SCISSORE,{
+//if(!is_party_leader()) { end; }
+
+if('floor2$){ end; }
+'floor2$ = 1;
+
+    mes "Hetilla";
+    mes "Papillas and Greater Papillas are wandering around.";
+    next;
+    mes "The Papillas are following some rogue gardeners";
+	next;
+	mes "Pn top of that, the middle gardener, who used to take care of all the isputes had been removed by force.";
+	next;
+	mes "Since they're attacking the guests,";
+	mes "pleases  take care of all the rogue gardeners.";		
+	close2;		
+    
+	'partyId$ = getcharid(1);
+
+		areamonster 'map$,319,64,347,92,"Papilla",atoi('pilv$),2,instance_npcname("Gardener#2")+"::OnMyMobDead";
+		areamonster 'map$,319,64,347,92,"Cae Papilla",atoi('pilb$),2,instance_npcname("Gardener#2")+"::OnMyMobDead";
+		areamonster 'map$,319,64,347,92,"Aries",atoi('arie$),4,instance_npcname("Gardener#2")+"::OnMyMobDead";
+
+
+
+'mobsFloor = 8; 
+end;
+
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+		if(--'mobsFloor <= 0) {
+		enablenpc instance_npcname ("wg3");
+		mapannounce instance_mapname('map$),"Idid a thorough search for any interrupters. Now let's go to the next area.",bc_map,'announceColor$;
+	}
+
+end;
+}
+//============================================
+//====================FL3=====================
+//============================================
+1@ghg,340,145,5	script	Gardener#3	4_EP17_SCISSORE,{
+
+    mes "Aditura";
+    mes "Garden is a beutiful place. But nowadays it's infested with groups of.";
+	mes "troublesome wild critters and plants";
+    next;
+    mes "Yubeche";
+	mes "Dear quests, I'd like to requests that you prune out all theese wild critters and plants.";
+	next;
+    mes "Aditura";
+	mes "The management officer that controls the door to the next area awaits at the end";
+	next;
+    mes "Aditura";		
+	mes "he's a little slow but yiu'll just have to wait as he'll certainly open the dor.";		
+	close;		
+}
+
+1@ghg,311,149,1	script	#wgsp1	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+		if('floor3$){ end; }
+		'floor3$ = 1;
+
+			areamonster 'map$,306,152,317,147,"Verporta",atoi('verp$),4,instance_npcname("#wgsp1")+"::OnMyMobDead";
+			areamonster 'map$,306,152,317,147,"Scissor Beta",atoi('beta$),3,instance_npcname("#wgsp1")+"::OnMyMobDead";
+
+		'mobsFloor = 7;
+
+		end;
+	OnMyMobDead:
+		dispbottom 'mobsFloor;
+		if(--'mobsFloor <= 0) {
+	}
+}
+//============================================
+//====================FL4=====================
+//============================================
+1@ghg,295,149,1	script	#wgsp3	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+		if('floor4$){ end; }
+		'floor4$ = 1;
+
+			areamonster 'map$,285,147,293,152,"Verporta",atoi('verp$),4,instance_npcname("#wgsp2")+"::OnMyMobDead";
+			areamonster 'map$,285,147,293,152,"Scissor Beta",atoi('beta$),3,instance_npcname("#wgsp2")+"::OnMyMobDead";
+
+		'mobsFloor = 7;
+
+		end;
+	OnMyMobDead:
+		dispbottom 'mobsFloor;
+		if(--'mobsFloor <= 0) {
+	}
+}
+//============================================
+//====================FL5=====================
+//============================================
+1@ghg,250,149,1	script	#wgsp4	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+		if('floor5$){ end; }
+		'floor5$ = 1;
+
+			areamonster 'map$,243,152,251,147,"Scissor Beta",atoi('beta$),4,instance_npcname("#wgsp4")+"::OnMyMobDead";
+
+		'mobsFloor = 4;
+
+		end;
+	OnMyMobDead:
+		dispbottom 'mobsFloor;
+		if(--'mobsFloor <= 0) {
+	}
+}
+//============================================
+//====================FL6=====================
+//============================================
+1@ghg,232,155,1	script	#wgsp5	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+		if('floor6$){ end; }
+		'floor6$ = 1;
+
+			areamonster 'map$,229,166,234,157,"Verporta",atoi('verp$),4,instance_npcname("#wgsp5")+"::OnMyMobDead";
+			areamonster 'map$,229,166,234,157,"Scissor Beta",atoi('beta$),3,instance_npcname("#wgsp5")+"::OnMyMobDead";
+
+		'mobsFloor = 7;
+
+		end;
+	OnMyMobDead:
+		dispbottom 'mobsFloor;
+		if(--'mobsFloor <= 0) {
+	}
+}
+//============================================
+//====================FL7=====================
+//============================================
+1@ghg,254,174,1	script	#wgsp6	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+		if('floor7$){ end; }
+		'floor7$ = 1;
+
+			areamonster 'map$,267,167,256,171,"Verporta",atoi('verp$),4,instance_npcname("#wgsp6")+"::OnMyMobDead";
+			areamonster 'map$,267,167,256,171,"Scissor Beta",atoi('beta$),3,instance_npcname("#wgsp6")+"::OnMyMobDead";
+
+		'mobsFloor = 7;
+
+		end;
+	OnMyMobDead:
+		dispbottom 'mobsFloor;
+		if(--'mobsFloor <= 0) {
+	}
+}
+//============================================
+//====================FL8=====================
+//============================================
+
+1@ghg,282,173,1	script	#wgsp7	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+		if('floor8$){ end; }
+		'floor8$ = 1;
+
+			areamonster 'map$,295,176,285,171,"Verporta",atoi('verp$),4,instance_npcname("#wgsp7")+"::OnMyMobDead";
+			areamonster 'map$,295,167,285,171,"Scissor Beta",atoi('beta$),3,instance_npcname("#wgsp7")+"::OnMyMobDead";
+
+		'mobsFloor = 7;
+
+		end;
+	OnMyMobDead:
+		dispbottom 'mobsFloor;
+		if(--'mobsFloor <= 0) {
+	}
+}
+
+//============================================
+//====================FL9=====================
+//============================================
+1@ghg,324,174,1	script	#wgsp8	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+		if('floor9$){ end; }
+		'floor9$ = 1;
+
+			areamonster 'map$,335,176,325,171,"Verporta",atoi('verp$),4,instance_npcname("#wgsp8")+"::OnMyMobDead";
+			areamonster 'map$,335,167,325,171,"Scissor Beta",atoi('beta$),3,instance_npcname("#wgsp8")+"::OnMyMobDead";
+
+		'mobsFloor = 7;
+
+		end;
+	OnMyMobDead:
+		dispbottom 'mobsFloor;
+		if(--'mobsFloor <= 0) {
+		enablenpc instance_npcname ("Gardener#4");
+	}
+}
+//============================================
+//====================FL10=====================
+//============================================
+1@ghg,343,175,5	script	Gardener#4	4_EP17_SCISSORE,{
+
+    mes "Higel";
+    mes "Next garden... portal creation complete...";
+	mes "at 12 o'clock... Use it... Thank you...";
+    next;
+    mes "Higel";
+	mes "After getting there... the Papillas in the Maze Garden... clear them out... please.";
+	enablenpc instance_npcname ("wg4");		
+	close;		
+}
+
+//============================================
+//====================FL11====================
+//============================================
+1@ghg,305,243,1	script	#wgsp9	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+		if('floor10$){ end; }
+		'floor10$ = 1;
+
+			areamonster 'map$,270,311,347,234,"Verporta",atoi('verp$),4,instance_npcname("#wgsp9")+"::OnMyMobDead";
+			areamonster 'map$,270,311,347,234,"Papilla",atoi('pilv$),6,instance_npcname("#wgsp9")+"::OnMyMobDead";
+			areamonster 'map$,270,311,347,234,"Ruba Papilla",atoi('pilr$),6,instance_npcname("#wgsp9")+"::OnMyMobDead";
+			areamonster 'map$,270,311,347,234,"Cae Papilla",atoi('pilb$),6,instance_npcname("#wgsp9")+"::OnMyMobDead";
+			areamonster 'map$,270,311,347,234,"Aries",atoi('arie$),8,instance_npcname("#wgsp9")+"::OnMyMobDead";
+
+		'mobsFloor = 30;
+
+		end;
+	OnMyMobDead:
+		dispbottom 'mobsFloor;
+		if(--'mobsFloor <= 0) {
+		enablenpc instance_npcname ("wg5");
+	}
+}
+
+//============================================
+//================FL12 MVP====================
+//============================================
+
+1@ghg,183,289,1	script	Gardener#5	4_EP17_SCISSORE,{
+
+if('canleave$){
+	getitem 1000103,5;
+	getitem 100160,1;
+	completequest(30053);
+	warp "ba_maison",237,48;
+	end;
+}
+
+	if('floor11$){ end; }
+		'floor11$ = 1;
+			disablenpc instance_npcname ("wg2");
+			monster 'map$,182,287,"Silva Papilla",atoi('smvp$),1,instance_npcname("Gardener#5")+"::OnMyMobDead";
+
+
+
+		'mobsFloor = 1;
+
+	end;
+OnMyMobDead:
+	'mvpAlive$ = 0;
+	'canleave$ = 1;
+	enablenpc instance_npcname("Gardener#5");
+}
+
+//============================================
+//==================Warps=====================
+//============================================
+1@ghg,75,69,0	warp	wg1	2,2,1@ghg,208,57
+1@ghg,271,68,0	warp	wg2	2,2,1@ghg,311,67
+1@ghg,343,102,0	warp	wg3	2,2,1@ghg,343,139
+1@ghg,343,187,0	warp	wg4	2,2,1@ghg,305,243
+1@ghg,258,310,0	warp	wg5	2,2,1@ghg,189,287
+
+

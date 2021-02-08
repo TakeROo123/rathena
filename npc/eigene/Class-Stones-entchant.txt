@@ -138,7 +138,7 @@ takero,383,262,5	script	Lace	622,{
 
 	delitem .@id, 1;
 	delequip .@part;
-	if (rand(100) < 50) {
+	if (rand(100) < 70) {
 		mes "[Lace La Zard]";
 		mes "Beautiful!!";
 		mes "Did I really made this myself!!!!";
@@ -953,7 +953,7 @@ takero,383,258,8	script	Aver	618,{
 		close;
 
 	delequip .@part;
-	if (rand(1,100) < 51) {
+	if (rand(1,100) < 70) {
 		mes "[Aver]";
 		mes "Wow... Elegance!!";
 		mes "This is perfect... Wow!";

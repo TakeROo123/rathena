@@ -1,0 +1,335 @@
+//===== rAthena Script =======================================
+//= 17.1 Daily Quest - Help the Farm
+//===== By ===================================================
+//= DatPanda
+//===== Version ==============================================
+//= 1.0 - Initial Version
+//===== Tested With ==========================================
+//= rAthena 06/15/2020 Revision
+//= GIT Hash: 60d03a1978c2c2d8ebf5810582bfab69cb3392df
+//===== Description ==========================================
+//= https://irowiki.org/wiki/Illusion_Daily_Quests#My_Name_is_Morning
+//= The text is done by myself.
+//===== Comments =============================================
+// bla
+//===== Credits ==============================================
+//= DatPanda
+//============================================================
+sp_cor,246,97,4	script	Farmhand	49,{
+    .@waitingQuestId = 16365;
+    .@questId = 16364;
+    $farmhand_quest_id = .@questId
+    .@rewardid = 25723;
+    .@rewardamount = 1;
+    .@rewardid1 = 25669;
+    .@rewardamount1 = 5;    
+    .@rewardbaseexp = 244000;
+    .@rewardjobexp = 300000;
+
+    start:
+        .@questStatusWaiting = checkquest(.@waitingQuestId,PLAYTIME);
+        .@questStatus = checkquest(.@questId);
+
+        if(.@questStatusWaiting == 0 || .@questStatusWaiting == 1){ // 0-1 -> time limit not reached
+            goto alreadyFinished;
+            close;
+        } else if(.@questStatusWaiting == 2){  // 2 -> time limit reached -> continue
+            erasequest .@waitQuestId;
+        } else { // -1 -> not there! -> continue
+
+        }
+
+        switch(.@questStatus) {
+            case -1:
+                goto startQuest;
+                break;
+            case 0:
+            case 1:
+                goto questInProgress;
+                break;
+            case 2:
+                goto restartQuest;
+                break;
+            default:
+                goto bye;
+                break;
+        }
+    end;
+
+    goto start;
+
+    alreadyFinished:
+        mes .n$;
+        mes "Today we're finished! Please help me again tomorrow!";
+        close;
+    end;
+
+    questInProgress:
+        if(didPumpkin > 0 && didGrapes > 0 && didBeans > 0) {
+            completequest .@questId;
+            setquest .@waitingQuestId;
+            mes .n$;
+            mes "You took care of them all. For an adventurer, you're pretty good at tendin' to gardens.";
+            next;
+            mes .n$;
+            mes "We don't have anythin' to give you, but maybe you could have these components that we've found around here. I saw the mercenaries collectin' them. Don't you need them, too?";
+            goto givereward;
+        } else {
+            mes .n$;
+            mes "For the grapes, please catch aphids. For the green beans, spread fertilizer. And for the pumpkins pull weeds. since you know the drill, I won't say more.";
+            close;
+        }
+    end;
+
+    givereward:
+        mes .n$;
+        mes "Here is your reward!";
+        getitem .@rewardid,.@rewardamount;
+        getitem .@rewardid1,.@rewardamount1;        
+        getexp .@rewardbaseexp,.@rewardjobexp;
+        close;
+    end;
+
+    bye:
+        mes .n$;
+        mes "See you later!";
+        close;
+    end;
+
+    startQuest:
+        mes .n$;
+        mes "Since you came along, I've been havin' more things to do, and there's only so much one man can do.";
+        switch(select("- Help :- Do not help.")) {
+            case 1:
+                next;
+                setquest .@questId;
+                didPumpkin = 0;
+                didGrapes = 0;
+                didBeans = 0;
+                mes .n$;
+                mes "Thank you. We've got grapes, green beans, and pumpkins, and I believe I've told you they each have different needs.";
+                questinfo_refresh;
+                close;
+                break;
+            default:
+                goto bye;
+                break;
+        }        
+    end;
+
+    restartQuest:
+        mes .n$;
+        mes "Enough time has passed for our crops to need tendin' again. Would you help us again?";
+        next;
+        mes .n$;
+        mes "Since you came along, I've been havin' more things to do, and there's only so much one man can do.";
+        switch(select("- Help :- Do not help.")) {
+            case 1:
+                next;
+                erasequest .@questId;
+                setquest .@questId;
+                didPumpkin = 0;
+                didGrapes = 0;
+                didBeans = 0;
+                mes .n$;
+                mes "Thank you. We've got grapes, green beans, and pumpkins, and I believe I've told you they each have different needs.";
+                next;
+                mes .n$;
+                mes "For the grapes, please catch aphids. For the green beans, spread fertilizer. And for the pumpkins pull weeds. since you know the drill, I won't say more.";
+                questinfo_refresh;
+                close;
+                break;
+            default:
+                goto bye;
+                break;
+        }        
+    end;
+
+    OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+        questinfo QTYPE_DAILYQUEST,QMARK_GREEN,"(checkQuest(16364) == -1 || checkQuest(16364) == 2) && (checkQuest(16365,PLAYTIME) == -1 || checkQuest(16365) == 2)";
+        questinfo QTYPE_QUEST2,QMARK_GREEN,"checkQuest(16364) == 1 && didPumpkin == 1 && didGrapes == 1 && didBeans == 1 && (checkQuest(16365,PLAYTIME) == -1 || checkQuest(16365) == 2)";
+    end;
+}
+
+sp_cor,240,87,4	script	Pumpkins	3103,{    
+    if(checkquest($farmhand_quest_id) == 1 && didPumpkin == 0){
+        mes .n$;
+        mes "These pumpkin vines look a little bit lifeless.";
+        switch(select("- Catch aphids :- Spread fertilizer :- Pull weeds")) {
+            case 1:
+                next;
+                mes .n$;
+                mes "I caught some aphids around the pumpkin vines.";
+                goto notcorrect;
+                break;
+            case 2:
+                next;
+                mes .n$;
+                mes "I did spread some fertilizer around the pumpkin vines.";
+                goto notcorrect;
+                break;
+            case 3:
+                next;
+                mes .n$;
+                mes "I pulled weeds around the pumpkin vines.";
+                .@rng = rand(0,100);
+                if(.@rng < 33){
+                    goto correct;
+                } else {
+                    goto notcorrect;
+                }
+                break;
+            default:
+                goto notcorrect;
+                break;
+        }
+    } else {
+        close;
+    }
+
+    notcorrect:
+        next;
+        mes .n$;
+        mes "Why do they still look wilted?";
+        close;
+    end;
+
+    correct:
+        next;
+        mes .n$;
+        mes "Ooooh, I can tell the pumpkins are happy now!";
+        didPumpkin = 1;
+        questinfo_refresh;
+        close;
+    end;
+
+    OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+        questinfo QTYPE_CLICKME,QMARK_PURPLE,"checkQuest(16364) == 1 && didPumpkin == 0";
+    end;
+}
+
+sp_cor,248,86,4	script	Grapes	3103,{    
+    if(checkquest($farmhand_quest_id) == 1 && didGrapes == 0){
+        mes .n$;
+        mes "These grape vines look a little bit lifeless.";
+        switch(select("- Catch aphids :- Spread fertilizer :- Pull weeds")) {
+            case 1:
+                next;
+                mes .n$;
+                mes "I caught some aphids around the grape vines.";
+                .@rng = rand(0,100);
+                if(.@rng < 33){
+                    goto correct;
+                } else {
+                    goto notcorrect;
+                }
+                break;
+            case 2:
+                next;
+                mes .n$;
+                mes "I did spread some fertilizer around the grape vines.";
+                goto notcorrect;
+                break;
+            case 3:
+                next;
+                mes .n$;
+                mes "I pulled weeds around the grape vines.";
+                goto notcorrect;
+                break;
+            default:
+                goto notcorrect;
+                break;
+        }
+    } else {
+        close;
+    }
+
+    notcorrect:
+        next;
+        mes .n$;
+        mes "Why do they still look wilted?";
+        close;
+    end;
+
+    correct:
+        next;
+        mes .n$;
+        mes "Ooooh, I can tell the grapes are happy now!";
+        didGrapes = 1;
+        questinfo_refresh;
+        close;
+    end;
+
+    OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+        questinfo QTYPE_CLICKME,QMARK_PURPLE,"checkQuest(16364) == 1 && didGrapes == 0";
+    end;
+}
+
+sp_cor,160,136,4	script	Green Beans	3103,{    
+    if(checkquest($farmhand_quest_id) == 1 && didBeans == 0){
+        mes .n$;
+        mes "These green beans look a little bit lifeless.";
+        switch(select("- Catch aphids :- Spread fertilizer :- Pull weeds")) {
+            case 1:
+                next;
+                mes .n$;
+                mes "I caught some aphids around the green beans.";
+               goto notcorrect;
+                break;
+            case 2:
+                next;
+                mes .n$;
+                mes "I did spread some fertilizer around the green beans.";
+                 .@rng = rand(0,100);
+                if(.@rng < 33){
+                    goto correct;
+                } else {
+                    goto notcorrect;
+                }
+                break;
+            case 3:
+                next;
+                mes .n$;
+                mes "I pulled weeds around the green beans.";
+                goto notcorrect;
+                break;
+            default:
+                goto notcorrect;
+                break;
+        }
+    } else {
+        close;
+    }
+
+    notcorrect:
+        next;
+        mes .n$;
+        mes "Why do they still look wilted?";
+        close;
+    end;
+
+    correct:
+        next;
+        mes .n$;
+        mes "Ooooh, I can tell the grapes are happy now!";
+        didBeans = 1;
+        questinfo_refresh;
+        close;
+    end;
+
+    OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+        questinfo QTYPE_CLICKME,QMARK_PURPLE,"checkQuest(16364) == 1 && didBeans == 0";
+    end;
+}
+
+-	script	refresh_questinfo	-1,{
+    OnPCLoadMapEvent:
+        questinfo_refresh;
+    end;
+}
+
+sp_cor	mapflag	loadevent

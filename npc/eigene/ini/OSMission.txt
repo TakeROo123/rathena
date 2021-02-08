@@ -1,0 +1,288 @@
+sp_cor,160,55,5	script	Operation Officer	4_EP17_KAYA,{
+    	if(checkquest(30048, PLAYTIME) == 2){
+		erasequest(30048);
+	}
+
+	switch(checkquest(30048, PLAYTIME)) {
+		case -1:
+            mes "Operation Officer";
+            mes "you are ready for theOS Mission";
+            next;
+			switch(select("Create", "Enter")) {
+				case 1:
+					goto createInstance;
+					end;
+				case 2:
+					goto enterInstance;
+					end;
+			}
+			end;
+		case 0:
+			goto enterInstance;
+			end;
+		case 1:
+			mes "your cooldown is still available";
+			mes "please wait for the time";
+			end;
+	}
+	end;
+
+	createInstance:
+			if(is_party_leader() == false) {
+				mes "you need to be an party leader";
+				end;
+			}
+			set .@i_inst, instance_create(.instance_name$);
+			end;
+		end;
+	
+	enterInstance:
+		switch(instance_enter(.instance_name$)) {
+				case IE_NOMEMBER: // Party/Guild/Clan not found (for party/guild/clan modes).
+					mes "Party not found";
+					end;
+				case IE_OTHER: // Other errors (invalid instance name, instance doesn't match with character/party/guild/clan).
+					mes "an unknown error has occurred";
+					end;
+				case IE_NOINSTANCE: // Character/Party/Guild/Clan does not have an instance.
+					mes "Create a instance first";
+					end;
+				case IE_OK:
+                    setquest 30048;
+					mapannounce "sp_os", strcharinfo(0)+ "is entering "+.instance_name$, bc_map, "0x00ff99", FW_NORMAL, 12;
+					end;
+				
+			}
+		end;
+
+OnInit:
+    set .instance_name$, "OS Mission";
+    end;
+}
+// ===================================================
+// ============== Floor 1 ============================
+// ===================================================
+1@os_a,333,40,1	script	#os1	HIDDEN_NPC,3,3,{
+//if(!is_party_leader()) { end; }
+
+if('floor1$) { end; }
+'floor1$ = 1;
+
+'partyId$ = getcharid(1);
+
+
+areamonster 'map$,299,85,291,89,"Dolor",atoi('dolor$),5,instance_npcname("#os1")+"::OnMyMobDead";
+areamonster 'map$,299,85,291,89,"Bellare",atoi('bellare$),5,instance_npcname("#os1")+"::OnMyMobDead";
+areamonster 'map$,299,85,291,89,"Twin Caput",atoi('twin$),3,instance_npcname("#os1")+"::OnMyMobDead";
+
+
+
+
+'mobsFloor = 13;
+
+hideonnpc instance_npcname("#os1");
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: The only thing we can do is put them to rest so they are no longer in pain.",bc_map,'announceColor$;
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: If you purify the people who have been cursed, you will still have time to head to the next room.",bc_map,'announceColor$;
+end;
+
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+	if(--'mobsFloor <= 0) {
+		announce "1 fertig lauf zu 2 und jen stinkt",bc_all,"0x70dbdb";
+		sleep 5000;
+	}
+end;
+OnInstanceInit:
+	'map$ = instance_mapname("1@os_a");
+	'twin$ = 20365;
+	'bellare$ = 20355;
+	'dolor$ = 20361;
+	'miguel$ = 20346;
+
+	
+	'floor1$ = 0;
+	'floor2$ = 0;
+	'floor3$ = 0;
+	'floor4$ = 0;
+	'floor5$ = 0;
+	'floor6$ = 0;
+
+	'announceColor$ = "0x009933";
+	'mvpAnnounce$ = "0xee6600";
+	
+	'mvpAlive$ = 1;
+end;
+}
+
+// ===================================================
+// ============== Floor 2 ============================
+// ===================================================
+
+1@os_a,268,94,1	script	#os2	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+if('floor2$){ end; }
+'floor2$ = 1;
+
+areamonster 'map$,247,68,271,56,"Dolor",atoi('dolor$),8,instance_npcname("#os2")+"::OnMyMobDead";
+areamonster 'map$,247,68,271,56,"Bellare",atoi('bellare$),8,instance_npcname("#os2")+"::OnMyMobDead";
+areamonster 'map$,247,68,271,56,"Twin Caput",atoi('twin$),4,instance_npcname("#os2")+"::OnMyMobDead";
+
+
+
+
+'mobsFloor = 20;
+
+hideonnpc instance_npcname("#os2");
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: The only thing we can do is put them to rest so they are no longer in pain.",bc_map,'announceColor$;
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: If you purify the people who have been cursed, you will still have time to head to the next room.",bc_map,'announceColor$;
+end;
+
+end;
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+	if(--'mobsFloor <= 0) {
+		sleep 5000;
+	}
+}
+
+// ===================================================
+// ============== Floor 3 ============================
+// ===================================================
+1@os_a,243,120,1	script	#os3	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+if('floor3$){ end; }
+'floor3$ = 1;
+
+areamonster 'map$,198,125,223,144,"Dolor",atoi('dolor$),8,instance_npcname("#os3")+"::OnMyMobDead";
+areamonster 'map$,198,125,223,144,"Bellare",atoi('bellare$),8,instance_npcname("#os3")+"::OnMyMobDead";
+areamonster 'map$,198,125,223,144,"Twin Caput",atoi('twin$),4,instance_npcname("#os3")+"::OnMyMobDead";
+
+
+
+
+'mobsFloor = 20;
+
+hideonnpc instance_npcname("#os3");
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: The only thing we can do is put them to rest so they are no longer in pain.",bc_map,'announceColor$;
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: If you purify the people who have been cursed, you will still have time to head to the next room.",bc_map,'announceColor$;
+end;
+
+end;
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+	if(--'mobsFloor <= 0) {
+		sleep 5000;
+	}
+}
+
+// ===================================================
+// ============== Floor 4 ============================
+// ===================================================
+1@os_a,243,120,1	script	#os4	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+if('floor4$){ end; }
+'floor4$ = 1;
+
+areamonster 'map$,198,125,223,144,"Dolor",atoi('dolor$),8,instance_npcname("#os4")+"::OnMyMobDead";
+areamonster 'map$,198,125,223,144,"Bellare",atoi('bellare$),8,instance_npcname("#os4")+"::OnMyMobDead";
+areamonster 'map$,198,125,223,144,"Twin Caput",atoi('twin$),4,instance_npcname("#os4")+"::OnMyMobDead";
+
+
+
+
+'mobsFloor = 20;
+
+hideonnpc instance_npcname("#os3");
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: The only thing we can do is put them to rest so they are no longer in pain.",bc_map,'announceColor$;
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: If you purify the people who have been cursed, you will still have time to head to the next room.",bc_map,'announceColor$;
+end;
+
+end;
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+	if(--'mobsFloor <= 0) {
+		sleep 5000;
+	}
+}
+
+// ===================================================
+// ============== Floor 5 ============================
+// ===================================================
+1@os_a,236,158,1	script	#os5	HIDDEN_NPC,5,5,{
+
+
+
+if('floor5$){ end; }
+'floor5$ = 1;
+areamonster 'map$,208,182,238,195,"Dolor",atoi('dolor$),8,instance_npcname("#os5")+"::OnMyMobDead";
+areamonster 'map$,208,182,238,195,"Bellare",atoi('bellare$),8,instance_npcname("#os5")+"::OnMyMobDead";
+areamonster 'map$,208,182,238,195,"Twin Caput",atoi('twin$),4,instance_npcname("#os5")+"::OnMyMobDead";
+
+
+
+
+'mobsFloor = 20;
+
+hideonnpc instance_npcname("#os5");
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: The only thing we can do is put them to rest so they are no longer in pain.",bc_map,'announceColor$;
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: If you purify the people who have been cursed, you will still have time to head to the next room.",bc_map,'announceColor$;
+end;
+
+end;
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+	if(--'mobsFloor <= 0) {
+		sleep 5000;
+	}
+}
+
+
+// ===================================================
+// ============== Floor MVP ============================
+// ===================================================
+
+1@os_a,188,195,1	script	Operation Officer#mvp	4_EP17_KAYA,{
+
+if('canleave$){
+	getitem 25723,1;
+	getitem 25669,5;
+	completequest(30048);
+	warp "sp_cor",164,62;
+	end;
+}
+
+if('floor6$){ end; }
+'floor6$ = 1;
+
+monster 'map$,204,188,"Miguel",atoi('miguel$),1,instance_npcname("Operation Officer#mvp")+"::OnMyMobDead";
+
+
+
+'mobsFloor = 1;
+
+hideonnpc instance_npcname("Operation Officer#mvp");
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: The only thing we can do is put them to rest so they are no longer in pain.",bc_map,'announceColor$;
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: If you purify the people who have been cursed, you will still have time to head to the next room.",bc_map,'announceColor$;
+end;
+
+end;
+OnMyMobDead:
+	hideoffnpc instance_npcname("Operation Officer#mvp");
+	'mvpAlive$ = 0;
+	'canleave$ = 1;
+}

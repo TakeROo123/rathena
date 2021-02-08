@@ -1,0 +1,34 @@
+ba_in01,87,373,2	script	Spiera	4_EP17_MASTER_A,{
+        mes "Hello my name is Spiera.";
+        next;
+        mes "what can I do for you";
+    switch(select("- Epic Modules :- nothing!")) { 
+        case 1:
+            next;
+            goto emudules;
+            break;                      
+        default:
+            next;
+        	goto stoptalking;
+            break;
+    }
+    emudules:
+        mes "okay give me a moment.";
+        close2; // Closes the NPC dialog without ending the script
+        callshop "emodul",1; // Only Sell window
+        end; // We end the script just after opening the shop so no need to break
+        end;
+
+    stoptalking:
+        mes "Spiera";
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+
+    exit:
+        enable_items;
+        close;
+    end;
+}
+
+-	itemshop	emodul	-1,1000104,1000152:60,1000153:60,1000154:60,1000155:60,1000156:60,1000157:60,1000158:60,1000159:60,1000160:60,1000161:60,1000162:60,1000163:60,1000164:60,1000165:60,1000166:60,1000167:60,1000168:60,1000169:60,1000170:60,1000171:60,1000172:60,1000173:60,1000174:60,1000175:60,1000176:60,1000177:60,1000178:60,1000179:60,1000180:60,1000181:60,1000182:60,1000183:60,1000184:60,1000185:60,1000186:60,1000187:60,1000188:60,1000189:60,1000190:60,1000191:60,1000192:60,1000193:60,1000194:60,1000195:60,1000196:60,1000197:60,1000198:60,1000199:60,1000200:60,1000201:60,1000202:60;

@@ -1,0 +1,184 @@
+ba_in01,87,380,2	script	Yecheon	4_EP17_GUARD_B,{
+        mes "Hello my name is Yecheon.";
+        next;
+        mes "what can I do for you";
+    switch(select("-Craft Enchant-Modules :- Sin Weapon :- Nah!")) { 
+        case 1:
+            next;
+            goto automodules;
+            break;
+		case 2:
+            next;
+            goto sin;
+            break;	                        
+        default:
+            next;
+        	goto stoptalking;
+            break;
+    }               
+
+    automodules:
+        	mes .n$;
+			mes "I'm going to create an random enchanting module.";
+			mes "Please be aware that it can fail!";
+			mes "All I need is 50x "+getitemname(1000103);
+			next;
+			mes .n$;
+			if(countitem(1000103) < 50){
+				mes "Not enough minerals eeeh materials!";
+				mes "Please buddy...I need these - otherwise I cannot help you!";
+				close;
+			}
+			set .@baseRnd,rand(100);
+			if(.@baseRnd < 5){ // 5%
+				mes "I'm truly sorry!";
+			} else if(.@baseRnd < 40){ // 50% -> Common
+				set .@b,rand(800);
+				if(.@b < 100) getitem 1000112,1;
+				else if(.@b < 200) getitem 1000105,1;
+				else if(.@b < 300) getitem 1000106,1;
+				else if(.@b < 400) getitem 1000107,1;
+				else if(.@b < 500) getitem 1000108,1;
+				else if(.@b < 600) getitem 1000109,1;
+				else if(.@b < 700) getitem 1000110,1;
+				else if(.@b < 800) getitem 1000111,1;
+				mes "I heard you ordered one Normal modul?";
+			} else if(.@baseRnd < 70){ // 30% -> Rare
+				set .@b,rand(1500);
+				if(.@b < 100) getitem 1000113,1;
+				else if(.@b < 200) getitem 1000114,1;
+				else if(.@b < 300) getitem 1000115,1;
+				else if(.@b < 400) getitem 1000116,1;
+				else if(.@b < 500) getitem 1000117,1;
+				else if(.@b < 600) getitem 1000118,1;
+				else if(.@b < 700) getitem 1000119,1;
+				else if(.@b < 800) getitem 1000120,1;
+				else if(.@b < 900) getitem 1000121,1;
+				else if(.@b < 1000) getitem 1000122,1;
+				else if(.@b < 1100) getitem 1000123,1;
+				else if(.@b < 1200) getitem 1000124,1;
+				else if(.@b < 1300) getitem 1000125,1;
+				else if(.@b < 1400) getitem 1000126,1;
+				else if(.@b < 1500) getitem 1000127,1;
+				mes "Not bad! Not bad!";
+				mes "";
+				mes "You received a Rare modul.";
+			} else if(.@baseRnd < 90){ // 10% -> Unique
+				set .@b,rand(1700);
+				if(.@b < 100) getitem 1000128,1;
+				else if(.@b < 200) getitem 1000129,1;
+				else if(.@b < 300) getitem 1000130,1;
+				else if(.@b < 400) getitem 1000131,1;
+				else if(.@b < 500) getitem 1000132,1;
+				else if(.@b < 600) getitem 1000133,1;
+				else if(.@b < 700) getitem 1000134,1;
+				else if(.@b < 800) getitem 1000135,1;
+				else if(.@b < 900) getitem 1000136,1;
+				else if(.@b < 1000) getitem 1000137,1;
+				else if(.@b < 1100) getitem 1000138,1;
+				else if(.@b < 1200) getitem 1000139,1;
+				else if(.@b < 1300) getitem 1000140,1;
+				else if(.@b < 1400) getitem 1000141,1;
+				else if(.@b < 1500) getitem 1000142,1;
+				else if(.@b < 1600) getitem 1000143,1;
+				else if(.@b < 1700) getitem 1000208,1;                                  
+				mes "This is a rare sight!";
+				mes "";
+				mes "You received an Unique modul!";
+			} else if(.@baseRnd <= 95){ // rest => 5% => Legendary
+				set .@b,rand(600);
+				if(.@b < 100) getitem 1000144,1;
+				else if(.@b < 200) getitem 1000145,1;
+				else if(.@b < 300) getitem 1000146,1;
+				else if(.@b < 400) getitem 1000147,1;
+				else if(.@b < 500) getitem 1000148,1;
+				else if(.@b < 600) getitem 1000149,1;
+				mes "Once in a lifetime!";
+				mes "";
+				mes "You received a legendary modul!";
+            } else if(.@baseRnd <= 98){ // rest => 2% => Epic
+				set .@b,rand(600);
+				if(.@b < 100) getitem 1000152,1;
+				else if(.@b < 200) getitem 1000153,1;
+                else if(.@b < 300) getitem 1000154,1;
+                else if(.@b < 400) getitem 1000155,1;
+                else if(.@b < 500) getitem 1000156,1;
+                else if(.@b < 600) getitem 1000157,1;
+                else if(.@b < 700) getitem 1000158,1;
+                else if(.@b < 800) getitem 1000159,1;
+                else if(.@b < 900) getitem 1000160,1;
+                else if(.@b < 1000) getitem 1000161,1;
+                else if(.@b < 1100) getitem 1000162,1;
+                else if(.@b < 1200) getitem 1000163,1;
+                else if(.@b < 1300) getitem 1000164,1;
+                else if(.@b < 1400) getitem 1000165,1;
+                else if(.@b < 1500) getitem 1000166,1;
+                else if(.@b < 1600) getitem 1000167,1;
+                else if(.@b < 1700) getitem 1000168,1;
+                else if(.@b < 1800) getitem 1000169,1;
+                else if(.@b < 1900) getitem 1000170,1;
+                else if(.@b < 2000) getitem 1000171,1;
+                else if(.@b < 2100) getitem 1000172,1;
+                else if(.@b < 2200) getitem 1000173,1;
+                else if(.@b < 2300) getitem 1000174,1;
+                else if(.@b < 2400) getitem 1000175,1;
+                else if(.@b < 2500) getitem 1000176,1;
+                else if(.@b < 2600) getitem 1000177,1;
+                else if(.@b < 2700) getitem 1000178,1;
+                else if(.@b < 2800) getitem 1000179,1;
+                else if(.@b < 2900) getitem 1000180,1;
+                else if(.@b < 3000) getitem 1000181,1;
+                else if(.@b < 3100) getitem 1000182,1;
+                else if(.@b < 3200) getitem 1000183,1;
+                else if(.@b < 3300) getitem 1000184,1;
+                else if(.@b < 3400) getitem 1000185,1;
+                else if(.@b < 3500) getitem 1000186,1;
+                else if(.@b < 3600) getitem 1000187,1;
+                else if(.@b < 3700) getitem 1000188,1;
+                else if(.@b < 3800) getitem 1000189,1;
+                else if(.@b < 3900) getitem 1000190,1;
+                else if(.@b < 4000) getitem 1000191,1;
+                else if(.@b < 4100) getitem 1000192,1;
+                else if(.@b < 4200) getitem 1000193,1;
+                else if(.@b < 4300) getitem 1000194,1;
+                else if(.@b < 4400) getitem 1000195,1;
+                else if(.@b < 4500) getitem 1000196,1;
+                else if(.@b < 4600) getitem 1000197,1;
+                else if(.@b < 4700) getitem 1000198,1;
+                else if(.@b < 4800) getitem 1000199,1;
+                else if(.@b < 4900) getitem 1000200,1;
+                else if(.@b < 5000) getitem 1000201,1;
+                else if(.@b < 5100) getitem 1000202,1;
+				mes "Once in a lifetime!";
+				mes "";
+				mes "You received a Epic modul!";
+			}
+
+			delitem 1000103,50;           
+            end;
+	sin:
+		mes "okay give me a moment.";
+        close2; // Closes the NPC dialog without ending the script
+        callshop "sin",1; // Only Sell window
+        end; // We end the script just after opening the shop so no need to break
+        end;
+
+    stoptalking:
+        mes .n$;
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+
+    exit:
+        enable_items;
+        close;
+    end;
+
+OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+    end;                
+}
+-	itemshop	sin	-1,1000104,500007:20,500008:20,510008:20,510009:20,520002:20,530002:20,540004:20,540005:20,550008:20,550009:20,560004:20,570005:20,580005:20,590006:20,600008:20,610006:20,630003:20,640005:20,650003:20,700007:20,700008:20,700009:20,810000:20,820000:20,830001:20,840000:20;
+
+
+

@@ -1,0 +1,274 @@
+ba_maison,118,322,5	script	Flower Garden Manager	10344,{
+
+	if(checkquest(30051, PLAYTIME) == 2){
+		erasequest(30051);
+	}
+
+	switch(checkquest(30051, PLAYTIME)) {
+		case -1:
+		    mes "Flower Garden Manager";
+            mes "you are ready for the Hidden Garden (N)";
+            next;
+			setquest 30051;
+			switch(select("Create", "Enter")) {
+				case 1:
+					goto createInstance;
+					end;
+				case 2:
+					goto enterInstance;
+					end;
+			}
+			end;
+		case 0:
+			goto enterInstance;
+			end;
+		case 1:
+			mes "your cooldown is still available";
+			mes "please wait for the time";
+			end;
+	}
+	end;
+
+	createInstance:
+			if(is_party_leader() == false) {
+				mes "you need to be an party leader";
+				end;
+			}
+			set .@i_inst, instance_create(.instance_name$);
+			end;
+		end;
+	
+	enterInstance:
+		switch(instance_enter(.instance_name$)) {
+				case IE_NOMEMBER: // Party/Guild/Clan not found (for party/guild/clan modes).
+					mes "Party not found";
+					end;
+				case IE_OTHER: // Other errors (invalid instance name, instance doesn't match with character/party/guild/clan).
+					mes "an unknown error has occurred";
+					end;
+				case IE_NOINSTANCE: // Character/Party/Guild/Clan does not have an instance.
+					mes "Create a instance first";
+					end;
+				case IE_OK:
+					mapannounce "glast_01", strcharinfo(0)+ "is entering "+.instance_name$, bc_map, "0x00ff99", FW_NORMAL, 12;
+					end;
+				
+			}
+		end;
+
+OnInit:
+    set .instance_name$, "Hidden Garden (N)";
+    end;
+}
+
+ba_maison,115,320,5	script	1234	123,{
+    erasequest 30051;
+}
+
+
+//============================================
+//====================FL1=====================
+//============================================
+1@herbs,53,206,5	script	Hidden	10354,{
+//if(!is_party_leader()) { end; }
+
+if('floor1$){ end; }
+'floor1$ = 1;
+
+    mes "Welcome to the farm!";
+    mes "I'm Slik the collector in charge!";
+    next;
+    mes "Save me";
+		disablenpc instance_npcname ("HDG1");
+		disablenpc instance_npcname ("HDG2");
+		disablenpc instance_npcname ("HDG3");
+		disablenpc instance_npcname ("HDG4");
+		disablenpc instance_npcname ("HDG5");
+	close2;		
+    
+'partyId$ = getcharid(1);
+
+areamonster 'map$,42,216,71,222,"Research Assistant",atoi('reas$),8,instance_npcname("Hidden")+"::OnMyMobDead";
+areamonster 'map$,42,216,71,222,"Dried Rafflesia",atoi('drra$),2,instance_npcname("Hidden")+"::OnMyMobDead";
+
+
+'mobsFloor = 10; 
+end;
+
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+	if(--'mobsFloor <= 0) {
+mapannounce instance_mapname('map$),"go to the warp.",bc_map,'announceColor$;
+	enablenpc instance_npcname("HDG1");
+	}
+
+end;
+OnInstanceInit:
+	'map$ = instance_mapname("1@herbs");
+	'reas$ = 20622;
+	'drra$ = 20624;
+	'spal$ = 20626;
+	'kapa$ = 20620;
+
+
+	
+	'floor1$ = 0;
+	'floor2$ = 0;
+	'floor3$ = 0;
+	'floor4$ = 0;
+	'floor5$ = 0;
+	'floor6$ = 0;
+	'floor7$ = 0;
+	'floor8$ = 0;
+
+
+	'announceColor$ = "0x009933";
+	'mvpAnnounce$ = "0xee6600";
+	
+	'mvpAlive$ = 1;
+end;
+} 
+// ===================================================
+// ============== Floor 2 ============================
+// ===================================================
+1@herbs,100,223,1	script	#h2	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+if('floor2$){ end; }
+'floor2$ = 1;
+
+areamonster 'map$,95,228,181,236,"Research Assistant",atoi('reas$),8,instance_npcname("#h2")+"::OnMyMobDead";
+areamonster 'map$,95,228,181,236,"Dried Rafflesia",atoi('drra$),2,instance_npcname("#h2")+"::OnMyMobDead";
+areamonster 'map$,95,228,181,236,"Special Alnoldi",atoi('spal$),4,instance_npcname("#h2")+"::OnMyMobDead";
+
+
+
+
+'mobsFloor = 14;
+
+
+end;
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+	if(--'mobsFloor <= 0) {
+		enablenpc instance_npcname("HDG2");
+	}
+}
+// ===================================================
+// ============== Floor 3 ============================
+// ===================================================
+1@herbs,196,199,1	script	#h3	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+if('floor3$){ end; }
+'floor3$ = 1;
+
+areamonster 'map$,204,190,253,218,"Research Assistant",atoi('reas$),8,instance_npcname("#h3")+"::OnMyMobDead";
+areamonster 'map$,204,190,253,218,"Dried Rafflesia",atoi('drra$),2,instance_npcname("#h3")+"::OnMyMobDead";
+areamonster 'map$,204,190,253,218,"Special Alnoldi",atoi('spal$),4,instance_npcname("#h3")+"::OnMyMobDead";
+
+
+
+
+'mobsFloor = 14;
+
+
+end;
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+	if(--'mobsFloor <= 0) {
+		enablenpc instance_npcname("HDG3");
+	}
+}
+// ===================================================
+// ============== Floor 4 ============================
+// ===================================================
+1@herbs,272,214,1	script	#h4	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+if('floor4$){ end; }
+'floor4$ = 1;
+
+areamonster 'map$,286,202,307,271,"Research Assistant",atoi('reas$),8,instance_npcname("#h4")+"::OnMyMobDead";
+areamonster 'map$,286,202,307,271,"Dried Rafflesia",atoi('drra$),2,instance_npcname("#h4")+"::OnMyMobDead";
+areamonster 'map$,286,202,307,271,"Special Alnoldi",atoi('spal$),4,instance_npcname("#h4")+"::OnMyMobDead";
+
+
+
+
+'mobsFloor = 14;
+
+
+end;
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+	if(--'mobsFloor <= 0) {
+		enablenpc instance_npcname("HDG4");
+	}
+}
+// ===================================================
+// ============== Floor 5 ============================
+// ===================================================
+1@herbs,278,80,1	script	Kappa	20620 ,{
+
+
+if('floor5$){ end; }
+'floor5$ = 1;
+    mes "Welcome to the farm!";
+    mes "I'm Slik the collector in charge!";
+    next;
+    mes "Save me";
+	
+	close2;
+monster 'map$,278,80,"Kappa",atoi('kapa$),1,instance_npcname("Kappa")+"::OnMyMobDead";
+
+
+
+'mobsFloor = 1;
+
+hideonnpc instance_npcname("Kappa");
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: The only thing we can do is put them to rest so they are no longer in pain.",bc_map,'announceColor$;
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: If you purify the people who have been cursed, you will still have time to head to the next room.",bc_map,'announceColor$;
+end;
+
+end;
+OnMyMobDead:
+	'mvpAlive$ = 0;
+	'canleave$ = 1;
+	enablenpc instance_npcname("HDG5");
+}
+
+// ===================================================
+// ============== Floor 6 ============================
+// ===================================================
+1@herbs,86,75,1	script	Kappa#1	20620 ,{
+	mes "KAPPA";
+	mes "Its feels good to bring him down by force.";
+	mes "i don't think youve give the right to be an Administrator yet.";
+	next;
+	mes "i have a hunch they'll be back in time,";
+	mes "and maybe we'll have to continue this Fight until Varmundt returns";
+	next;
+	mes "Right";
+	mes "i brought some old stuff from the past, jut in case it helps, take it.";
+	next;
+	mes "I'll show you the way out";
+	next;
+	getitem 1000103,5;
+	getitem 100160,1;    
+	completequest(30051);
+	warp "ba_maison",122,313;
+	end;
+}
+
+
+//============================================
+//==================WARPS=====================
+//============================================
+1@herbs,88,195,0	warp	HDG1	2,2,1@herbs,102,234
+1@herbs,181,230,0	warp	HDG2	2,2,1@herbs,197,200
+1@herbs,259,213,0	warp	HDG3	2,2,1@herbs,272,214
+1@herbs,298,267,0	warp	HDG4	2,2,1@herbs,248,80
+1@herbs,242,80,0	warp	HDG5	2,2,1@herbs,86,83

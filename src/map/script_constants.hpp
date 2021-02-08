@@ -153,6 +153,7 @@
 	export_constant(JOB_SURA);
 	export_constant(JOB_GENETIC);
 	export_constant(JOB_SHADOW_CHASER);
+	export_constant(JOB_SHADOW_CROSS);
 
 	export_constant(JOB_ROYAL_GUARD_T);
 	export_constant(JOB_SORCERER_T);
@@ -170,6 +171,7 @@
 	export_constant(JOB_RANGER_T2);
 	export_constant(JOB_MECHANIC2);
 	export_constant(JOB_MECHANIC_T2);
+	
 
 	export_deprecated_constant3("JOB_BABY_RUNE", JOB_BABY_RUNE_KNIGHT, "JOB_BABY_RUNE_KNIGHT");
 	export_deprecated_constant3("JOB_BABY_BISHOP", JOB_BABY_ARCH_BISHOP, "JOB_BABY_ARCH_BISHOP");
@@ -358,7 +360,7 @@
 	export_constant2("EAJ_SURA_T",MAPID_SURA_T);
 	export_constant2("EAJ_GENETIC_T",MAPID_GENETIC_T);
 	export_constant2("EAJ_SHADOW_CHASER_T",MAPID_SHADOW_CHASER_T);
-
+	export_constant2("EAJ_SHADOW_CROSS)",MAPID_SHADOW_CROSS);
 	export_deprecated_constant3("EAJ_BABY_RUNE", MAPID_BABY_RUNE_KNIGHT, "EAJ_BABY_RUNE_KNIGHT");
 	export_deprecated_constant3("EAJ_BABY_CROSS", MAPID_BABY_GUILLOTINE_CROSS, "EAJ_BABY_GUILLOTINE_CROSS");
 	export_deprecated_constant3("EAJ_BABY_BISHOP", MAPID_BABY_ARCH_BISHOP, "EAJ_BABY_ARCH_BISHOP");

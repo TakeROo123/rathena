@@ -134,7 +134,7 @@ menu	"Prontera",T1, "Alberta",T2, "Aldebaran",T3, "Amatsu",T4, "Ayothaya",T5,
 		"Lutie",T21, "Malangdo",T22, "Malaya",T23, "Manuk",T24,
 		"Midgarts Expedition Camp",T25, "Mora",T26, "Morocc",T27, "Moscovia",T28,
 		"Nameless Island",T29, "Niflheim",T30, "Payon",T31, "Rachel",T32, "Splendide",T33,
-		"Thor Camp",T34, "Umbala",T35, "Veins",T36, "Juno",T37, "Rock Ridge",T38;
+		"Thor Camp",T34, "Umbala",T35, "Veins",T36, "Juno",T37, "Rock Ridge",T38, "Cor City",T39, "Varmundt's Mansion",T40;
 
 T1: Go("prontera",155,183);
 T2: Go("alberta",28,234);
@@ -182,6 +182,8 @@ T35: Go("umbala",97,153);
 T36: Go("veins",216,123);
 T37: Go("yuno",157,51);
 T38: Go("harboro1",67,215);
+T39: Go("sp_cor",258,275);
+T40: Go("ba_maison",197,174);
 
 // --------------------------------------------------
 	Fields:
@@ -296,7 +298,8 @@ menu	"Abyss Lakes",D1, "Amatsu Dungeon",D2, "Anthell",D3,
     	"Thor Volcano",D38, "Toy Factory",D39, "Turtle Dungeon",D40, "Umbala Dungeon",D41,
 		"Illusion of Moonlight",D43,"Illusion of Frozen",D44,"Illusion of Vampire",D45,
 		"Illusion of Abyss",D46,"Illusion of Teddy Bear",D47,"Illusion of Luanda",D48,
-		"Illusion of Under Water",D49,"Illusion of Labyrinth",D50;
+		"Illusion of Under Water",D49,"Illusion of Labyrinth",D50,"OS",D51,"Meditathios Large Bath",D52,
+		"Power Plant",D53, "Warehouse",D54;
 
 D1: setarray @c[2],261,272,275,270,116,27;
 	Disp("Abyss Lakes",1,3); Pick("abyss_");
@@ -421,7 +424,18 @@ D49: Restrict("RE");
 D50: Restrict("RE");
 	 setarray @c[2],63,63;
 	 Disp("Illusion of Labyrinth"); Pick("","prt_mz03_i");
-
+D51: Restrict("RE");
+	 setarray @c[2],188,65;
+	 Disp("OS"); Pick("","sp_os");
+D52: Restrict("RE");
+	 setarray @c[2],159,19;
+	 Disp("Large Bath"); Pick("","ba_bath");
+D53: Restrict("RE");
+	 setarray @c[2],142,12,276,15,16,114;
+	 Disp("Power Plant 1:Power Plant 2:Power Plant 3"); Pick("","ba_pw01", "ba_pw02", "ba_pw03");
+D54: Restrict("RE");
+	 setarray @c[2],158,24,338,334;
+	 Disp("Upper Floor:Lower Floor"); Pick("","ba_2whs01", "ba_2whs02");	 	 	 
 
 // --------------------------------------------------
 	Castles:
@@ -497,8 +511,8 @@ menu	"Bakonawa Lake",I1, "Bangungot Hospital 2F",I2, "Buwaya Cave",I3,
 		"Nidhoggur's Nest",I13, "Octopus Cave",I14, "Old Glast Heim",I15,
 		"Orc's Memory",I16, "Sarah and Fenrir",I17, "Sara Memory",I18,
 		"Sealed Shrine",I19, "Wolfchev's Laboratory",I20, "Airship Raid",I21, "Tomb of the Fallen",I22,
-		"Charleston Crisis",I23, "Jitterbug",I24;
-
+		"Charleston Crisis",I23, "Jitterbug",I24,"Fall of GH",I25, "OS-Mission",I26, "Cor-Mission",I27,
+		"Water Garden",I28,"Lost in Time",I29, "Hidden Flower Garden",I30, "Twilight Garden",I31;
 I1: Restrict("RE");
 	Go("ma_scene01",172,175);
 I2: Restrict("RE");
@@ -543,7 +557,20 @@ I23: Restrict("RE");
 	Go("verus04",76,118);
 I24: Restrict("RE");
 	Go("moc_para01",29,91);
-
+I25: Restrict("RE");
+	Go("glast_01",244,290);
+I26: Restrict("RE");
+	Go("sp_cor",162,55);
+I27: Restrict("RE");
+	Go("sp_cor",113,127);
+I28: Restrict("RE");
+	Go("ba_maison",237,46);
+I29: Restrict("RE");
+	Go("ba_maison",311,206);
+I30: Restrict("RE");
+	Go("ba_maison",120,321);
+I31: Restrict("RE");
+	Go("ba_in01",32,250);	
 
 // --------------------------------------------------
 //	Illusion:

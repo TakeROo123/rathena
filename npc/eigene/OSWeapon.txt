@@ -1,0 +1,141 @@
+sp_cor,108,130,5	script	Elyumina	4_EP17_ELYUMINA,{
+        mes "Hello my name is Elyumina.";
+        next;
+        mes "what can I do for you";
+    switch(select("- Weapons :- Armor :- Craft Enchant-Modules :- Nah!")) { 
+        case 1:
+            next;
+            goto OSWeapons;
+            break;
+        case 2:
+            next;
+            goto illuarmor;
+            break;
+        case 3:
+            next;
+            goto Modules;
+            break;                        
+        default:
+            next;
+        	goto stoptalking;
+            break;
+    }               
+        OSWeapons:
+            mes "all you need is";
+            mes "You need / you have:";
+	        mes "^5533FF1 Broken Weapon^000000 / "+countitem(25668)+" ea";
+	        mes "^5533FF50 Unknown Parts^000000 / "+countitem(25669)+" ea";
+            next;
+	        if(countitem(25668)<1) goto LItem;
+	        if(countitem(25669)<50) goto LItem;
+                
+                delitem 25668,1;
+	            delitem 25669,50;
+        next;        
+			setarray .@item, 1862,13493,16088,16089,18178,18179,18180,21047,26151,28038,28136,28253,28629,28755,32019,26164;
+			setarray .@amount, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1;
+			.@index = rand( getarraysize( .@item ) );
+			getitem .@item[.@index],.@amount[.@index];
+			mes "Gained "+.@amount[.@index]+"x "+getitemname( .@item[.@index] )+".";
+            end;
+        LItem:
+	        mes "[^CD0000you have not enough materials^000000]";
+	        close;
+    illuarmor:
+        mes "okay give me a moment.";
+        close2; // Closes the NPC dialog without ending the script
+        callshop "IlluEQ",1; // Only Sell window
+        end; // We end the script just after opening the shop so no need to break
+        end;
+
+    Modules:
+        	mes .n$;
+			mes "I'm going to create an random enchanting module.";
+			mes "Please be aware that it can fail!";
+			mes "All I need is 30x "+getitemname(25669)+"and 5 "+getitemname(25723);
+			next;
+			mes .n$;
+			if(countitem(25669) < 30)+ (countitem(25723) < 5) {
+				mes "Not enough minerals eeeh materials!";
+				mes "Please buddy...I need these - otherwise I cannot help you!";
+				close;
+			}
+			set .@baseRnd,rand(100);
+			if(.@baseRnd < 5){ // 5%
+				mes "I'm truly sorry!";
+			} else if(.@baseRnd < 55){ // 50% -> Common
+				set .@b,rand(800);
+				if(.@b < 100) getitem 25670,1;
+				else if(.@b < 200) getitem 25671,1;
+				else if(.@b < 300) getitem 25672,1;
+				else if(.@b < 400) getitem 25673,1;
+				else if(.@b < 500) getitem 25674,1;
+				else if(.@b < 600) getitem 25675,1;
+				else if(.@b < 700) getitem 25676,1;
+				else if(.@b < 800) getitem 25677,1;
+				mes "I heard you ordered one common module?";
+			} else if(.@baseRnd < 80){ // 25% -> Rare
+				set .@b,rand(1500);
+				if(.@b < 100) getitem 25678,1;
+				else if(.@b < 200) getitem 25679,1;
+				else if(.@b < 300) getitem 25680,1;
+				else if(.@b < 400) getitem 25681,1;
+				else if(.@b < 500) getitem 25682,1;
+				else if(.@b < 600) getitem 25683,1;
+				else if(.@b < 700) getitem 25684,1;
+				else if(.@b < 800) getitem 25685,1;
+				else if(.@b < 900) getitem 25686,1;
+				else if(.@b < 1000) getitem 25687,1;
+				else if(.@b < 1100) getitem 25688,1;
+				else if(.@b < 1200) getitem 25689,1;
+				else if(.@b < 1300) getitem 25690,1;
+				else if(.@b < 1400) getitem 25691,1;
+				else if(.@b < 1500) getitem 25692,1;
+				mes "Not bad! Not bad!";
+				mes "";
+				mes "You received a rare module.";
+			} else if(.@baseRnd < 95){ // 15% -> Unique
+				set .@b,rand(700);
+				if(.@b < 100) getitem 25693,1;
+				else if(.@b < 200) getitem 25694,1;
+				else if(.@b < 300) getitem 25695,1;
+				else if(.@b < 400) getitem 25696,1;
+				else if(.@b < 500) getitem 25697,1;
+				else if(.@b < 600) getitem 25698,1;
+				else if(.@b < 700) getitem 25699,1;
+				mes "This is a rare sight!";
+				mes "";
+				mes "You received an unique module!";
+			} else if(.@baseRnd <= 100){ // rest => 5% => Legendary
+				set .@b,rand(600);
+				if(.@b < 100) getitem 25700,1;
+				else if(.@b < 200) getitem 25701,1;
+				else if(.@b < 300) getitem 25702,1;
+				else if(.@b < 400) getitem 25703,1;
+				else if(.@b < 500) getitem 25704,1;
+				else if(.@b < 600) getitem 25705,1;
+				mes "Once in a lifetime!";
+				mes "";
+				mes "You received a legendary module!";
+			}
+
+			delitem 25669,30;
+			delitem 25723,5;            
+            end;          
+    stoptalking:
+        mes .n$;
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+
+    exit:
+        enable_items;
+        close;
+    end;
+
+OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+    end;                
+}
+-	itemshop	IlluEQ	-1,25723,15376:50,15377:50,20933:50,22196:50,22197:50,32207:50,32208:50,32210:50,20934:50,32209:50;
+

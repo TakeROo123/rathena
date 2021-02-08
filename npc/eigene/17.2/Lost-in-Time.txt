@@ -1,0 +1,387 @@
+ba_maison,311,206,5	script	Ruinan	4_EP17_BASKET,{
+        	if(checkquest(30050, PLAYTIME) == 2){
+		erasequest(30050);
+	}
+
+	switch(checkquest(30050, PLAYTIME)) {
+		case -1:
+            mes "Operation Officer";
+            mes "you are ready for theOS Mission";
+            next;
+			switch(select("Create", "Enter")) {
+				case 1:
+					goto createInstance;
+					end;
+				case 2:
+					goto enterInstance;
+					end;
+			}
+			end;
+		case 0:
+			goto enterInstance;
+			end;
+		case 1:
+			mes "your cooldown is still available";
+			mes "please wait for the time";
+			end;
+	}
+	end;
+
+	createInstance:
+			if(is_party_leader() == false) {
+				mes "you need to be an party leader";
+				end;
+			}
+			set .@i_inst, instance_create(.instance_name$);
+			end;
+		end;
+	
+	enterInstance:
+		switch(instance_enter(.instance_name$)) {
+				case IE_NOMEMBER: // Party/Guild/Clan not found (for party/guild/clan modes).
+					mes "Party not found";
+					end;
+				case IE_OTHER: // Other errors (invalid instance name, instance doesn't match with character/party/guild/clan).
+					mes "an unknown error has occurred";
+					end;
+				case IE_NOINSTANCE: // Character/Party/Guild/Clan does not have an instance.
+					mes "Create a instance first";
+					end;
+				case IE_OK:
+                    setquest 30048;
+					mapannounce "sp_os", strcharinfo(0)+ "is entering "+.instance_name$, bc_map, "0x00ff99", FW_NORMAL, 12;
+					end;
+				
+			}
+		end;
+
+OnInit:
+    set .instance_name$, "Lost in Time";
+    end;
+}
+
+ba_maison,311,203,5	script	gvhd	123,{
+    erasequest(30050);
+}
+
+
+// ===================================================
+// ============== Floor 1 ============================
+// ===================================================
+1@lost,163,45,5	script	Slik#1	4_WOODBOX,{
+//if(!is_party_leader()) { end; }
+
+if('floor1$){ end; }
+'floor1$ = 1;
+
+    mes "Welcome to the farm!";
+    mes "I'm Slik the collector in charge!";
+    next;
+    mes "Save me";
+
+    
+'partyId$ = getcharid(1);
+
+areamonster 'map$,165,48,168,44,"Pitaya",atoi('bpi$),1,instance_npcname("Slik#1")+"::OnMyMobDead";
+areamonster 'map$,165,48,168,44,"Pitaya",atoi('ypi$),1,instance_npcname("Slik#1")+"::OnMyMobDead";
+areamonster 'map$,165,48,168,44,"Pitaya",atoi('rpi$),1,instance_npcname("Slik#1")+"::OnMyMobDead";
+areamonster 'map$,165,48,168,44,"Pitaya",atoi('vpi$),1,instance_npcname("Slik#1")+"::OnMyMobDead";
+areamonster 'map$,165,48,168,44,"Pitaya",atoi('gpi$),1,instance_npcname("Slik#1")+"::OnMyMobDead";
+
+
+'mobsFloor = 5; 
+end;
+
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+	if(--'mobsFloor <= 0) {
+    warpparty 'map$,219,153,atoi('partyId$),'map$;
+	 
+	
+	}
+end;
+OnInstanceInit:
+	'map$ = instance_mapname("1@lost");
+	'bpi$ = 20662;
+	'ypi$ = 20661;
+	'rpi$ = 20660;
+	'vpi$ = 20663;
+	'gpi$ = 20664;    
+	'pimvp$ = 20659;
+
+	
+	'floor1$ = 0;
+	'floor2$ = 0;
+	'floor3$ = 0;
+	'floor4$ = 0;
+	'floor5$ = 0;
+	'floor6$ = 0;
+	'floor7$ = 0;
+	'floor8$ = 0;
+	'floor9$ = 0;
+	'floor10$ = 0;
+	'floor11$ = 0;
+	'floor12$ = 0;    
+
+	'announceColor$ = "0x009933";
+	'mvpAnnounce$ = "0xee6600";
+	
+	'mvpAlive$ = 1;
+end;
+} 
+
+// ===================================================
+// ============== Floor 2 ============================
+// ===================================================
+1@lost,213,146,5	script	Slik#2	4_WOODBOX,{
+    if('floor2$){ end; }
+    'floor2$ = 1;
+
+
+        'mobsFloor = 5;
+areamonster 'map$,210,144,215,149,"Pitaya",atoi('bpi$),1,instance_npcname("Slik#2")+"::OnMyMobDead";
+areamonster 'map$,210,144,215,149,"Pitaya",atoi('ypi$),1,instance_npcname("Slik#2")+"::OnMyMobDead";
+areamonster 'map$,210,144,215,149,"Pitaya",atoi('rpi$),1,instance_npcname("Slik#2")+"::OnMyMobDead";
+areamonster 'map$,210,144,215,149,"Pitaya",atoi('vpi$),1,instance_npcname("Slik#2")+"::OnMyMobDead";
+areamonster 'map$,210,144,215,149,"Pitaya",atoi('gpi$),1,instance_npcname("Slik#2")+"::OnMyMobDead";
+
+
+    OnMyMobDead:
+        	dispbottom 'mobsFloor;
+	        if(--'mobsFloor <= 0) {
+    warpparty 'map$,85,104,atoi('partyId$),'map$;                
+        }
+}
+// ===================================================
+// ============== Floor 3 ============================
+// ===================================================
+1@lost,92,92,5	script	Slik#3	4_WOODBOX,{
+    if('floor3$){ end; }
+    'floor3$ = 1;
+
+
+        'mobsFloor = 5;
+areamonster 'map$,90,96,87,99,"Pitaya",atoi('bpi$),1,instance_npcname("Slik#3")+"::OnMyMobDead";
+areamonster 'map$,90,96,87,99,"Pitaya",atoi('ypi$),1,instance_npcname("Slik#3")+"::OnMyMobDead";
+areamonster 'map$,90,96,87,99,"Pitaya",atoi('rpi$),1,instance_npcname("Slik#3")+"::OnMyMobDead";
+areamonster 'map$,90,96,87,99,"Pitaya",atoi('vpi$),1,instance_npcname("Slik#3")+"::OnMyMobDead";
+areamonster 'map$,90,96,87,99,"Pitaya",atoi('gpi$),1,instance_npcname("Slik#3")+"::OnMyMobDead";
+
+
+    OnMyMobDead:
+        	dispbottom 'mobsFloor;
+	        if(--'mobsFloor <= 0) {
+    warpparty 'map$,225,260,atoi('partyId$),'map$;                
+        }
+}
+// ===================================================
+// ============== Floor 4 ============================
+// ===================================================
+1@lost,232,257,5	script	Slik#4	4_WOODBOX,{
+    if('floor4$){ end; }
+    'floor4$ = 1;
+
+
+        'mobsFloor = 5;
+areamonster 'map$,228,255,225,257,"Pitaya",atoi('bpi$),1,instance_npcname("Slik#4")+"::OnMyMobDead";
+areamonster 'map$,228,255,225,257,"Pitaya",atoi('ypi$),1,instance_npcname("Slik#4")+"::OnMyMobDead";
+areamonster 'map$,228,255,225,257,"Pitaya",atoi('rpi$),1,instance_npcname("Slik#4")+"::OnMyMobDead";
+areamonster 'map$,228,255,225,257,"Pitaya",atoi('vpi$),1,instance_npcname("Slik#4")+"::OnMyMobDead";
+areamonster 'map$,228,255,225,257,"Pitaya",atoi('gpi$),1,instance_npcname("Slik#4")+"::OnMyMobDead";
+
+
+    OnMyMobDead:
+        	dispbottom 'mobsFloor;
+	        if(--'mobsFloor <= 0) {
+    warpparty 'map$,240,120,atoi('partyId$),'map$;                
+        }
+}
+// ===================================================
+// ============== Floor 5 ============================
+// ===================================================
+1@lost,249,117,5	script	Slik#5	4_WOODBOX,{
+    if('floor5$){ end; }
+    'floor5$ = 1;
+
+
+        'mobsFloor = 5;
+areamonster 'map$,245,119,241,124,"Pitaya",atoi('bpi$),1,instance_npcname("Slik#5")+"::OnMyMobDead";
+areamonster 'map$,245,119,241,124,"Pitaya",atoi('ypi$),1,instance_npcname("Slik#5")+"::OnMyMobDead";
+areamonster 'map$,245,119,241,124,"Pitaya",atoi('rpi$),1,instance_npcname("Slik#5")+"::OnMyMobDead";
+areamonster 'map$,245,119,241,124,"Pitaya",atoi('vpi$),1,instance_npcname("Slik#5")+"::OnMyMobDead";
+areamonster 'map$,245,119,241,124,"Pitaya",atoi('gpi$),1,instance_npcname("Slik#5")+"::OnMyMobDead";
+
+
+    OnMyMobDead:
+        	dispbottom 'mobsFloor;
+	        if(--'mobsFloor <= 0) {
+    warpparty 'map$,112,159,atoi('partyId$),'map$;                
+        }
+}
+// ===================================================
+// ============== Floor 6 ============================
+// ===================================================
+
+1@lost,110,166,5	script	Slik#6	4_WOODBOX,{
+    if('floor6$){ end; }
+    'floor6$ = 1;
+
+
+        'mobsFloor = 5;
+areamonster 'map$,115,164,114,150,"Pitaya",atoi('bpi$),1,instance_npcname("Slik#6")+"::OnMyMobDead";
+areamonster 'map$,115,164,114,150,"Pitaya",atoi('ypi$),1,instance_npcname("Slik#6")+"::OnMyMobDead";
+areamonster 'map$,115,164,114,150,"Pitaya",atoi('rpi$),1,instance_npcname("Slik#6")+"::OnMyMobDead";
+areamonster 'map$,115,164,114,150,"Pitaya",atoi('vpi$),1,instance_npcname("Slik#6")+"::OnMyMobDead";
+areamonster 'map$,115,164,114,150,"Pitaya",atoi('gpi$),1,instance_npcname("Slik#6")+"::OnMyMobDead";
+
+
+    OnMyMobDead:
+        	dispbottom 'mobsFloor;
+	        if(--'mobsFloor <= 0) {             
+        }
+}
+// ===================================================
+// ============== Floor 7 ============================
+// ===================================================
+1@lost,110,166,5	script	#7	HIDDEN_NPC,5,5,{
+    if('floor7$){ end; }
+    'floor7$ = 1;
+
+
+        'mobsFloor = 5;
+areamonster 'map$,36,267,41,263,"Pitaya",atoi('bpi$),1,instance_npcname("#7")+"::OnMyMobDead";
+areamonster 'map$,36,267,41,263,"Pitaya",atoi('ypi$),1,instance_npcname("#7")+"::OnMyMobDead";
+areamonster 'map$,36,267,41,263,"Pitaya",atoi('rpi$),1,instance_npcname("#7")+"::OnMyMobDead";
+areamonster 'map$,36,267,41,263,"Pitaya",atoi('vpi$),1,instance_npcname("#7")+"::OnMyMobDead";
+areamonster 'map$,36,267,41,263,"Pitaya",atoi('gpi$),1,instance_npcname("#7")+"::OnMyMobDead";
+
+
+    OnMyMobDead:
+        	dispbottom 'mobsFloor;
+	        if(--'mobsFloor <= 0) {             
+        }
+}
+
+// ===================================================
+// ============== Floor 8 ============================
+// ===================================================
+1@lost,38,292,5	script	#8	HIDDEN_NPC,5,5,{
+    if('floor8$){ end; }
+    'floor8$ = 1;
+
+
+        'mobsFloor = 5;
+areamonster 'map$,36,297,41,292,"Pitaya",atoi('bpi$),1,instance_npcname("#8")+"::OnMyMobDead";
+areamonster 'map$,36,297,41,292,"Pitaya",atoi('ypi$),1,instance_npcname("#8")+"::OnMyMobDead";
+areamonster 'map$,36,297,41,292,"Pitaya",atoi('rpi$),1,instance_npcname("#8")+"::OnMyMobDead";
+areamonster 'map$,36,297,41,292,"Pitaya",atoi('vpi$),1,instance_npcname("#8")+"::OnMyMobDead";
+areamonster 'map$,36,297,41,292,"Pitaya",atoi('gpi$),1,instance_npcname("#8")+"::OnMyMobDead";
+
+
+    OnMyMobDead:
+        	dispbottom 'mobsFloor;
+	        if(--'mobsFloor <= 0) {             
+        }
+}
+
+// ===================================================
+// ============== Floor 9 ============================
+// ===================================================
+1@lost,47,317,5	script	#9	HIDDEN_NPC,5,5,{
+    if('floor9$){ end; }
+    'floor9$ = 1;
+
+
+        'mobsFloor = 5;
+areamonster 'map$,53,320,49,314,"Pitaya",atoi('bpi$),1,instance_npcname("#9")+"::OnMyMobDead";
+areamonster 'map$,53,320,49,314,"Pitaya",atoi('ypi$),1,instance_npcname("#9")+"::OnMyMobDead";
+areamonster 'map$,53,320,49,314,"Pitaya",atoi('rpi$),1,instance_npcname("#9")+"::OnMyMobDead";
+areamonster 'map$,53,320,49,314,"Pitaya",atoi('vpi$),1,instance_npcname("#9")+"::OnMyMobDead";
+areamonster 'map$,53,320,49,314,"Pitaya",atoi('gpi$),1,instance_npcname("#9")+"::OnMyMobDead";
+
+
+    OnMyMobDead:
+        	dispbottom 'mobsFloor;
+	        if(--'mobsFloor <= 0) {             
+        }
+}
+
+// ===================================================
+// ============== Floor 10 ===========================
+// ===================================================
+1@lost,83,317,5	script	#10	HIDDEN_NPC,5,5,{
+    if('floor10$){ end; }
+    'floor10$ = 1;
+
+
+        'mobsFloor = 5;
+areamonster 'map$,87,319,81,314,"Pitaya",atoi('bpi$),1,instance_npcname("#10")+"::OnMyMobDead";
+areamonster 'map$,87,319,81,314,"Pitaya",atoi('ypi$),1,instance_npcname("#10")+"::OnMyMobDead";
+areamonster 'map$,87,319,81,314,"Pitaya",atoi('rpi$),1,instance_npcname("#10")+"::OnMyMobDead";
+areamonster 'map$,87,319,81,314,"Pitaya",atoi('vpi$),1,instance_npcname("#10")+"::OnMyMobDead";
+areamonster 'map$,87,319,81,314,"Pitaya",atoi('gpi$),1,instance_npcname("#10")+"::OnMyMobDead";
+
+
+    OnMyMobDead:
+        	dispbottom 'mobsFloor;
+	        if(--'mobsFloor <= 0) {             
+        }
+}
+
+// ===================================================
+// ============== Floor 11 ===========================
+// ===================================================
+1@lost,83,317,5	script	#11	HIDDEN_NPC,5,5,{
+    if('floor11$){ end; }
+    'floor11$ = 1;
+
+
+        'mobsFloor = 5;
+areamonster 'map$,140,319,136,315,"Pitaya",atoi('bpi$),1,instance_npcname("#11")+"::OnMyMobDead";
+areamonster 'map$,140,319,136,315,"Pitaya",atoi('ypi$),1,instance_npcname("#11")+"::OnMyMobDead";
+areamonster 'map$,140,319,136,315,"Pitaya",atoi('rpi$),1,instance_npcname("#11")+"::OnMyMobDead";
+areamonster 'map$,140,319,136,315,"Pitaya",atoi('vpi$),1,instance_npcname("#11")+"::OnMyMobDead";
+areamonster 'map$,140,319,136,315,"Pitaya",atoi('gpi$),1,instance_npcname("#11")+"::OnMyMobDead";
+
+
+    OnMyMobDead:
+        	dispbottom 'mobsFloor;
+	        if(--'mobsFloor <= 0) {             
+        }
+}
+// ==================MVP==============================
+// ============== Floor 12 ===========================
+// ===================================================
+
+1@lost,164,318,1	script	Slik#12	4_EP17_KAYA,{
+
+if('canleave$){
+	getitem 1000103,5;
+	getitem 100160,1;    
+	completequest(30050);
+	warp "ba_maison",308,206;
+	end;
+}
+
+if('floor12$){ end; }
+'floor12$ = 1;
+
+monster 'map$,164,316,"Pitaya Boss",atoi('pimvp$),1,instance_npcname("Slik#12")+"::OnMyMobDead";
+
+
+
+'mobsFloor = 1;
+
+hideonnpc instance_npcname("Slik#12");
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: The only thing we can do is put them to rest so they are no longer in pain.",bc_map,'announceColor$;
+sleep 5000;
+mapannounce instance_mapname('map$),"Officer: If you purify the people who have been cursed, you will still have time to head to the next room.",bc_map,'announceColor$;
+end;
+
+end;
+OnMyMobDead:
+	hideoffnpc instance_npcname("Slik#12");
+	'mvpAlive$ = 0;
+	'canleave$ = 1;
+}

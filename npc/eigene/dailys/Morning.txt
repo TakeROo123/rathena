@@ -1,0 +1,163 @@
+//===== rAthena Script =======================================
+//= 17.1 Daily Quest - My Name is Morning
+//===== By ===================================================
+//= DatPanda
+//===== Version ==============================================
+//= 1.0 - Initial Version
+//===== Tested With ==========================================
+//= rAthena 06/15/2020 Revision
+//= GIT Hash: 60d03a1978c2c2d8ebf5810582bfab69cb3392df
+//===== Description ==========================================
+//= https://irowiki.org/wiki/Illusion_Daily_Quests#My_Name_is_Morning
+//= The text is done by myself.
+//===== Comments =============================================
+// bla
+//===== Credits ==============================================
+//= DatPanda
+//============================================================
+sp_rudus,130,200,4	script	Morning	10302,{
+    function RandomSetItemOfTheDay;
+    .@neededItemAmount = 10;
+    .@waitQuestId = 5861;
+    .@rewardid = 25723;
+    .@rewardamount = 1;
+    .@rewardid1 = 25669;
+    .@rewardamount1 = 5;    
+    .@rewardbaseexp = 300000;
+    .@rewardjobexp = 300000;
+
+    start:
+        .@questStatusWaiting = checkquest(.@waitQuestId,PLAYTIME);
+        .@questStatus = checkquest($@questOfTheDay,PLAYTIME);
+
+        if(.@questStatusWaiting == 0 || .@questStatusWaiting == 1){ // 0-1 -> time limit not reached
+            goto alreadyFinished;
+            close;
+        } else if(.@questStatusWaiting == 2){  // 2 -> time limit reached -> continue
+            erasequest .@waitQuestId;
+        } else { // -1 -> not there! -> continue
+
+        }
+
+        switch(.@questStatus) {
+            case -1:
+                goto startQuest;
+                break;
+            case 0:
+                goto inProgress;
+                break;
+            case 1:
+                goto alreadyFinished;
+                break;
+            case 2:
+                goto restartQuest;
+                break;
+            default:
+                goto bye;
+                break;
+        }
+    end;
+
+    startQuest:
+        mes .n$;
+        mes "I am so hungry! Can you please help me?";
+        switch(select("- Help him :- Exit")) {
+            case 1:
+                next;
+                setquest $@questOfTheDay;
+                mes .n$;
+                mes "Thanks a lot! Can you bring me please:";
+                mes "";
+                mes .@neededItemAmount+"x "+getitemname($@itemOfTheDay);
+                goto bye;
+                break;
+            default:
+                goto bye;
+                break;
+        }        
+    end;
+
+    restartQuest:
+        mes .n$;
+        mes "Hey my friend! I'm hungry again...";
+        mes "Still haven't learned to hunt on my own!";
+        mes "Can you maybe help me again?";
+        switch(select("- Help him :- Exit")) {
+            case 1:
+                next;
+                erasequest .@questOfTheDay;
+                setquest $@questOfTheDay;
+                mes .n$;
+                mes "Thanks a lot! Can you bring me please:";
+                mes "";
+                mes .@neededItemAmount+"x "+getitemname($@itemOfTheDay);
+                goto bye;
+                break;
+            default:
+                goto bye;
+                break;
+        }        
+    end;
+
+    inProgress:
+        disable_items;
+        .@itemCount = countitem($@itemOfTheDay);
+        if(.@itemCount >= .@neededItemAmount) {
+            delitem $@itemOfTheDay,.@neededItemAmount;
+            enable_items;
+            completequest $@questOfTheDay;
+            setquest .@waitQuestId;
+            goto givereward;
+        } else {
+            enable_items;
+            mes .n$;
+            mes "Please come back later when you have the following items:";
+            mes "";
+            mes .@neededItemAmount+"x "+getitemname($@itemOfTheDay);
+            close;
+        }
+    end;
+
+    alreadyFinished:
+        mes .n$;
+        mes "Thank you! for today I'm satisfied!";
+        mes "But I would be happy if you could come visiting me again tomorrow!";
+        close;
+    end;
+
+
+    givereward:
+        mes .n$;
+        mes "Here is your reward!";
+        getitem .@rewardid,.@rewardamount;
+        getitem .@rewardid1,.@rewardamount1;        
+        getexp .@rewardbaseexp,.@rewardjobexp;
+        close;
+    end;
+
+    bye:
+        next;
+        mes .n$;
+        mes "Please come back! I need your supplies!";
+        close;
+    end;
+
+    goto start;
+
+    OnHour04:
+        RandomSetItemOfTheDay;
+    end;
+
+    OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+        RandomSetItemOfTheDay;
+    end;
+
+    function	RandomSetItemOfTheDay	{
+        setarray .@questIds[0],5862,5863,5864,5865,5866,5867,5868,5869,5870,5871;
+        setarray .@itemIds[0],909,902,940,705,916,1016,937,942,913,948;
+        .@rnd = rand(0,getarraysize(.@itemIds));
+        $@itemOfTheDay = .@itemIds[.@rnd];
+        $@questOfTheDay = .@questIds[.@rnd];
+    }
+}

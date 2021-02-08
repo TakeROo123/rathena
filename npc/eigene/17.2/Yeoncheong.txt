@@ -1,0 +1,101 @@
+ba_in01,87,383,4	script	Yeoncheong	4_EP17_CLEANER_W,{
+	mes "[ Yeoncheong ]";
+	mes "Do you have business with me?";
+	next;
+	switch(select("What are you doing here?:Upgrade Armor.")){
+		case 1:
+			mes "[ Yeoncheong ]";
+			mes "I came to the ruined village,","looking for some materials. Touched some strange light, and now I'm here.";
+			next;
+			mes "[ Yeoncheong ]";
+			mes "I've decided to stick around for a little while. Figured I'd be safe so long as I stay close to this soldier.","I have a proposition for you. I want some materials that can only be found in this place.";
+			next;
+			mes "[ Yeoncheong ]";
+			mes "Get them for me, and I'll improve your equipment in exchange. Just so you know, I can only improve certain types.";
+			next;
+			mes "[ Yeoncheong ]";
+			mes "If you're interested, we can discuss the details of our bargain.";
+			close;
+			
+		case 2:
+			mes "[ Yeoncheong ]";
+			mes "The following is the list of equipment I can handle.";
+			for(.@i = 0; .@i < getarraysize(.armor_upgrade$); .@i += 3){
+				mes "<ITEM>"+getitemname(atoi(.armor_upgrade$[.@i]))+"<INFO>"+atoi(.armor_upgrade$[.@i])+"</INFO></ITEM>";
+			}
+			next;
+			mes "[ Yeoncheong ]";
+			mes "Make sure ^0000FFyour equipment is refined to at least +9^000000 before bringing it to me.","That's the minimum requirement for my upgrade service to have any visible effects on your equipment.";
+			next;
+			mes "[ Yeoncheong ]";
+			mes "Make sure you're ^0000FFequipped with the item that you want to improve.^000000","Otherwise, I can't evaluate its condition.";
+			next;
+			mes "[ Yeoncheong ]";
+			mes "As you may have guessed, your equipment will transform into something new after this.","In other words, ^0000FFIt'll lose its current refining levels, cards and enchantments.^000000";
+			next;
+			mes "[ Yeoncheong ]";
+			mes "And I need ^0000FFIllusion Equipment and Barmeal Ticket^000000 to upgrade your equipment.","Pick an item you want and I'll tell you what I need.";
+			next;
+			for(.@i = 0; .@i < getarraysize(.armor_upgrade$); .@i += 3){
+				.@menu$ += getitemname(atoi(.armor_upgrade$[.@i])) + ":";
+			}
+			.@s = (select(.@menu$) - 1) * 3;
+			mes "[ Yeoncheong ]";
+			mes "For that equipment, I need the following materials.";
+			mes "^0000FF+9 " + getitemname(atoi(.armor_upgrade$[.@s+1])) +"^000000";
+			getinventorylist(getcharid(0));
+			for(.@i = 0; .@i < @inventorylist_count; .@i++){
+				if(@inventorylist_id[.@i] !=  atoi(.armor_upgrade$[.@s+1])){ 
+					continue;
+				}
+				if(@inventorylist_refine[.@i] >= 9){
+					.@index = .@i;
+					.@weapon_check = 1;
+					break;
+				} else {
+					continue;
+				}	
+			}
+			explode(.@data$,.armor_upgrade$[.@s+2],",");
+			for(.@i = 0; .@i < getarraysize(.@data$); .@i += 2){
+				if(countitem(atoi(.@data$[.@i])) < atoi(.@data$[.@i+1])) .@missing += 1;
+				mes "^0000FF"+.@data$[.@i+1]+ " " +getitemname(atoi(.@data$[.@i]))+"^000000";
+			}
+			mes "Do you want to continue?";
+			next;
+			if(select("Continue.:I'll bring those materials") == 2){
+				mes "[ Yeoncheong ]";
+				mes "Comeback when you're ready.";
+				close;
+			}
+			if(.@weapon_check < 1 || .@missing > 0){
+				mes "[ Yeoncheong ]";
+				mes "You don't have all the materials";
+				end;
+			}
+			delitem2 @inventorylist_id[.@index],1,@inventorylist_identify[.@index],@inventorylist_refine[.@index],@inventorylist_attribute[.@index],@inventorylist_card1[.@index],@inventorylist_card2[.@index],@inventorylist_card3[.@index],@inventorylist_card4[.@index]; 
+			for(.@i = 0; .@i < getarraysize(.@data$); .@i += 2){
+				delitem atoi(.@data$[.@i]),atoi(.@data$[.@i+1]);
+			}
+			mes "[ Yeoncheong ]";
+			mes "Here is your upgraded equipment.";
+			getitem atoi(.armor_upgrade$[.@s]),1;
+			end;
+	}
+	end;
+	
+OnInit:
+	setarray .armor_upgrade$,
+	450127,15376,"1000103,900", //Automatic Armor A-type
+	450128,15377,"1000103,900",	//Automatic Armor B-type
+	470022,22196,"1000103,900", //Automatic Leg A-type
+	470023,22196,"1000103,900",	//Automatic Leg B-type
+	480020,20933,"1000103,900", //Automatic Engine wing A-type
+	480021,20934,"1000103,900",	//Automatic Engine wing B-type
+	490024,32207,"1000103,1500", //Automatic Automatic Booster R
+	490025,32208,"1000103,1500",	//Automatic Automatic Booster L
+	490026,32209,"1000103,1500", //Automatic Automatic Battle Chip R
+	490027,32210,"1000103,1500";	//Automatic Automatic Battle Chip L
+	end;
+	
+}

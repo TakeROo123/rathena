@@ -1,0 +1,273 @@
+ba_maison,121,322,5	script	Flower Garden Manager H	10344,{
+
+	if(checkquest(30052, PLAYTIME) == 2){
+		erasequest(30052);
+	}
+
+	switch(checkquest(30052, PLAYTIME)) {
+		case -1:
+		    mes "Flower Garden Manager";
+            mes "you are ready for the Hidden Garden (H)";
+            next;
+			setquest 30052;
+			switch(select("Create", "Enter")) {
+				case 1:
+					goto createInstance;
+					end;
+				case 2:
+					goto enterInstance;
+					end;
+			}
+			end;
+		case 0:
+			goto enterInstance;
+			end;
+		case 1:
+			mes "your cooldown is still available";
+			mes "please wait for the time";
+			end;
+	}
+	end;
+
+	createInstance:
+			if(is_party_leader() == false) {
+				mes "you need to be an party leader";
+				end;
+			}
+			set .@i_inst, instance_create(.instance_name$);
+			end;
+		end;
+	
+	enterInstance:
+		switch(instance_enter(.instance_name$)) {
+				case IE_NOMEMBER: // Party/Guild/Clan not found (for party/guild/clan modes).
+					mes "Party not found";
+					end;
+				case IE_OTHER: // Other errors (invalid instance name, instance doesn't match with character/party/guild/clan).
+					mes "an unknown error has occurred";
+					end;
+				case IE_NOINSTANCE: // Character/Party/Guild/Clan does not have an instance.
+					mes "Create a instance first";
+					end;
+				case IE_OK:
+					mapannounce "glast_01", strcharinfo(0)+ "is entering "+.instance_name$, bc_map, "0x00ff99", FW_NORMAL, 12;
+					end;
+				
+			}
+		end;
+
+OnInit:
+    set .instance_name$, "Hidden Garden H";
+    end;
+}
+
+ba_maison,125,319,5	script	12534	123,{
+    erasequest 30052;
+}
+
+
+//============================================
+//====================FL1=====================
+//============================================
+1@herbsh,53,206,5	script	sepün#H	10354,{
+//if(!is_party_leader()) { end; }
+
+if('floor1$){ end; }
+'floor1$ = 1;
+
+    mes "Welcome to the farm!";
+    mes "I'm Slik the collector in charge!";
+    next;
+    mes "Save me";
+	close2;		
+    
+'partyId$ = getcharid(1);
+
+areamonster 'map$,42,216,71,222,"Greater Research Assistant",atoi('gra$),8,instance_npcname("sepün#H")+"::OnMyMobDead";
+areamonster 'map$,42,216,71,222,"Greater Dried Rafflesia",atoi('gdr$),2,instance_npcname("sepün#H")+"::OnMyMobDead";
+
+
+'mobsFloor = 10; 
+end;
+
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+	if(--'mobsFloor <= 0) {
+mapannounce instance_mapname('map$),"go to the warp.",bc_map,'announceColor$;
+	enablenpc instance_npcname("HDG1H");
+	}
+
+end;
+OnInstanceInit:
+	'map$ = instance_mapname("1@herbsh");
+	'gra$ = 20623;
+	'gdr$ = 20625;
+	'gsa$ = 20627;
+	'lma$ = 20621;
+
+
+	
+	'floor1$ = 0;
+	'floor2$ = 0;
+	'floor3$ = 0;
+	'floor4$ = 0;
+	'floor5$ = 0;
+
+		disablenpc instance_npcname ("HDG1H");
+		disablenpc instance_npcname ("HDG2H");
+		disablenpc instance_npcname ("HDG3H");
+		disablenpc instance_npcname ("HDG4H");
+		disablenpc instance_npcname ("HDG5H");	
+
+
+	'announceColor$ = "0x009933";
+	'mvpAnnounce$ = "0xee6600";
+	
+	'mvpAlive$ = 1;
+end;
+} 
+// ===================================================
+// ============== Floor 2 ============================
+// ===================================================
+1@herbsh,100,223,1	script	#h2H	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+if('floor2$){ end; }
+'floor2$ = 1;
+
+areamonster 'map$,95,228,181,236,"Greater Research Assistant",atoi('gra$),8,instance_npcname("#h2H")+"::OnMyMobDead";
+areamonster 'map$,95,228,181,236,"Greater Dried Rafflesia",atoi('gdr$),2,instance_npcname("#h2H")+"::OnMyMobDead";
+areamonster 'map$,95,228,181,236,"Greater Special Alnoldi",atoi('gsa$),4,instance_npcname("#h2H")+"::OnMyMobDead";
+
+
+
+
+'mobsFloor = 14;
+
+
+end;
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+	if(--'mobsFloor <= 0) {
+		enablenpc instance_npcname("HDG2H");
+	}
+}
+// ===================================================
+// ============== Floor 3 ============================
+// ===================================================
+1@herbsh,196,199,1	script	#h3H	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+if('floor3$){ end; }
+'floor3$ = 1;
+
+areamonster 'map$,204,190,253,218,"Greater Research Assistant",atoi('gra$),8,instance_npcname("#h3H")+"::OnMyMobDead";
+areamonster 'map$,204,190,253,218,"Greater Dried Rafflesia",atoi('gdr$),2,instance_npcname("#h3H")+"::OnMyMobDead";
+areamonster 'map$,204,190,253,218,"Greater Special Alnoldi",atoi('gsa$),4,instance_npcname("#h3H")+"::OnMyMobDead";
+
+
+
+
+'mobsFloor = 14;
+
+
+end;
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+	if(--'mobsFloor <= 0) {
+		enablenpc instance_npcname("HDG3H");
+	}
+}
+// ===================================================
+// ============== Floor 4 ============================
+// ===================================================
+1@herbsh,272,214,1	script	#h4H	HIDDEN_NPC,5,5,{
+//if(!is_party_leader()) { end; }
+
+if('floor4$){ end; }
+'floor4$ = 1;
+
+areamonster 'map$,286,202,307,271,"Greater Research Assistant",atoi('gra$),8,instance_npcname("#h4H")+"::OnMyMobDead";
+areamonster 'map$,286,202,307,271,"Greater Dried Rafflesia",atoi('gdr$),2,instance_npcname("#h4H")+"::OnMyMobDead";
+areamonster 'map$,286,202,307,271,"Greater Special Alnoldi",atoi('gsa$),4,instance_npcname("#h4H")+"::OnMyMobDead";
+
+
+
+
+'mobsFloor = 14;
+
+
+end;
+OnMyMobDead:
+	dispbottom 'mobsFloor;
+	if(--'mobsFloor <= 0) {
+		enablenpc instance_npcname("HDG4H");
+	}
+}
+// ===================================================
+// ============== Floor 5 ============================
+// ===================================================
+1@herbsh,278,80,1	script	Lambda	20620 ,{
+
+
+if('floor5$){ end; }
+'floor5$ = 1;
+    mes "Welcome to the farm!";
+    mes "I'm Slik the collector in charge!";
+    next;
+    mes "Save me";
+	
+	close2;
+monster 'map$,278,80,"Lambda",atoi('lma$),1,instance_npcname("Lambda")+"::OnMyMobDead";
+
+
+
+'mobsFloor = 1;
+
+hideonnpc instance_npcname("Lambda");
+end;
+
+end;
+OnMyMobDead:
+	'mvpAlive$ = 0;
+	'canleave$ = 1;
+	enablenpc instance_npcname("HDG5H");
+}
+
+// ===================================================
+// ============== Floor 6 ============================
+// ===================================================
+1@herbsh,86,75,1	script	Lambda#1	20620 ,{
+	mes "Lambda";
+	mes "Its feels good to bring him down by force.";
+	mes "i don't think youve give the right to be an Administrator yet.";
+	next;
+	mes "Lambda";
+	mes "i have a hunch they'll be back in time,";
+	mes "and maybe we'll have to continue this Fight until Varmundt returns";
+	next;
+	mes "Lambda";
+	mes "Right";
+	mes "i brought some old stuff from the past, jut in case it helps, take it.";
+	next;
+	mes "Lambda";
+	mes "I'll show you the way out";
+	next;
+	getitem 1000103,5;
+	getitem 100160,1;
+	getitem 100161,1;
+	getitem 1000104,4;    
+	completequest(30052);
+	warp "ba_maison",122,313;
+	end;
+}
+
+
+//============================================
+//==================WARPS=====================
+//============================================
+1@herbsh,88,195,0	warp	HDG1H	2,2,1@herbsh,102,234
+1@herbsh,181,230,0	warp	HDG2H	2,2,1@herbsh,197,200
+1@herbsh,259,213,0	warp	HDG3H	2,2,1@herbsh,272,214
+1@herbsh,298,267,0	warp	HDG4H	2,2,1@herbsh,248,80
+1@herbsh,242,80,0	warp	HDG5H	2,2,1@herbsh,86,83

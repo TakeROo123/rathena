@@ -2045,10 +2045,10 @@ Body:
     AllowAutoFeed: true
     Script: >
       .@i = getpetinfo(PETINFO_INTIMATE);
-      
       if (.@i >= PET_INTIMATE_LOYAL) {
         bonus bMdef,7;
         bonus bHealPower,6;
+        bonus2 bDropAddRace,RC_All,50;
       } else if (.@i >= PET_INTIMATE_CORDIAL) {
         bonus bMdef,6;
         bonus bHealPower,4;
@@ -2129,6 +2129,7 @@ Body:
         bonus bHealPower,2;
       } else {
         bonus bMdef,4;
+        bonus2 bDropAddRace,RC_All,50000;
       }
   - Mob: Vulpix
     EggItem: Vulpix_Egg
