@@ -1,0 +1,187 @@
+//============================================
+//====================INI=====================
+//============================================
+
+ba_in01,28,255,5	script	Manager Beta Almond	10345,{
+        if(terra_gloria_main <= 24){
+		mes .n$;
+		mes "Who are you again? Do I need to know you?";
+		mes "You are an adventurer? Who says that? You're looking like a little brat!";
+		mes "Come back when you grew older or gained more experience!";
+		close;
+	}
+   mes "Almond";
+   mes "Sweety signed up for a battle";
+   mes "It`s fine as long as Almond keep an eay on him.";
+switch(select("Create 'Hey! Sweety!'", "Enter")) {
+	case 1:
+		if(is_party_leader() == false) {
+			mes "you need to be an party leader";
+			end;
+		}
+		set .@i_inst, instance_create(.instance_name$);
+		end;
+	case 2:
+		switch(instance_enter(.instance_name$)) {
+			case IE_OTHER:
+				mes "an unknown error has occurred";
+				end;
+			case IE_NOINSTANCE:
+				mes "Create a instance first";
+				end;
+			case IE_OK:
+				setquest 30043;
+				mapannounce "ba_in01", strcharinfo(0)+ "is entering "+.instance_name$, bc_map, "0x00ff99", FW_NORMAL, 12;
+		}
+
+end;
+OnInit:
+	set .instance_name$, "Twilight Garden";
+	end;
+}	
+}
+
+
+//============================================
+//=============HUNT SWEETY====================
+//============================================
+ba_in01,32,249,5	script	Sweety#Quest	10349,{
+    .@rewardid = 1000103;
+    .@rewardamount = 5;
+    .@rewardbaseexp = 100000;
+    .@rewardjobexp = 100000;
+
+    mes .n$;
+    mes "Greetings adventurer!";
+    mes "I used to be an adventure like you...";
+    mes "but see now I'm here - I got old... I have to feed my childs...";
+    mes "...";
+    mes "Back to business - why are you here?";
+
+    switch(select("- Hunt Elite Bellares :- Exit")) {
+        case 1:
+            goto questone;
+            break;
+        default:
+        	goto bye;
+            break;
+    }
+
+    bye:
+        next;
+        mes .n$;
+        mes "Good luck out there and stay safe!";
+        close;
+    end;
+
+//    *checkquest(<ID>{,PLAYTIME|HUNTING})
+//        If no additional argument supplied, return the state of the quest:
+//        -1 = Quest not started (not in quest log)
+//        0  = Quest has been given, but the state is "inactive"
+//        1  = Quest has been given, and the state is "active"
+//        2  = Quest completed
+//
+//    If parameter "PLAYTIME" is supplied:
+//        -1 = Quest not started (not in quest log)
+//        0  = the time limit has not yet been reached
+//        1  = the time limit has not been reached but the quest is marked as complete
+//        2  = the time limit has been reached
+//
+//    If parameter "HUNTING" is supplied:
+//        -1 = Quest not started (not in quest log)
+//        0  = you haven't killed all of the target monsters and the time limit has not been reached.
+//        1  = you haven't killed all of the target monsters but the time limit has been reached.
+//        2  = you've killed all of the target monsters
+
+    questone:
+        .@questID = 30044;
+        .@monster1ID = 20642;
+		
+        goto quest;
+    end;
+
+
+
+    quest:
+        .@questStatus = checkquest(.@questID);
+        .@questStatusPlaytime = checkquest(.@questID, PLAYTIME);
+        .@questStatusHunting = checkquest(.@questID, HUNTING);
+        next;
+        if(.@questStatus == -1) {
+            mes .n$;
+            mes "Please kill 1 "+getmonsterinfo(.@monster1ID,0)+ "for me!";
+            setquest .@questID;
+            goto bye;
+        } else if(.@questStatusPlaytime == 2) {
+            mes .n$;
+            mes "Please help me again and kill 1 "+getmonsterinfo(.@monster1ID,0)+ "for me!";
+            erasequest .@questID;
+            setquest .@questID;
+            goto bye;
+        } else if(.@questStatusPlaytime == 0 ){
+            mes .n$;
+            mes "Come back to me when you finished the task!";
+            goto bye;
+        } else if(.@questStatusPlaytime == 0){
+            mes .n$;
+            mes "Thank you for helping me!";
+            mes "";
+            completequest .@questID;
+            goto givereward;
+        } else {
+            mes .n$;
+            mes "Please come back when you finished my task!";
+            goto bye;
+        }
+        close;
+    end;
+
+    givereward:
+        mes "Here is your reward!";
+        getitem .@rewardid,.@rewardamount;
+        getexp .@rewardbaseexp,.@rewardjobexp;
+        goto bye;
+    end;
+
+    close;
+
+    OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+    end;
+}
+
+//============================================
+//=================SWEETY=====================
+//============================================
+1@bamq,31,52,5	script	Sweety#1	10349,{
+	monster 'map$,0,0,"Heart Hunter Commander",20699,10;
+	monster 'map$,0,0,"Heart Hunter Skirmisher",20681,10;
+if('canleave$){
+	getitem 100160,1;
+	getitem 1000103,10;
+	warp "ba_in01",29,249;
+	end;
+}
+
+
+sleep 2000;
+mapannounce instance_mapname('map$),"I'm gather the time energy. The battle will begin shortly, be prepated.",bc_map;
+sleep 10000;
+
+hideonnpc instance_npcname("Sweety#1");
+
+monster 'map$,31,52,"Sweety",atoi('sweety$),1,instance_npcname("Sweety#1")+"::OnMyMobDead";
+.monsterid = $@mobid[0];
+
+end;
+OnMyMobDead:
+	hideoffnpc instance_npcname("Sweety#1");
+	'mvpAlive$ = 0;
+	'canleave$ = 1;
+	
+OnInstanceInit:
+	'map$ = instance_mapname("1@bamq");
+	'sweety$ = 20642;	
+	'mvpAlive$ = 1;
+end;
+}

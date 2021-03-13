@@ -19,13 +19,7 @@
 //============================================================
 // - Craft Armor, Wing, Leg or Booster - Illusion Gear Dealer
 takero,168,382,5	script	Illusion Gear Dealer	4_M_NOFEARGUY,{
-	if(terra_gloria_main <= 24){
-		mes .n$;
-		mes "Who are you again? Do I need to know you?";
-		mes "You are an adventurer? Who says that? You're looking like a little brat!";
-		mes "Come back when you grew older or gained more experience!";
-		close;
-	}
+
 
 	if(checkquest(30001) == -1){
 		mes .n$;
@@ -426,11 +420,7 @@ end;
 
 // - Enchanter - Illusion Gear Enchanter
 takero,167,361,4	script	Illusion Gear Enchanter	4_EP17_ELYUMINA,{
-	if(terra_gloria_main <= 24){
-		mes .n$;
-		mes "Sorry - I'm not talking to rookies!";
-		close;
-	}
+
 
 	
 	mes .n$;

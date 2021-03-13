@@ -1,0 +1,1076 @@
+glast_01,139,291,5	script	HUGINN2001	2_DROP_MACHINE,{
+        mes "what can I do for you";
+		next;
+    switch(select("- Temporal Circlet :- Cards :- Royal/Guardian Weapons random :- Royal/Guardian Weapons:- nothing!")) { 
+        case 1:
+            next;
+            goto Temporal_Circlet;
+            break;
+		case 2:
+            next;
+            goto cards2;
+            break;
+		case 3:
+            next;
+            goto weaponsr;
+            break;
+		case 4:
+            next;
+            goto weaponsn;
+            break;						 	                      
+        default:
+            next;
+        	goto stoptalking;
+            break;
+    }
+    Temporal_Circlet:
+        mes "okay give me a moment.";
+        close2; 
+        callshop "Temporal_Circlet",1; 
+        end;
+        end;
+
+    cards2:
+        mes "okay give me a moment.";
+        close2; 
+        callshop "cards2",1; 
+        end;
+        end;
+
+	weaponsr:
+            mes "all you need is";
+            mes "You need / you have:";
+	        mes "^5533FF2 Temporal Gemstone^000000 / "+countitem(25865 )+" ea";
+	        mes "^5533FF70 Temporal Fragment ^000000 / "+countitem(25867)+" ea";
+            next;
+	        if(countitem(25865)<2) goto LItem;
+	        if(countitem(25867)<70) goto LItem;
+                
+                delitem 25865,2;
+	            delitem 25867,70;
+        next;        
+			setarray .@item, 1336,18191,21055,28141,32027,32353,1870,2060,13347,18198,26165,26166,26172,26216,28046,28636,28774,28775,28776,32111,32304,32401,32402,32403;
+			setarray .@amount, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1;			
+			.@index = rand( getarraysize( .@item ) );
+			getitem .@item[.@index],.@amount[.@index];
+			mes "Gained "+.@amount[.@index]+"x "+getitemname( .@item[.@index] )+".";
+            end;
+	weaponsn:
+		mes "okay give me a moment.";
+        close2; 
+        callshop "weaponsn",1; 
+        end;
+        end;
+
+    stoptalking:
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+
+    exit:
+        enable_items;
+        close;
+    end;
+}
+
+-	itemshop	Temporal_Circlet	-1,25864,19474:5,19475:5,19476:5,19477:5,19478:5,19479:5,19480:5,19481:5,19482:5,19484:5,19485:5,19486:5,19487:5,19488:5,19489:5,19490:5,19491:5,19492:5;
+-	itemshop	cards2	-1,25866,27384:50,27385:70;
+-	itemshop	weaponsn	-1,25866,1336:20,18191:20,21055:20,28141:20,32027:20,32353:20,1870:20,2060:20,13347:20,18198:20,26165:20,26166:20,26172:20,26216:20,28046:20,28636:20,28774:20,28775:20,28776:20,32111:20,32304:20,32401:20,32402:20,32403:20;
+
+//=================INI=====================================
+glast_01,143,288,5	script	Oscar#mode	4_ED_OSCAR,{
+       	if(checkquest(30061, PLAYTIME) == 2){
+			erasequest(30061);
+	}
+
+		switch(checkquest(30061, PLAYTIME)) {
+			case -1:
+				mes "Oscar";
+				mes "you are ready for the Glast Heim Challenger";
+				next;
+				switch(select("Create", "Enter")) {
+					case 1:
+						goto createInstance;
+						end;
+					case 2:
+						goto enterInstance;
+						end;
+				}
+				end;
+			case 0:
+				goto enterInstance;
+				end;
+			case 1:
+				mes "your cooldown is still available";
+				mes "please wait for the time";
+				end;
+		}
+		end;
+
+		createInstance:
+				if(is_party_leader() == false) {
+					mes "you need to be an party leader";
+					end;
+				}
+				set .@i_inst, instance_create(.instance_name$);
+				end;
+			end;
+		
+		enterInstance:
+			switch(instance_enter(.instance_name$)) {
+					case IE_NOMEMBER: 
+						mes "Party not found";
+						end;
+					case IE_OTHER: 
+						mes "an unknown error has occurred";
+						end;
+					case IE_NOINSTANCE:
+						mes "Create a instance first";
+						end;
+					case IE_OK:
+						setquest 30061;
+						mapannounce "glast_01", strcharinfo(0)+ "is entering "+.instance_name$, bc_map, "0x00ff99", FW_NORMAL, 12;
+						end;
+					
+				}
+			end;
+
+	OnInit:
+		set .instance_name$, "GH Mode";
+		end;
+}
+
+2@gl_k2,150,41,5	script	Oscar#mode1	4_ED_OSCAR,{
+		mes "Oscar";
+		mes "Ufa, we definitely need you.";
+		mes "The energy density scattered in the airis defferent";
+		next;
+		mes "Oscar";	
+		mes "Now listen carefully";
+		mes "Himmelmez's seems to be behind all this.";
+		mes " The group leader has the autohority to chose the level of the dimension.";
+		next;
+		mes "Oscar";	
+		mes "In this demension the creatures expienced a lot of blood.";
+		mes "the dimension is highly contaminated.";
+		mes "You as the group leader must be very careful.";
+		next;
+		mes "Oscar";	
+		mes "You as leader should start cleaning the place.";
+		mes "I will come to you soon.";
+		mes "Good luck";
+		if('floorLevel == 0){
+			'floorLevel = select("1 - Easy", "2", "3", "4", "5", "6", "7", "8", "9", "10 - Hard");
+		}
+		close2;
+		.partyID = getcharid(1);
+		warpparty 'map$,170,102,.partyID,'map$;
+		close;
+
+
+	OnInstanceInit:
+		'map$ = instance_mapname("2@gl_k2");
+		'mra$ = 20578;
+		'mk$ = 20576;
+		'mr$ = 20577;
+		'zom$ = 20579;
+		'goul$ = 20580;
+		'mwk$ = 20574;
+		'mth$ = 20581;
+		'dw$ = 20572;	    
+		'ph$ = 20573;
+
+		
+		'floor1$ = 0;
+		'floor2$ = 0;
+		'floor3$ = 0;
+
+		
+		'floorLevel = 0;
+
+		disablenpc instance_npcname ("ghmodew1");
+		disablenpc instance_npcname ("ghmodew2");
+		disablenpc instance_npcname ("ghmodew3");
+		disablenpc instance_npcname ("ghmodew4");
+		disablenpc instance_npcname ("Oscar#mode2");
+		disablenpc instance_npcname ("????#1243");
+			
+	end;
+}
+
+// ===================================================
+// ============== Floor 1 ============================
+// ===================================================
+2@gl_k2,170,102,5	script	#ghmode1	HIDDEN_NPC,5,5,{
+    if('floor1$){ end; }
+    'floor1$ = 1;
+
+    'mobsFloor = 50;
+
+	areamonster 'map$,159,162,264,19,"Mutated Raydric Archer",atoi('mra$),10,instance_npcname("#ghmode1")+"::OnMyMobDead";
+	callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
+
+	areamonster 'map$,159,162,264,19,"Mutated Khalitzburg",atoi('mk$),10,instance_npcname("#ghmode1")+"::OnMyMobDead";
+	callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
+
+	areamonster 'map$,159,162,264,19,"Mutated Raydric",atoi('mr$),10,instance_npcname("#ghmode1")+"::OnMyMobDead";
+	callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
+
+	areamonster 'map$,159,162,264,19,"Mutated White Knight",atoi('mwk$),10,instance_npcname("#ghmode1")+"::OnMyMobDead";
+	callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
+
+	areamonster 'map$,159,162,264,19,"Mutated Ghoul",atoi('goul$),10,instance_npcname("#ghmode1")+"::OnMyMobDead";
+	callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
+
+    OnMyMobDead:
+        dispbottom 'mobsFloor;
+	    if(--'mobsFloor <= 0) {
+    	enablenpc instance_npcname("ghmodew1");
+		enablenpc instance_npcname("ghmodew2");      
+        }
+}
+
+// ===================================================
+// ============== Floor 2 ============================
+// ===================================================
+2@gl_k2,130,82,5	script	#ghmode2	HIDDEN_NPC,5,5,{
+    if('floor2$){ end; }
+    'floor2$ = 1;
+
+
+    'mobsFloor = 50;
+		areamonster 'map$,135,165,36,20,"Mutated Raydric Archer",atoi('mra$),10,instance_npcname("#ghmode2")+"::OnMyMobDead";
+		callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
+		areamonster 'map$,135,165,36,20,"Mutated Khalitzburg",atoi('mk$),10,instance_npcname("#ghmode2")+"::OnMyMobDead";
+		callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
+		areamonster 'map$,135,165,36,20,"Mutated Raydric",atoi('mr$),10,instance_npcname("#ghmode2")+"::OnMyMobDead";
+		callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
+		areamonster 'map$,135,165,36,20,"Mutated White Knight",atoi('mwk$),10,instance_npcname("#ghmode2")+"::OnMyMobDead";
+		callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
+		areamonster 'map$,135,165,36,20,"Mutated Ghoul",atoi('goul$),10,instance_npcname("#ghmode2")+"::OnMyMobDead";
+		callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
+
+    OnMyMobDead:
+        dispbottom 'mobsFloor;
+	    if(--'mobsFloor <= 0) {
+    	enablenpc instance_npcname("ghmodew3");
+    	enablenpc instance_npcname("Oscar#mode2");	
+     
+        }
+}
+
+2@gl_k2,150,160,5	script	Oscar#mode2	4_ED_OSCAR,{
+		npctalk "The portal is closed...";
+		sleep2 3000;
+		npctalk "See you on the other side";
+		npctalk "Let's open this now";
+		progressbar_npc "green", 10;
+		disablenpc instance_npcname ("Oscar#mode2");
+		enablenpc instance_npcname("ghmodew4");
+	end;
+}
+
+//=========================================
+//================FLMVP====================
+//=========================================
+2@gl_k2,156,230,1	script	Oscar#mvp1	4_ED_OSCAR,{
+	if('floor3$){ end; }
+    'floor3$ = 1;
+
+			hideonnpc instance_npcname("Oscar#mvp1");
+			monster 'map$,157,240,"Phantom Amdarais",atoi('ph$),1,instance_npcname("Oscar#mvp1")+"::OnMyMobDead";
+			callfunc("F_ScaleBossByFloor", $@mobid[0], 'floorLevel);
+
+		end;
+    OnMyMobDead:
+		enablenpc instance_npcname("????#1243");
+
+}
+
+//============================================
+//==================Reward====================
+//============================================
+
+2@gl_k2,157,239,5	script	????#1243	4_TREASURE_BOX,{
+	if('floorLevel == 1){
+		getitem 25864, rand(1, 5);
+		getitem 25867, rand(1, 15);    
+		completequest(30061);
+		warp "glast_01",134,286;
+	}
+	else if ('floorLevel == 2){
+		getitem 25864, rand(1, 6);
+		getitem 25867, rand(1, 20);
+		completequest(30061);
+		warp "glast_01",134,286;
+	}
+	else if ('floorLevel == 3){
+		getitem 25864, rand(2, 7);
+		getitem 25865, rand(1, 3);
+		getitem 25867, rand(1, 25);    
+		completequest(30061);
+		warp "glast_01",134,286;
+	}
+	else if ('floorLevel == 4){
+		getitem 25864, rand(2, 8);
+		getitem 25865, rand(1, 4);
+		getitem 25867, rand(1, 30); 
+		completequest(30061);
+		warp "glast_01",134,286;
+	}
+	else if ('floorLevel == 5){
+		getitem 25864, rand(3, 9);
+		getitem 25865, rand(1, 4);
+		getitem 25866, rand(1, 3);
+		getitem 25867, rand(2, 30);   
+		completequest(30061);
+		warp "glast_01",134,286;
+	}
+	else if ('floorLevel == 6){
+		getitem 25864, rand(3, 10);
+		getitem 25865, rand(1, 5);
+		getitem 25866, rand(3, 7);
+		getitem 25867, rand(2, 30);
+		completequest(30061);
+		warp "glast_01",134,286;
+	}
+	else if ('floorLevel == 7){
+		getitem 25864, rand(4, 10);
+		getitem 25865, rand(2, 5);
+		getitem 25866, rand(5, 11);
+		getitem 25867, rand(3, 30);   
+		completequest(30061);
+		warp "glast_01",134,286;
+	}
+	else if ('floorLevel == 8){
+		getitem 25864, rand(4, 10);
+		getitem 25865, rand(2, 6);
+		getitem 25866, rand(8, 16);
+		getitem 25867, rand(3, 30);
+		completequest(30061);
+		warp "glast_01",134,286;
+	}
+	else if ('floorLevel == 9){
+		getitem 25864, rand(5, 10);
+		getitem 25865, rand(2, 6);
+		getitem 25866, rand(11, 22);
+		getitem 25867, rand(4, 30);
+		completequest(30061);
+		warp "glast_01",134,286;
+	}
+	else if ('floorLevel == 10){
+		getitem 25864, rand(5, 10);
+		getitem 25865, rand(2, 7);
+		getitem 25866, rand(14, 28);
+		getitem 25867, rand(4, 30);
+		completequest(30061);
+		warp "glast_01",134,286;
+	}
+}
+
+//============================================
+//==================WARPS=====================
+//============================================
+2@gl_k2,165,101,0	warp	ghmodew1	2,2,2@gl_k2,150,68
+2@gl_k2,145,81,0	warp	ghmodew2	2,2,2@gl_k2,130,82
+2@gl_k2,135,124,0	warp	ghmodew3	2,2,2@gl_k2,148,122
+2@gl_k2,149,163,0	warp	ghmodew4	2,2,2@gl_k2,150,165
+//============================================
+//==================FUNCTIONS=================
+//============================================
+function	script	F_ScaleMonsterByFloor	{
+	.floorLevel = getarg(1);
+	for(.@i=0; .@i<getarraysize(getarg(0)); .@i++) {
+		.@monsterId = getelementofarray(getarg(0), .@i);
+		getunitdata .@monsterId, .@mob_data;
+
+		.@newHP = .@mob_data[UMOB_MAXHP] * .floorLevel;
+		.@minAtk = .@mob_data[UMOB_ATKMIN] * .floorLevel;
+		.@maxAtk = .@mob_data[UMOB_ATKMAX] * .floorLevel;
+		.@minMatk = .@mob_data[UMOB_MATKMIN] * .floorLevel;
+		.@maxMatk = .@mob_data[UMOB_MATKMAX] * .floorLevel;
+		
+		setunitdata .@monsterId, UMOB_MAXHP, .@newHP;
+		setunitdata .@monsterId, UMOB_HP, .@newHP;
+		setunitdata .@monsterId, UMOB_ATKMIN, .@minAtk;
+		setunitdata .@monsterId, UMOB_ATKMAX, .@maxAtk;
+		setunitdata .@monsterId, UMOB_MATKMIN, .@minMatk;
+		setunitdata .@monsterId, UMOB_MATKMAX, .@maxMatk;
+	}
+	return;
+}
+
+function	script	F_ScaleBossByFloor	{
+	.@monsterId = getarg(0);
+	.floorLevel = getarg(1);
+	getunitdata .@monsterId, .@mob_data;
+
+	.@newHP = 450000000 + (150000000 * .floorLevel);
+	.@minAtk = .@mob_data[UMOB_ATKMIN] * .floorLevel;
+	.@maxAtk = .@mob_data[UMOB_ATKMAX] * .floorLevel;
+	.@minMatk = .@mob_data[UMOB_MATKMIN] * .floorLevel;
+	.@maxMatk = .@mob_data[UMOB_MATKMAX] * .floorLevel;
+	
+	setunitdata .@monsterId, UMOB_MAXHP, .@newHP;
+	setunitdata .@monsterId, UMOB_HP, .@newHP;
+	setunitdata .@monsterId, UMOB_ATKMIN, .@minAtk;
+	setunitdata .@monsterId, UMOB_ATKMAX, .@maxAtk;
+	setunitdata .@monsterId, UMOB_MATKMIN, .@minMatk;
+	setunitdata .@monsterId, UMOB_MATKMAX, .@maxMatk;
+	return;
+}
+
+//info https://hazyforest.com/instances:ogh_cm
+//============================================
+//===================ENCHANT==================
+//============================================
+glast_01,136,291,5	script	OSC0005	2_SLOT_MACHINE,{
+		.reset_cost = 500000;
+		.@itemIdSilvervine = 6417;
+		.@itemFullResetCostMat = .@itemIdSilvervine;
+		.@itemFullResetCost = 2;
+		.@itemFullResetZenyCost = 500000;
+		.@itemFullResetFailChance = 30;
+		setarray .@upgrade,    29061,29062,29063,29064,29065,29066,29067,29068,29069,29070,-1, // Ambition
+							29071,29072,29073,29074,29075,29076,29077,29078,29079,29080,-1,//Tab1
+							29081,29082,29083,29084,29085,29086,29087,29088,29089,29090,-1, //Expect
+							29091,29092,29093,29094,29095,29096,29097,29098,29099,29100,-1, //ArchLine
+							29101,29102,29103,29104,29105,29106,29107,29108,29109,29110,-1, //Steel1
+							29111,29112,29113,29114,29115,29116,29117,29118,29119,29120,-1; //Mercy	
+
+		setarray .@4th,   			4710,4711,4712,4713, // INT 1-4
+											4700,4701,4702,4703, // Str 1-4
+											4740,4741,4742,4743, // Vit 1-4
+											4750,4751,4752,4753; // Luk 1-4
+
+		setarray	.@3th,   			4710,4711,4712,4713, // INT 1-4
+											4700,4701,4702,4703, // Str 1-4
+											4740,4741,4742,4743, // Vit 1-4
+											4750,4751,4752,4753, // Luk 1-4
+											29672,29673,29674, //Temporal Jewel (Str) 1-3
+											29675,29676,29677, //Temporal Jewel (Agi) 1-3
+											29678,29679,29680, // Temporal Jewel (Vit) 1-3
+											29681,29682,29683, // Temporal Jewel (Int) 1-3
+											29684,29685,29686, // Temporal Jewel (Dex) 1-3
+											29687,29688,29689; // Temporal Jewel (Luk) 1-3
+
+		setarray	.@3thpecial,		29672,29673,29674, //Temporal Jewel (Str) 1-3
+											29675,29676,29677, //Temporal Jewel (Agi) 1-3
+											29678,29679,29680, // Temporal Jewel (Vit) 1-3
+											29681,29682,29683, // Temporal Jewel (Int) 1-3
+											29684,29685,29686, // Temporal Jewel (Dex) 1-3
+											29687,29688,29689; // Temporal Jewel (Luk) 1-3
+
+
+		setarray	.@2th,   			4818,4817,4816,4843, // Sharp 1-4
+											4832,4833,4834,4835, // Expert Archer 1-4
+											4869,4872,4873,4881, // ASPD 1-4
+											4815,4814,4813,4812, // Spell 1-4
+											29706, //Unyielding Lv1
+											29061, //Mettle Lv. 1
+											29111, //Affection1
+											29101, //Adamatine1
+											29091, //MasterArcher1
+											29071, //MagicEessence1
+											29081; //Acute1
+
+		setarray .@itemIdsTemporalCirclet[0],19480,19477,19478,19490,19476,19489,19484,19488,19475,19474,19479,19483,19487,19486,19492,19491,19481,19485,19482;
+		disable_items;
+
+		switch(select("First Enchant ","Second Enchant (Normal)","Second Enchant (Special)","Third Enchant","Reset","Cancel")) {
+			case 1:
+				next;
+				goto first;
+				break;
+			case 2:
+				goto SecondEnchant;
+				break;
+			case 3:
+				goto SecondEnchantS;
+				break;
+			case 4:
+				goto ThirdEnchant;
+				break;
+			case 5:
+				next;
+				goto Reset;
+				break;			
+			default:
+				next;
+				goto stoptalking;
+				break;
+		}
+		close;			
+
+		first:
+			if(countitem(25867) < 10 ) {
+				mes "you dont have enought mats";
+				close;
+			}
+			.@item = getequipid(EQI_HEAD_TOP);
+			.@ref = getequiprefinerycnt(EQI_HEAD_TOP);
+			.@card0 = getequipcardid(EQI_HEAD_TOP,0);
+			.@card1 = getequipcardid(EQI_HEAD_TOP,1);
+			.@card2 = getequipcardid(EQI_HEAD_TOP,2);
+			.@card3 = getequipcardid(EQI_HEAD_TOP,3);
+		if(getequipid(EQI_HEAD_TOP) == .@itemIdsTemporalCirclet){
+			.@equipedEq[getarraysize(.@equipedEq)] = .@itemIdsTemporalCirclet;
+			}
+			if(.@card3 != 0) {
+				mes "your Circlet is already full Enchanted";
+				close;
+			}
+			if(.@card3 == 0) {
+				.@card3 = .@4th[rand(16)];
+				delitem 25867,10;
+				delequip EQI_HEAD_TOP;
+				getitem2 .@item,1,1,.@ref,0,.@card0,.@card1,.@card2,.@card3;
+			}
+		end;
+
+		SecondEnchant:
+			if(countitem(25867) < 20 ) {
+				mes "you dont have enought mats";
+				close;
+			}
+			.@item = getequipid(EQI_HEAD_TOP);
+			.@ref = getequiprefinerycnt(EQI_HEAD_TOP);
+			.@card0 = getequipcardid(EQI_HEAD_TOP,0);
+			.@card1 = getequipcardid(EQI_HEAD_TOP,1);
+			.@card2 = getequipcardid(EQI_HEAD_TOP,2);
+			.@card3 = getequipcardid(EQI_HEAD_TOP,3);
+		if(getequipid(EQI_HEAD_TOP) == .@itemIdsTemporalCirclet){
+			.@equipedEq[getarraysize(.@equipedEq)] = .@itemIdsTemporalCirclet;
+			}
+			if(.@card2 != 0) {
+				mes "your Circlet is already full Enchanted";
+				close;
+			}
+			if(.@card2 == 0) {
+				.@card2 = .@3th[rand(34)];
+				delitem 25867,20;
+				delequip EQI_HEAD_TOP;
+				getitem2 .@item,1,1,.@ref,0,.@card0,.@card1,.@card2,.@card3;
+				close;
+			}
+		end;
+
+		SecondEnchantS:
+			if(countitem(25865) < 2 ) {
+				mes "you dont have enought mats";
+				close;
+			}
+			.@item = getequipid(EQI_HEAD_TOP);
+			.@ref = getequiprefinerycnt(EQI_HEAD_TOP);
+			.@card0 = getequipcardid(EQI_HEAD_TOP,0);
+			.@card1 = getequipcardid(EQI_HEAD_TOP,1);
+			.@card2 = getequipcardid(EQI_HEAD_TOP,2);
+			.@card3 = getequipcardid(EQI_HEAD_TOP,3);
+
+		if(getequipid(EQI_HEAD_TOP) == .@itemIdsTemporalCirclet){
+			.@equipedEq[getarraysize(.@equipedEq)] = .@itemIdsTemporalCirclet;
+			}
+
+			if(.@card2 != 0) {
+				mes "your Circlet is already full Enchanted";
+				close;
+			}
+			if(.@card2 == 0) {
+				.@card2 = .@3thpecial[rand(18)];
+				delitem 25865,2;
+				delequip EQI_HEAD_TOP;
+				getitem2 .@item,1,1,.@ref,0,.@card0,.@card1,.@card2,.@card3;
+				close;
+			}
+		end;
+
+
+		ThirdEnchant:
+			if(countitem(25866) < 2 ) {
+				mes "you dont have enought mats";
+				end;
+			}
+			.@item = getequipid(EQI_HEAD_TOP);
+			.@ref = getequiprefinerycnt(EQI_HEAD_TOP);
+			.@card0 = getequipcardid(EQI_HEAD_TOP,0);
+			.@card1 = getequipcardid(EQI_HEAD_TOP,1);
+			.@card2 = getequipcardid(EQI_HEAD_TOP,2);
+			.@card3 = getequipcardid(EQI_HEAD_TOP,3);
+
+		if(getequipid(EQI_HEAD_TOP) == .@itemIdsTemporalCirclet){
+			.@equipedEq[getarraysize(.@equipedEq)] = .@itemIdsTemporalCirclet;
+
+			if(.@card1 != 0) {
+				mes "your Circlet is already full Enchanted";
+				end;
+			}
+			if(.@card1 == 0) {
+				.@card1 = .@2th[rand(23)];
+				delitem 25866,2;
+				delequip EQI_HEAD_TOP;
+				getitem2 .@item,1,1,.@ref,0,.@card0,.@card1,.@card2,.@card3;
+				close;
+			}
+		end;
+
+
+		Reset:
+			.@item = getequipid(EQI_HEAD_TOP);
+			.@ref = getequiprefinerycnt(EQI_HEAD_TOP);
+			.@card0 = getequipcardid(EQI_HEAD_TOP,0);
+			.@card1 = getequipcardid(EQI_HEAD_TOP,1);
+			.@card2 = getequipcardid(EQI_HEAD_TOP,2);
+			.@card3 = getequipcardid(EQI_HEAD_TOP,3);
+			mes .@npc_name$,
+				"This will cost you "+callfunc("F_InsertComma", .reset_cost)+"z.",
+				"Are you sure?";
+			next;
+			select("Yes");
+			mes .@npc_name$;
+			if(Zeny < .reset_cost) {
+				mes "You don't bring enough zeny.";
+				close;
+			}
+			Zeny -= .reset_cost;
+			.@ref = getequiprefinerycnt(EQI_HEAD_TOP);
+			.@card[0] = getequipcardid(EQI_HEAD_TOP,0);
+			.@card[1] = getequipcardid(EQI_HEAD_TOP,1);
+			.@card[2] = getequipcardid(EQI_HEAD_TOP,2);
+			.@card[3] = getequipcardid(EQI_HEAD_TOP,3);
+			delitem2 .@item, 1, 1, .@ref, 0, .@card[0], .@card[1], .@card[2], .@card[3];
+			getitem2 .@item, 1, 1, .@ref, 0, .@card[0], 0, 0, 0;
+			mes "Your ^000099Circlet^000000's",
+				"enchantments have been reset.";
+			equip .@item; // didn't know it will work while npc set disable_items
+			specialeffect2 261;
+			specialeffect2 119;
+			close;
+		end;
+	}
+}
+
+glast_01,133,291,2	script	HUGINN3001	2_DROP_MACHINE,{
+	disable_items;
+	npctalk "Kkk... I can... sense...", "", bc_self;
+	mes "[HUGINN3001]";
+	mes "Kkk... I can... sense...the grudges...of countless...subjects...";
+	next;
+	npctalk "Who... am... I?...", "", bc_self;
+	mes "[HUGINN3001]";
+	mes "Where is... here?... here?... Aaargh... Who... am... I?... I cannot... remember...";
+	next;
+	mes "[HUGINN3001]";
+	mes "I need... grudge's... grudge's... strong... power... It will help... both me... and you... all... Kkk...";
+	next;
+	switch( select( "Temporal Circlet Enchant" ) ) {
+	case 1:
+		npctalk "Hand over... grudge... grudge...", "", bc_self;
+		mes "[HUGINN3001]";
+		mes "Krrr... hehe... hand over... grudge's... grudge's... strong power... I'll enchant... a special power... into the helmet...";
+		mes "^FF0000*If you bring Temporal Spell, you can enchant it into the Temporal Circlet.*^000000";
+		next;
+		.@equip_id = getequipid(EQI_HEAD_TOP);
+		switch(.@equip_id) {
+			case 19480:
+			case 19477:
+			case 19478:
+			case 19490:
+			case 19476:
+			case 19489:
+			case 19484:
+			case 19488:
+			case 19475:
+			case 19474:
+			case 19479:
+			case 19483:
+			case 19487:
+			case 19486:
+			case 19492:
+			case 19491:
+			case 19481:
+			case 19485:
+			case 19482:
+				break;
+			default:
+				npctalk "Destroy it... Destroy it...", "", bc_self;
+				mes "[HUGINN3001]";
+				mes "This is... interesting... In that helmet... there is no fragrance... filled with a special power... Do you want... destruction...? kkk...";
+				mes "^FF0000*Enchantment using Temporal Spell is only possible in the Temporal Circlet.*^000000";
+				close;
+		}
+		mes "[HUGINN3001]";
+	
+		.@requirement = 10;	// 10 Temporal Spells by default
+		setarray .@card[0], getequipcardid(EQI_HEAD_TOP,0), getequipcardid(EQI_HEAD_TOP,1), getequipcardid(EQI_HEAD_TOP,2), getequipcardid(EQI_HEAD_TOP,3);
+		.@refine = getequiprefinerycnt(EQI_HEAD_TOP);
+	
+		if (.@card[3] == 0) {
+			.@slot = 3;
+			mes "How about... we begin... lightly?... Test... your luck... Kr..hehe...";
+			mes "^FF0000*Attempts enchantment to 4th slot. One of 6 statuses is randomly enchanted.*^000000";
+		}
+		else if (.@card[2] == 0) {
+			.@slot = 2;
+			mes "Kr... hehe... Do... you like... your... first... enchantment?...";
+			mes "^FF0000*Attempts enchantment to 3rd slot. One of 6 statuses is randomly enchanted.*^000000";
+		}
+		else if (.@card[1] == 0) {
+			.@slot = 1;
+			mes "Kr... hehe... Whether there will be... a door... to acquire... a much stronger power... will be... decided... now...";
+			mes "^FF0000*Attempts enchantment to 2nd slot.";
+			mes "Once you succeed in Mettle, Magic Essence, Acute, Master Archer, Adamantine, Affection enchantments, it can be reinforced.*^000000";
+		}
+		else {
+			// enchant leveling
+			switch( .@card[1] ) {
+			case 29061:	// Ambition1Lv
+			case 29071:	// Tab1Lv
+			case 29081:	// Expect1Lv
+			case 29091:	// ArchLine1Lv
+			case 29101:	// Steel1Lv
+			case 29111:	// Mercy1Lv
+				mes "Kr... he... he... You are... lucky... I wish... you all the success!... Only then... will you come and visit me... with more grudges... I suppose...";
+				.@requirement = 4;
+				.@enchant_level = 1;
+				.@enchant_rate = 80;
+				break;
+			case 29062:	// Ambition2Lv
+			case 29072:	// Tab2Lv
+			case 29082:	// Expect2Lv
+			case 29092:	// ArchLine2Lv
+			case 29102:	// Steel2Lv
+			case 29112:	// Mercy2Lv
+				mes "3rd... level... reinforcement?... If you succeed... you will... gain... much stronger powers... but if you fail... you'll lose the powers... that you've gathered... so far...";
+				.@requirement = 6;
+				.@enchant_level = 2;
+				.@enchant_rate = 70;
+				break;
+			case 29063:	// Ambition3Lv
+			case 29073:	// Tab3Lv
+			case 29083:	// Expect3Lv
+			case 29093:	// ArchLine3Lv
+			case 29103:	// Steel3Lv
+			case 29113:	// Mercy3Lv
+				mes "4th... level... reinforcement?... If you succeed... you will... gain... much stronger powers... but if you fail... you'll lose the powers... that you've gathered... so far...";
+				.@requirement = 8;
+				.@enchant_level = 3;
+				.@enchant_rate = 50;
+				break;
+			case 29064:	// Ambition4Lv
+			case 29074:	// Tab4Lv
+			case 29084:	// Expect4Lv
+			case 29094:	// ArchLine4Lv
+			case 29104:	// Steel4Lv
+			case 29114:	// Mercy4Lv
+				mes "5th... level... reinforcement?... Are you... ready... to control... such huge... powers?... but if you fail... the result will be... worth... seeing...";
+				.@requirement = 10;
+				.@enchant_level = 4;
+				.@enchant_rate = 20;
+				break;
+			case 29065:	// Ambition5Lv
+			case 29075:	// Tab5Lv
+			case 29085:	// Expect5Lv
+			case 29095:	// ArchLine5Lv
+			case 29105:	// Steel5Lv
+			case 29115:	// Mercy5Lv
+				mes "6th... level... reinforcement?... Are you... ready... to control... such huge... powers?... but if you fail... the result will be... worth... seeing...";
+				.@requirement = 12;
+				.@enchant_level = 5;
+				.@enchant_rate = 20;	// unknown rates
+				break;
+			case 29066:	// Ambition6Lv
+			case 29076:	// Tab6Lv
+			case 29086:	// Expect6Lv
+			case 29096:	// ArchLine6Lv
+			case 29106:	// Steel6Lv
+			case 29116:	// Mercy6Lv
+				// custom text
+				mes "7th... level... reinforcement?... Are you... ready... to control... such huge... powers?... but if you fail... the result will be... worth... seeing...";
+				.@requirement = 16;
+				.@enchant_level = 6;
+				.@enchant_rate = 20;	// unknown rates
+				break;
+			case 29067:	// Ambition7Lv
+			case 29077:	// Tab7Lv
+			case 29087:	// Expect7Lv
+			case 29097:	// ArchLine7Lv
+			case 29107:	// Steel7Lv
+			case 29117:	// Mercy7Lv
+				// custom text
+				mes "8th... level... reinforcement?... Are you... ready... to control... such huge... powers?... but if you fail... the result will be... worth... seeing...";
+				.@requirement = 20;
+				.@enchant_level = 7;
+				.@enchant_rate = 20;	// unknown rates
+				break;
+			case 29068:	// Ambition8Lv
+			case 29078:	// Tab8Lv
+			case 29088:	// Expect8Lv
+			case 29098:	// ArchLine8Lv
+			case 29108:	// Steel8Lv
+			case 29118:	// Mercy8Lv
+				// custom text
+				mes "9th... level... reinforcement?... Are you... ready... to control... such huge... powers?... but if you fail... the result will be... worth... seeing...";
+				.@requirement = 28;
+				.@enchant_level = 8;
+				.@enchant_rate = 20;	// unknown rates
+				break;
+			case 29069:	// Ambition9Lv
+			case 29079:	// Tab9Lv
+			case 29089:	// Expect9Lv
+			case 29099:	// ArchLine9Lv
+			case 29109:	// Steel9Lv
+			case 29119:	// Mercy9Lv
+				// custom text
+				mes "10th... level... reinforcement?... Are you... ready... to control... such huge... powers?... but if you fail... the result will be... worth... seeing...";
+				.@requirement = 40;
+				.@enchant_level = 9;
+				.@enchant_rate = 20;	// unknown rates
+				break;
+			case 29070:	// Ambition10Lv
+			case 29080:	// Tab10Lv
+			case 29090:	// Expect10Lv
+			case 29100:	// ArchLine10Lv
+			case 29110:	// Steel10Lv
+			case 29120:	// Mercy10Lv
+				// custom text
+			default:
+				mes "Krr hehe... It's impossible... to reinforce... this power... The only way left is... to reset...";
+				mes "^FF0000*Mettle, Magic Spirit, Vigor, Bull's Eye, Adamantine, Benevolence";
+				mes "You can reinforce the enchantment level only when the equipment is enchanted.*^000000";
+				close;
+			}
+			.@slot = 999;
+		}
+		next;
+		mes "[HUGINN3001]";
+		mes "However...before that happens... I need to check... whether or not you have... sufficient Temporal Spells... ";
+		next;
+		mes "[HUGINN3001]";
+		mes "Temporal Spell" + .@requirement + " are... needed... I wonder... whether... you can afford... them?... kk... kk...";
+		mes "^FF0000*In enchantment, " + .@requirement + " Temporal Spell(s) is(are) required.*^000000";
+		next;
+		if (select( "Pay fee.", "Do not pay fee." ) == 2) {
+			mes "[HUGINN3001]";
+			mes "K...kk... It seems... you're not... ready to accept... such a huge power... yet...";
+			close;
+		}
+		if (countitem(25866) < .@requirement) {// Temporal Spell
+			mes "[HUGINN3001]";
+			mes "K...kk... are you... kidding... me?... How come... you... crave for... the power... with such a trivial grudge?...";
+			mes "^FF0000*In enchantment, Temporal Spell(s) 10 item(s) is(are) required.";
+			mes "Check the amount of Temporal Spells you possess.*^000000";
+			close;
+		}
+		mes "[HUGINN3001]";
+		mes "Krr.. hehe... It's... the power of the grudge... I think... this power... is strong... enough to...";
+		mes "^FF0000*Equipment smelting level, card, equipment loss doesn't occur. However, the enchantment level may be downgraded, depending on the success or failure.*^000000";
+		next;
+		if (select( "Perform the enchantment.", "Do not perform the enchantment." ) == 2) {
+			mes "[HUGINN3001]";
+			mes "K...kk... It seems... you're not... ready to accept... such a huge power... yet...";
+			close;
+		}
+		progressbar "000000",1;
+		delitem 25866, .@requirement;// Temporal Spell
+		if (callfunc("F_IsEquipIDHack", EQI_HEAD_TOP, .@equip_id) || callfunc("F_IsEquipCardHack", EQI_HEAD_TOP, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", EQI_HEAD_TOP, .@refine))
+			close;
+
+		switch(.@slot) {
+		case 3:
+		case 2:
+			setarray .@enchant[0],
+				4700,	// Strength1
+				4701,	// Strength2
+				4702,	// Strength3
+				4703,	// Strength4
+				4704,	// Strength5
+				4710,	// Inteligence1
+				4711,	// Inteligence2
+				4712,	// Inteligence3
+				4713,	// Inteligence4
+				4714,	// Inteligence5
+				4720,	// Dexterity1
+				4721,	// Dexterity2
+				4722,	// Dexterity3
+				4723,	// Dexterity4
+				4724,	// Dexterity5
+				4730,	// Agility1
+				4731,	// Agility2
+				4732,	// Agility3
+				4733,	// Agility4
+				4734,	// Agility5
+				4740,	// Vitality1
+				4741,	// Vitality2
+				4742,	// Vitality3
+				4743,	// Vitality4
+				4744,	// Vitality5
+				4750,	// Luck1
+				4751,	// Luck2
+				4752,	// Luck3
+				4753,	// Luck4
+				4754;	// Luck5
+			.@card[.@slot] = .@enchant[ rand( getarraysize(.@enchant) ) ];	// unknown rates
+			break;
+		case 1:
+			setarray .@enchant[0],
+				4703,	// Strength4
+				4704,	// Strength5
+				4713,	// Inteligence4
+				4714,	// Inteligence5
+				4723,	// Dexterity4
+				4724,	// Dexterity5
+				4733,	// Agility4
+				4734,	// Agility5
+				4743,	// Vitality4
+				4744,	// Vitality5
+				4753,	// Luck4
+				4754,	// Luck5
+				29061,	// Ambition1Lv
+				29071,	// Tab1Lv
+				29081,	// Expect1Lv
+				29091,	// ArchLine1Lv
+				29101,	// Steel1Lv
+				29111;	// Mercy1Lv
+			.@card[1] = .@enchant[ rand( getarraysize(.@enchant) ) ];	// unknown rates
+			break;
+		case 999:
+			// enchant leveling
+			if (.@enchant_rate > rand(100))
+				.@level_dt = 1;
+			else
+				.@level_dt = -1;
+			.@enchant_level += .@level_dt;
+			.@card[1] += .@level_dt;
+			if (.@card[1] < 29061 || .@card[1] > 29120) {
+				mes "[HUGINN3001]";
+				mes "Something bad happened.";
+				close;
+			}
+			if (.@enchant_level < 1 || .@enchant_level > 10) {
+				// item not deleted
+				specialeffect2 EF_SUI_EXPLOSION;
+				mes "[HUGINN3001]";
+				mes "K..aargh...!! The power of the grudge... was driven... into a frenzy... However... fortunately it didn't explode because the power... was.... weak.";
+				close;
+			}
+			break;
+		default:
+			mes "[HUGINN3001]";
+			mes "Something bad happened.";
+			close;
+		}
+		delequip EQI_HEAD_TOP;
+		getitem2 .@equip_id,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],.@card[3];
+		if (.@level_dt == -1) {// can only happens during enchant leveling
+			specialeffect2 EF_SUI_EXPLOSION;
+			mes "[HUGINN3001]";
+			mes "K..aargh...!! The power of the grudge... was driven... to a frenzy... The power... which used to be... stable... also fell... one level down...";
+			mes "^FF0000*Due to enchantment failure, it has been downgraded one level down.*^000000";
+			close;
+		}
+		specialeffect2 EF_FIREHIT;
+		mes "[HUGINN3001]";
+		mes "It... is a success. I can sense that the power of the grudge has become stronger.";
+		mes "^FF0000*Congratulation. You've succeeded in enchantment.*^000000";
+		close;
+	case 2:
+		.@equip_id = getequipid(EQI_HEAD_TOP);
+		switch(.@equip_id) {
+			case 18971:// Old_Rune_Circlet
+			case 18972:// Old_Mitra
+			case 18973:// Old_Driver_Band_R
+			case 18974:// Old_Driver_Band_Y
+			case 18975:// Old_Shadow_Handicraft
+			case 18976:// Old_Minstrel_Song_Hat
+			case 18977:// Old_Midas_Whisper
+			case 18978:// Old_Magic_Stone_Hat
+			case 18979:// Old_Blazing_Soul
+			case 18980:// Old_Wind_Whisper
+			case 18981:// Old_Dying_Swan
+			case 18982:// Old_Circlet_Of_Bone
+			case 18983:// Old_Protect_Of_Crown
+			case 18984:// Old_Camo_RabbitHood
+				break;
+			default:
+				npctalk "Destroy it... Destroy it...", "", bc_self;
+				mes "[HUGINN3001]";
+				mes "This is... interesting... In that helmet... there is no fragrance... filled with a special power... Do you want... destruction...? kkk...";
+				mes "^FF0000*Enchantment using Temporal Spells is only possible in the Temporal Circlet.*^000000";
+				close;
+		}
+		setarray .@card[0], getequipcardid(EQI_HEAD_TOP,0), getequipcardid(EQI_HEAD_TOP,1), getequipcardid(EQI_HEAD_TOP,2), getequipcardid(EQI_HEAD_TOP,3);
+		.@refine = getequiprefinerycnt(EQI_HEAD_TOP);
+
+		if (.@card[3] < 1) {// one enchant required
+			npctalk "You are... very calm...", "", bc_self;
+			mes "[HUGINN3001]";
+			mes "kkk... You look pretty calm... There is no power... contained... in the thing... I gave... to you...";
+			mes "^FF0000*This helmet is not enchanted, so it cannot be reset.*^000000";
+			close;
+		}
+		npctalk "Krr... hehe... I will eat... well... today...", "", bc_self;
+		mes "[HUGINN3001]";
+		mes "Kkk... You don't... like this power?... Bring me 10 mind powers... Then, I'll make this power... disappear...";
+		mes "^FF0000*You need 10 Sentimental Fragments to reset it.";
+		mes "All enchantments applied to the helmet, except for the smelting level of equipment and 1 slot card, will be reset.*^000000";
+		next;
+		if (select( "Ignore him.", "Pay fee." ) == 1) {
+			npctalk "Forever...", "", bc_self;
+			mes "[HUGINN3001]";
+			mes "I'll... wait for... you... If you need me to... I'll wait for you... forever... kkk...";
+			close;
+		}
+		if (countitem(22687) < 10) {// Sentimental Fragment
+			mes "Kk..k... If you... don't bring...";
+			mes "10 mind powers... I will be... in trouble...";
+			mes "^FF0000*You need 10 Sentimental Fragments to reset it.";
+			mes "Check the amount of Sentimental Fragments that you possess.*^000000";
+			close;
+		}
+		npctalk "K... kk...", "", bc_self;
+		mes "[HUGINN3001]";
+		mes "Fine!... I'll... reset... the enchantment... of the Temporal Circlet... I think... we may be able to absorb... a strong mind...";
+		next;
+		progressbar "000000",2;
+		specialeffect2 EF_FIREHIT;
+		delitem 22687,10;// Sentimental Fragment
+
+		if (callfunc("F_IsEquipIDHack", EQI_HEAD_TOP, .@equip_id) || callfunc("F_IsEquipCardHack", EQI_HEAD_TOP, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", EQI_HEAD_TOP, .@refine))
+			close;
+
+		delequip EQI_HEAD_TOP;
+		getitem2 .@equip_id,1,1,.@refine,0,.@card[0],0,0,0;
+		mes "[HUGINN3001]";
+		mes "K..kk... The power... of a strong grudge... has been... absorbed... Things I've lost... K.. aargh...";
+		close;
+	case 3:
+		for ( .@i = 18971; .@i <= 18984; ++.@i ) {
+			if (.@i < 18977)
+				.@string$[0] += getitemname(.@i) + ", ";
+			else if (.@i < 18984)
+				.@string$[1] += getitemname(.@i) + ", ";
+			else
+				.@string$[2] = getitemname(.@i);
+		}
+		mes "[HUGINN3001]";
+		mes "Do you want... power?... If so, you... need to have... the Temporal Circlet..";
+		mes "^FF0000*You can enchant it into the " + .@string$[0];
+		mes "" + .@string$[1];
+		mes "" + .@string$[2] + ".*^000000";
+		next;
+		mes "[HUGINN3001]";
+		mes "If you... bring grudge's... power... I'll... give you... great power...";
+		mes "^FF0000*You need Temporal Spells in order to enchant it.*^000000";
+		next;
+		mes "[HUGINN3001]";
+		mes "Kkk... Of course... in order to obtain... great power... you may need... a countless amount of... grudge's... power...";
+		mes "^FF0000*Enchantment is proceeded in the order of 4, 3, 2 slots. You need 10 Temporal Spells when you enchant each slot for the first time.*^000000";
+		next;
+		mes "[HUGINN3001]";
+		mes "If you have... the opportunity... you might be... able to upgrade... the enchantment level... ";
+		mes "^FF0000*When reinforcing the enchant level, 50, 70, 100, 150, 250, 500, 1000 Temporal Spells are consumed, depending on the enchant level";
+		mes "increase after 20 Temporal Spells in the 2nd step, and 40 Temporal Spells in the 3rd step.*^000000";
+		close;
+	}
+}
+

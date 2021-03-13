@@ -1742,7 +1742,7 @@
 15402:20947:22209,{ .@sum = getequiprefinerycnt(EQI_ARMOR)+getequiprefinerycnt(EQI_GARMENT)+getequiprefinerycnt(EQI_SHOES); bonus bMdef,15; bonus bDef,30; bonus bLuk,8; if (.@sum>=27) { bonus2 bAddClass,Class_All,10; bonus bDelayrate,-20; bonus bFixedCastrate,-20; } }
 32248:32250,{ bonus bAspdRate,15; bonus bMaxHPrate,10; }
 // 32248:?,{ bonus bFixedCast,-300; bonus bDelayrate,-7; bonus2 bSubSize,Size_All,3; } /* einbech weapons? */
-32248:32251,{ bonus bVariableCastrate,-15; bonus bMaxHPrate,10; }
+32249:32251,{ bonus bFixedCast,-300; bonus bMaxHPrate,10; }
 32249:32250,{ bonus bAspdRate,15; bonus bMaxHPrate,10; }
 // 32249:?,{ bonus bFixedCast,-300; bonus bDelayrate,-7; bonus2 bMagicSubSize,Size_All,3; } /* einbech weapons? */
 32249:32251,{ bonus bVariableCastrate,-15; bonus bMaxHPrate,10; }

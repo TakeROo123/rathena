@@ -9,7 +9,7 @@ mes "You have already take this ^FF0000"+getitemname(ThirdJobItem)+"^000000 befo
 switch( BaseJob ){
  Case Job_Knight: set .@Item,5746; break;
  Case Job_Wizard: set .@Item,5753; break;
- Case Job_Hunter: set .@Item,5748; break;
+ Case Job_Hunter: set .@Item,6124; break;
  Case Job_Priest: set .@Item,5747; break;
  Case Job_Blacksmith: set .@Item,5749; break;
  Case Job_Assassin: set .@Item,5755; break;

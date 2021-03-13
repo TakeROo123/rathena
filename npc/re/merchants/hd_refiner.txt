@@ -6,20 +6,20 @@
 //= failure, the equipment is not destroyed; rather, its
 //= refine level decreases by 1. The success rate is identical
 //= to that for Enriched ores.
-//= - "Blacksmith Mighty Hammer" only refines from +7~9.
+//= - "Blacksmith Mighty Hammer" only refines from +4~9.
 //= - "Basta" only refines from +10 and up.
 //===== Changelog: ===========================================
 //= 1.0 First version. [Euphy]
 //= 1.1 Removed re-roll behavior. [Secret]
 //============================================================
 
-// Blacksmith Mighty Hammer (+7~9) :: cash_smelting79
+// Blacksmith Mighty Hammer (+4~9) :: cash_smelting79
 //============================================================
 -	script	::MightyHammer	-1,{
 	disable_items;
 	mes "[Blacksmith Mighty Hammer]";
 	mes "Unlike others, I am a blacksmith who refines a very limited number of items.";
-	mes "I refine only items that are ^CC0000+7 to +9^000000.";
+	mes "I refine only items that are ^CC0000+4 to +9^000000.";
 	next;
 	mes "[Blacksmith Mighty Hammer]";
 	mes "My specialty is that even if my refining fails, the refine level decreases by 1 without losing the gear. Isn't it great?";
@@ -68,9 +68,9 @@
 		mes "This item can't be refined.";
 		close;
 	}
-	if (getequiprefinerycnt(.@part) < 7 || getequiprefinerycnt(.@part) > 9) {
+	if (getequiprefinerycnt(.@part) < 4 || getequiprefinerycnt(.@part) > 9) {
 		mes "[Blacksmith Mighty Hammer]";
-		mes "I only handle items with refine levels from +7 to +9.";
+		mes "I only handle items with refine levels from +4 to +9.";
 		close;
 	}
 	

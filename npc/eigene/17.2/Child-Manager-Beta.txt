@@ -1,0 +1,40 @@
+ba_in01,87,386,2	script	Child Manager Beta	4_EP17_MASTER_A,{
+        if(terra_gloria_main <= 24){
+		mes .n$;
+		mes "Who are you again? Do I need to know you?";
+		mes "You are an adventurer? Who says that? You're looking like a little brat!";
+		mes "Come back when you grew older or gained more experience!";
+		close;
+	}
+        mes "Hello my name is Child Manager Beta.";
+        next;
+        mes "what can I do for you";
+    switch(select("- Pets :- nothing!")) { 
+        case 1:
+            next;
+            goto pets;
+            break;                      
+        default:
+            next;
+        	goto stoptalking;
+            break;
+    }
+    pets:
+        mes "okay give me a moment.";
+        close2; // Closes the NPC dialog without ending the script
+        callshop "adminpets",1; // Only Sell window
+        end; // We end the script just after opening the shop so no need to break
+        end;
+    stoptalking:
+        mes "Child Manager Beta";
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+
+    exit:
+        enable_items;
+        close;
+    end;
+}
+
+-	itemshop	adminpets	-1,1000103,9123:50,10043:50,10044:50,1000227:1;

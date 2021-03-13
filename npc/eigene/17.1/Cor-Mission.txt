@@ -1,0 +1,268 @@
+sp_cor,113,130,5	script	Elena Bolkova	4_F_ELENA,{
+    if(terra_gloria_main <= 24){
+		mes .n$;
+		mes "Who are you again? Do I need to know you?";
+		mes "You are an adventurer? Who says that? You're looking like a little brat!";
+		mes "Come back when you grew older or gained more experience!";
+		close;
+	}
+
+    	if(checkquest(30049, PLAYTIME) == 2){
+		erasequest(30049);
+	}
+
+	switch(checkquest(30049, PLAYTIME)) {
+		case -1:
+            mes "Elena Bolkova";
+            mes "you are ready for the Cor Mission";
+            next;
+			switch(select("Create", "Enter")) {
+				case 1:
+					goto createInstance;
+					end;
+				case 2:
+					goto enterInstance;
+					end;
+			}
+			end;
+		case 0:
+			goto enterInstance;
+			end;
+		case 1:
+			mes "your cooldown is still available";
+			mes "please wait for the time";
+			end;
+	}
+	end;
+
+	createInstance:
+			if(is_party_leader() == false) {
+				mes "you need to be an party leader";
+				end;
+			}
+			set .@i_inst, instance_create(.instance_name$);
+			end;
+		end;
+	
+	enterInstance:
+		switch(instance_enter(.instance_name$)) {
+				case IE_NOMEMBER: // Party/Guild/Clan not found (for party/guild/clan modes).
+					mes "Party not found";
+					end;
+				case IE_OTHER: // Other errors (invalid instance name, instance doesn't match with character/party/guild/clan).
+					mes "an unknown error has occurred";
+					end;
+				case IE_NOINSTANCE: // Character/Party/Guild/Clan does not have an instance.
+					mes "Create a instance first";
+					end;
+				case IE_OK:
+                    setquest 30049;
+					mapannounce "sp_os", strcharinfo(0)+ "is entering "+.instance_name$, bc_map, "0x00ff99", FW_NORMAL, 12;
+					end;
+				
+			}
+		end;
+
+OnInit:
+    set .instance_name$, "Cor Mission";
+    end;
+}
+
+
+1@cor,177,168,5	script	Elyumina#start	4_EP17_ELYUMINA,{
+    mes "please give me infomation";
+    next;
+    hideonnpc instance_npcname("Box#b2");    
+    hideonnpc instance_npcname("Box#b3");    
+    hideonnpc instance_npcname("Box#b4");    
+    hideonnpc instance_npcname("Elyumina#start");
+    hideonnpc instance_npcname("inwarp");
+    hideonnpc instance_npcname("Elyumina#mvp");
+    hideonnpc instance_npcname("Elyumina#ini5");
+	setcell "1@cor",159,217,159,224,cell_walkable,0;
+	setcell "1@cor",140,240,133,240,cell_walkable,0;            
+	setcell "1@cor",98,224,98,217,cell_walkable,0;
+
+    end;
+   
+OnInstanceInit:
+	'map$ = instance_mapname("1@cor");
+	'ea1l$ = 20341;
+	'ea2s$ = 20342;
+	'13en$ = 20343;
+	'hhb1$ = 20355;
+	'hhb2$ = 20356;
+	'el1$ = 20340;
+	
+	'floor1$ = 0;
+	'floor2$ = 0;
+	'floor3$ = 0;
+	'floor4$ = 0;
+	'floor5$ = 0;
+	
+	'announceColor$ = "0x009933";
+	'mvpAnnounce$ = "0xee6600";
+	
+	'mvpAlive$ = 1;
+end;
+}
+//==========fl1=================
+1@cor,220,170,5	script	Elyumina#ini1	4_EP17_ELYUMINA,{
+    npctalk "Elyumina: Here, here! Please be careful. Touch the box and it will activate.";
+}
+
+1@cor,220,167,5	script	Box#b1	4_WOODBOX,{
+    if('floor1$) { end; }
+    'floor1$ = 1;
+
+        hideonnpc instance_npcname("Elyumina#ini1");
+        hideonnpc instance_npcname("Box#b1");
+
+        'mobsFloor = 12;
+            areamonster 'map$,216,163,223,168,"Greater Bellare",atoi('hhb2$),5,instance_npcname("Box#b1")+"::OnMyMobDead";
+            areamonster 'map$,216,163,223,168,"E-EA2S",atoi('ea2s$),5,instance_npcname("Box#b1")+"::OnMyMobDead";
+            areamonster 'map$,216,163,223,168,"E-13EN0",atoi('13en$),2,instance_npcname("Box#b1")+"::OnMyMobDead";
+
+    OnMyMobDead:
+        	dispbottom 'mobsFloor;
+	        if(--'mobsFloor <= 0) {
+            hideoffnpc instance_npcname("Box#b2");                
+        }
+}
+
+
+//==========fl2=================
+1@cor,222,236,5	script	Elyumina#ini2	4_EP17_ELYUMINA,{
+    npctalk "Elyumina: Here, here! Please be careful. Touch the box and it will activate.";
+}
+
+1@cor,224,234,5	script	Box#b2	4_WOODBOX,{
+    if('floor2$){ end; }
+    'floor2$ = 1;
+        hideonnpc instance_npcname("Elyumina#ini2");
+        hideonnpc instance_npcname("Box#b2");
+
+        'mobsFloor = 10;
+            areamonster 'map$,220,230,227,236,"E-EA1L",atoi('hhb1$),5,instance_npcname("Box#b2")+"::OnMyMobDead";
+            areamonster 'map$,220,230,227,236,"Bellare",atoi('ea1l$),5,instance_npcname("Box#b2")+"::OnMyMobDead";
+
+
+    OnMyMobDead:
+        	dispbottom 'mobsFloor;
+	        if(--'mobsFloor <= 0) {
+            hideoffnpc instance_npcname("Box#b3");                
+        }
+}
+
+//==========fl3=================
+1@cor,160,119,5	script	Elyumina#ini3	4_EP17_ELYUMINA,{
+    npctalk "Elyumina: Here, here! Please be careful. Touch the box and it will activate.";
+}
+
+1@cor,162,117,5	script	Box#b3	4_WOODBOX,{
+    if('floor3$){ end; }
+    'floor3$ = 1;    
+        hideonnpc instance_npcname("Elyumina#ini3");
+        hideonnpc instance_npcname("Box#b3");
+
+        'mobsFloor = 10;
+            areamonster 'map$,159,113,166,120,"E-EA1L",atoi('hhb1$),5,instance_npcname("Box#b3")+"::OnMyMobDead";
+            areamonster 'map$,159,113,166,120,"Bellare",atoi('ea1l$),5,instance_npcname("Box#b3")+"::OnMyMobDead";
+
+
+    OnMyMobDead:
+        	dispbottom 'mobsFloor;
+	        if(--'mobsFloor <= 0) {
+            hideoffnpc instance_npcname("Box#b4");                
+        }
+}    
+
+
+//==========fl4=================
+1@cor,140,79,5	script	Elyumina#ini4	4_EP17_ELYUMINA,{
+    npctalk "Elyumina: Here, here! Please be careful. Touch the box and it will activate";
+}
+
+1@cor,140,76,5	script	Box#b4	4_WOODBOX,{
+    if('floor4$){ end; }
+    'floor4$ = 1;
+        hideonnpc instance_npcname("Elyumina#ini4");
+        hideonnpc instance_npcname("Box#b4");
+
+        'mobsFloor = 12;
+            areamonster 'map$,137,73,144,78,"E-EA2S",atoi('ea2s$),5,instance_npcname("Box#b4")+"::OnMyMobDead";
+            areamonster 'map$,137,73,144,78,"Bellare",atoi('hhb1$),5,instance_npcname("Box#b4")+"::OnMyMobDead";
+            areamonster 'map$,137,73,144,78,"E-13EN0",atoi('13en$),2,instance_npcname("Box#b4")+"::OnMyMobDead";
+
+    OnMyMobDead:
+        	dispbottom 'mobsFloor;
+	        if(--'mobsFloor <= 0) {
+            hideoffnpc instance_npcname("Elyumina#ini5");                
+        }
+}    
+
+
+//==========fl5 open warp to mvp=================
+1@cor,172,222,5	script	Elyumina#ini5	4_EP17_ELYUMINA,{
+    mes "Elyumina";
+    mes "That was fast...";
+    mes "It was expected that my kids wouldn't win though. ";
+    mes "There's a lot more trouble going on up there.";
+    next;
+    mes "Elyumina";
+    mes "... are you going straight for my EL1-A17T?";
+    switch(select("- Go in :- Dont go in yet!")) { 
+        case 1:
+            next;
+            goto goin;
+            break;                      
+        default:
+            next;
+        	goto stoptalking;
+            break;
+    }
+
+    goin:
+        mes "Elyumina";
+        mes "Hahaha! Yes. Let's work hard. Get more battle data for me";        
+        hideoffnpc instance_npcname("inwarp");
+            monster 'map$,137,220,"EL1-A17T",atoi('el1$),1,instance_npcname("Elyumina#ini5")+"::OnMyMobDead";
+        end;            
+
+    OnMyMobDead:
+	    hideoffnpc instance_npcname("Elyumina#mvp");
+
+        end;
+
+    stoptalking:
+        mes "Elyumina";
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+
+    exit:
+        enable_items;
+        close;
+    end;    
+        
+
+}
+//==========fl6 warp out=================
+1@cor,138,222,5	script	Elyumina#mvp	4_EP17_ELYUMINA,{
+    mes "Elyumina";    
+    mes "Ahhh nice thanks my Frend";
+    next;
+    mes "here is a little reward";
+    mes "and now go out";
+    next;
+    	getitem 25723,1;
+	    getitem 25669,5;
+	    completequest(30049);
+	    warp "sp_cor",113,124;
+	end;
+
+
+}    
+
+1@cor,162,220,0	warp	inwarp	1,1,1@cor,157,221
+

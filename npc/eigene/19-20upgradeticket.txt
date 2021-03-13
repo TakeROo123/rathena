@@ -85,13 +85,13 @@ upin,19,326,5	script	Azubi Hans	768,{
     armor:
             mes "[^CD0000Azubi Hans^000000]";
 	        mes "You need / you own:";
-	        mes "^5533FF+18 Armor up^000000 / "+countitem(33068)+" ea";
+	        mes "^5533FF2 +18 Armor up^000000 / "+countitem(33068)+" ea";
 	        mes "^5533FF100 Gold Coin ^000000 / "+countitem(671)+" ea";            
 	next;
-	    if(countitem(33068)<1) goto lose;
+	    if(countitem(33068)<2) goto lose;
 	    if(countitem(671)<99) goto lose;        
 
-        delitem 33068,1;
+        delitem 33068,2;
         delitem 671,100;        
             next;
             mes "[^CD0000Azubi Hans^000000]";     
@@ -102,13 +102,13 @@ upin,19,326,5	script	Azubi Hans	768,{
     weapon:
             mes "[^CD0000Azubi Hans^000000]";
 	        mes "You need / you own:";
-	        mes "^5533FF+18 Weapon up^000000 / "+countitem(33078)+" ea";
+	        mes "^5533FF2 +18 Weapon up^000000 / "+countitem(33078)+" ea";
 	        mes "^5533FF100 Gold Coin ^000000 / "+countitem(671)+" ea";            
 	next;
-	    if(countitem(33078)<1) goto lose;
+	    if(countitem(33078)<2) goto lose;
 	    if(countitem(671)<99) goto lose;        
 
-        delitem 33078,1;
+        delitem 33078,2;
         delitem 671,100;        
             next;
             mes "[^CD0000Azubi Hans^000000]";     

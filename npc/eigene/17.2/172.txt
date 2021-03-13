@@ -1,0 +1,1142 @@
+ba_in01,87,370,4	script	Automatic Gear Enchanter	4_EP17_ELYUMINA,{
+
+	mes .n$;
+	mes "Oh can I help you?";
+	next;
+	if(select("- Please enchant my stuff :- Nah!") - 1) {
+		mes .n$;
+		mes "Don't waste my time!";
+		close;
+	}
+	mes .n$;
+	mes "What do you want to enchant?";
+	next;
+
+	switch(select("- "+getitemname(450127)+":- "+getitemname(450128)+":- "+getitemname(480020)+":- "+getitemname(480021)+":- "+getitemname(470022)+":- "+getitemname(470023)+":- "+getitemname(490024)+":- "+getitemname(490025)+":- "+getitemname(490026)+":- "+getitemname(490027))) {
+		case 1:
+		mes .n$;
+		mes "Let me see whether you have it equipped...";
+		next;
+		mes .n$;
+		if(getequipid(EQI_ARMOR) != 450127) {   //Automatic Armor A-type
+			mes "Please ensure you have your "+getitemname(450127)+" equipped.";
+			close;
+		}
+		disable_items;
+		set .@exc_id,450127; // Saving ID for faster handling
+		set .@eq,EQI_ARMOR; // Resaving equipment slot
+		set .@ref,getequiprefinerycnt(EQI_ARMOR);
+		set .@slot1,getequipcardid(EQI_ARMOR,0);
+		set .@slot2,getequipcardid(EQI_ARMOR,1);
+		set .@slot3,getequipcardid(EQI_ARMOR,2);
+		set .@slot4,getequipcardid(EQI_ARMOR,3);
+		if(.@slot2 && .@slot3 && .@slot4) {
+			mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+			mes "Please choose another equip-part.";
+			close;
+		}
+		mes "Please choose your module:";
+		next;
+		getinventorylist;
+		for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+			switch(@inventorylist_id[.@i]) {
+				case 1000106:
+					setarray .@limit$[getarraysize(.@limit$)],"3:1000106";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000105:
+					setarray .@limit$[getarraysize(.@limit$)],"3:1000105";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000122:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000122";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000123:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000123";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000124:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000124";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000152:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000152";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000153:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000153";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000154:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000154";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000155:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000155";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000156:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000156";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000157:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000157";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000158:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000158";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000159:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000159";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000160:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000160";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000161:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000161";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000162:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000162";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000163:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000163";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000164:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000164";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000165:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000165";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000166:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000166";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000167:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000167";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000168:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000168";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000169:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000169";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000170:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000170";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000171:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000171";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000172:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000172";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000173:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000173";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000174:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000174";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000175:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000175";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000176:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000176";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000177:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000177";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000178:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000178";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000179:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000179";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000180:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000180";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000181:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000181";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000182:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000182";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000183:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000183";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000184:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000184";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000185:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000185";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000186:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000186";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000187:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000187";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000188:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000188";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000189:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000189";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000190:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000190";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000191:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000191";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000192:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000192";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000193:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000193";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000194:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000194";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000195:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000195";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000196:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000196";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000197:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000197";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000198:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000198";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000199:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000199";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000200:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000200";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000201:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000201";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000202:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000202";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000128:
+                case 1000129:
+                case 1000130:
+                case 1000131:
+                case 1000132:
+                case 1000207:
+                case 1000133:
+                case 1000140:
+					setarray .@limit$[getarraysize(.@limit$)],"1:1000128:1000129:1000130:1000131:1000132:1000207:1000133:1000140";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+			}
+		break;
+
+		case 2:
+		mes .n$;
+		mes "Let me see whether you have it equipped...";
+		next;
+		mes .n$;
+		if(getequipid(EQI_ARMOR) != 450128) { //Automatic Armor B-type
+			mes "Please ensure you have your "+getitemname(450128)+" equipped.";
+			close;
+		}
+		disable_items;
+		set .@exc_id,450128; // Saving ID for faster handling
+		set .@eq,EQI_ARMOR; // Resaving equipment slot
+		set .@ref,getequiprefinerycnt(EQI_ARMOR);
+		set .@slot1,getequipcardid(EQI_ARMOR,0);
+		set .@slot2,getequipcardid(EQI_ARMOR,1);
+		set .@slot3,getequipcardid(EQI_ARMOR,2);
+		set .@slot4,getequipcardid(EQI_ARMOR,3);
+		if(.@slot2 && .@slot3 && .@slot4) {
+			mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+			mes "Please choose another equip-part.";
+			close;
+		}
+		mes "Please choose your module:";
+		next;
+		getinventorylist;
+		for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+			switch(@inventorylist_id[.@i]) {
+				case 1000106:
+					setarray .@limit$[getarraysize(.@limit$)],"3:1000106";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000105:
+					setarray .@limit$[getarraysize(.@limit$)],"3:1000105";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000122:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000122";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000123:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000123";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000124:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000124";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000152:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000152";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000153:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000153";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000154:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000154";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000155:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000155";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000156:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000156";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000157:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000157";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000158:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000158";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000159:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000159";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000160:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000160";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000161:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000161";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000162:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000162";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000163:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000163";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000164:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000164";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000165:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000165";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000166:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000166";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000167:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000167";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000168:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000168";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000169:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000169";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000170:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000170";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000171:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000171";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000172:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000172";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000173:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000173";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000174:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000174";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000175:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000175";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000176:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000176";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000177:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000177";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000178:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000178";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000179:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000179";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000180:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000180";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000181:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000181";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000182:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000182";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000183:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000183";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000184:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000184";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000185:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000185";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000186:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000186";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000187:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000187";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000188:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000188";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000189:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000189";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000190:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000190";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000191:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000191";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000192:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000192";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000193:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000193";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000194:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000194";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000195:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000195";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000196:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000196";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000197:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000197";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000198:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000198";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000199:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000199";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000200:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000200";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000201:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000201";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000202:
+					setarray .@limit$[getarraysize(.@limit$)],"2:1000202";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;
+				case 1000128:
+                case 1000129:
+                case 1000130:
+                case 1000131:
+                case 1000132:
+                case 1000207:
+                case 1000133:
+                case 1000140:
+					setarray .@limit$[getarraysize(.@limit$)],"1:1000128:1000129:1000130:1000131:1000132:1000207:1000133:1000140";
+					setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+					break;                               
+			}
+		break;
+
+		case 3:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_GARMENT) != 480020) { //Automatic Engine wing A-type
+				mes "Please ensure you have your "+getitemname(480020)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,480020; // Saving ID for faster handling
+			set .@eq,EQI_GARMENT; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_GARMENT);
+			set .@slot1,getequipcardid(EQI_GARMENT,0);
+			set .@slot2,getequipcardid(EQI_GARMENT,1);
+			set .@slot3,getequipcardid(EQI_GARMENT,2);
+			set .@slot4,getequipcardid(EQI_GARMENT,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 1000106:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000106";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000105:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000105";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000125:					
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000125";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000126:
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000126";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000127:
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000127";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000135:
+					case 1000142:
+					case 1000208:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000135:1000142:1000208";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+				}
+			break;
+
+		case 4:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_GARMENT) != 480021) { //Automatic Engine wing B-type
+				mes "Please ensure you have your "+getitemname(480021)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,480021; // Saving ID for faster handling
+			set .@eq,EQI_GARMENT; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_GARMENT);
+			set .@slot1,getequipcardid(EQI_GARMENT,0);
+			set .@slot2,getequipcardid(EQI_GARMENT,1);
+			set .@slot3,getequipcardid(EQI_GARMENT,2);
+			set .@slot4,getequipcardid(EQI_GARMENT,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 1000106:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000106";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000105:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000105";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000125:					
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000125";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000126:
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000126";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000127:
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000127";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000135:
+					case 1000142:
+					case 1000208:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000135:1000142:1000208";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+				}
+			break;
+
+		case 5:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_SHOES) != 470022) {   //Automatic Leg A-type
+				mes "Please ensure you have your "+getitemname(470022)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,470022; // Saving ID for faster handling
+			set .@eq,EQI_SHOES; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_SHOES);
+			set .@slot1,getequipcardid(EQI_SHOES,0);
+			set .@slot2,getequipcardid(EQI_SHOES,1);
+			set .@slot3,getequipcardid(EQI_SHOES,2);
+			set .@slot4,getequipcardid(EQI_SHOES,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 1000106:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000106";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000105:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000105";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000119:
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000119";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000120:
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000120";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000121:
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000121";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000134:
+                    case 1000141:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000134:1000141";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000144:
+					case 1000145:
+					case 1000146:
+					case 1000147:
+					case 1000148:
+					case 1000149:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000144:1000145:1000146:1000147:1000148:1000149";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+				}
+			break;
+
+		case 6:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_SHOES) != 470023) {   //Automatic Leg B-type
+				mes "Please ensure you have your "+getitemname(470023)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,470023; // Saving ID for faster handling
+			set .@eq,EQI_SHOES; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_SHOES);
+			set .@slot1,getequipcardid(EQI_SHOES,0);
+			set .@slot2,getequipcardid(EQI_SHOES,1);
+			set .@slot3,getequipcardid(EQI_SHOES,2);
+			set .@slot4,getequipcardid(EQI_SHOES,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 1000106:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000106";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000105:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000105";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000119:
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000119";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000120:
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000120";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000121:
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000121";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000134:
+                    case 1000141:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000134:1000141";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000144:
+					case 1000145:
+					case 1000146:
+					case 1000147:
+					case 1000148:
+					case 1000149:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000144:1000145:1000146:1000147:1000148:1000149";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+				}
+			break;
+
+		case 7:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_ACC_R ) != 490024) {  //Automatic Automatic Booster R
+				mes "Please ensure you have your "+getitemname(490024)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,490024; // Saving ID for faster handling
+			set .@eq,EQI_ACC_R ; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_ACC_R );
+			set .@slot1,getequipcardid(EQI_ACC_R ,0);
+			set .@slot2,getequipcardid(EQI_ACC_R ,1);
+			set .@slot3,getequipcardid(EQI_ACC_R ,2);
+			set .@slot4,getequipcardid(EQI_ACC_R ,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 1000107:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000107";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000108:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000108";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000109:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000109";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000110:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000110";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000113:                                 
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000113";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000115:
+                        setarray .@limit$[getarraysize(.@limit$)],"1:1000115";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000116:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000116";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000117:
+                        setarray .@limit$[getarraysize(.@limit$)],"1:1000117";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000118:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000118";                        
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000137:
+					case 1000139:
+					case 1000144:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000137:1000139:1000144";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+				}
+			break;
+
+		case 8:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_ACC_L) != 490025) {   //Automatic Automatic Booster L
+				mes "Please ensure you have your "+getitemname(490025)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,490025; // Saving ID for faster handling
+			set .@eq,EQI_ACC_L; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_ACC_L);
+			set .@slot1,getequipcardid(EQI_ACC_L,0);
+			set .@slot2,getequipcardid(EQI_ACC_L,1);
+			set .@slot3,getequipcardid(EQI_ACC_L,2);
+			set .@slot4,getequipcardid(EQI_ACC_L,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 1000107:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000107";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000108:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000108";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000111:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000111";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000112:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000112";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000114:
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000114";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000115:
+                        setarray .@limit$[getarraysize(.@limit$)],"1:1000115";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000116:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000116";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000117:
+                        setarray .@limit$[getarraysize(.@limit$)],"1:1000117";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000118:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000118";                        
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000138:
+					case 1000140:
+					case 1000144:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000138:1000140:1000144";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					}
+			break;
+
+		case 9:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_ACC_R) != 490026) {   //Automatic Automatic Battle Chip R
+				mes "Please ensure you have your "+getitemname(490026)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,490026; // Saving ID for faster handling
+			set .@eq,EQI_ACC_R ; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_ACC_R);
+			set .@slot1,getequipcardid(EQI_ACC_R,0);
+			set .@slot2,getequipcardid(EQI_ACC_R,1);
+			set .@slot3,getequipcardid(EQI_ACC_R,2);
+			set .@slot4,getequipcardid(EQI_ACC_R,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 1000107:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000107";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000108:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000108";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000109:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000109";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000110:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000110";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000113:                                 
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000113";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000115:
+                        setarray .@limit$[getarraysize(.@limit$)],"1:1000115";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000116:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000116";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000117:
+                        setarray .@limit$[getarraysize(.@limit$)],"1:1000117";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000118:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000118";                        
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000137:
+					case 1000139:
+					case 1000144:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000137:1000139:1000144";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+				}
+			break;
+
+		case 10:
+			mes .n$;
+			mes "Let me see whether you have it equipped...";
+			next;
+			mes .n$;
+			if(getequipid(EQI_ACC_L) != 490027) {   //Automatic Automatic Battle Chip L
+				mes "Please ensure you have your "+getitemname(490027)+" equipped.";
+				close;
+			}
+			disable_items;
+			set .@exc_id,490027; // Saving ID for faster handling
+			set .@eq,EQI_ACC_L; // Resaving equipment slot
+			set .@ref,getequiprefinerycnt(EQI_ACC_L);
+			set .@slot1,getequipcardid(EQI_ACC_L,0);
+			set .@slot2,getequipcardid(EQI_ACC_L,1);
+			set .@slot3,getequipcardid(EQI_ACC_L,2);
+			set .@slot4,getequipcardid(EQI_ACC_L,3);
+			if(.@slot2 && .@slot3 && .@slot4) {
+				mes "Apparently you have already all possible enchants on your "+getitemname(.@exc_id)+".";
+				mes "Please choose another equip-part.";
+				close;
+			}
+			mes "Please choose your module:";
+			next;
+			getinventorylist;
+			for ( set .@i,0; .@i < @inventorylist_count; set .@i,.@i + 1) 
+				switch(@inventorylist_id[.@i]) {
+					case 1000107:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000107";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000108:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000108";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000111:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000111";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000112:
+						setarray .@limit$[getarraysize(.@limit$)],"3:1000112";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000114:
+						setarray .@limit$[getarraysize(.@limit$)],"2:1000114";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000115:
+                        setarray .@limit$[getarraysize(.@limit$)],"1:1000115";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000116:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000116";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000117:
+                        setarray .@limit$[getarraysize(.@limit$)],"1:1000117";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000118:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000118";                        
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+					case 1000138:
+					case 1000140:
+					case 1000144:
+						setarray .@limit$[getarraysize(.@limit$)],"1:1000138:1000140:1000144";
+						setarray .@b_id[getarraysize(.@b_id)],@inventorylist_id[.@i];
+						break;
+				}
+		break;
+
+		default:
+			close;
+			break;
+	}
+
+	if(getarraysize(.@b_id) < 1) {
+		mes .n$;
+		mes "You don't have any modules! Please come back later!";
+		close;
+	}
+	for ( set .@d,0; .@d < getarraysize(.@b_id); set .@d,.@d + 1)
+		set .@blue_m$,.@blue_m$ + "- "+getitemname(.@b_id[.@d]) + ( (.@b_id[.@d+1] != 0)?":":"");
+		
+	set .@b,select(.@blue_m$) - 1;
+	next;
+	// Getting the id of the module
+	set .@reac_id,.@b_id[.@b];
+
+	// limit the amount of objects
+	explode(.@tmpLimitedItems$, .@limit$[.@b], ":");
+	.@tmpSize = getarraysize( .@tmpLimitedItems$ );
+	for ( .@i = 0; .@i < .@tmpSize; .@i++ ){
+		.@limitedItems[.@i] = atoi( .@tmpLimitedItems$[.@i] );
+	}
+	set .@moduleCategoryLimit,.@limitedItems[0];
+	if(.@moduleCategoryLimit > 0) { // there is an limit to the options
+		set .@count,0;
+		for ( set .@index,1; .@index < getarraysize(.@limitedItems); set .@index,.@index + 1){
+			set .@module_id,.@limitedItems[.@index];			
+			if( .@slot2 == .@module_id)
+				set .@count,.@count+1;
+			if( .@slot3 == .@module_id)
+				set .@count,.@count+1;
+			if( .@slot4 == .@module_id)
+				set .@count,.@count+1;
+		}
+
+		if(.@count >= .@moduleCategoryLimit) {
+			mes .n$;
+			mes "For this category of modules you already reached the maximum!";
+			close;
+		}
+	}
+
+	mes .n$;
+	mes "Please choose the slot you want to enchant:";
+	next;
+	
+	set .@s,select("- Slot 2 ("+( (.@slot2 != 0)?getitemname(.@slot2):"Empty")+"):- Slot 3 ("+( (.@slot3 != 0)?getitemname(.@slot3):"Empty")+"):- Slot 4 ("+( (.@slot4 != 0)?getitemname(.@slot4):"Empty")+")") + 1;
+	if(getd(".@slot"+.@s) != 0) {
+		mes "Sorry - this slot is already used!";
+		close;
+	}
+	delitem .@b_id[.@b],1;
+	delequip .@eq;
+	if(.@s == 2) getitem2 .@exc_id,1,1,.@ref,0,.@slot1,.@reac_id,.@slot3,.@slot4;
+	else if(.@s == 3) getitem2 .@exc_id,1,1,.@ref,0,.@slot1,.@slot2,.@reac_id,.@slot4;
+	else if(.@s == 4) getitem2 .@exc_id,1,1,.@ref,0,.@slot1,.@slot2,.@slot3,.@reac_id;
+	equip .@exc_id;
+	mes .n$;
+	mes "The enchant process was successful!";
+	enable_items;
+
+close;
+
+OnInit:
+set .n$,"["+strnpcinfo(0)+"]";
+end;
+}

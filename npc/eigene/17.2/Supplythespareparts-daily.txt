@@ -1,0 +1,109 @@
+ba_maison,74,150,5	script	Mansion Manager Alpha	4_EP17_AS,{
+        if(terra_gloria_main <= 24){
+		mes .n$;
+		mes "Who are you again? Do I need to know you?";
+		mes "You are an adventurer? Who says that? You're looking like a little brat!";
+		mes "Come back when you grew older or gained more experience!";
+		close;
+	}
+    .@rewardid = 1000103;
+    .@rewardamount = 6;    
+    .@rewardbaseexp = 100000;
+    .@rewardjobexp = 100000;
+
+    mes .n$;
+    mes "Greetings adventurer!";
+    mes "I used to be an adventure like you...";
+    mes "but see now I'm here - I got old... I have to feed my childs...";
+    mes "...";
+    mes "Back to business - why are you here?";
+
+    switch(select("- Potato Chips :- Exit")) {
+        case 1:
+            goto questone;
+            break;  
+        default:
+        	goto bye;
+            break;
+    }
+
+    bye:
+        next;
+        mes .n$;
+        mes "Good luck out there and stay safe!";
+        close;
+    end;
+
+//    *checkquest(<ID>{,PLAYTIME|HUNTING})
+//        If no additional argument supplied, return the state of the quest:
+//        -1 = Quest not started (not in quest log)
+//        0  = Quest has been given, but the state is "inactive"
+//        1  = Quest has been given, and the state is "active"
+//        2  = Quest completed
+//
+//    If parameter "PLAYTIME" is supplied:
+//        -1 = Quest not started (not in quest log)
+//        0  = the time limit has not yet been reached
+//        1  = the time limit has not been reached but the quest is marked as complete
+//        2  = the time limit has been reached
+//
+//    If parameter "HUNTING" is supplied:
+//        -1 = Quest not started (not in quest log)
+//        0  = you haven't killed all of the target monsters and the time limit has not been reached.
+//        1  = you haven't killed all of the target monsters but the time limit has been reached.
+//        2  = you've killed all of the target monsters
+
+    questone:
+        .@questID = 30066;
+        .@item1ID = 1000232;        
+        goto quest;
+    end;
+
+
+     quest:
+        .@questStatus = checkquest(.@questID);
+        .@questStatusPlaytime = checkquest(.@questID, PLAYTIME);
+        .@questStatusHunting = checkquest(.@questID, HUNTING);
+        next;
+        if(.@questStatus == -1) {
+            mes .n$;
+            mes "Please bring me 10 "+getitemname(.@item1ID)+" for me!";
+            setquest .@questID;
+            goto bye;
+        } else if(.@questStatusPlaytime == 2) {
+            mes .n$;
+            mes "Please help me again and bring me 10 "+getitemname(.@item1ID)+" for me!";
+            erasequest .@questID;
+            setquest .@questID;
+            goto bye;
+        } else if(.@questStatusPlaytime == 0 && .@questStatusHunting == 0){
+            mes .n$;
+            mes "Come back to me when you finished the task!";
+            goto bye;
+        } else if(.@questStatusPlaytime == 0 && .@questStatusHunting == 2){
+            mes .n$;
+            mes "Thank you for helping me!";
+            mes "";
+            completequest .@questID;
+            goto givereward;
+        } else {
+            mes .n$;
+            mes "Please come back when you finished my task!";
+            goto bye;
+        }
+        close;
+    end;
+
+    givereward:
+        mes "Here is your reward!";
+        getitem .@rewardid,.@rewardamount;        
+        getexp .@rewardbaseexp,.@rewardjobexp;
+        goto bye;
+    end;
+
+    close;
+
+    OnInit:
+        set .n$,"["+strnpcinfo(0)+"]";
+    end;
+}

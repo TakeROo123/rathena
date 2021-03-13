@@ -742,7 +742,7 @@ godlymix,198,2,0	duplicate(real_prt01)	#nasarin_real_prt01	CLEAR_NPC
 godlymix,199,2,0	script	#eproom_girls_prt01	CLEAR_NPC,{
 	end;
 OnCommandOn:
-	enablenpc "prtg-1-22_prtg-1-31#te";
+	enablenpc "godlymix-1-22_godlymix-1-31#te";
 	monster "godlymix",184,188,"Fatal Nasarin",2449,1, "#eproom_girls_prt01::OnMyMobDead";
 	monster "godlymix",191,182,"Morin of the Abyss",2448,1, "#eproom_girls_prt01::OnMyMobDead";
 	monster "godlymix",183,183,"Lune of the Eternal Glacier",2447,1, "#eproom_girls_prt01::OnMyMobDead";
@@ -1180,22 +1180,22 @@ next;
 //============================================================
 //=========================Warps==============================
 //============================================================
-godlymix,57,19,0	warp	prtg-1-02_prtg-1-07#te	1,1,godlymix,80,49
-godlymix,41,34,0	warp	prtg-1-03_prtg-1-08#te	1,1,godlymix,40,47
-godlymix,37,54,0	warp	prtg-1-04_prtg-1-13#te	1,1,godlymix,192,119
-godlymix,71,54,0	warp	prtg-1-05_prtg-1-12#te	1,1,godlymix,192,65
-godlymix,51,70,0	warp	prtg-1-06_prtg-1-11#te	1,1,godlymix,202,92
-godlymix,84,49,0	warp	prtg-1-07_prtg-1-02#te	1,1,godlymix,61,19
-godlymix,37,47,0	warp	prtg-1-08_prtg-1-03#te	1,1,godlymix,45,34
-godlymix,62,34,0	warp	prtg-1-09_prtg-1-13#te	1,1,godlymix,192,119
-godlymix,84,19,0	warp	prtg-1-010_prtg-1-12#te	1,1,godlymix,192,65
-godlymix,206,92,0	warp	prtg-1-11_prtg-1-06#te	1,1,godlymix,55,70
-godlymix,196,65,0	warp	prtg-1-12_prtg-1-05#te	1,1,godlymix,75,54
-godlymix,196,119,0	warp	prtg-1-13_prtg-1-04#te	1,1,godlymix,40,54
-godlymix,147,120,0	warp	prtg-1-14_prtg-1-21#te	1,1,godlymix,75,187
-godlymix,75,183,0	warp	prtg-1-21_prtg-1-14#te	1,1,godlymix,147,116
+godlymix,57,19,0	warp	godlymix-1-02_godlymix-1-07#te	1,1,godlymix,80,49
+godlymix,41,34,0	warp	godlymix-1-03_godlymix-1-08#te	1,1,godlymix,40,47
+godlymix,37,54,0	warp	godlymix-1-04_godlymix-1-13#te	1,1,godlymix,192,119
+godlymix,71,54,0	warp	godlymix-1-05_godlymix-1-12#te	1,1,godlymix,192,65
+godlymix,51,70,0	warp	godlymix-1-06_godlymix-1-11#te	1,1,godlymix,202,92
+godlymix,84,49,0	warp	godlymix-1-07_godlymix-1-02#te	1,1,godlymix,61,19
+godlymix,37,47,0	warp	godlymix-1-08_godlymix-1-03#te	1,1,godlymix,45,34
+godlymix,62,34,0	warp	godlymix-1-09_godlymix-1-13#te	1,1,godlymix,192,119
+godlymix,84,19,0	warp	godlymix-1-010_godlymix-1-12#te	1,1,godlymix,192,65
+godlymix,206,92,0	warp	godlymix-1-11_godlymix-1-06#te	1,1,godlymix,55,70
+godlymix,196,65,0	warp	godlymix-1-12_godlymix-1-05#te	1,1,godlymix,75,54
+godlymix,196,119,0	warp	godlymix-1-13_godlymix-1-04#te	1,1,godlymix,40,54
+godlymix,147,120,0	warp	godlymix-1-14_godlymix-1-21#te	1,1,godlymix,75,187
+godlymix,75,183,0	warp	godlymix-1-21_godlymix-1-14#te	1,1,godlymix,147,116
 godlymix,109,163,0	warp	warpemp#te	1,1,godlymix,202,183
-godlymix,206,183,0	warp	prtg-1-31_prtg-1-22#te	1,1,godlymix,113,163
+godlymix,206,183,0	warp	godlymix-1-31_godlymix-1-22#te	1,1,godlymix,113,163
 
 //============================================================
 //========================Mapflag=============================
