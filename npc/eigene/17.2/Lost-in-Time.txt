@@ -15,6 +15,7 @@ ba_maison,311,206,5	script	Ruinan	4_EP17_BASKET,{
             mes "Operation Officer";
             mes "you are ready for theOS Mission";
             next;
+	    setquest 30050;
 			switch(select("Create", "Enter")) {
 				case 1:
 					goto createInstance;
@@ -67,10 +68,12 @@ OnInit:
     end;
 }
 
+
+/*
 ba_maison,311,203,5	script	gvhd	123,{
     erasequest(30050);
 }
-
+*/
 
 // ===================================================
 // ============== Floor 1 ============================
@@ -102,9 +105,8 @@ end;
 OnMyMobDead:
 	dispbottom 'mobsFloor;
 	if(--'mobsFloor <= 0) {
-    warpparty 'map$,219,153,atoi('partyId$),'map$;
-	 
-	
+		sleep2 1000;
+    	warpparty 'map$,219,153,atoi('partyId$),'map$;
 	}
 end;
 OnInstanceInit:
@@ -156,8 +158,9 @@ areamonster 'map$,210,144,215,149,"Pitaya",atoi('gpi$),1,instance_npcname("Slik#
     OnMyMobDead:
         	dispbottom 'mobsFloor;
 	        if(--'mobsFloor <= 0) {
-    warpparty 'map$,85,104,atoi('partyId$),'map$;                
-        }
+				sleep2 1000;
+    			warpparty 'map$,85,104,atoi('partyId$),'map$;                
+       		}
 }
 // ===================================================
 // ============== Floor 3 ============================
@@ -178,7 +181,8 @@ areamonster 'map$,90,96,87,99,"Pitaya",atoi('gpi$),1,instance_npcname("Slik#3")+
     OnMyMobDead:
         	dispbottom 'mobsFloor;
 	        if(--'mobsFloor <= 0) {
-    warpparty 'map$,225,260,atoi('partyId$),'map$;                
+				sleep2 1000;
+    			warpparty 'map$,225,260,atoi('partyId$),'map$;                
         }
 }
 // ===================================================
@@ -200,8 +204,9 @@ areamonster 'map$,228,255,225,257,"Pitaya",atoi('gpi$),1,instance_npcname("Slik#
     OnMyMobDead:
         	dispbottom 'mobsFloor;
 	        if(--'mobsFloor <= 0) {
-    warpparty 'map$,240,120,atoi('partyId$),'map$;                
-        }
+				sleep2 1000;
+   				warpparty 'map$,240,120,atoi('partyId$),'map$;                
+        	}
 }
 // ===================================================
 // ============== Floor 5 ============================

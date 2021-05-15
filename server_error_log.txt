@@ -1,0 +1,956 @@
+[Error]: 
+script error on  line 0
+    parse_line: expected ';'
+     0 : .@r = getrefine(); bonus bAtk, .@r/2*10; bonus bMatk, .@r/2*10; bonus bAspdRate, .@r/3*4; bonus bCastrate, .@r/3*-4; bonus bCritAtkRate, .@r/4*5; bonus bMagicAddEle, Ele_All',' .r/4*5; if (.@r >= 11) { bonus bDelayrate, -5; };
+[Error]: 
+script error on  line 0
+    parse_line: expected ';'
+     0 : .@r = getrefine(); bonus bAtk, .@r/2*15; bonus bAspdRate, .@r/3*2; bonus2 bSkillAtk, "SU_CN_METEOR",.@r/3*20; bonus2 bSkillAtk, "SU_PICKYPECK",.@r/3*20; bonus bLongAtkRate, .@r/4*5; bonus bMagicAddEle, Ele_Neutral',' .r/4*5; if (.@r >= 11) { bonus bDelayrate, -5; };
+[Error]: Item type is not a weapon, defaulting to 0.
+[Error]: Occurred in file '' on line 0 and column -1.
+[Error]: Item type is not a weapon, defaulting to 0.
+[Error]: Occurred in file '' on line 0 and column -1.
+[Error]: Item type is not a weapon, defaulting to 0.
+[Error]: Occurred in file '' on line 0 and column -1.
+[Error]: mob_parse_dbrow: Invalid monster ID 34535, must be in range 1000-3999 or 20020-31999.
+[Error]: mob_parse_row_mobskilldb: Too many skills for monster 3796[ILL_KTULLANUX]
+[Error]: Target item name Illusion_Infiltrator does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 114 and column 6.
+[Error]: Target item name Illusion_Apocalypse does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 114 and column 6.
+[Error]: Target item name Illusion_Ballista does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 114 and column 6.
+[Error]: Target item name Illusion_Wizardry_Staff does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 114 and column 6.
+[Error]: Target item name Illusion_Long_Mace does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 114 and column 6.
+[Error]: Target item name Illusion_Huuma_Fluttering_Snow does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 114 and column 6.
+[Error]: Target item name Illusion_Combo_Battle_Glove does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 114 and column 6.
+[Error]: Target item name Illusion_Spectral_Spear does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 114 and column 6.
+[Error]: Target item name Illusion_Staff_of_Bordeaux does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 114 and column 6.
+[Error]: Target item name Illusion_Moonlight_Dagger does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 114 and column 6.
+[Error]: Target item name Illusion_Infiltrator does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 144 and column 6.
+[Error]: Target item name Illusion_Apocalypse does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 144 and column 6.
+[Error]: Target item name Illusion_Ballista does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 144 and column 6.
+[Error]: Target item name Illusion_Wizardry_Staff does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 144 and column 6.
+[Error]: Target item name Illusion_Long_Mace does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 144 and column 6.
+[Error]: Target item name Illusion_Huuma_Fluttering_Snow does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 144 and column 6.
+[Error]: Target item name Illusion_Combo_Battle_Glove does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 144 and column 6.
+[Error]: Target item name Illusion_Spectral_Spear does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 144 and column 6.
+[Error]: Target item name Illusion_Staff_of_Bordeaux does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 144 and column 6.
+[Error]: Target item name Illusion_Moonlight_Dagger does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 144 and column 6.
+[Error]: Target item name Cannon_Rapier-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name Beam_Claymor-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name Rutilus_Stick-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name Circuit_Board-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name Blasti-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name Sapphire_Mace-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name Virtual_Bow-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name MH-P89-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name Meuchler-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name Burning_Knuckle-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name HR-S55-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name Kuroiro-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name AC-B44-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name Boost_Lance-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name Ultio-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name Electric_Fox-OS_ does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 208 and column 6.
+[Error]: Target item name Cannon_Rapier-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name Beam_Claymor-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name Rutilus_Stick-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name Circuit_Board-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name Blasti-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name Sapphire_Mace-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name Virtual_Bow-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name MH-P89-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name Meuchler-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name Burning_Knuckle-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name HR-S55-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name Kuroiro-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name AC-B44-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name Boost_Lance-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name Ultio-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name Electric_Fox-OS_ does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 230 and column 6.
+[Error]: Target item name Cannon_Rapier-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name Beam_Claymor-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name Rutilus_Stick-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name Circuit_Board-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name Blasti-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name Sapphire_Mace-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name Virtual_Bow-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name MH-P89-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name Meuchler-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name Burning_Knuckle-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name HR-S55-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name Kuroiro-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name AC-B44-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name Boost_Lance-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name Ultio-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name Electric_Fox-OS_ does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 252 and column 6.
+[Error]: Target item name Cannon_Rapier-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name Beam_Claymor-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name Rutilus_Stick-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name Circuit_Board-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name Blasti-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name Sapphire_Mace-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name Virtual_Bow-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name MH-P89-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name Meuchler-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name Burning_Knuckle-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name HR-S55-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name Kuroiro-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name AC-B44-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name Boost_Lance-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name Ultio-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name Electric_Fox-OS_ does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 274 and column 6.
+[Error]: Target item name Cannon_Rapier-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name Beam_Claymor-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name Rutilus_Stick-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name Circuit_Board-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name Blasti-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name Sapphire_Mace-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name Virtual_Bow-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name MH-P89-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name Meuchler-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name Burning_Knuckle-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name HR-S55-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name Kuroiro-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name AC-B44-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name Boost_Lance-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name Ultio-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name Electric_Fox-OS_ does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 296 and column 6.
+[Error]: Target item name Cannon_Rapier-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name Beam_Claymor-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name Rutilus_Stick-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name Circuit_Board-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name Blasti-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name Sapphire_Mace-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name Virtual_Bow-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name MH-P89-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name Meuchler-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name Burning_Knuckle-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name HR-S55-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name Kuroiro-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name AC-B44-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name Boost_Lance-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name Ultio-OS does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name Electric_Fox-OS_ does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 318 and column 6.
+[Error]: Target item name S_Super_Novice_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Taekwondo_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Rune_Knight_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Royal_Guard_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Arcbishop_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Guillotine_Cross_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Shadow_Chaser_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Rune_Knight_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Royal_Guard_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Guillotine_Cross_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Shadow_Chaser_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Super_Novice_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Tension_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Elegant_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Sentimental_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Sentimental_Earring does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Sentimental_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Enchanting_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Enchanting_Earring does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Enchanting_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Sonic_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Sonic_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Sonic_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Ignition_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Ignition_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Ignition_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_W_Breath_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_W_Breath_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_W_Breath_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_F_Breath_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_F_Breath_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_F_Breath_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Cluster_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Cluster_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Cluster_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Aimed_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Aimed_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Aimed_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Arrow_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Arrow_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Arrow_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Shooting_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Shooting_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Shooting_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Tornado_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Tornado_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Tornado_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Boomerang_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Boomerang_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Boomerang_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Vulcan_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Vulcan_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Vulcan_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Arms_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Arms_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Arms_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 443 and column 6.
+[Error]: Target item name S_Super_Novice_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Taekwondo_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Rune_Knight_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Royal_Guard_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Arcbishop_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Guillotine_Cross_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Shadow_Chaser_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Rune_Knight_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Royal_Guard_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Guillotine_Cross_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Shadow_Chaser_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Super_Novice_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Tension_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Elegant_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Sentimental_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Sentimental_Earring does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Sentimental_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Enchanting_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Enchanting_Earring does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Enchanting_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Sonic_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Sonic_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Sonic_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Ignition_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Ignition_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Ignition_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_W_Breath_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_W_Breath_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_W_Breath_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_F_Breath_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_F_Breath_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_F_Breath_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Cluster_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Cluster_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Cluster_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Aimed_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Aimed_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Aimed_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Arrow_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Arrow_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Arrow_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Shooting_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Shooting_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Shooting_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Tornado_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Tornado_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Tornado_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Boomerang_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Boomerang_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Boomerang_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Vulcan_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Vulcan_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Vulcan_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Arms_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Arms_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Arms_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 915 and column 6.
+[Error]: Target item name S_Tension_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Elegant_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Sentimental_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Sentimental_Earring does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Sentimental_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Enchanting_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Enchanting_Earring does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Enchanting_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Sonic_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Sonic_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Sonic_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Ignition_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Ignition_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Ignition_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_W_Breath_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_W_Breath_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_W_Breath_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_F_Breath_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_F_Breath_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_F_Breath_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Cluster_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Cluster_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Cluster_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Aimed_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Aimed_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Aimed_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Arrow_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Arrow_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Arrow_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Shooting_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Shooting_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Shooting_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Tornado_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Tornado_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Tornado_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Boomerang_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Boomerang_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Boomerang_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Vulcan_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Vulcan_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Vulcan_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Arms_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Arms_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Target item name S_Arms_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_upgrade.yml' on line 1439 and column 6.
+[Error]: Source item name S_Super_Novice_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 948 and column 6.
+[Error]: Source item name S_Taekwondo_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 948 and column 6.
+[Error]: Source item name S_Rune_Knight_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 948 and column 6.
+[Error]: Source item name S_Royal_Guard_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 948 and column 6.
+[Error]: Source item name S_Arcbishop_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 948 and column 6.
+[Error]: Source item name S_Guillotine_Cross_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 948 and column 6.
+[Error]: Source item name S_Shadow_Chaser_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 948 and column 6.
+[Error]: Source item name S_Super_Novice_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 975 and column 6.
+[Error]: Source item name S_Taekwondo_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 975 and column 6.
+[Error]: Source item name S_Rune_Knight_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1031 and column 6.
+[Error]: Source item name S_Royal_Guard_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1031 and column 6.
+[Error]: Source item name S_Guillotine_Cross_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1031 and column 6.
+[Error]: Source item name S_Shadow_Chaser_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1031 and column 6.
+[Error]: Source item name S_Super_Novice_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1031 and column 6.
+[Error]: Source item name S_Super_Novice_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Taekwondo_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Rune_Knight_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Royal_Guard_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Arcbishop_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Guillotine_Cross_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Shadow_Chaser_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Rune_Knight_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Royal_Guard_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Guillotine_Cross_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Shadow_Chaser_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Super_Novice_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Tension_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Elegant_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Sentimental_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Sentimental_Earring does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Sentimental_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Enchanting_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Enchanting_Earring does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Enchanting_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Sonic_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Sonic_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Sonic_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Ignition_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Ignition_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Ignition_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_W_Breath_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_W_Breath_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_W_Breath_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_F_Breath_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_F_Breath_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_F_Breath_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Cluster_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Cluster_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Cluster_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Aimed_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Aimed_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Aimed_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Arrow_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Arrow_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Arrow_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Shooting_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Shooting_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Shooting_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Tornado_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Tornado_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Tornado_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Boomerang_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Boomerang_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Boomerang_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Vulcan_Armor does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Vulcan_Shield does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Vulcan_Shoes does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Arms_Weapon does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Arms_Pendant does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name S_Arms_Earing does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1093 and column 6.
+[Error]: Source item name SuraStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SuraStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SuraStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SuraStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name RangerStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name RangerStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name RangerStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name RangerStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SorcererStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SorcererStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SorcererStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SorcererStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name RuneknightStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name RuneknightStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name RuneknightStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name RuneknightStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name GeneticStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name GeneticStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name GeneticStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name GeneticStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name WarlockStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name WarlockStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name WarlockStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name WarlockStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name ShadowchaserStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name ShadowchaseStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name ShadowchaseStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name ShadowchaserStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name MechanicStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name MechanicStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name MechanicStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name MechanicStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name WanderMinstrelStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name WanderMinstrelStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name WanderMinstrelStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name WanderMinstrelStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name HighpriestStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name HighpriestStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name HighpriestStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name ArchbishopStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name PaladinStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name PaladinStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name PaladinStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name RoyalguardStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name AssacrossStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name AssacrossStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name AssacrossStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name GuillcrossStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SuraStone_Robe2 does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SuraStone_Bottom2 does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SuraStone_Middle2 does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SuraStone_Top2 does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SorcererStone_Robe2 does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SorcererStone_Bottom2 does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SorcererStone_Top2 does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name ShadowchaserStone_Robe2 does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name ShadowchasStone_Bottom2 does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name ShadowchasStone_Middle2 does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name ShadowchaserStone_Top2 does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SoulReaperStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SoulLinkerStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SoulLinkerStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name SoulLinkerStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name StarGladiatorStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name StarGladiatorStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name StarGladiatorStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name StarEmperorStone_Garment does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name NinjaStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name NinjaStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name NinjaStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name KagerouStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name OboroStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name GunslingerStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name GunslingerStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name GunslingerStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name GunslingerStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name DoramStone_Top does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name DoramStone_Middle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name DoramStone_Bottom does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name DoramStone_Robe does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1560 and column 6.
+[Error]: Source item name Torn_Paper_ does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1756 and column 6.
+[Error]: Source item name Well-dried_Clover does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1756 and column 6.
+[Error]: Source item name Short_Bat_Hair does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1756 and column 6.
+[Error]: Source item name Cluster_of_Nightmares does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1756 and column 6.
+[Error]: Source item name Shining_Spore does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1756 and column 6.
+[Error]: Source item name Dried_Leaf_Of_Ygg does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1756 and column 6.
+[Error]: Source item name Suspicious_Pentacle does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 1756 and column 6.
+[Error]: Source item name Willow_Egg does not exist, skipping.
+[Error]: Occurred in file 'db/re/item_synthesis.yml' on line 2182 and column 6.
+[Error]: Missing 1 right curlys at file 'npc/eigene/Dungon/Abyss-Glastheim.txt', line '267'.
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '198' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '199' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '200' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '201' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '202' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '203' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '204' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '205' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '206' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '207' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '208' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '209' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '210' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '211' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '212' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '213' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '214' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '215' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '216' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '217' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '218' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '219' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '220' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '221' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '222' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '223' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '228' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '229' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '230' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '231' : VIP System
+[Error]: npc_parse_script: original npc not found for duplicate in file 'npc/eigene/VIPSystemrev1.0.1.txt', line '232' : VIP System
+[Error]: npc_parsesrcfile: Unknown syntax in file 'npc/eigene/VIPregister.txt', line '72'. Stopping...
+ * w1=alberta,33,240,4    duplicate(VIP System)   VIP System#alb  109
+ * w2=
+ * w3=
+ * w4=
+[Error]: npc_parsesrcfile: Unknown syntax in file 'npc/eigene/extradrop.txt', line '68'. Stopping...
+ * w1=}
+ * w2=
+ * w3=
+ * w4=
+[Error]: 
+script error on  line 0
+    parse_line: expected ';'
+     0 : .@r = getrefine(); bonus bAtk, .@r/2*10; bonus bMatk, .@r/2*10; bonus bAspdRate, .@r/3*4; bonus bCastrate, .@r/3*-4; bonus bCritAtkRate, .@r/4*5; bonus bMagicAddEle, Ele_All',' .r/4*5; if (.@r >= 11) { bonus bDelayrate, -5; };
+[Error]: 
+script error on  line 0
+    parse_line: expected ';'
+     0 : .@r = getrefine(); bonus bAtk, .@r/2*15; bonus bAspdRate, .@r/3*2; bonus2 bSkillAtk, "SU_CN_METEOR",.@r/3*20; bonus2 bSkillAtk, "SU_PICKYPECK",.@r/3*20; bonus bLongAtkRate, .@r/4*5; bonus bMagicAddEle, Ele_Neutral',' .r/4*5; if (.@r >= 11) { bonus bDelayrate, -5; };
+[Error]: Item type is not a weapon, defaulting to 0.
+[Error]: Occurred in file '' on line 0 and column -1.
+[Error]: Item type is not a weapon, defaulting to 0.
+[Error]: Occurred in file '' on line 0 and column -1.
+[Error]: Item type is not a weapon, defaulting to 0.
+[Error]: Occurred in file '' on line 0 and column -1.
+[Error]: 
+script error on  line 0
+    parse_line: expected ';'
+     0 : .@r = getrefine(); bonus bAtk, .@r/2*10; bonus bMatk, .@r/2*10; bonus bAspdRate, .@r/3*4; bonus bCastrate, .@r/3*-4; bonus bCritAtkRate, .@r/4*5; bonus bMagicAddEle, Ele_All',' .r/4*5; if (.@r >= 11) { bonus bDelayrate, -5; };
+[Error]: 
+script error on  line 0
+    parse_line: expected ';'
+     0 : .@r = getrefine(); bonus bAtk, .@r/2*15; bonus bAspdRate, .@r/3*2; bonus2 bSkillAtk, "SU_CN_METEOR",.@r/3*20; bonus2 bSkillAtk, "SU_PICKYPECK",.@r/3*20; bonus bLongAtkRate, .@r/4*5; bonus bMagicAddEle, Ele_Neutral',' .r/4*5; if (.@r >= 11) { bonus bDelayrate, -5; };
+[Error]: Item type is not a weapon, defaulting to 0.
+[Error]: Occurred in file '' on line 0 and column -1.
+[Error]: Item type is not a weapon, defaulting to 0.
+[Error]: Occurred in file '' on line 0 and column -1.
+[Error]: Item type is not a weapon, defaulting to 0.
+[Error]: Occurred in file '' on line 0 and column -1.
+[Error]: script:run_script_main: infinity loop !
+[Error]: intif_parse_ack_vipActive: Storage size for player KingArthur (2000090:150318) is larger than MAX_STORAGE. Storage size has been set to MAX_STORAGE.
+[Error]: intif_parse_ack_vipActive: Storage size for player JackTheRanger (2000098:150369) is larger than MAX_STORAGE. Storage size has been set to MAX_STORAGE.
+[Error]: intif_parse_ack_vipActive: Storage size for player JackTheRanger (2000098:150369) is larger than MAX_STORAGE. Storage size has been set to MAX_STORAGE.
+[Error]: intif_parse_ack_vipActive: Storage size for player JackTheRanger (2000098:150369) is larger than MAX_STORAGE. Storage size has been set to MAX_STORAGE.
+[Error]: intif_parse_QuestLog: quest 0 not found in DB.
+[Error]: intif_parse_ack_vipActive: Storage size for player FreiBier (2000098:150365) is larger than MAX_STORAGE. Storage size has been set to MAX_STORAGE.
+[Error]: intif_parse_ack_vipActive: Storage size for player KingArthur (2000090:150318) is larger than MAX_STORAGE. Storage size has been set to MAX_STORAGE.
+[Error]: intif_parse_ack_vipActive: Storage size for player KingArthur (2000090:150318) is larger than MAX_STORAGE. Storage size has been set to MAX_STORAGE.
+[Error]: intif_parse_ack_vipActive: Storage size for player FreiBier (2000098:150365) is larger than MAX_STORAGE. Storage size has been set to MAX_STORAGE.

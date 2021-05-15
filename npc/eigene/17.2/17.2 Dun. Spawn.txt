@@ -39,3 +39,11 @@ ba_pw01,0,0	monster	Elite Bellare	20688,90,500
 ba_pw01,0,0	monster	Unleashed Magic	20690,50,500
 ba_pw01,0,0	monster	Broken Beta	20630,15,500
 ba_pw01,0,0	monster	Magical Dolor	20689,80,500
+
+ba_lost,0,0	monster	Pitaya	20662,60,500
+ba_lost,0,0	monster	Pitaya	20664,60,500
+ba_lost,0,0	monster	Pitaya	20660,60,500
+ba_lost,0,0	monster	Pitaya	20663,60,500
+ba_lost,0,0	monster	Pitaya	20661,60,500
+ba_los,0,0,0,0    boss_monster    Meow    20659,1,10800000,600000,0
+

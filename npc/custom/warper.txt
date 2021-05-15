@@ -299,7 +299,7 @@ menu	"Abyss Lakes",D1, "Amatsu Dungeon",D2, "Anthell",D3,
 		"Illusion of Moonlight",D43,"Illusion of Frozen",D44,"Illusion of Vampire",D45,
 		"Illusion of Abyss",D46,"Illusion of Teddy Bear",D47,"Illusion of Luanda",D48,
 		"Illusion of Under Water",D49,"Illusion of Labyrinth",D50,"OS",D51,"Meditathios Large Bath",D52,
-		"Power Plant",D53, "Warehouse",D54;
+		"Power Plant",D53, "Warehouse",D54, "Library Corridor",D55, "Time-forgotten Valley",D56;
 
 D1: setarray @c[2],261,272,275,270,116,27;
 	Disp("Abyss Lakes",1,3); Pick("abyss_");
@@ -435,7 +435,13 @@ D53: Restrict("RE");
 	 Disp("Power Plant 1:Power Plant 2:Power Plant 3"); Pick("","ba_pw01", "ba_pw02", "ba_pw03");
 D54: Restrict("RE");
 	 setarray @c[2],158,24,338,334;
-	 Disp("Upper Floor:Lower Floor"); Pick("","ba_2whs01", "ba_2whs02");	 	 	 
+	 Disp("Upper Floor:Lower Floor"); Pick("","ba_2whs01", "ba_2whs02");
+D55: Restrict("RE");
+	 setarray @c[2],160,14;
+	 Disp("Library Corridor"); Pick("","ba_lib");
+D56: Restrict("RE");
+	 setarray @c[2],161,37;
+	 Disp("Time-forgotten Valleyr"); Pick("","ba_lost");
 
 // --------------------------------------------------
 	Castles:

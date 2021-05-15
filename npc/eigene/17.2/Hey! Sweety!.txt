@@ -10,35 +10,54 @@ ba_in01,28,255,5	script	Manager Beta Almond	10345,{
 		mes "Come back when you grew older or gained more experience!";
 		close;
 	}
-   mes "Almond";
-   mes "Sweety signed up for a battle";
-   mes "It`s fine as long as Almond keep an eay on him.";
-switch(select("Create 'Hey! Sweety!'", "Enter")) {
-	case 1:
-		if(is_party_leader() == false) {
-			mes "you need to be an party leader";
-			end;
-		}
-		set .@i_inst, instance_create(.instance_name$);
-		end;
-	case 2:
-		switch(instance_enter(.instance_name$)) {
-			case IE_OTHER:
-				mes "an unknown error has occurred";
-				end;
-			case IE_NOINSTANCE:
-				mes "Create a instance first";
-				end;
-			case IE_OK:
-				setquest 30043;
-				mapannounce "ba_in01", strcharinfo(0)+ "is entering "+.instance_name$, bc_map, "0x00ff99", FW_NORMAL, 12;
-		}
+	if(checkquest(30043, PLAYTIME) == 2){
+		erasequest(30043);
+	}
 
-end;
-OnInit:
-	set .instance_name$, "Twilight Garden";
-	end;
-}	
+	switch(checkquest(30043, PLAYTIME)) {
+		case -1:
+   			mes "Almond";
+  			mes "Sweety signed up for a battle";
+  			mes "It`s fine as long as Almond keep an eay on him.";
+			switch(select("Create 'Hey! Sweety!'", "Enter")) {
+                case 1:
+                    if(is_party_leader() == false) {
+                        mes "you need to be an party leader";
+                        end;
+                    }
+                    set .@i_inst, instance_create(.instance_name$);
+                end;
+                case 2:
+                    goto enterInstance;
+                end;
+	        }
+        end;
+        case 0:
+			goto enterInstance;
+        end;
+		case 1:
+			mes "your cooldown is still available";
+			mes "please wait for the time";
+        end;
+    }
+
+    enterInstance:
+        switch(instance_enter(.instance_name$)) {
+            case IE_OTHER:
+                mes "an unknown error has occurred";
+                end;
+            case IE_NOINSTANCE:
+                mes "Create a instance first";
+                end;
+            case IE_OK:
+                setquest 30043;
+                mapannounce "ba_in01", strcharinfo(0)+ "is entering "+.instance_name$, bc_map, "0x00ff99", FW_NORMAL, 12;
+        }
+    end;
+
+	OnInit:
+		set .instance_name$, "Twilight Garden";
+    end;
 }
 
 
@@ -160,6 +179,7 @@ if('canleave$){
 	getitem 100160,1;
 	getitem 1000103,10;
 	warp "ba_in01",29,249;
+	completequest 30043;
 	end;
 }
 

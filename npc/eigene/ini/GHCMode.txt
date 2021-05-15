@@ -207,19 +207,19 @@ glast_01,143,288,5	script	Oscar#mode	4_ED_OSCAR,{
 
     'mobsFloor = 50;
 
-	areamonster 'map$,159,162,264,19,"Mutated Raydric Archer",atoi('mra$),10,instance_npcname("#ghmode1")+"::OnMyMobDead";
+	areamonster 'map$,187,30,250,136,"Mutated Raydric Archer",atoi('mra$),10,instance_npcname("#ghmode1")+"::OnMyMobDead";
 	callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
 
-	areamonster 'map$,159,162,264,19,"Mutated Khalitzburg",atoi('mk$),10,instance_npcname("#ghmode1")+"::OnMyMobDead";
+	areamonster 'map$,187,30,250,136,"Mutated Khalitzburg",atoi('mk$),10,instance_npcname("#ghmode1")+"::OnMyMobDead";
 	callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
 
-	areamonster 'map$,159,162,264,19,"Mutated Raydric",atoi('mr$),10,instance_npcname("#ghmode1")+"::OnMyMobDead";
+	areamonster 'map$,187,30,250,136,"Mutated Raydric",atoi('mr$),10,instance_npcname("#ghmode1")+"::OnMyMobDead";
 	callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
 
-	areamonster 'map$,159,162,264,19,"Mutated White Knight",atoi('mwk$),10,instance_npcname("#ghmode1")+"::OnMyMobDead";
+	areamonster 'map$,187,30,250,136,"Mutated White Knight",atoi('mwk$),10,instance_npcname("#ghmode1")+"::OnMyMobDead";
 	callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
 
-	areamonster 'map$,159,162,264,19,"Mutated Ghoul",atoi('goul$),10,instance_npcname("#ghmode1")+"::OnMyMobDead";
+	areamonster 'map$,187,30,250,136,"Mutated Ghoul",atoi('goul$),10,instance_npcname("#ghmode1")+"::OnMyMobDead";
 	callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
 
     OnMyMobDead:
@@ -239,15 +239,15 @@ glast_01,143,288,5	script	Oscar#mode	4_ED_OSCAR,{
 
 
     'mobsFloor = 50;
-		areamonster 'map$,135,165,36,20,"Mutated Raydric Archer",atoi('mra$),10,instance_npcname("#ghmode2")+"::OnMyMobDead";
+		areamonster 'map$,127,158,55,26,"Mutated Raydric Archer",atoi('mra$),10,instance_npcname("#ghmode2")+"::OnMyMobDead";
 		callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
-		areamonster 'map$,135,165,36,20,"Mutated Khalitzburg",atoi('mk$),10,instance_npcname("#ghmode2")+"::OnMyMobDead";
+		areamonster 'map$,127,158,55,26,"Mutated Khalitzburg",atoi('mk$),10,instance_npcname("#ghmode2")+"::OnMyMobDead";
 		callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
-		areamonster 'map$,135,165,36,20,"Mutated Raydric",atoi('mr$),10,instance_npcname("#ghmode2")+"::OnMyMobDead";
+		areamonster 'map$,127,158,55,26,"Mutated Raydric",atoi('mr$),10,instance_npcname("#ghmode2")+"::OnMyMobDead";
 		callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
-		areamonster 'map$,135,165,36,20,"Mutated White Knight",atoi('mwk$),10,instance_npcname("#ghmode2")+"::OnMyMobDead";
+		areamonster 'map$,127,158,55,26,"Mutated White Knight",atoi('mwk$),10,instance_npcname("#ghmode2")+"::OnMyMobDead";
 		callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
-		areamonster 'map$,135,165,36,20,"Mutated Ghoul",atoi('goul$),10,instance_npcname("#ghmode2")+"::OnMyMobDead";
+		areamonster 'map$,127,158,55,26,"Mutated Ghoul",atoi('goul$),10,instance_npcname("#ghmode2")+"::OnMyMobDead";
 		callfunc("F_ScaleMonsterByFloor", $@mobid, 'floorLevel);
 
     OnMyMobDead:
@@ -599,10 +599,10 @@ glast_01,136,291,5	script	OSC0005	2_SLOT_MACHINE,{
 
 		if(getequipid(EQI_HEAD_TOP) == .@itemIdsTemporalCirclet){
 			.@equipedEq[getarraysize(.@equipedEq)] = .@itemIdsTemporalCirclet;
-
+			}
 			if(.@card1 != 0) {
 				mes "your Circlet is already full Enchanted";
-				end;
+				close;
 			}
 			if(.@card1 == 0) {
 				.@card1 = .@2th[rand(23)];
@@ -647,7 +647,7 @@ glast_01,136,291,5	script	OSC0005	2_SLOT_MACHINE,{
 			close;
 		end;
 	}
-}
+
 
 glast_01,133,291,2	script	HUGINN3001	2_DROP_MACHINE,{
 	disable_items;
@@ -1073,4 +1073,3 @@ glast_01,133,291,2	script	HUGINN3001	2_DROP_MACHINE,{
 		close;
 	}
 }
-

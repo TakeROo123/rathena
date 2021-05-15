@@ -244,7 +244,7 @@ areamonster 'map$,16,187,89,112,"Khaltzburg Knight",atoi('khaKn$),15,instance_np
 
 
 
-'mobsFloor = 5;
+'mobsFloor = 30;
 
 // TODO: dont know if is just one
 sleep 2000;

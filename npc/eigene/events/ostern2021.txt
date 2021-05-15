@@ -1,0 +1,58 @@
+prontera,155,179,5 	script	Hasi	3496,{
+    mes "Happy Corona oh ehm Easter.";
+    next;
+    mes "what can I do for you";
+
+    switch(select("- Ticket Trade :- Box  :- nothing!")) { 
+        case 1:
+            next;
+            goto ostern;
+            break;
+        case 2:
+            next;
+            goto box;
+            break;                                    
+        default:
+            next;
+            goto stoptalking;
+            break;
+    }
+
+    ostern:
+        mes "okay give me a moment.";
+        close2; // Closes the NPC dialog without ending the script
+        callshop "ostern",1; // Only Sell window
+    end; // We end the script just after opening the shop so no need to break
+
+    box:
+        mes "The box costs 10000 Zeny - do you still want to buy it?";
+        switch(select("- Buy  :- nothing!")) { 
+            case 1:
+                next;
+                goto boxBuy;
+                break;
+            case 2:
+                next;
+                goto stoptalking;
+                break;
+        }
+    end;
+
+    boxBuy:
+        if (Zeny >= 10000 && countitem(200000097) < 1) {
+            Zeny -= 10000;
+            getitem 200000097,1;
+        } else {
+            mes "You need at least 10.000 Zeny and you cannot have more than 1 Box!";
+        }
+        close;
+    end;
+
+    stoptalking:
+        mes "Okay! See you!";
+        close;
+    end;
+
+
+}
+-	itemshop	ostern	-1,33081,17449:25,5870:30,19878:200,31299:1000,31512:1100,33099:200,200000038:25,1000103:30,12391:100,12403:120,12416:130,12493:140,12545:150,12577:160,12595:170,12641:180,12654:180,12673:200,13969:50,16770:75,200000008:250,200000009:250,200000010:300,200000011:300,200000012:250,200000013:250,200000014:300,200000015:300,200000016:250,200000017:250,200000018:300,200000019:300,200000020:250,200000021:250,200000022:300,200000023:300,200000037:1500,33084:2000,200000039:2000,33102:250,2967:400,2969:400,18889:1000,18890:1000,19532:100,19586:100,13601:750,12103:200,200000047:2000,490070:1200,33106:300,700019:4000;

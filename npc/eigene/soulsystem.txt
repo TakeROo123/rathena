@@ -1,0 +1,155 @@
+prontera,101,66,5	script	Ahillea	511,{
+    mes "[^CD0000Ahillea^000000]";
+    mes "what do you want here....";
+        next;
+	mes "[^CD0000Ahillea^000000]";	
+    mes "how did you come in here....";
+        next;
+    mes "[^CD0000Ahillea^000000]";		
+    mes "this .... wannabe Old Man...";
+        next;
+    mes "[^CD0000Ahillea^000000]";		
+    mes "I don't have time so what do you want";
+		next;
+    switch(select("- Passierschein :- Nothing!")) {
+        case 1:
+            goto schein;
+            break;
+        default:
+        	goto stoptalking;
+            break;
+    }
+    close;
+
+    schein:
+            mes "[^CD0000Ahillea^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1x An old Coin^000000 / "+countitem(200000044)+" ea";
+	        mes "^5533FF1x TakeRo Coin ^000000 / "+countitem(200000037)+" ea";            
+	next;
+	    if(countitem(200000044)<1) goto lose;
+	    if(countitem(200000037)<1) goto lose;        
+
+        delitem 200000044,1;
+        delitem 200000037,1;        
+            next;
+            mes "[^CD0000Ahillea^000000]";     
+            mes "HF";       
+                getItem 200000093,1;
+            next;
+            mes "[^CD0000Ahillea^000000]";             
+            mes "and now good bye";               
+		end;
+
+
+	lose:
+		mes "[^CD0000Ahillea^000000]";
+		mes "you do not have enough materials...";
+			next;
+		mes "[^CD0000Ahillea^000000]";			
+		mes "you are wasting my time...";
+			goto exit;
+    end;
+	
+	stoptalking:
+        mes "[^CD0000Ahillea^000000]";
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+	
+    exit:
+        enable_items;
+        close;
+    end;	    
+}
+
+prontera,239,267,5	script	Dylan	492,{
+    mes "[^CD0000Dylan^000000]";
+    mes "what do you want here";
+        switch(select("- Access :- Nothing!")) {
+            case 1:
+                next;
+                goto access;
+                break;
+            default:
+                next;
+        	    goto stoptalking;
+                break;
+        }
+    close;
+    access:
+            mes "[^CD0000Dylan^000000]";	
+            mes "so you important want to go to our Masters Room.";
+            mes "let me see if you're ready.";
+            mes "if you have a specific coin for me i will let you in!";
+        next;
+
+            mes "[^CD0000Dylan^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1 Passierschein A38^000000 / "+countitem(200000093)+" ea";			
+	next;
+	    if(countitem(200000093)<1) goto lose;	
+
+	    mes "OKAY!!!";
+	next;
+        delitem 200000093,1;		
+            next;
+            mes "[^CD0000Dylan^000000]";     
+            mes "lets go";       
+                warp "prt_in",128,40;
+		end;
+		
+	lose:
+		mes "[^CD0000Dylan^000000]";
+		mes "you do not have a coin...";
+		mes "you are wasting my time...";
+		goto exit;
+    end;
+	
+	stoptalking:
+        mes "[^CD0000Dylan^000000]";
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+	
+    exit:
+        enable_items;
+        close;
+    end;		
+}
+
+prt_in,119,36,5	script	Tralir	120,{
+	 mes "Hello my name is Tralir.";
+        next;
+        mes "what can I do for you";
+    switch(select("- GL Shop :- nothing!")) { 
+        case 1:
+            next;
+            goto glshop;
+            break;                     
+        default:
+            next;
+        	goto stoptalking;
+            break;
+    }
+    glshop:
+        mes "okay give me a moment.";
+        close2; 
+        callshop "glshop",1; 
+        end; 
+        end;
+
+    stoptalking:
+        mes "Tralir";
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+
+    exit:
+        enable_items;
+        close;
+    end;
+}
+
+-	itemshop	glshop	-1,200000110,7079:3,7086:3,7076:3,7087:3,7083:3,969:1,985:1,2406:1,7058:25,726:2,984:1,2627:4,7080:5,7081:5,7082:2,7084:2,7085:2,7073:3,7077:3,7092:3,7090:3,7088:2,724:2,727:1,722:1,2603:1,7074:2,7075:3,7078:3,7091:3,1522:3;
+

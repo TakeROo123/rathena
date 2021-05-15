@@ -75,7 +75,7 @@
 	OnNPCKillEvent:
 		if(strcharinfo(3) == "horror-moro")
 		if( rand( 100 ) <= 1){
-{		.@item_id = F_Rand( 19636,19637,19641,19715 );
+{		.@item_id = F_Rand( 19636,19637,19641,19715,1000103 );
 	getitem .@item_id,1;  }
 	end;
 }		
@@ -153,6 +153,47 @@
 		if(strcharinfo(3) == "horror-yun")
 		if( rand( 100 ) <= 5){
 {		.@item_id = F_Rand( 200000036,33106 );
+	getitem .@item_id,1;  }
+	end;
+}		
+}
+
+
+//===============================Gef==================================
+
+-	script	drop-horror-gef2	-1,{
+	OnNPCKillEvent:
+		if(strcharinfo(3) == "horror-gef")
+		if( rand( 1000 ) <= 1){
+{		.@item_id = F_Rand( 200000042,200000048,100160,33101,33107 );
+	getitem .@item_id,1;  }
+	end;
+}		
+}
+-	script	drop-horror-gef3	-1,{
+	OnNPCKillEvent:
+		if(strcharinfo(3) == "horror-gef")
+		if( rand( 100 ) <= 3){
+{		.@item_id = F_Rand( 7711,33098,671,33060 );
+	getitem .@item_id,1;  }
+	end;
+}		
+}
+
+-	script	drop-horror-gef4	-1,{
+	OnNPCKillEvent:
+		if(strcharinfo(3) == "horror-gef")
+		if( rand( 100 ) <= 15){
+{		.@item_id = F_Rand( 1100003,1100004,1100005 );
+	getitem .@item_id,1;  }
+	end;
+}		
+}
+-	script	drop-horror-gef5	-1,{
+	OnNPCKillEvent:
+		if(strcharinfo(3) == "horror-gef")
+		if( rand( 100 ) <= 5){
+{		.@item_id = F_Rand( 33106 );
 	getitem .@item_id,1;  }
 	end;
 }		
@@ -260,7 +301,12 @@ prontera,147,172,3	script	Schmiddi	574,{
             break;
         case 4:
         	goto Yuno;
-            break;			
+            break;
+/*			
+        case 5:
+        	goto Poring-Town;
+            break;
+*/									
         default:
             next;
         	goto stoptalking;
@@ -314,7 +360,20 @@ prontera,147,172,3	script	Schmiddi	574,{
         specialeffect2 EF_MAXPOWER;
         warp "horror-yun",157,168;
 		close;
-    end;	
+    end;
+/*
+	Poring-Town:
+            if (.@type == 1)
+			set horror_event, horror_event-1;
+		else {
+			delitem 200000038,1; //Horror Ticket
+			set horror_event,1;
+		}
+        specialeffect2 EF_MAXPOWER;
+        warp "horror-gef",120,110;
+		close;
+    end;
+*/
     stoptalking:
         mes .n$;
         mes "Whatever... I'm done with you!";
@@ -326,111 +385,125 @@ prontera,147,172,3	script	Schmiddi	574,{
     end;
  }
  }
-//==============LEICHEN================================
-horror-pron,156,121,6	script	townsman#1	4_M_LIEMAN,2,2,{
-	mes "He seems to be dead.";
-	close;
-OnTouch_:
-	.@hidden_name$ = strnpcinfo(2);
-	if (getd(".mob_count_" + .@hidden_name$) > 0)
-		end;
-	.@num = atoi( replacestr( .@hidden_name$, "EP161DIE", "" ) );
-	switch(.@num) {
-	case 0:
-	case 12:
-		npctalk "Don't worry, it is not a ferocious dog... Let me go take a look...", "", bc_area;
-		break;
-	case 1:
-	case 11:
-		npctalk "Bon appetite", "", bc_area;
-		break;
-	case 2:
-		npctalk "This is my daughter. She will be 6 in 2 weeks.", "", bc_area;
-		break;
-	case 3:
-		npctalk "WUG is the best!", "", bc_area;
-		break;
-	case 5:
-		npctalk "I want to go home...", "", bc_area;
-		break;
-	case 4:
-	case 6:
-	case 7:
-	case 13:
-	case 14:
-		npctalk "Argh...", "", bc_area;
-		break;
-	case 8:
-		npctalk "Oh, I love dogs!", "", bc_area;
-		break;
-	case 9:
-		npctalk "I want to have some beef stew.", "", bc_area;
-		break;
-	case 10:
-		npctalk "Haha, don't worry. It won't burst.", "", bc_area;
-		break;
-	case 15:
-		npctalk "For Himmelmez...", "", bc_area;
-		break;
-	case 16:
-		npctalk "I am hungry...", "", bc_area;
-		break;
-	case 17:
-		npctalk "I had a date...", "", bc_area;
-		break;
-	case 18:
-		npctalk "Help... Help me...", "", bc_area;
-		break;
-	case 19:
-		npctalk "My sister has given me this as a lucky charm...", "", bc_area;
-		break;
-	case 20:
-		npctalk "According to the monster's gourmet guide, humans are supposed to be very delicious, right?", "", bc_area;
-		break;
-	}
-	unittalk getcharid(3), "" + strcharinfo(0) + " : ?";
-	setpcblock PCBLOCK_NPC, true;
-	sleep2 1000;
-	specialeffect EF_POISONSMOKE;
-	getmapxy .@map$, .@x, .@y, BL_NPC;
-	monster "prt_q",.@x,.@y,"Resurrected Corpse",1015,1, strnpcinfo(0) + "::OnMyMobDead";// ZOMBIE
-	monster "prt_q",.@x,.@y,"Maggot",1194,1, strnpcinfo(0) + "::OnMyMobDead";// ARCLOUSE
-	monster "prt_q",.@x,.@y,"Fly",1035,1, strnpcinfo(0) + "::OnMyMobDead";// HUNTER_FLY
-	setd ".mob_count_" + strnpcinfo(2), 1;
-	hideonnpc strnpcinfo(0);
-	setpcblock PCBLOCK_NPC, false;
-	end;
-OnMyMobDead:
-	.@hidden_name$ = strnpcinfo(2);
-	setd ".mob_count_" + .@hidden_name$, getd(".mob_count_" + .@hidden_name$) + 1;
-	if (getd(".mob_count_" + .@hidden_name$) == 4)
-		initnpctimer;
-	end;
-OnTimer180000:
-	setd ".mob_count_" + strnpcinfo(2), 0;
-	stopnpctimer;
-	hideoffnpc strnpcinfo(0);
-	end;
-}
-horror-pron,108,318,2	duplicate(townsman#1)	townsman#1	4_M_LIEMAN,2,2
-horror-pron,265,300,8	duplicate(townsman#1)	townsman#2	4_M_DSTMANDEAD,2,2
-horror-pron,213,90,2	duplicate(townsman#1)	townsman#3	4_M_DSTMANDEAD,2,2
-horror-pron,109,94,8	duplicate(townsman#1)	townsman#4	4_M_DSTMANDEAD,2,2
-horror-pron,214,85,6	duplicate(townsman#1)	townsman#5	4_M_LIEMAN,2,2
-horror-pron,222,87,8	duplicate(townsman#1)	townsman#6	4_M_DIEMAN,2,2
-horror-pron,238,129,6	duplicate(townsman#1)	townsman#7	4_M_DIEMAN,2,2
-horror-pron,200,139,8	duplicate(townsman#1)	townsman#8	4_M_DIEMAN,2,2
-horror-pron,220,350,6	duplicate(townsman#1)	townsman#9	4_M_DIEMAN,2,2
-horror-pron,156,275,6	duplicate(townsman#1)	townsman#10	4_M_DSTMANDEAD,2,2
-horror-pron,104,114,8	duplicate(townsman#1)	townsman#11	4_M_DIEMAN,2,2
-horror-pron,149,188,2	duplicate(townsman#1)	townsman#12	4_M_LIEMAN,2,2
-horror-pron,188,207,6	duplicate(townsman#1)	townsman#13	4_M_DIEMAN,2,2
-horror-pron,88,279,2	duplicate(townsman#1)	townsman#14	4_M_LIEMAN,2,2
-horror-pron,89,207,6	duplicate(townsman#1)	townsman#15	4_M_DIEMAN,2,2
-horror-pron,88,350,2	duplicate(townsman#1)	townsman#16	4_M_LIEMAN,2,2
-horror-pron,227,219,2	duplicate(townsman#1)	townsman#17	4_M_DSTMANDEAD,2,2
-horror-pron,74,227,2	duplicate(townsman#1)	townsman#18	4_M_DSTMANDEAD,2,2
-horror-pron,45,146,8	duplicate(townsman#1)	townsman#19	4_M_DIEMAN,2,2
+
+prontera,147,175,3	script	Schmiddo	61,{
+	
+	mes "But... but... in there...";
+	mes "There are lots of fearful and strong monsters in there...";
+	mes "That was really frightful.";
+	next;
+	mes "If I had reacted a bit later... a few seconds...";
+	mes "I might have been killed.";
+	next;
+	mes "What?";
+	mes "You want to go in there?";
+	mes "Oh~ Boy~ you didn't get me.";
+	mes "In there.......";
+	next;
+	mes "Uh... you already know?";
+	mes "Although you know the place, you want to go in...";
+	mes "Good, I will send you there.";
+	mes "But after you went there, don't hold";
+
+	if (VIP_SCRIPT) {
+		mes "a grudge against me. It'll cost you 1 Horror Ticket for 2 access.";
+		next;
+		
+		if (horror_event > 0) {
+			set .@type,1;
+			mes "Remaining access: "+horror_event;
+		} else if (countitem(200000038)) {
+			set .@type,2;
+			mes "Do you want to go?";
+		} else {
+			mes "You don't have a ticket now.....";
+			mes "So come to me again with a Horror Ticket later.";
+			close;
+		}
+		next;
+		if(select("Enter:Leave") == 2)
+			close;
+		set .@i, select("Horror-Pron:placeholder:placeholder:placeholder");
+		switch(select("Horror Pron")) {
+			case 1: set .@x,155; set .@y,196; break;
+		}
+		if (.@type == 1)
+			set horror_event, horror_event-1;
+		else {
+			delitem 200000038,1; //Horror Ticket
+			set horror_event,1;
+		}
+		specialeffect2 EF_MAXPOWER;
+		warp "horror-pron"+.@i,.@x,.@y;
+		close;
+	} else {
+		mes "a grudge against me. It'll cost you 1 Horror Ticket for 2 access.";
+		next;
+		
+		if (horror_event > 0) {
+			set .@type,1;
+			mes "Remaining access: "+horror_event;
+		} else if (countitem(200000038)) {
+			set .@type,2;
+			mes "Do you want to go?";
+		} else {
+			mes "You don't have a ticket now.....";
+			mes "So come to me again with a Reset Stone later.";
+			close;
+		}
+		next;
+		if(select("Enter:Leave") == 2)
+			close;
+        switch(select("- Poring-Town :- Nah!")) {
+        case 1:
+            next;
+            goto poringgg;
+            break;
+		/*	
+        case 2:
+            goto Morocc;
+            break;
+        case 3:
+        	goto Aldebaran;
+            break;
+        case 4:
+        	goto Yuno;
+            break;		
+        case 5:
+        	goto Poring-Town;
+            break;
+			*/								
+        default:
+            next;
+        	goto stoptalking;
+            break;            
+    }
+    close;
+
+    poringgg:
+            if (.@type == 1)
+			set horror_event, horror_event-1;
+		else {
+			delitem 200000038,1; //Horror Ticket
+			set horror_event,1;
+		}
+        specialeffect2 EF_MAXPOWER;
+        warp "horror-gef",120,110;
+		close;
+    end;
+
+
+    stoptalking:
+        mes .n$;
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+        exit:
+        enable_items;
+        close;
+    end;
+ }
+ }
 
 //==================MONSTER===========================================
 horror-pron,0,0	monster	Zombie Guard	3452,20,5000
@@ -464,6 +537,17 @@ horror-yun,0,0	monster	Kathryne Cheiron	3210,20,5000
 horror-yun,0,0	monster	Shecil Damon	3211,20,5000
 horror-yun,0,0	monster	Harword Alt-Eisen	3212,20,5000
 horror-yun,0,0	monster	Seyren Windsor	3213,20,5000
+
+horror-gef,0,0	monster	TakeRo	3505,20,5000
+horror-gef,0,0	monster	TakeRo	20531,20,5000
+horror-gef,0,0	monster	TakeRo	30014,20,5000
+horror-gef,0,0	monster	TakeRo	30013,20,5000
+horror-gef,0,0	monster	TakeRo	30017,20,5000
+horror-gef,0,0	monster	TakeRo	1502,2,5000
+horror-gef,0,0	monster	TakeRo	1904,6,5000
+horror-gef,0,0	monster	TakeRo	1894,20,5000
+horror-gef,0,0,0,0    boss_monster    TakeRo    3819,1,21600000,600000,0
+
 //======FLAGS==============
 horror-pron	mapflag	nomobloot
 horror-pron	mapflag	nomemo
@@ -488,3 +572,10 @@ horror-yun	mapflag	nomemo
 horror-yun	mapflag	nosave
 horror-yun	mapflag	pvp
 horror-yun	mapflag	pvp_noparty
+
+horror-gef	mapflag	nomobloot
+horror-gef	mapflag	nomemo
+horror-gef	mapflag	nosave
+horror-gef	mapflag	pvp
+horror-gef	mapflag	pvp_noparty
+

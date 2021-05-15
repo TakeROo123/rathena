@@ -1,12 +1,12 @@
-prt_in,129,111,20,20	monster	Poring	1002,99,5,0,0
-prt_church,171,171,20,20	monster	Marin	1242,30,5,0,0
+// prt_in,129,111,20,20	monster	Poring	1002,99,5,0,0
+// prt_church,171,171,20,20	monster	Marin	1242,30,5,0,0
 
 prt_cas,104,62,50,50	monster	HomoLvL	1152,10,5,0,0
 prt_cas,104,62,50,50	monster	HomoLvL	1177,60,5,0,0
 
-prt_castle,63,108,20,20	monster	Plant	1781,4,5,0,0
-prt_castle,63,108,20,20	monster	Plant	1118,10,5,0,0
-prt_castle,63,108,20,20	monster	Plant	1368,5,5,0,0
+// prt_castle,63,108,20,20	monster	Plant	1781,4,5,0,0
+// prt_castle,63,108,20,20	monster	Plant	1118,10,5,0,0
+// prt_castle,63,108,20,20	monster	Plant	1368,5,5,0,0
 
     -	script	lvlhomo_1	-1,{
        
@@ -43,9 +43,9 @@ warp "takero",367,191;
 close;
 }
 
+/*  
     -	script	vp1	-1,{
-       
-       
+   
 OnInit:
 bindatcmd("vip", strnpcinfo(3) +"::Ongm");
 end;
@@ -64,6 +64,6 @@ N_homun:
 warp "prt_in",129,111;
 close;
 }
-
+*/
 
 

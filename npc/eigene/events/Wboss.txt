@@ -180,6 +180,10 @@ prontera,164,172,4	script	etNox	123,{
 								200000030,1,5,
 								// etNox Stone
 								200000034,1,10,
+								//Green Soul
+								200000108,1,1,
+								//Gold Soul
+								200000110,1,1,																	
 								// Event Tickets
 								7711,10,20, 
 								7711,10,20,
@@ -282,6 +286,10 @@ prontera,164,171,4	script	Thomas Sabo	123,{
 								200000030,1,5,
 								// Thomas Sabo Stone
 								200000033,1,10,
+								//Green Soul
+								200000106,1,1,
+								//Gold Soul
+								200000110,1,1,																	
 								// Event Tickets
 								7711,10,20, 
 								7711,10,20,
@@ -384,6 +392,10 @@ prontera,164,170,4	script	Wolf King Cain	123,{
 								200000030,1,5,
 								// Wolf King Cain Stone
 								200000032,1,10,
+								//Green Soul
+								200000107,1,1,
+								//Gold Soul
+								200000110,1,1,								
 								// Event Tickets
 								7711,10,20, 
 								7711,10,20,

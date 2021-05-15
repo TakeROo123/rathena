@@ -12,7 +12,7 @@ takero,307,365,2	script	Mayu	103,{
 	mes "^0000ffBlue Eggs: "+#blue_amber_egg+"^000000";
 	next;
 	if(#lang == 0){	set .@menu$,"Feed Ambernite:Prices:Cancel";	}
-	if(#lang == 1){	set .@menu$,"Ambernite Füttern:Gewinne:Change eggs:Abbrechen:GM States";	}
+	if(#lang == 1){	set .@menu$,"Ambernite Fï¿½ttern:Gewinne:Change eggs:Abbrechen:GM States";	}
 	if(getgroupid() == 99){	set .@menu$,"Feed Ambernite:Prices:Eier tauschen:Cancel:GM Statistk";	}
 	switch(select(.@menu$)){
 	case 1:
@@ -58,7 +58,7 @@ takero,307,365,2	script	Mayu	103,{
 		case 2:
 			if(#green_amber_egg < 10){
 				if(#lang == 0){	mes "You have not enough green eggs.";	}
-				if(#lang == 1){	mes "Du hast nicht genügend grüne Eier.";	}
+				if(#lang == 1){	mes "Du hast nicht genï¿½gend grï¿½ne Eier.";	}
 				close;
 			}
 			set $count_amber_play,$count_amber_play+1;
@@ -72,7 +72,7 @@ takero,307,365,2	script	Mayu	103,{
 		case 3:
 			if(#blue_amber_egg < 10){
 				if(#lang == 0){	mes "You have not enough blue eggs.";	}
-				if(#lang == 1){	mes "Du hast nicht genügend blaue Eier.";	}
+				if(#lang == 1){	mes "Du hast nicht genï¿½gend blaue Eier.";	}
 				close;
 			}
 			set $count_amber_play,$count_amber_play+1;
@@ -220,4 +220,7 @@ takero,307,365,2	script	Mayu	103,{
 	}
 }
 takero,308,367,2	script	Ambernite	1094,{}
+
+
+
 

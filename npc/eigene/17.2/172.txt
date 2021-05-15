@@ -1140,3 +1140,7 @@ OnInit:
 set .n$,"["+strnpcinfo(0)+"]";
 end;
 }
+
+
+ba_maison,139,95,0	warp	172in	2,2,ba_in01,79,369
+ba_in01,79,365,0	warp	172out	2,2,ba_maison,135,95
