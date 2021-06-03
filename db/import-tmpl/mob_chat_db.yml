@@ -1,5 +1,5 @@
-# This file is a part of rAthena++.
-#   Copyright(C) 2017 rAthena Development Team
+# This file is a part of rAthena.
+#   Copyright(C) 2021 rAthena Development Team
 #   https://rathena.org - https://github.com/rathena
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,5 +16,17 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 ###########################################################################
-# Custom Refine Database
+# Monster Chat Database
 ###########################################################################
+#
+# Settings
+#
+###########################################################################
+# - Id                      Index of the message.
+#   Color                   Hexadecimal color (Default: 0xFF0000).
+#   Dialog                  Text displayed by the monster.
+###########################################################################
+
+Header:
+  Type: MOB_CHAT_DB
+  Version: 1

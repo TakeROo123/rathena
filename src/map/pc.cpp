@@ -1683,6 +1683,9 @@ bool pc_authok(struct map_session_data *sd, uint32 login_id2, time_t expiration_
 	sd->avail_quests = 0;
 	sd->save_quest = false;
 	sd->count_rewarp = 0;
+	sd->mail.pending_weight = 0;
+	sd->mail.pending_zeny = 0;
+	sd->mail.pending_slots = 0;
 
 	sd->regs.vars = i64db_alloc(DB_OPT_BASE);
 	sd->regs.arrays = NULL;
@@ -5909,7 +5912,7 @@ bool pc_steal_item(struct map_session_data *sd,struct block_list *bl, uint16 ski
 	sd_status= status_get_status_data(&sd->bl);
 	md_status= status_get_status_data(bl);
 
-	if (md->master_id || status_has_mode(md_status, MD_STATUS_IMMUNE) || status_get_race2(&md->bl) == RC2_TREASURE ||
+	if (md->master_id || status_has_mode(md_status, MD_STATUSIMMUNE) || util::vector_exists(status_get_race2(&md->bl), RC2_TREASURE) ||
 		map_getmapflag(bl->m, MF_NOMOBLOOT) || // check noloot map flag [Lorky]
 		(battle_config.skill_steal_max_tries && //Reached limit of steal attempts. [Lupus]
 			md->state.steal_flag++ >= battle_config.skill_steal_max_tries)
@@ -5931,14 +5934,14 @@ bool pc_steal_item(struct map_session_data *sd,struct block_list *bl, uint16 ski
 
 	// Try dropping one item, in the order from first to last possible slot.
 	// Droprate is affected by the skill success rate.
-	for( i = 0; i < MAX_STEAL_DROP; i++ )
+	for( i = 0; i < MAX_MOB_DROP; i++ )
 		if( md->db->dropitem[i].nameid > 0 && !md->db->dropitem[i].steal_protected && itemdb_exists(md->db->dropitem[i].nameid) && rnd() % 10000 < md->db->dropitem[i].rate
 #ifndef RENEWAL
 		* rate/100.
 #endif
 		)
 			break;
-	if( i == MAX_STEAL_DROP )
+	if( i == MAX_MOB_DROP )
 		return false;
 
 	itemid = md->db->dropitem[i].nameid;
@@ -5968,7 +5971,7 @@ bool pc_steal_item(struct map_session_data *sd,struct block_list *bl, uint16 ski
 		struct item_data *i_data;
 		char message[128];
 		i_data = itemdb_search(itemid);
-		sprintf (message, msg_txt(sd,542), (sd->status.name[0])?sd->status.name :"GM", md->db->jname, i_data->ename.c_str(), (float)md->db->dropitem[i].rate / 100);
+		sprintf (message, msg_txt(sd,542), (sd->status.name[0])?sd->status.name :"GM", md->db->jname.c_str(), i_data->ename.c_str(), (float)md->db->dropitem[i].rate / 100);
 		//MSG: "'%s' stole %s's %s (chance: %0.02f%%)"
 		intif_broadcast(message, strlen(message) + 1, BC_DEFAULT);
 	}
@@ -5992,7 +5995,7 @@ int pc_steal_coin(struct map_session_data *sd,struct block_list *target)
 	md = (TBL_MOB*)target;
 	target_lv = status_get_lv(target);
 
-	if (md->state.steal_coin_flag || md->sc.data[SC_STONE] || md->sc.data[SC_FREEZE] || status_bl_has_mode(target,MD_STATUS_IMMUNE) || status_get_race2(&md->bl) == RC2_TREASURE)
+	if (md->state.steal_coin_flag || md->sc.data[SC_STONE] || md->sc.data[SC_FREEZE] || status_bl_has_mode(target,MD_STATUSIMMUNE) || util::vector_exists(status_get_race2(&md->bl), RC2_TREASURE))
 		return 0;
 
 	rate = sd->battle_status.dex / 2 + 2 * (sd->status.base_level - target_lv) + (10 * pc_checkskill(sd, RG_STEALCOIN)) + sd->battle_status.luk / 2;
@@ -6045,6 +6048,7 @@ enum e_setpos pc_setpos(struct map_session_data* sd, unsigned short mapindex, in
 	sd->state.warping = 1;
 	sd->state.workinprogress = WIP_DISABLE_NONE;
 	sd->state.mail_writing = false;
+	sd->state.refineui_open = false;
 
 	if( sd->state.changemap ) { // Misc map-changing settings
 		int curr_map_instance_id = map_getmapdata(sd->bl.m)->instance_id, new_map_instance_id = (mapdata ? mapdata->instance_id : 0);
@@ -6059,7 +6063,7 @@ enum e_setpos pc_setpos(struct map_session_data* sd, unsigned short mapindex, in
 				instance_addusers(new_map_instance_id);
 		}
 
-		if (sd->bg_id && !mapdata->flag[MF_BATTLEGROUND]) // Moving to a map that isn't a Battlegrounds
+		if (sd->bg_id && mapdata && !mapdata->flag[MF_BATTLEGROUND]) // Moving to a map that isn't a Battlegrounds
 			bg_team_leave(sd, false, true);
 
 		sd->state.pmap = sd->bl.m;
@@ -6096,7 +6100,7 @@ enum e_setpos pc_setpos(struct map_session_data* sd, unsigned short mapindex, in
 		if (sd->regen.state.gc)
 			sd->regen.state.gc = 0;
 		// make sure vending is allowed here
-		if (sd->state.vending && mapdata->flag[MF_NOVENDING]) {
+		if (sd->state.vending && mapdata && mapdata->flag[MF_NOVENDING]) {
 			clif_displaymessage (sd->fd, msg_txt(sd,276)); // "You can't open a shop on this map"
 			vending_closevending(sd);
 		}
@@ -6130,6 +6134,12 @@ enum e_setpos pc_setpos(struct map_session_data* sd, unsigned short mapindex, in
 		}else{
 			st = nullptr;
 		}
+
+		if (sd->bg_id) // Switching map servers, remove from bg
+			bg_team_leave(sd, false, true);
+
+		if (sd->state.vending) // Stop vending
+			vending_closevending(sd);
 
 		npc_script_event(sd, NPCE_LOGOUT);
 		//remove from map, THEN change x/y coordinates
@@ -6246,7 +6256,7 @@ enum e_setpos pc_setpos(struct map_session_data* sd, unsigned short mapindex, in
  *	0 = Success
  *	1,2,3 = Fail
  *------------------------------------------*/
-char pc_randomwarp(struct map_session_data *sd, clr_type type)
+char pc_randomwarp(struct map_session_data *sd, clr_type type, bool ignore_mapflag)
 {
 	int x,y,i=0;
 
@@ -6254,7 +6264,7 @@ char pc_randomwarp(struct map_session_data *sd, clr_type type)
 
 	struct map_data *mapdata = map_getmapdata(sd->bl.m);
 
-	if (mapdata->flag[MF_NOTELEPORT]) //Teleport forbidden
+	if (mapdata->flag[MF_NOTELEPORT] && !ignore_mapflag) //Teleport forbidden
 		return 3;
 
 	do {
@@ -6344,20 +6354,17 @@ int pc_get_skillcooldown(struct map_session_data *sd, uint16 skill_id, uint16 sk
 
 	int cooldown = skill_get_cooldown(skill_id, skill_lv);
 
-	if (cooldown == 0)
-		return 0;
-
-	if (skill_id == SU_TUNABELLY && pc_checkskill(sd, SU_SPIRITOFSEA))
+	if (skill_id == SU_TUNABELLY && pc_checkskill(sd, SU_SPIRITOFSEA) > 0)
 		cooldown -= skill_get_time(SU_TUNABELLY, skill_lv);
 
 	for (auto &it : sd->skillcooldown) {
 		if (it.id == skill_id) {
 			cooldown += it.val;
-			cooldown = max(0, cooldown);
 			break;
 		}
 	}
-	return cooldown;
+
+	return max(0, cooldown);
 }
 
 /*==========================================
@@ -8617,8 +8624,11 @@ int pc_dead(struct map_session_data *sd,struct block_list *src)
 		else
 			job_penalty = 0;
 
-		if (base_penalty || job_penalty)
-			pc_lostexp(sd, base_penalty, job_penalty);
+		if (base_penalty || job_penalty) {
+			short insurance_idx = pc_search_inventory(sd, ITEMID_NEW_INSURANCE);
+			if (insurance_idx < 0 || pc_delitem(sd, insurance_idx, 1, 0, 1, LOG_TYPE_CONSUME) != 0)
+				pc_lostexp(sd, base_penalty, job_penalty);
+		}
 
 		if( zeny_penalty > 0 && !mapdata->flag[MF_NOZENYPENALTY]) {
 			zeny_penalty = (uint32)( sd->status.zeny * ( zeny_penalty / 10000. ) );
@@ -9215,8 +9225,12 @@ int pc_itemheal(struct map_session_data *sd, t_itemid itemid, int hp, int sp)
 		if (sd->sc.data[SC_INCHEALRATE])
 			bonus += bonus * sd->sc.data[SC_INCHEALRATE]->val1 / 100;
 		// 2014 Halloween Event : Pumpkin Bonus
-		if (sd->sc.data[SC_MTF_PUMPKIN] && itemid == ITEMID_PUMPKIN)
-			bonus += bonus * sd->sc.data[SC_MTF_PUMPKIN]->val1 / 100;
+		if (sd->sc.data[SC_MTF_PUMPKIN]) {
+			if (itemid == ITEMID_PUMPKIN)
+				bonus += bonus * sd->sc.data[SC_MTF_PUMPKIN]->val1 / 100;
+			else if (itemid == ITEMID_COOKIE_BAT)
+				bonus += sd->sc.data[SC_MTF_PUMPKIN]->val2;
+		}
 
 		tmp = hp * bonus / 100; // Overflow check
 		if (bonus != 100 && tmp > hp)
@@ -11804,7 +11818,7 @@ void pc_delspiritcharm(struct map_session_data *sd, int count, int type)
  * @param type: 1 - EXP, 2 - Item Drop
  * @return Penalty rate
  */
-uint16 pc_level_penalty_mod( struct map_session_data* sd, e_penalty_type type, struct mob_db* mob, mob_data* md ){
+uint16 pc_level_penalty_mod( struct map_session_data* sd, e_penalty_type type, std::shared_ptr<s_mob_db> mob, mob_data* md ){
 	// No player was attached, we don't use any modifier (100 = rates are not touched)
 	if( sd == nullptr ){
 		return 100;
@@ -11821,7 +11835,7 @@ uint16 pc_level_penalty_mod( struct map_session_data* sd, e_penalty_type type, s
 		return 100;
 	}
 
-	if( ( type == PENALTY_DROP || type == PENALTY_MVP_DROP ) && status_has_mode( &mob->status, MD_FIXED_ITEMDROP )  ){
+	if( ( type == PENALTY_DROP || type == PENALTY_MVP_DROP ) && status_has_mode( &mob->status, MD_FIXEDITEMDROP )  ){
 		return 100;
 	}
 
