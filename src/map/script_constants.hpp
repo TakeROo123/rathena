@@ -4581,6 +4581,8 @@
 	export_constant(MOBG_Red_Pouch_Of_Surprise);
 	export_constant(MOBG_ClassChange);
 	export_constant(MOBG_Taekwon_Mission);
+	export_constant(MOBG_Crazy_Dead_Branch);
+	export_constant(MOBG_Fun_Dead_Branch);		
 
 	/* random option attributes */
 	export_constant(ROA_ID);

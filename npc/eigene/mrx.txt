@@ -1,0 +1,3 @@
+// <map name>,<x>,<y>,<facing>%TAB%marketshop%TAB%<NPC Name>%TAB%<sprite id>,<itemid>:<price>:<quantity>{,<itemid>:<price>:<quantity>...}
+
+takero,366,198,3	marketshop	Mr. X	900,33060:5000:25,33101:49999:10,33102:987654:3;

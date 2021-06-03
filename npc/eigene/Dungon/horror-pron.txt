@@ -385,7 +385,7 @@ prontera,147,172,3	script	Schmiddi	574,{
     end;
  }
  }
-
+/*
 prontera,147,175,3	script	Schmiddo	61,{
 	
 	mes "But... but... in there...";
@@ -459,7 +459,6 @@ prontera,147,175,3	script	Schmiddo	61,{
             next;
             goto poringgg;
             break;
-		/*	
         case 2:
             goto Morocc;
             break;
@@ -471,8 +470,7 @@ prontera,147,175,3	script	Schmiddo	61,{
             break;		
         case 5:
         	goto Poring-Town;
-            break;
-			*/								
+            break;						
         default:
             next;
         	goto stoptalking;
@@ -504,7 +502,7 @@ prontera,147,175,3	script	Schmiddo	61,{
     end;
  }
  }
-
+*/
 //==================MONSTER===========================================
 horror-pron,0,0	monster	Zombie Guard	3452,20,5000
 horror-pron,0,0	monster	Eremes Guille	3208,20,5000
@@ -546,7 +544,6 @@ horror-gef,0,0	monster	TakeRo	30017,20,5000
 horror-gef,0,0	monster	TakeRo	1502,2,5000
 horror-gef,0,0	monster	TakeRo	1904,6,5000
 horror-gef,0,0	monster	TakeRo	1894,20,5000
-horror-gef,0,0,0,0    boss_monster    TakeRo    3819,1,21600000,600000,0
 
 //======FLAGS==============
 horror-pron	mapflag	nomobloot
@@ -572,10 +569,10 @@ horror-yun	mapflag	nomemo
 horror-yun	mapflag	nosave
 horror-yun	mapflag	pvp
 horror-yun	mapflag	pvp_noparty
-
+/*
 horror-gef	mapflag	nomobloot
 horror-gef	mapflag	nomemo
 horror-gef	mapflag	nosave
 horror-gef	mapflag	pvp
 horror-gef	mapflag	pvp_noparty
-
+*/

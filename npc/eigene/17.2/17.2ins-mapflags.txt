@@ -1,0 +1,23 @@
+1@lost	mapflag	nomemo
+1@lost	mapflag	nosave
+1@lost	mapflag	noteleport
+
+1@ghgh	mapflag	nomemo
+1@ghgh	mapflag	nosave
+1@ghgh	mapflag	noteleport
+
+1@ghg	mapflag	nomemo
+1@ghg	mapflag	nosave
+1@ghg	mapflag	noteleport
+
+1@herbsh	mapflag	nomemo
+1@herbsh	mapflag	nosave
+1@herbsh	mapflag	noteleport
+
+1@herbs	mapflag	nomemo
+1@herbs	mapflag	nosave
+1@herbs	mapflag	noteleport
+
+1@bamq	mapflag	nomemo
+1@bamq	mapflag	nosave
+1@bamq	mapflag	noteleport

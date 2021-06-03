@@ -117,6 +117,8 @@ enum e_random_monster : uint16 {
 	MOBG_Red_Pouch_Of_Surprise,
 	MOBG_ClassChange,
 	MOBG_Taekwon_Mission,
+	MOBG_Crazy_Dead_Branch,
+	MOBG_Fun_Dead_Branch,			
 };
 
 /// Random Monster Group Flags

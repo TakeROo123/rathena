@@ -1,0 +1,293 @@
+upin,274,288,5	script	Dolgen	615,{
+    mes "[^CD0000Dolgen^000000]";
+    mes "Spawn a Bio 5 MvP";
+        switch(select("- Guillotine Cross Eremes :- Arc Bishop Margaretha :- Ranger Cecil:- Mechanic Howard :- Warlock Kathryne :- Rune Knight Seyren :- Royal Guard Randel :- Geneticist Flamel :- Sorcerer Celia :- Sura Chen :- Shadow Chaser Gertie :- Minstrel Alphoccio :- Wanderer Trentini :- Nothing!")) {
+            case 1:
+                next;
+                goto GX;
+                break;
+            case 2:
+                next;
+                goto AB;
+                break;
+            case 3:
+                next;
+                goto ranger;
+                break;
+            case 4:
+                next;
+                goto mecha;
+                break;
+            case 5:
+                next;
+                goto wl;
+                break;
+            case 6:
+                next;
+                goto rk;
+                break;
+            case 7:
+                next;
+                goto rg;
+                break;
+            case 8:
+                next;
+                goto gene;
+                break;
+            case 9:
+                next;
+                goto sorc;
+                break;
+            case 10:
+                next;
+                goto sura;
+                break;
+            case 11:
+                next;
+                goto sc;
+                break;
+            case 12:
+                next;
+                goto mins;
+                break;
+            case 13:
+                next;
+                goto wand;
+                break;                                                                                    
+            default:
+                next;
+        	    goto stoptalking;
+                break;
+        }
+    close;
+
+    GX:
+            mes "[^CD0000Dolgen^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1200 Thief Soul^000000 / "+countitem(6816)+" ea";
+	next;
+	    if(countitem(6816)<1200) goto lose;
+
+	    mes "OKAY!!!";
+	next;
+        delitem 6816,1200;
+            mes "[^CD0000Dolgen^000000]";     
+            mes "lets go";
+            monster "upin",271,323,"Guillotine Cross Eremes",3220,1,"Dolgen::OnPoringKilled";  
+		end;
+
+    AB:
+            mes "[^CD0000Dolgen^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1200 Soul of Acolyte^000000 / "+countitem(6819)+" ea";
+	next;
+	    if(countitem(6819)<1200) goto lose;
+
+	    mes "OKAY!!!";
+	next;
+        delitem 6819,1200;
+            mes "[^CD0000Dolgen^000000]";     
+            mes "lets go";
+            monster "upin",271,323,"Arc Bishop Margaretha",3221,1,"Dolgen::OnPoringKilled";  
+		end;
+
+    ranger:
+            mes "[^CD0000Dolgen^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1200 Soul of Archer^000000 / "+countitem(6818)+" ea";
+	next;
+	    if(countitem(6818)<1200) goto lose;
+
+	    mes "OKAY!!!";
+	next;
+        delitem 6818,1200;
+            mes "[^CD0000Dolgen^000000]";     
+            mes "lets go";
+            monster "upin",271,323,"Ranger Cecil",3222,1,"Dolgen::OnPoringKilled";  
+		end;
+
+    mecha:
+            mes "[^CD0000Dolgen^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1200 Soul of Merchant^000000 / "+countitem(6815)+" ea";
+	next;
+	    if(countitem(6815)<1200) goto lose;
+
+	    mes "OKAY!!!";
+	next;
+        delitem 6815,1200;
+            mes "[^CD0000Dolgen^000000]";     
+            mes "lets go";
+            monster "upin",271,323,"Mechanic Howard",3223,1,"Dolgen::OnPoringKilled";  
+		end;
+
+    wl:
+            mes "[^CD0000Dolgen^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1200 Soul of Mage^000000 / "+countitem(6817)+" ea";
+	next;
+	    if(countitem(6817)<1200) goto lose;
+
+	    mes "OKAY!!!";
+	next;
+        delitem 6817,1200;
+            mes "[^CD0000Dolgen^000000]";     
+            mes "lets go";
+            monster "upin",271,323,"Warlock Kathryne",3224,1,"Dolgen::OnPoringKilled";  
+		end;
+
+    rk:
+            mes "[^CD0000Dolgen^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1200  Soul of Swordman^000000 / "+countitem(6814)+" ea";
+	next;
+	    if(countitem(6814)<1200) goto lose;
+
+	    mes "OKAY!!!";
+	next;
+        delitem 6814,1200;
+            mes "[^CD0000Dolgen^000000]";     
+            mes "lets go";
+            monster "upin",271,323,"Rune Knight Seyren",3225,1,"Dolgen::OnPoringKilled";  
+		end;
+
+    rg:
+            mes "[^CD0000Dolgen^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1200 Soul of Swordman^000000 / "+countitem(6814)+" ea";
+	next;
+	    if(countitem(6814)<1200) goto lose;
+
+	    mes "OKAY!!!";
+	next;
+        delitem 6814,1200;
+            mes "[^CD0000Dolgen^000000]";     
+            mes "lets go";
+            monster "upin",271,323,"Royal Guard Randel",3240,1,"Dolgen::OnPoringKilled";  
+		end;
+
+    gene:
+            mes "[^CD0000Dolgen^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1200 Soul of Merchant^000000 / "+countitem(6815)+" ea";
+	next;
+	    if(countitem(6815)<1200) goto lose;
+
+	    mes "OKAY!!!";
+	next;
+        delitem 6815,1200;
+            mes "[^CD0000Dolgen^000000]";     
+            mes "lets go";
+            monster "upin",271,323,"Genetic Flamel",3241,1,"Dolgen::OnPoringKilled";  
+		end;        
+
+    sorc:
+            mes "[^CD0000Dolgen^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1200 Soul of Mage^000000 / "+countitem(6817)+" ea";
+	next;
+	    if(countitem(6817)<1200) goto lose;
+
+	    mes "OKAY!!!";
+	next;
+        delitem 6817,1200;
+            mes "[^CD0000Dolgen^000000]";     
+            mes "lets go";
+            monster "upin",271,323,"Sorcerer Celia",3242,1,"Dolgen::OnPoringKilled";  
+		end;
+
+    sura:
+            mes "[^CD0000Dolgen^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1200  Soul of Swordman^000000 / "+countitem(6819)+" ea";
+	next;
+	    if(countitem(6819)<1200) goto lose;
+
+	    mes "OKAY!!!";
+	next;
+        delitem 6819,1200;
+            mes "[^CD0000Dolgen^000000]";     
+            mes "lets go";
+            monster "upin",271,323,"Sura Chen",3243,1,"Dolgen::OnPoringKilled";  
+		end;
+
+    sc:
+            mes "[^CD0000Dolgen^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1200 Soul of Swordman^000000 / "+countitem(6816)+" ea";
+	next;
+	    if(countitem(6816)<1200) goto lose;
+
+	    mes "OKAY!!!";
+	next;
+        delitem 6816,1200;
+            mes "[^CD0000Dolgen^000000]";     
+            mes "lets go";
+            monster "upin",271,323,"Shadow Chaser Gertie",3244,1,"Dolgen::OnPoringKilled";  
+		end;
+
+    mins:
+            mes "[^CD0000Dolgen^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1200 Soul of Archer^000000 / "+countitem(6818)+" ea";
+	next;
+	    if(countitem(6818)<1200) goto lose;
+
+	    mes "OKAY!!!";
+	next;
+        delitem 6818,1200;
+            mes "[^CD0000Dolgen^000000]";     
+            mes "lets go";
+            monster "upin",271,323,"Minstrel Alphoccio",3245,1,"Dolgen::OnPoringKilled";  
+		end; 
+
+    wand:
+            mes "[^CD0000Dolgen^000000]";
+	        mes "You need / you own:";
+	        mes "^5533FF1200 Soul of Archer^000000 / "+countitem(6818)+" ea";
+	next;
+	    if(countitem(6818)<1200) goto lose;
+
+	    mes "OKAY!!!";
+	next;
+        delitem 6818,1200;
+            mes "[^CD0000Dolgen^000000]";     
+            mes "lets go";
+            monster "upin",271,323,"Wanderer Trentini",3246,1,"Dolgen::OnPoringKilled";  
+		end; 
+		
+	lose:
+		mes "[^CD0000Dolgen^000000]";
+		mes "you do not have a coin...";
+		mes "you are wasting my time...";
+		goto exit;
+    end;
+	
+	stoptalking:
+        mes "[^CD0000Dolgen^000000]";
+        mes "Whatever... I'm done with you!";
+        goto exit;
+    end;
+	
+    exit:
+        enable_items;
+        close;
+    end;	
+}
+
+
+takero,366,256,4	script	Bio 5	767,{
+
+	if (Zeny > 10000000) {
+        mes"Bio 5 MvP Arena";
+        next;
+		mes "okay lets go!";
+        next;
+
+        Zeny -= 10000000;
+        warp "upin",272,276;
+
+	}
+	else mes "You need 10.000.000z, sorry!";
+	close;
+	}
