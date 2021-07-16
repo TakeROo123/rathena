@@ -995,7 +995,7 @@ LSleipnir:
 	delitem 2406,1;
 
 //Erhalten
-	getItem 13017,1;
+	getItem 2410,1;
 		announce "[Sleipnir] the godly item has been given to [" + strcharinfo(0) + "].",bc_all;
 		disablenpc "Strange Heimdall";
 		enablenpc "Loki#tegod01";
@@ -1053,7 +1053,7 @@ LMjolnir:
 
 
 //Erhalten
-	getItem 5497,1;
+	getItem 1530,1;
 		announce "[Mjolnir] has been bestowed to [" + strcharinfo(0) + "].",bc_all;
 		disablenpc "Strange Heimdall";
 		enablenpc "Loki#tegod01";

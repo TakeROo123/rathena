@@ -19,7 +19,7 @@
 //============================================================
 // - Enchanter
 yuno,219,346,3	script	Lavian	4_M_PHILOFONTES,{
-    setarray .@weapons[0],21051,21052,1333,16092,28138,28765,28766,28044,28042,26158,2055,2056,26161,2057,16095,18185,18187,18186,16093,16094,28767,28768,18184,28633,26159,26160,1865,1866,16096,18188,26212,26213;
+    setarray .@weapons[0],21051,21052,1333,16092,28138,28765,28766,28044,28042,26158,2055,2056,26161,2057,16095,18185,18187,18186,16093,16094,28767,28768,18184,28633,26159,26160,1865,1866,16096,18188,26212,26213,32023;
     setarray .@basicenchants[0],4832,4833,4834,4808,4820,4821,4818,4817,4816,4863,4864,4865,4815,4814,4813;
     setarray .@specialenchants[0],29594,29595,29596,29598,29599,29600,29601,29602,29603,29604,29605,29606,29607;
     .@documentid = 25786;
@@ -236,7 +236,7 @@ yuno,219,346,3	script	Lavian	4_M_PHILOFONTES,{
     end;
 
     determined:
-        .@costdocument = 5000;
+        .@costdocument = 1500;
         mes .n$;
         mes "Enchanting will cost you:";
         mes .@costdocument+"x "+getitemname(.@documentid);
@@ -282,7 +282,7 @@ yuno,219,346,3	script	Lavian	4_M_PHILOFONTES,{
 }
 
 yuno,219,349,3	script	Weapon's Master	4_F_FRUIT,{
-    setarray .@weapons[0],21051,21052,1333,16092,28138,28765,28766,28044,28042,26158,2055,2056,26161,2057,16095,18185,18187,18186,16093,16094,28767,28768,18184,28633,26159,26160,1865,1866,16096,18188,26212,26213;
+    setarray .@weapons[0],21051,21052,1333,16092,28138,28765,28766,28044,28042,26158,2055,2056,26161,2057,16095,18185,18187,18186,16093,16094,28767,28768,18184,28633,26159,26160,1865,1866,16096,18188,26212,26213,32023;
     setarray .@basicenchants[0],4832,4833,4834,4808,4820,4821,4818,4817,4816,4863,4864,4865,4815,4814,4813;
     setarray .@specialenchants[0],29594,29595,29596,29598,29599,29600,29601,29602,29603,29604,29605,29606,29607;
     .@documentid = 25786;
@@ -518,8 +518,8 @@ yuno,219,349,3	script	Weapon's Master	4_F_FRUIT,{
     end;
 
     fourthfragment:
-        .@costdocument = 100;
-        .@costfragment = 10000;
+        .@costdocument = 1000;
+        .@costfragment = 1000;
         mes .n$;
         mes "Enchanting will cost you:";
         mes .@costdocument+"x "+getitemname(.@documentid);
@@ -549,8 +549,8 @@ yuno,219,349,3	script	Weapon's Master	4_F_FRUIT,{
     end;
 
     thirdgeneral:
-        .@costdocument = 3000;
-        .@costfragment = 7500;
+        .@costdocument = 1500;
+        .@costfragment = 1500;
         mes .n$;
         mes "Enchanting will cost you:";
         mes .@costdocument+"x "+getitemname(.@documentid);
@@ -590,8 +590,8 @@ yuno,219,349,3	script	Weapon's Master	4_F_FRUIT,{
     end;
 
     thirdfragment:
-        .@costdocument = 1000;
-        .@costfragment = 25000;
+        .@costdocument = 3000;
+        .@costfragment = 3000;
         mes .n$;
         mes "Enchanting will cost you:";
         mes .@costdocument+"x "+getitemname(.@documentid);

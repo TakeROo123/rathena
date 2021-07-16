@@ -31,7 +31,7 @@ mes "Remember slotting a headgear is a very complicated process in which you cou
 mes "so would you like to continue?";
 if(select("Go for it:No way")==2){close;}
 mes "Add slot to...";
-switch (select("Angel Wing Ears:Black Devil's Mask:Black Frame Glasses:Blush:Dark Blinder:Elven Ears:Evil Wing Ears:Glasses:Small Ribbons:Brynhild:Nothing")){
+switch (select("Angel Wing Ears:Black Devil's Mask:Black Frame Glasses:Blush:Dark Blinder:Elven Ears:Evil Wing Ears:Glasses:Small Ribbons:Brynhild:Megingjard:Brisingamen:Sleipnir:Asprika:Mjolnir:Hervor:Jormungand:Nothing")){
 
 case 1: //Evil Wing Ears
 mes "Are you completely sure about adding the slot?";
@@ -235,7 +235,148 @@ close;
 
 goto L_norew;
 break;
-case 11: goto L_exit;
+case 11: //Megingjard
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it:Not really")==2){goto L_exit;}
+if (countitem(6396)>=1 && countitem(2629)>=1){
+if (rand(1,100)>35){
+delitem 6396,1;
+delitem 2629,1;
+goto L_sorry;
+}
+delitem 6396,1;
+delitem 2629,1;
+set zeny,zeny-100000;
+getitem 200000001,1;
+mes "Enjoy yours Megingjard [1]";
+close;
+}
+
+goto L_norew;
+break;
+
+case 12: //Brisingamen
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it:Not really")==2){goto L_exit;}
+if (countitem(6396)>=1 && countitem(2630)>=1){
+if (rand(1,100)>35){
+delitem 6396,1;
+delitem 2630,1;
+goto L_sorry;
+}
+delitem 6396,1;
+delitem 2630,1;
+set zeny,zeny-100000;
+getitem 200000002,1;
+mes "Enjoy yours Brisingamen [1]";
+close;
+}
+
+goto L_norew;
+break;
+
+case 13: //Sleipnir
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it:Not really")==2){goto L_exit;}
+if (countitem(6396)>=1 && countitem(2410)>=1){
+if (rand(1,100)>35){
+delitem 6396,1;
+delitem 2410,1;
+goto L_sorry;
+}
+delitem 6396,1;
+delitem 2410,1;
+set zeny,zeny-100000;
+getitem 200000003,1;
+mes "Enjoy yours Sleipnir [1]";
+close;
+}
+
+goto L_norew;
+break;
+
+case 14: //Asprika
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it:Not really")==2){goto L_exit;}
+if (countitem(6396)>=1 && countitem(2541)>=1){
+if (rand(1,100)>35){
+delitem 6396,1;
+delitem 2541,1;
+goto L_sorry;
+}
+delitem 6396,1;
+delitem 2541,1;
+set zeny,zeny-100000;
+getitem 200000004,1;
+mes "Enjoy yours Asprika [1]";
+close;
+}
+
+goto L_norew;
+break;
+
+case 15: //Mjolnir
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it:Not really")==2){goto L_exit;}
+if (countitem(6396)>=1 && countitem(1530)>=1){
+if (rand(1,100)>35){
+delitem 6396,1;
+delitem 1530,1;
+goto L_sorry;
+}
+delitem 6396,1;
+delitem 1530,1;
+set zeny,zeny-100000;
+getitem 200000005,1;
+mes "Enjoy yours Mjolnir [1]";
+close;
+}
+
+goto L_norew;
+break;
+
+case 16: //Hervor
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it:Not really")==2){goto L_exit;}
+if (countitem(6396)>=1 && countitem(2181)>=1){
+if (rand(1,100)>35){
+delitem 6396,1;
+delitem 2181,1;
+goto L_sorry;
+}
+delitem 6396,1;
+delitem 2181,1;
+set zeny,zeny-100000;
+getitem 200000006,1;
+mes "Enjoy yours Hervor [1]";
+close;
+}
+
+goto L_norew;
+break;
+
+case 17: //Jormungand
+mes "Are you completely sure about adding the slot?";
+if (select("Shut up and do it:Not really")==2){goto L_exit;}
+if (countitem(6396)>=1 && countitem(2020)>=1){
+if (rand(1,100)>35){
+delitem 6396,1;
+delitem 2020,1;
+goto L_sorry;
+}
+delitem 6396,1;
+delitem 2020,1;
+set zeny,zeny-100000;
+getitem 200000007,1;
+mes "Enjoy yours Hervor [1]";
+close;
+}
+
+goto L_norew;
+break;
+
+
+case 18: goto L_exit;
 break;
 }
 break; 

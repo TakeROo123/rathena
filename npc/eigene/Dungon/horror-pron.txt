@@ -301,12 +301,7 @@ prontera,147,172,3	script	Schmiddi	574,{
             break;
         case 4:
         	goto Yuno;
-            break;
-/*			
-        case 5:
-        	goto Poring-Town;
-            break;
-*/									
+            break;								
         default:
             next;
         	goto stoptalking;
@@ -361,19 +356,6 @@ prontera,147,172,3	script	Schmiddi	574,{
         warp "horror-yun",157,168;
 		close;
     end;
-/*
-	Poring-Town:
-            if (.@type == 1)
-			set horror_event, horror_event-1;
-		else {
-			delitem 200000038,1; //Horror Ticket
-			set horror_event,1;
-		}
-        specialeffect2 EF_MAXPOWER;
-        warp "horror-gef",120,110;
-		close;
-    end;
-*/
     stoptalking:
         mes .n$;
         mes "Whatever... I'm done with you!";
@@ -385,7 +367,7 @@ prontera,147,172,3	script	Schmiddi	574,{
     end;
  }
  }
-/*
+
 prontera,147,175,3	script	Schmiddo	61,{
 	
 	mes "But... but... in there...";
@@ -502,7 +484,7 @@ prontera,147,175,3	script	Schmiddo	61,{
     end;
  }
  }
-*/
+
 //==================MONSTER===========================================
 horror-pron,0,0	monster	Zombie Guard	3452,20,5000
 horror-pron,0,0	monster	Eremes Guille	3208,20,5000
@@ -536,14 +518,29 @@ horror-yun,0,0	monster	Shecil Damon	3211,20,5000
 horror-yun,0,0	monster	Harword Alt-Eisen	3212,20,5000
 horror-yun,0,0	monster	Seyren Windsor	3213,20,5000
 
-horror-gef,0,0	monster	TakeRo	3505,20,5000
-horror-gef,0,0	monster	TakeRo	20531,20,5000
-horror-gef,0,0	monster	TakeRo	30014,20,5000
-horror-gef,0,0	monster	TakeRo	30013,20,5000
-horror-gef,0,0	monster	TakeRo	30017,20,5000
-horror-gef,0,0	monster	TakeRo	1502,2,5000
-horror-gef,0,0	monster	TakeRo	1904,6,5000
-horror-gef,0,0	monster	TakeRo	1894,20,5000
+horror-gef,0,0	monster	TakeRo	30047,5,5000
+horror-gef,0,0	monster	TakeRo	30048,5,5000
+horror-gef,0,0	monster	TakeRo	30049,5,5000
+horror-gef,0,0	monster	TakeRo	30051,5,5000
+horror-gef,0,0	monster	TakeRo	30052,5,5000
+horror-gef,0,0	monster	TakeRo	30053,5,5000
+horror-gef,0,0	monster	TakeRo	30054,5,5000
+horror-gef,0,0	monster	TakeRo	30055,5,5000
+horror-gef,0,0	monster	TakeRo	30059,5,5000
+horror-gef,0,0	monster	TakeRo	30060,5,5000
+horror-gef,0,0	monster	TakeRo	30061,5,5000
+horror-gef,0,0	monster	TakeRo	30062,5,5000
+horror-gef,0,0	monster	TakeRo	30063,5,5000
+horror-gef,0,0	monster	TakeRo	30064,5,5000
+horror-gef,0,0	monster	TakeRo	30065,5,5000
+horror-gef,0,0	monster	TakeRo	30066,5,5000
+horror-gef,0,0	monster	TakeRo	30067,5,5000
+horror-gef,0,0	monster	TakeRo	30068,5,5000
+horror-gef,0,0	monster	TakeRo	30069,5,5000
+horror-gef,0,0	monster	TakeRo	30070,5,5000
+horror-gef,0,0	monster	TakeRo	30071,5,5000
+horror-gef,0,0	monster	TakeRo	30072,5,5000
+horror-gef,0,0	monster	TakeRo	30073,5,5000
 
 //======FLAGS==============
 horror-pron	mapflag	nomobloot
@@ -569,10 +566,10 @@ horror-yun	mapflag	nomemo
 horror-yun	mapflag	nosave
 horror-yun	mapflag	pvp
 horror-yun	mapflag	pvp_noparty
-/*
+
 horror-gef	mapflag	nomobloot
 horror-gef	mapflag	nomemo
 horror-gef	mapflag	nosave
 horror-gef	mapflag	pvp
 horror-gef	mapflag	pvp_noparty
-*/
+

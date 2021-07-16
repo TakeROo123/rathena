@@ -395,16 +395,22 @@ case 1:
 	}
 	if(.@card3 == 0) {
 		.@card3 = .@armorEnchant1[rand(18)];
+		delitem 25739,5;
+		delitem 6608,10;		
 		delequip EQI_ARMOR;
 		break;
 	}
 	if(.@card2 == 0) {
 		.@card2 = .@armorEnchant1[rand(18)];
+		delitem 25739,5;
+		delitem 6608,10;		
 		delequip EQI_ARMOR;
 		break;
 	}
 	if(.@card1 == 0) {
 		.@card1 = .@armorEnchant2[rand(14)];
+		delitem 25739,5;
+		delitem 6608,10;		
 		delequip EQI_ARMOR;
 		break;
 	}
@@ -431,17 +437,23 @@ case 2:
 	}
 	if(.@card3 == 0) {
 		.@card3 = .@manteauEnchant[rand(15)];
+		delitem 25739,5;
+		delitem 6608,10;		
 		delequip EQI_GARMENT;
 		break;
 	}
 	if(.@card2 == 0) {
 		.@card2 = .@manteauEnchant[rand(15)];
+		delitem 25739,5;
+		delitem 6608,10;		
 		delequip EQI_GARMENT;
 		break;
 	}
 	if(.@card1 == 0) {
 		.@card1 = .@manteauEnchant[rand(15)];
-		delequip EQI_GARMENT;
+		delitem 25739,5;
+		delitem 6608,10;		
+		delequip EQI_GARMENT;		
 		break;
 	}
 	break;
@@ -466,16 +478,22 @@ case 3:
 	}
 	if(.@card3 == 0) {
 		.@card3 = .@accEnchant1[rand(18)];
+		delitem 25740,10;
+		delitem 6755,40;		
 		delequip EQI_ACC_L;
 		break;
 	}
 	if(.@card2 == 0) {
 		.@card2 = .@accEnchant2[rand(10)];
+		delitem 25740,10;
+		delitem 6755,40;			
 		delequip EQI_ACC_L;
 		break;
 	}
 	if(.@card1 == 0) {
 		.@card1 = .@accEnchant3[rand(6)];
+		delitem 25740,10;
+		delitem 6755,40;			
 		delequip EQI_ACC_L;
 		break;
 	}

@@ -1,5 +1,5 @@
 ba_maison,311,206,5	script	Ruinan	4_EP17_BASKET,{
-	    if(terra_gloria_main <= 24){
+	    if(ep17_2_main = 31){
 		mes .n$;
 		mes "Who are you again? Do I need to know you?";
 		mes "You are an adventurer? Who says that? You're looking like a little brat!";

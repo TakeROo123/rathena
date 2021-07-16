@@ -1,5 +1,5 @@
 ba_maison,118,322,5	script	Flower Garden Manager	10344,{
-	    if(terra_gloria_main <= 24){
+	    if(ep17_2_main = 31){
 		mes .n$;
 		mes "Who are you again? Do I need to know you?";
 		mes "You are an adventurer? Who says that? You're looking like a little brat!";

@@ -224,3 +224,38 @@ takero,308,367,2	script	Ambernite	1094,{}
 
 
 
+takero,391,186,6	script	Bla	487,{
+	mes .n$;
+	switch(select("- An :- Aus!")) {
+			case 1:
+				goto createWalls;
+				break;
+			default:
+				goto clearWalls;
+				break;
+		}
+
+	clearWalls: 
+		delwall "jen_top";
+		delwall "jen_bottom";
+		delwall "jen_left";
+		delwall "jen_right";
+		close;
+	end;
+	
+	createWalls:
+		delwall "jen_top";
+		delwall "jen_bottom";
+		delwall "jen_left";
+		delwall "jen_right";
+		setwall "prontera",154,188,3,6,false,"jen_top";
+		setwall "prontera",154,186,3,6,false,"jen_bottom";
+		setwall "prontera",154,187,1,0,false,"jen_left";
+		setwall "prontera",156,187,1,0,false,"jen_right";
+		close;
+	end;
+
+	OnInit:
+		set .n$,"[Bla]";
+	end;
+}

@@ -1,0 +1,80 @@
+-	script	command#storage2	-1,{
+OnInit:
+    bindatcmd "storage2",strnpcinfo(0) + "::OnAtcommand";
+    end;
+OnAtcommand:
+    openstorage2 1,STOR_MODE_GET|STOR_MODE_PUT;
+    end;
+}
+
+-	script	command#storage3	-1,{
+OnInit:
+    bindatcmd "storage3",strnpcinfo(0) + "::OnAtcommand";
+    end;
+OnAtcommand:
+    openstorage2 2,STOR_MODE_GET|STOR_MODE_PUT;
+    end;
+}
+
+-	script	command#storage4	-1,{
+OnInit:
+    bindatcmd "storage4",strnpcinfo(0) + "::OnAtcommand";
+    end;
+OnAtcommand:
+    openstorage2 3,STOR_MODE_GET|STOR_MODE_PUT;
+    end;
+}
+
+-	script	command#storage5	-1,{
+OnInit:
+    bindatcmd "storage5",strnpcinfo(0) + "::OnAtcommand";
+    end;
+OnAtcommand:
+    openstorage2 4,STOR_MODE_GET|STOR_MODE_PUT;
+    end;
+}
+
+-	script	command#storage6	-1,{
+OnInit:
+    bindatcmd "storage6",strnpcinfo(0) + "::OnAtcommand";
+    end;
+OnAtcommand:
+    openstorage2 5,STOR_MODE_GET|STOR_MODE_PUT;
+    end;
+}
+
+-	script	command#storage7	-1,{
+OnInit:
+    bindatcmd "storage7",strnpcinfo(0) + "::OnAtcommand";
+    end;
+OnAtcommand:
+    openstorage2 6,STOR_MODE_GET|STOR_MODE_PUT;
+    end;
+}
+
+-	script	command#storage8	-1,{
+OnInit:
+    bindatcmd "storage8",strnpcinfo(0) + "::OnAtcommand";
+    end;
+OnAtcommand:
+    openstorage2 7,STOR_MODE_GET|STOR_MODE_PUT;
+    end;
+}
+
+-	script	command#storage9	-1,{
+OnInit:
+    bindatcmd "storage9",strnpcinfo(0) + "::OnAtcommand";
+    end;
+OnAtcommand:
+    openstorage2 8,STOR_MODE_GET|STOR_MODE_PUT;
+    end;
+}
+
+-	script	command#storage10	-1,{
+OnInit:
+    bindatcmd "storage10",strnpcinfo(0) + "::OnAtcommand";
+    end;
+OnAtcommand:
+    openstorage2 9,STOR_MODE_GET|STOR_MODE_PUT;
+    end;
+}
